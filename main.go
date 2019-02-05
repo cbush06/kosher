@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kosher/cmd"
+	"github.com/cbush06/kosher/cmd"
 )
 
 func main() {

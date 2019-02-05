@@ -1,13 +1,18 @@
 package cmd
 
 import (
+	"bytes"
+	"errors"
 	"log"
 	"os"
 	"path/filepath"
 
-	"github.com/kosher/kosherfs"
+	"github.com/spf13/afero"
+
+	"github.com/cbush06/kosher/common"
+	"github.com/cbush06/kosher/fs"
+	"github.com/cbush06/kosher/resources"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 type initCommand struct {
@@ -38,7 +43,7 @@ var cmdInit = &initCommand{
 				}
 			}
 
-			return initProject(kosherfs.NewDefault(viper.New()), path, initForce)
+			return initProject(fs.NewFs(path), path, initForce)
 		},
 	},
 }
@@ -49,9 +54,62 @@ func (i *initCommand) registerWith(cmd *cobra.Command) {
 	cmd.AddCommand(i.command)
 }
 
-func initProject(fs *kosherfs.Fs, basepath string, force bool) error {
+// initProject initializes a new Kosher project with configuration file templates and a sample feature file
+func initProject(fs *fs.Fs, basepath string, force bool) error {
+	var (
+		featuresDir      = filepath.Join(basepath, common.FeaturesDir)
+		configDir        = filepath.Join(basepath, common.ConfigDir)
+		environmentsJSON = filepath.Join(configDir, common.EnvironmentsFile)
+		pagesJSON        = filepath.Join(configDir, common.PagesFile)
+		selectorsJSON    = filepath.Join(configDir, common.SelectorsFile)
+		settingsJSON     = filepath.Join(configDir, common.SettingsFile)
+		exampleFeature   = filepath.Join(featuresDir, "example.feature")
+	)
+
 	projectStructure := []string{
-		filepath.Join(basepath, "features"),
-		filepath.Join(basepath, "config"),
+		featuresDir,
+		configDir,
 	}
+
+	projectFiles := []string{
+		environmentsJSON,
+		pagesJSON,
+		selectorsJSON,
+		settingsJSON,
+		exampleFeature,
+	}
+
+	if exists, _ := afero.Exists(fs.WorkingDir, basepath); exists {
+		if isDir, _ := afero.IsDir(fs.WorkingDir, basepath); !isDir {
+			return errors.New(basepath + " exists but is not a directory...aborting...")
+		}
+
+		isEmpty, _ := afero.IsEmpty(fs.WorkingDir, basepath)
+
+		switch {
+		case !isEmpty && !force:
+			return errors.New(basepath + " already exists and is not empty...aborting...")
+
+		case !isEmpty && force:
+			all := append(projectStructure, projectFiles...)
+			for _, path := range all {
+				if pathExists, _ := afero.Exists(fs.WorkingDir, path); pathExists {
+					return errors.New(path + " already exists...aborting...")
+				}
+			}
+		}
+	}
+
+	for _, dir := range projectStructure {
+		if err := fs.WorkingDir.MkdirAll(dir, 0777); err != nil {
+			return errors.New("Failed to create dir " + dir)
+		}
+	}
+
+	afero.WriteReader(fs.WorkingDir, settingsJSON, bytes.NewBufferString(resources.GetSettingsJSON()))
+	afero.WriteReader(fs.WorkingDir, environmentsJSON, bytes.NewBufferString(resources.GetEnvironmentsJSON()))
+	afero.WriteReader(fs.WorkingDir, pagesJSON, bytes.NewBufferString(resources.GetPagesJSON()))
+	afero.WriteReader(fs.WorkingDir, selectorsJSON, bytes.NewBufferString(resources.GetSelectorsJSON()))
+
+	return nil
 }

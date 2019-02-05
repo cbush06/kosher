@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/kosher/common"
+	"github.com/cbush06/kosher/common"
 	"github.com/spf13/cobra"
 )
 
