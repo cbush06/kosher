@@ -6,11 +6,12 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
+	"strings"
 
 	"github.com/spf13/afero"
 
 	"github.com/cbush06/kosher/common"
-	"github.com/cbush06/kosher/fs"
 	"github.com/cbush06/kosher/resources"
 	"github.com/spf13/cobra"
 )
@@ -20,8 +21,12 @@ type initCommand struct {
 	command *cobra.Command
 }
 
-var initEmpty bool
-var initForce bool
+var (
+	validPlatforms = []string{"desktop", "web"}
+	initPlatform   = "web"
+	initEmpty      bool
+	initForce      bool
+)
 
 var cmdInit = &initCommand{
 	name: "init",
@@ -43,22 +48,28 @@ var cmdInit = &initCommand{
 				}
 			}
 
-			return initProject(fs.NewFs(path), path, initForce)
+			if platformIndex := sort.SearchStrings(validPlatforms, initPlatform); platformIndex >= len(validPlatforms) || validPlatforms[platformIndex] != initPlatform {
+				log.Fatal(errors.New("Invalid platform specified [" + initPlatform + "]. Valid options are: " + strings.Join(validPlatforms, ", ")))
+			}
+
+			return initProject(&afero.OsFs{}, path, initForce)
 		},
 	},
 }
 
 func (i *initCommand) registerWith(cmd *cobra.Command) {
+	i.command.Flags().StringVarP(&initPlatform, "platform", "p", "web", "Set the platform: "+strings.Join(validPlatforms, ", "))
 	i.command.Flags().BoolVarP(&initForce, "force", "f", false, "Create a project inside a non-empty directory.")
 	i.command.Flags().BoolVarP(&initEmpty, "empty", "e", false, "Create an empty project (no example tests).")
 	cmd.AddCommand(i.command)
 }
 
 // initProject initializes a new Kosher project with configuration file templates and a sample feature file
-func initProject(fs *fs.Fs, basepath string, force bool) error {
+func initProject(fs *afero.OsFs, basepath string, force bool) error {
 	var (
 		featuresDir      = filepath.Join(basepath, common.FeaturesDir)
 		configDir        = filepath.Join(basepath, common.ConfigDir)
+		resultsDir       = filepath.Join(basepath, common.ResultsDir)
 		environmentsJSON = filepath.Join(configDir, common.EnvironmentsFile)
 		pagesJSON        = filepath.Join(configDir, common.PagesFile)
 		selectorsJSON    = filepath.Join(configDir, common.SelectorsFile)
@@ -69,6 +80,7 @@ func initProject(fs *fs.Fs, basepath string, force bool) error {
 	projectStructure := []string{
 		featuresDir,
 		configDir,
+		resultsDir,
 	}
 
 	projectFiles := []string{
@@ -79,12 +91,12 @@ func initProject(fs *fs.Fs, basepath string, force bool) error {
 		exampleFeature,
 	}
 
-	if exists, _ := afero.Exists(fs.WorkingDir, basepath); exists {
-		if isDir, _ := afero.IsDir(fs.WorkingDir, basepath); !isDir {
+	if exists, _ := afero.Exists(fs, basepath); exists {
+		if isDir, _ := afero.IsDir(fs, basepath); !isDir {
 			return errors.New(basepath + " exists but is not a directory...aborting...")
 		}
 
-		isEmpty, _ := afero.IsEmpty(fs.WorkingDir, basepath)
+		isEmpty, _ := afero.IsEmpty(fs, basepath)
 
 		switch {
 		case !isEmpty && !force:
@@ -93,7 +105,7 @@ func initProject(fs *fs.Fs, basepath string, force bool) error {
 		case !isEmpty && force:
 			all := append(projectStructure, projectFiles...)
 			for _, path := range all {
-				if pathExists, _ := afero.Exists(fs.WorkingDir, path); pathExists {
+				if pathExists, _ := afero.Exists(fs, path); pathExists {
 					return errors.New(path + " already exists...aborting...")
 				}
 			}
@@ -101,15 +113,21 @@ func initProject(fs *fs.Fs, basepath string, force bool) error {
 	}
 
 	for _, dir := range projectStructure {
-		if err := fs.WorkingDir.MkdirAll(dir, 0777); err != nil {
-			return errors.New("Failed to create dir " + dir)
+		if err := fs.MkdirAll(dir, 0777); err != nil {
+			return errors.New("Failed to create dir " + dir + ": " + err.Error())
 		}
 	}
 
-	afero.WriteReader(fs.WorkingDir, settingsJSON, bytes.NewBufferString(resources.GetSettingsJSON()))
-	afero.WriteReader(fs.WorkingDir, environmentsJSON, bytes.NewBufferString(resources.GetEnvironmentsJSON()))
-	afero.WriteReader(fs.WorkingDir, pagesJSON, bytes.NewBufferString(resources.GetPagesJSON()))
-	afero.WriteReader(fs.WorkingDir, selectorsJSON, bytes.NewBufferString(resources.GetSelectorsJSON()))
+	if initPlatform == "web" {
+		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(resources.GetSettingsJSON()))
+	} else if initPlatform == "desktop" {
+		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(resources.GetSettingsDesktopJSON()))
+	}
+
+	afero.WriteReader(fs, environmentsJSON, bytes.NewBufferString(resources.GetEnvironmentsJSON()))
+	afero.WriteReader(fs, pagesJSON, bytes.NewBufferString(resources.GetPagesJSON()))
+	afero.WriteReader(fs, selectorsJSON, bytes.NewBufferString(resources.GetSelectorsJSON()))
+	afero.WriteReader(fs, exampleFeature, bytes.NewBufferString(resources.GetExampleFeature()))
 
 	return nil
 }

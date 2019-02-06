@@ -5,7 +5,7 @@ func GetSettingsJSON() string {
 	return `
 {
     "driver": "chrome",
-    "defaultEnvironment": "production",
+    "defaultEnvironment": "test",
     "maxWaitTime": 2,
     "minWaitTime": 0,
     "httpTimeout": 3,

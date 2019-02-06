@@ -1,7 +1,12 @@
 package cmd
 
 import (
-	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+
+	"github.com/cbush06/kosher/config"
+	"github.com/cbush06/kosher/fs"
 
 	"github.com/spf13/cobra"
 )
@@ -19,7 +24,25 @@ var cmdRun = &runCommand{
 		Long:  `run executes your tests. Depending on the arguments provided, it may execute all tests, a specific test, or tests in one or more subdirectories.`,
 		Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, arg []string) error {
-			fmt.Println("run")
+			var path string
+			if len(arg) < 1 {
+				path, _ = os.Getwd()
+			} else {
+				path, _ = filepath.Abs(filepath.Clean(arg[0]))
+			}
+
+			fs, err := fs.NewFs(path)
+
+			if err != nil {
+				return err
+			}
+
+			settings := config.NewSettings(fs)
+
+			if settings.Environments == nil {
+				log.Fatal("Error")
+			}
+
 			return nil
 		},
 	},

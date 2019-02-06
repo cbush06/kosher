@@ -7,6 +7,9 @@ const (
 	// ConfigDir is the name given to the config directory in a Kosher project
 	ConfigDir = "config"
 
+	// ResultsDir is the name given to the results directory where test results are written
+	ResultsDir = "results"
+
 	// EnvironmentsFile is the name given to the environments file in a Kosher project
 	EnvironmentsFile = "environments.json"
 
