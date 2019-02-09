@@ -1,8 +1,10 @@
 package config
 
 import (
+	"bytes"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/cbush06/kosher/common"
 	"github.com/cbush06/kosher/fs"
@@ -12,10 +14,10 @@ import (
 
 // Settings wraps references to all setting providers required by Kosher
 type Settings struct {
-	Environments Provider
-	Pages        Provider
-	Selectors    Provider
-	Settings     Provider
+	Environments ConfigProvider
+	Pages        ConfigProvider
+	Selectors    ConfigProvider
+	Settings     ConfigProvider
 }
 
 // NewSettings attempts to build a Settings object based on the given Fs object
@@ -31,12 +33,12 @@ func NewSettings(fs *fs.Fs) *Settings {
 
 type providerModifier func(v *viper.Viper)
 
-func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) Provider {
+func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) ConfigProvider {
 	provider := viper.New()
 	path, _ := fs.ConfigDir.RealPath(fileName)
 
 	if _, err := fs.ConfigDir.Stat(fileName); err != nil {
-		log.Fatal("Stat failed for [" + fileName + "]: " + err.Error())
+		log.Fatal("Stat failed for [" + path + "]: " + err.Error())
 	}
 	if exists, err := afero.Exists(fs.ConfigDir, fileName); !exists {
 		if err != nil {
@@ -45,10 +47,21 @@ func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) 
 		log.Fatal("Configuration file does not exist: " + path)
 	}
 
-	provider.SetConfigFile(path)
+	if file, err := fs.ConfigDir.OpenFile(fileName, os.O_RDONLY, 0744); err != nil {
+		log.Fatalf("Error encountered while opening config file at [%s]: %s", path, err.Error())
+	} else {
+		if rawBytes, err := afero.ReadAll(file); err != nil {
+			log.Fatalf("Error reading config file [%s]: %s", path, err.Error())
+		} else {
+			provider.SetConfigType("json")
+			provider.ReadConfig(bytes.NewBuffer(rawBytes))
+		}
+	}
+
 	if modifyProvider != nil {
 		modifyProvider(provider)
 	}
+
 	return provider
 }
 

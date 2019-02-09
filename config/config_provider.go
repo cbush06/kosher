@@ -1,7 +1,7 @@
 package config
 
-// Provider provides the configuration settings for Kosher
-type Provider interface {
+// ConfigProvider provides the configuration settings for Kosher
+type ConfigProvider interface {
 	GetString(key string) string
 	GetInt(key string) int
 	GetBool(key string) bool

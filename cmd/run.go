@@ -1,10 +1,15 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
+	"time"
 
+	"github.com/sclevine/agouti"
+
+	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/fs"
 
@@ -38,9 +43,28 @@ var cmdRun = &runCommand{
 			}
 
 			settings := config.NewSettings(fs)
+			client, err := clients.NewClient(settings, fs)
+			if err != nil {
+				log.Fatal(err.Error())
+			} else {
+				defer client.StopDriver()
+				client.StartDriver()
 
-			if settings.Environments == nil {
-				log.Fatal("Error")
+				fmt.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
+
+				page, err := client.WebDriver.NewPage(agouti.Browser("chrome"))
+				if err != nil {
+					log.Fatalf("failed to open page: %s", err.Error())
+				}
+				if err := page.Navigate("http://www.drudgereport.com"); err != nil {
+					log.Fatalf("failed to navigate: %s", err.Error())
+				}
+				time.Sleep(3 * time.Second)
+				title, err := page.Title()
+				if err != nil {
+					log.Fatalf("failed to get title: %s", err.Error())
+				}
+				fmt.Println(title)
 			}
 
 			return nil

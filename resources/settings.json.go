@@ -2,8 +2,7 @@ package resources
 
 // GetSettingsJSON returns the settings.json template file
 func GetSettingsJSON() string {
-	return `
-{
+	return `{
     "driver": "chrome",
     "defaultEnvironment": "test",
     "maxWaitTime": 2,
@@ -31,6 +30,5 @@ func GetSettingsJSON() string {
             "height": 362
         }
     }
-}
-    `
+}`
 }

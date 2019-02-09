@@ -2,6 +2,7 @@ package fs
 
 import (
 	"errors"
+	"os"
 	"path/filepath"
 
 	"github.com/cbush06/kosher/common"
@@ -13,8 +14,11 @@ var Os = &afero.OsFs{}
 
 // Fs abstracts away the file system from the actual OS, and allows the file system to be mocked for testing.
 type Fs struct {
-	// Read-only view of working directory for Kosher (this is the root dir)
+	// Read-only view of working directory for Kosher (where the executable is)
 	WorkingDir *afero.BasePathFs
+
+	// Read-only view of project directory for Kosher
+	ProjectDir *afero.BasePathFs
 
 	// Config directory
 	ConfigDir *afero.BasePathFs
@@ -27,57 +31,67 @@ type Fs struct {
 }
 
 // NewFs creates a new Fs with the OS file system as the Project directory
-func NewFs(workingDirPath string) (*Fs, error) {
-	fs := &afero.OsFs{}
-	return newFs(fs, workingDirPath)
+func NewFs(projectDirPath string) (*Fs, error) {
+	fs := afero.NewOsFs()
+	return newFs(fs, projectDirPath)
 }
 
-func newFs(base afero.Fs, workingDirPath string) (*Fs, error) {
+func newFs(base afero.Fs, projectDirPath string) (*Fs, error) {
 	var (
-		workingDir  *afero.BasePathFs
-		configDir   *afero.BasePathFs
-		featuresDir *afero.BasePathFs
-		resultsDir  *afero.BasePathFs
-		err         error
+		workingDirPath string
+		workingDir     *afero.BasePathFs
+		projectDir     *afero.BasePathFs
+		configDir      *afero.BasePathFs
+		featuresDir    *afero.BasePathFs
+		resultsDir     *afero.BasePathFs
+		err            error
 	)
 
-	workingDirPath, err = filepath.Abs(workingDirPath)
-	if workingDir, err = getWorkingDirFs(base, workingDirPath); err != nil {
+	if workingDirPath, err = os.Getwd(); err != nil {
+		return nil, errors.New("Unable to determine working directory of executable")
+	}
+	if workingDir, err = getReadonlyBasepathFs(base, workingDirPath); err != nil {
 		return nil, err
 	}
 
-	configDirPath, _ := filepath.Abs(filepath.Join(workingDirPath, common.ConfigDir))
+	projectDirPath, err = filepath.Abs(projectDirPath)
+	if projectDir, err = getReadonlyBasepathFs(base, projectDirPath); err != nil {
+		return nil, err
+	}
+
+	configDirPath, _ := filepath.Abs(filepath.Join(projectDirPath, common.ConfigDir))
 	if exists, _ := afero.DirExists(base, configDirPath); !exists {
 		return nil, errors.New("Directory does not exist: " + configDirPath)
 	}
-	configDir = afero.NewBasePathFs(workingDir, common.ConfigDir).(*afero.BasePathFs)
+	configDir = afero.NewBasePathFs(projectDir, common.ConfigDir).(*afero.BasePathFs)
 
-	featuresDirPath, _ := filepath.Abs(filepath.Join(workingDirPath, common.FeaturesDir))
+	featuresDirPath, _ := filepath.Abs(filepath.Join(projectDirPath, common.FeaturesDir))
 	if exists, _ := afero.DirExists(base, featuresDirPath); !exists {
 		return nil, errors.New("Directory does not exist: " + featuresDirPath)
 	}
-	featuresDir = afero.NewBasePathFs(workingDir, common.FeaturesDir).(*afero.BasePathFs)
+	featuresDir = afero.NewBasePathFs(projectDir, common.FeaturesDir).(*afero.BasePathFs)
 
-	resultsDirPath, _ := filepath.Abs(filepath.Join(workingDirPath, common.ResultsDir))
+	resultsDirPath, _ := filepath.Abs(filepath.Join(projectDirPath, common.ResultsDir))
 	if exists, _ := afero.DirExists(base, resultsDirPath); !exists {
 		return nil, errors.New("Directory does not exist: " + resultsDirPath)
 	}
-	resultsDir = afero.NewBasePathFs(workingDir, common.ResultsDir).(*afero.BasePathFs)
+	resultsDir = afero.NewBasePathFs(projectDir, common.ResultsDir).(*afero.BasePathFs)
 
 	return &Fs{
 		WorkingDir:  workingDir,
+		ProjectDir:  projectDir,
 		ConfigDir:   configDir,
 		FeaturesDir: featuresDir,
 		ResultsDir:  resultsDir,
 	}, nil
 }
 
-func getWorkingDirFs(base afero.Fs, workingDirPath string) (*afero.BasePathFs, error) {
-	if workingDirPath != "" {
-		if exists, _ := afero.DirExists(base, workingDirPath); !exists {
-			return nil, errors.New("Directory does not exist: " + workingDirPath)
+func getReadonlyBasepathFs(base afero.Fs, dirPath string) (*afero.BasePathFs, error) {
+	if dirPath != "" {
+		if exists, _ := afero.DirExists(base, dirPath); !exists {
+			return nil, errors.New("Directory does not exist: " + dirPath)
 		}
-		return afero.NewBasePathFs(afero.NewReadOnlyFs(base), workingDirPath).(*afero.BasePathFs), nil
+		return afero.NewBasePathFs(afero.NewReadOnlyFs(base), dirPath).(*afero.BasePathFs), nil
 	}
-	return nil, errors.New("No working directory path provided")
+	return nil, errors.New("No directory path provided")
 }
