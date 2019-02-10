@@ -20,4 +20,5 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )switch to the root frame$`, iSwitchToTheRootFrame(page))
 	suite.Step(`^(?:|I )accept the popup$`, iAcceptThePopup(page))
 	suite.Step(`^(?:|I )decline the popup$`, iDeclineThePopup(page))
+	suite.Step(`^(?:|I )fill in the following:$`, iFillInTheFollowing(utils, page))
 }
