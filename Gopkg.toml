@@ -19,7 +19,6 @@
 # [[override]]
 #  name = "github.com/x/y"
 #  version = "2.4.0"
-ignored = ["github.com/onsi/ginkgo"]
 
 [[constraint]]
   name = "github.com/sclevine/agouti"

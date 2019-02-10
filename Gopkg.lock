@@ -221,7 +221,6 @@
   analyzer-version = 1
   input-imports = [
     "github.com/DATA-DOG/godog",
-    "github.com/onsi/gomega",
     "github.com/sclevine/agouti",
     "github.com/spf13/afero",
     "github.com/spf13/cobra",
