@@ -9,9 +9,6 @@ import (
 	"github.com/spf13/afero"
 )
 
-// Os points to an Os Afero file system.
-var Os = &afero.OsFs{}
-
 // Fs abstracts away the file system from the actual OS, and allows the file system to be mocked for testing.
 type Fs struct {
 	// Read-only view of working directory for Kosher (where the executable is)

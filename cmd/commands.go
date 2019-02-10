@@ -6,6 +6,9 @@ import (
 	"path/filepath"
 	"runtime"
 
+	"github.com/onsi/ginkgo"
+	"github.com/onsi/gomega"
+
 	"github.com/spf13/cobra"
 )
 
@@ -39,4 +42,6 @@ func configureEnv() {
 	default:
 		log.Fatalf("Unsupported operating system detected [%s]\n", runtime.GOOS)
 	}
+
+	gomega.RegisterFailHandler(ginkgo.Fail)
 }

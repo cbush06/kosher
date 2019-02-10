@@ -3,6 +3,7 @@ package cmd
 import (
 	"bytes"
 	"errors"
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -74,7 +75,7 @@ func initProject(fs *afero.OsFs, basepath string, force bool) error {
 		pagesJSON        = filepath.Join(configDir, common.PagesFile)
 		selectorsJSON    = filepath.Join(configDir, common.SelectorsFile)
 		settingsJSON     = filepath.Join(configDir, common.SettingsFile)
-		exampleFeature   = filepath.Join(featuresDir, "example.feature")
+		exampleFeature   = filepath.Join(featuresDir, common.ExampleFeatureFile)
 	)
 
 	projectStructure := []string{
@@ -114,7 +115,7 @@ func initProject(fs *afero.OsFs, basepath string, force bool) error {
 
 	for _, dir := range projectStructure {
 		if err := fs.MkdirAll(dir, 0777); err != nil {
-			return errors.New("Failed to create dir " + dir + ": " + err.Error())
+			return fmt.Errorf("Failed to create dir [%s]: %s", dir, err)
 		}
 	}
 

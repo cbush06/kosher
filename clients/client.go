@@ -19,7 +19,7 @@ type Client struct {
 // StartDriver starts the driver associated with this client
 func (c *Client) StartDriver() error {
 	if err := c.WebDriver.Start(); err != nil {
-		log.Printf("Kosher failed to connect to driver [%s] at [%s]: %s\n", c.DriverType, c.WebDriver.URL(), err.Error())
+		log.Printf("Kosher failed to connect to driver [%s] at [%s]: %s\n", c.DriverType, c.WebDriver.URL(), err)
 		return err
 	}
 	return nil
@@ -28,7 +28,7 @@ func (c *Client) StartDriver() error {
 // StopDriver kills the process the driver associated with this client is running on
 func (c *Client) StopDriver() error {
 	if err := c.WebDriver.Stop(); err != nil {
-		log.Printf("Kosher failed to disconnect from driver [%s] at [%s]: %s\n", c.DriverType, c.WebDriver.URL(), err.Error())
+		log.Printf("Kosher failed to disconnect from driver [%s] at [%s]: %s\n", c.DriverType, c.WebDriver.URL(), err)
 		return err
 	}
 	return nil

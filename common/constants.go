@@ -21,4 +21,16 @@ const (
 
 	// SettingsFile is the name given to the settings file in a Kosher project
 	SettingsFile = "settings.json"
+
+	// ExampleFeatureFile is the name given to the sample feature provided when a project is initialized
+	ExampleFeatureFile = "example.feature"
+
+	// DefaultScreenFormat is the default screen format
+	DefaultScreenFormat = "desktop"
+
+	// DefaultScreenWidth is the fail-safe screen width
+	DefaultScreenWidth = 1024
+
+	// DefaultScreenHeight is the fail-safe screen height
+	DefaultScreenHeight = 768
 )

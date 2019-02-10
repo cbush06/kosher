@@ -5,13 +5,16 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"time"
 
+	"github.com/cbush06/kosher/common"
+
+	"github.com/DATA-DOG/godog"
 	"github.com/sclevine/agouti"
 
 	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/fs"
+	"github.com/cbush06/kosher/steps/websteps"
 
 	"github.com/spf13/cobra"
 )
@@ -45,7 +48,7 @@ var cmdRun = &runCommand{
 			settings := config.NewSettings(fs)
 			client, err := clients.NewClient(settings, fs)
 			if err != nil {
-				log.Fatal(err.Error())
+				log.Fatal(err)
 			} else {
 				defer client.StopDriver()
 				client.StartDriver()
@@ -54,17 +57,12 @@ var cmdRun = &runCommand{
 
 				page, err := client.WebDriver.NewPage(agouti.Browser("chrome"))
 				if err != nil {
-					log.Fatalf("failed to open page: %s", err.Error())
+					log.Fatalf("failed to open page: %s", err)
 				}
-				if err := page.Navigate("http://www.drudgereport.com"); err != nil {
-					log.Fatalf("failed to navigate: %s", err.Error())
-				}
-				time.Sleep(3 * time.Second)
-				title, err := page.Title()
-				if err != nil {
-					log.Fatalf("failed to get title: %s", err.Error())
-				}
-				fmt.Println(title)
+
+				godog.RunWithOptions(settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
+					buildFeatureContext(settings, page, suite)
+				}, buildGoDogOptions(settings, fs))
 			}
 
 			return nil
@@ -74,4 +72,25 @@ var cmdRun = &runCommand{
 
 func (r *runCommand) registerWith(cmd *cobra.Command) {
 	cmd.AddCommand(r.command)
+}
+
+func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *godog.Suite) {
+	switch settings.Settings.Get("platform") {
+	case "desktop":
+		log.Fatal("desktop is not implemented")
+	case "web":
+		websteps.BuildGoDogSuite(settings, page, suite)
+	}
+}
+
+func buildGoDogOptions(settings *config.Settings, fs *fs.Fs) godog.Options {
+	featuresPath, err := fs.ProjectDir.RealPath(common.FeaturesDir)
+	if err != nil {
+		log.Fatalln("Failed to get path to features directory")
+	}
+
+	return godog.Options{
+		Format: settings.Settings.GetString("reportFormat"),
+		Paths:  []string{featuresPath},
+	}
 }

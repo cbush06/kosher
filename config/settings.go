@@ -14,10 +14,10 @@ import (
 
 // Settings wraps references to all setting providers required by Kosher
 type Settings struct {
-	Environments ConfigProvider
-	Pages        ConfigProvider
-	Selectors    ConfigProvider
-	Settings     ConfigProvider
+	Environments Provider
+	Pages        Provider
+	Selectors    Provider
+	Settings     Provider
 }
 
 // NewSettings attempts to build a Settings object based on the given Fs object
@@ -33,25 +33,25 @@ func NewSettings(fs *fs.Fs) *Settings {
 
 type providerModifier func(v *viper.Viper)
 
-func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) ConfigProvider {
+func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) Provider {
 	provider := viper.New()
 	path, _ := fs.ConfigDir.RealPath(fileName)
 
 	if _, err := fs.ConfigDir.Stat(fileName); err != nil {
-		log.Fatal("Stat failed for [" + path + "]: " + err.Error())
+		log.Fatalf("Stat failed for [%s]: %s", path, err)
 	}
 	if exists, err := afero.Exists(fs.ConfigDir, fileName); !exists {
 		if err != nil {
-			fmt.Println(err.Error())
+			fmt.Println(err)
 		}
 		log.Fatal("Configuration file does not exist: " + path)
 	}
 
 	if file, err := fs.ConfigDir.OpenFile(fileName, os.O_RDONLY, 0744); err != nil {
-		log.Fatalf("Error encountered while opening config file at [%s]: %s", path, err.Error())
+		log.Fatalf("Error encountered while opening config file at [%s]: %s", path, err)
 	} else {
 		if rawBytes, err := afero.ReadAll(file); err != nil {
-			log.Fatalf("Error reading config file [%s]: %s", path, err.Error())
+			log.Fatalf("Error reading config file [%s]: %s", path, err)
 		} else {
 			provider.SetConfigType("json")
 			provider.ReadConfig(bytes.NewBuffer(rawBytes))
@@ -70,16 +70,19 @@ func modPagesProvider(v *viper.Viper) {
 }
 
 func modSettingsProvider(v *viper.Viper) {
+	v.SetDefault("platform", "web")
+	v.SetDefault("driver", "chrome")
+	v.SetDefault("reportFormat", "pretty")
 	v.SetDefault("defaultDateFormat", "mm/dd/yyyy")
 	v.SetDefault("defaultEnvironment", "test")
 	v.SetDefault("maxWaitTime", 2)
 	v.SetDefault("minWaitTime", 0)
 	v.SetDefault("httpTimeout", 3)
 	v.SetDefault("waitForPageLoad", 0)
-	v.SetDefault("screenSize", "desktop")
+	v.SetDefault("screenFormat", "desktop")
 	v.SetDefault("debugMode", "")
 	v.SetDefault("quitOnFail", false)
-	v.SetDefault("screenSizeConfigurations", map[string]map[string]int{
+	v.SetDefault("screenFormats", map[string]map[string]int{
 		"desktop": map[string]int{
 			"width":  2000,
 			"height": 980,

@@ -3,16 +3,19 @@ package resources
 // GetSettingsJSON returns the settings.json template file
 func GetSettingsJSON() string {
 	return `{
-    "driver": "chrome",
+	"projectName": "kosher",
+	"platform": "web",
+	"driver": "chrome",
+	"reportFormat": "pretty",
     "defaultEnvironment": "test",
     "maxWaitTime": 2,
     "minWaitTime": 0,
     "httpTimeout": 3,
     "waitForPageLoad": 0,
-    "screenSize": "desktop",
+    "screenFormat": "desktop",
     "debugMode": "",
     "quitOnFail": false,
-    "screenSizeConfigurations": {
+    "screenFormats": {
         "desktop": {
             "width": 2000,
             "height": 980
