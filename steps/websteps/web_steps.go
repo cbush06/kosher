@@ -32,5 +32,5 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )unselect (?:the )following values from "([^"]*)":$`, iUnselectTheFollowingValues(utils))
 	suite.Step(`^(?:|I )choose "([^"]*)"$`, iChoose(utils))
 	suite.Step(`^(?:|I )press "([^"]*)"$`, iPress(utils))
-	suite.Step(`^(?:|I )press the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "(.*?)"$`, iPressNth(utils))
+	suite.Step(`^(?:|I )(?:press|click) the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "(.*?)"$`, iPressNth(utils))
 }

@@ -369,7 +369,7 @@ func iPressNth(s *steputils.StepUtils) func(string, string) error {
 	return func(nth string, field string) error {
 		var (
 			matches    *agouti.MultiSelection
-			errMsg     = fmt.Sprintf("error encountered while pressing button [%s]: ", field) + "%s"
+			errMsg     = fmt.Sprintf("error encountered while pressing button/link [%s]: ", field) + "%s"
 			nthNumeric int
 			err        error
 		)
@@ -382,7 +382,7 @@ func iPressNth(s *steputils.StepUtils) func(string, string) error {
 		// ensure there's enough of these to satisfy the `nth` argument
 		fieldCnt, _ := matches.Count()
 		if fieldCnt < 0 {
-			return fmt.Errorf(errMsg, "no matching buttons found")
+			return fmt.Errorf(errMsg, "no matching buttons/links found")
 		}
 
 		// if something other than an integer was specified
@@ -437,10 +437,12 @@ func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error 
 	case "submit":
 		fallthrough
 	case "reset":
-		log.Printf("Clicking button %d", btnNumber)
+		fallthrough
+	case "a":
+		log.Printf("Clicking button/a %d", btnNumber)
 		matches.At(btnNumber).Click()
 	default:
-		return fmt.Errorf(errMsg, fmt.Sprintf("must be some form of the button, but is of type [%s]", fieldType))
+		return fmt.Errorf(errMsg, fmt.Sprintf("must be some form of the button or link, but is of type [%s]", fieldType))
 	}
 
 	return nil
