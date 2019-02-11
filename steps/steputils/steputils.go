@@ -72,6 +72,13 @@ func (s *StepUtils) ResolveSelector(name string) (*agouti.MultiSelection, error)
 			return agoutiSel, nil
 		}
 
+		// try to find a match by link text
+		agoutiSel = s.Page.AllByLink(selector)
+		matchCnt, _ = agoutiSel.Count()
+		if matchCnt > 0 {
+			return agoutiSel, nil
+		}
+
 		// try to find a match by name
 		agoutiSel = s.Page.AllByName(selector)
 		matchCnt, _ = agoutiSel.Count()
