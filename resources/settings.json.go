@@ -7,6 +7,7 @@ func GetSettingsJSON() string {
 	"platform": "web",
 	"driver": "chrome",
 	"reportFormat": "pretty",
+	"dateFormat": "MM/DD/YYYY",
     "defaultEnvironment": "test",
     "maxWaitTime": 2,
     "minWaitTime": 0,

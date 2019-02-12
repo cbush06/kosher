@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"strings"
+	"time"
 
 	"github.com/cbush06/kosher/common"
 
@@ -92,6 +93,13 @@ func (s *StepUtils) ResolveSelector(name string) (*agouti.MultiSelection, error)
 		if matchCnt > 0 {
 			return agoutiSel, nil
 		}
+
+		// try to find by text
+		agoutiSel = s.Page.AllByXPath(fmt.Sprintf(`//*[contains(text(), '%s')]`, selector))
+		matchCnt, _ = agoutiSel.Count()
+		if matchCnt > 0 {
+			return agoutiSel, nil
+		}
 	}
 	return nil, fmt.Errorf("no matches found for field [%s]", name)
 }
@@ -156,5 +164,58 @@ func (s *StepUtils) GetFieldType(name string, sel *agouti.Selection) (string, er
 		return inputType, nil
 	default:
 		return tagName, nil
+	}
+}
+
+// FormatDate converts a `time.Time` to a string using the `dateFormat` value specified in the settings file
+func (s *StepUtils) FormatDate(t time.Time) string {
+	dateFormat := s.Settings.Settings.GetString("dateFormat")
+	if len(dateFormat) < 1 {
+		return ""
+	}
+	return t.Format(convertDateFormatToGoFormat(dateFormat))
+}
+
+// ParseDate parses a given string to a `time.Time` using the `dateFormat` value specified in the settings file
+func (s *StepUtils) ParseDate(date string) time.Time {
+	dateFormat := s.Settings.Settings.GetString("dateFormat")
+	if len(dateFormat) < 1 {
+		return time.Time{}
+	}
+	if goDate, err := time.ParseInLocation(convertDateFormatToGoFormat(dateFormat), date, time.Local); err != nil {
+		return time.Time{}
+	} else {
+		return goDate
+	}
+}
+
+func convertDateFormatToGoFormat(dateFormat string) string {
+	dateFormat = strings.Replace(dateFormat, "MMMM", "January", 1)
+	dateFormat = strings.Replace(dateFormat, "MMM", "Jan", 1)
+	dateFormat = strings.Replace(dateFormat, "MM", "01", 1)
+	dateFormat = strings.Replace(dateFormat, "YYYY", "2006", 1)
+	dateFormat = strings.Replace(dateFormat, "YY", "06", 1)
+	dateFormat = strings.Replace(dateFormat, "DDDD", "Monday", 1)
+	dateFormat = strings.Replace(dateFormat, "DDD", "Mon", 1)
+	dateFormat = strings.Replace(dateFormat, "DD", "02", 1)
+	return dateFormat
+}
+
+// IsTextBased determines if a given field is a form of textbox or textarea
+func (s *StepUtils) IsTextBased(field string, sel *agouti.Selection) bool {
+	var (
+		fieldType string
+		err       error
+	)
+
+	if fieldType, err = s.GetFieldType(field, sel); err != nil {
+		return false
+	}
+
+	switch fieldType {
+	case "date", "datetime-local", "email", "month", "number", "password", "search", "tel", "time", "url", "week", "textarea", "text":
+		return true
+	default:
+		return false
 	}
 }

@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/DATA-DOG/godog/gherkin"
 	"github.com/cbush06/kosher/steps/steputils"
@@ -52,57 +53,37 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 		}
 
 		// based on the field type, we apply the actual value
-		matchCnt, _ = matches.Count()
-		switch fieldType {
-		case "date":
-			fallthrough
-		case "datetime-local":
-			fallthrough
-		case "email":
-			fallthrough
-		case "month":
-			fallthrough
-		case "number":
-			fallthrough
-		case "password":
-			fallthrough
-		case "search":
-			fallthrough
-		case "tel":
-			fallthrough
-		case "time":
-			fallthrough
-		case "url":
-			fallthrough
-		case "week":
-			fallthrough
-		case "text":
+		if s.IsTextBased(field, matches.At(0)) {
 			matches.Fill(value)
-		case "radio":
-			for i := 0; i < matchCnt; i++ {
-				nextRadioEls, _ := matches.At(i).Elements()
-				nextRadioValue, _ := nextRadioEls[0].GetAttribute("value")
-				if strings.EqualFold(nextRadioValue, strings.TrimSpace(value)) {
-					matches.At(i).Click()
-					return nil
+		} else {
+			matchCnt, _ = matches.Count()
+			switch fieldType {
+			case "radio":
+				for i := 0; i < matchCnt; i++ {
+					nextRadioEls, _ := matches.At(i).Elements()
+					nextRadioValue, _ := nextRadioEls[0].GetAttribute("value")
+					if strings.EqualFold(nextRadioValue, strings.TrimSpace(value)) {
+						matches.At(i).Click()
+						return nil
+					}
 				}
-			}
-		case "checkbox":
-			matches.Uncheck()
-			for i := 0; i < matchCnt; i++ {
-				nextCheckEls, _ := matches.At(i).Elements()
-				nextCheckValue, _ := nextCheckEls[0].GetAttribute("value")
-				if strings.EqualFold(nextCheckValue, strings.TrimSpace(value)) {
-					matches.At(i).Check()
-					return nil
+			case "checkbox":
+				matches.Uncheck()
+				for i := 0; i < matchCnt; i++ {
+					nextCheckEls, _ := matches.At(i).Elements()
+					nextCheckValue, _ := nextCheckEls[0].GetAttribute("value")
+					if strings.EqualFold(nextCheckValue, strings.TrimSpace(value)) {
+						matches.At(i).Check()
+						return nil
+					}
 				}
+			case "select":
+				if err = matches.Select(value); err != nil {
+					return fmt.Errorf(errMsg, err)
+				}
+			default:
+				return fmt.Errorf("unrecognized field type [%s]", fieldType)
 			}
-		case "select":
-			if err = matches.Select(value); err != nil {
-				return fmt.Errorf(errMsg, err)
-			}
-		default:
-			return fmt.Errorf("unrecognized field type [%s]", fieldType)
 		}
 		return nil
 	}
@@ -127,35 +108,12 @@ func iKeyInTheField(s *steputils.StepUtils) func(string, string) error {
 			return fmt.Errorf(errMsg, err)
 		}
 
-		switch fieldType {
-		case "date":
-			fallthrough
-		case "datetime-local":
-			fallthrough
-		case "email":
-			fallthrough
-		case "month":
-			fallthrough
-		case "number":
-			fallthrough
-		case "password":
-			fallthrough
-		case "search":
-			fallthrough
-		case "tel":
-			fallthrough
-		case "time":
-			fallthrough
-		case "url":
-			fallthrough
-		case "week":
-			fallthrough
-		case "text":
+		if s.IsTextBased(field, matches.At(0)) {
 			// fill it in
 			if err = matches.At(0).SendKeys(value); err != nil {
 				return fmt.Errorf(errMsg, err)
 			}
-		default:
+		} else {
 			return fmt.Errorf(errMsg, fmt.Sprintf("field is of type [%s] but must be a text-based field", fieldType))
 		}
 
@@ -365,6 +323,12 @@ func iPress(s *steputils.StepUtils) func(string) error {
 	}
 }
 
+func iClickTheButtonLink(s *steputils.StepUtils) func(string) error {
+	return func(field string) error {
+		return iPressButtonIdx(s, field, 0)
+	}
+}
+
 func iPressNth(s *steputils.StepUtils) func(string, string) error {
 	return func(nth string, field string) error {
 		var (
@@ -432,13 +396,7 @@ func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error 
 
 	// ensure it's some form of the button
 	switch fieldType {
-	case "button":
-		fallthrough
-	case "submit":
-		fallthrough
-	case "reset":
-		fallthrough
-	case "a":
+	case "button", "submit", "reset", "a":
 		log.Printf("Clicking button/a %d", btnNumber)
 		matches.At(btnNumber).Click()
 	default:
@@ -446,4 +404,64 @@ func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error 
 	}
 
 	return nil
+}
+
+func iUnfocusBlur(s *steputils.StepUtils) func(string) error {
+	return func(field string) error {
+		var (
+			matches *agouti.MultiSelection
+			errMsg  = fmt.Sprintf("error encountered while unfocusing/blurring [%s]: ", field) + "%s"
+			err     error
+		)
+
+		// try to find the field(s) specified
+		if matches, err = s.ResolveSelector(field); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		// ensure there's at least 1
+		fieldCnt, _ := matches.Count()
+		if fieldCnt < 0 {
+			return fmt.Errorf(errMsg, "no matching elements found")
+		}
+
+		// unfocus the field
+		fieldElms, _ := matches.At(0).Elements()
+		fieldID, _ := fieldElms[0].GetAttribute("id")
+		fieldName, _ := fieldElms[0].GetAttribute("name")
+		var fieldSelector string
+
+		if len(fieldID) > 0 {
+			fieldSelector = "#" + fieldID
+		} else if len(fieldName) > 0 {
+			fieldSelector = "*[name='" + fieldName + "']"
+		}
+
+		if len(fieldSelector) > 0 {
+			// if a fieldSelector could be derived, use document.getElement
+			err = s.Page.RunScript(`
+				const selectedEl = document.querySelector( selector );
+				if( selectedEl != null ) {
+					selectedEl.blur();
+				}
+			`, map[string]interface{}{"selector": fieldSelector}, nil)
+		} else {
+			// if no fieldSelector was derived, try sending a TAB key
+			err = matches.At(0).SendKeys("\t")
+		}
+
+		if err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		return nil
+	}
+}
+
+func iEnterTodaysDateIn(s *steputils.StepUtils) func(string) error {
+	today := s.FormatDate(time.Now())
+	fillInFieldFunc := iFillInFieldWith(s)
+	return func(field string) error {
+		return fillInFieldFunc(field, today)
+	}
 }
