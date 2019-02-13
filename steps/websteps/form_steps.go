@@ -89,7 +89,7 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 	}
 }
 
-func iKeyInTheField(s *steputils.StepUtils) func(string, string) error {
+func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 	return func(value string, field string) error {
 		var (
 			matches   *agouti.MultiSelection
@@ -119,10 +119,6 @@ func iKeyInTheField(s *steputils.StepUtils) func(string, string) error {
 
 		return nil
 	}
-}
-
-func iKeyIn(s *steputils.StepUtils) func(string, string) error {
-	return iKeyInTheField(s)
 }
 
 func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
@@ -380,7 +376,7 @@ func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error 
 	var (
 		matches   *agouti.MultiSelection
 		fieldType string
-		errMsg    = fmt.Sprintf("error encountered while pressing button [%s]: ", field) + "%s"
+		errMsg    = fmt.Sprintf("error encountered while clicking button/link [%s]: ", field) + "%s"
 		err       error
 	)
 

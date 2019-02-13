@@ -31,6 +31,18 @@ func NewSettings(fs *fs.Fs) *Settings {
 	return settings
 }
 
+// GetEnvironmentBaseURL returns the base URL for the environment of the current run
+func (s *Settings) GetEnvironmentBaseURL() string {
+	if !s.Settings.IsSet("environment") {
+		log.Fatal("No setting found for [environment]")
+	}
+	environment := s.Settings.GetString("environment")
+	if !s.Environments.IsSet(environment) {
+		log.Fatalf("No entry found for [%s] in the environments file", environment)
+	}
+	return s.Environments.GetString(environment)
+}
+
 type providerModifier func(v *viper.Viper)
 
 func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) Provider {

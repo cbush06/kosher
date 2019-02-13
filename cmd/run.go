@@ -24,6 +24,8 @@ type runCommand struct {
 	command *cobra.Command
 }
 
+var environment string
+
 var cmdRun = &runCommand{
 	name: "run",
 	command: &cobra.Command{
@@ -46,6 +48,22 @@ var cmdRun = &runCommand{
 			}
 
 			settings := config.NewSettings(fs)
+
+			// confirm an environment is selected
+			if len(environment) < 1 {
+				environment = settings.Settings.GetString("defaultEnvironment")
+			}
+			if len(environment) < 1 {
+				log.Fatal(`No environment specified. Either set the environment with the [run] command's [-e|--environment] flag or set the "defaultEnvironment" in the settings file.`)
+			}
+
+			// verify the environment exists in the environments file and, if so, set it as the environment for this run
+			if !settings.Environments.IsSet(environment) {
+				log.Fatalf(`No entry found for [%s] in the environments file.`)
+			} else {
+				settings.Settings.Set("environment", environment)
+			}
+
 			client, err := clients.NewClient(settings, fs)
 			if err != nil {
 				log.Fatal(err)
@@ -71,6 +89,7 @@ var cmdRun = &runCommand{
 }
 
 func (r *runCommand) registerWith(cmd *cobra.Command) {
+	r.command.Flags().StringVarP(&environment, "environment", "e", "", "Set the environment")
 	cmd.AddCommand(r.command)
 }
 

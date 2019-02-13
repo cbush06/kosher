@@ -9,12 +9,18 @@ import (
 // I am on the "<name>" page
 func iAmOnThePage(s *steputils.StepUtils) func(string) error {
 	return func(pageName string) error {
-		url := s.Settings.Pages.GetString(pageName)
-		if len(url) < 1 {
+		var (
+			url string
+			err error
+		)
+
+		if url, err = s.ResolvePage(pageName); err != nil {
+			return fmt.Errorf("error encountered while resolving page URL: %s", err)
+		} else if len(url) < 1 {
 			return fmt.Errorf("no page found for name [%s]", pageName)
 		}
 
-		if err := s.Page.Navigate(url); err != nil {
+		if err = s.Page.Navigate(url); err != nil {
 			return fmt.Errorf("failed to load page [%s]: %s", pageName, err)
 		}
 		return nil

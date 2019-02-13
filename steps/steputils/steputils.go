@@ -3,6 +3,8 @@ package steputils
 import (
 	"fmt"
 	"log"
+	"net/url"
+	"path"
 	"strings"
 	"time"
 
@@ -25,6 +27,25 @@ func NewStepUtils(settings *config.Settings, page *agouti.Page) *StepUtils {
 		Settings: settings,
 		Page:     page,
 	}
+}
+
+// ResolvePage takes a page name and returns its full URL
+func (s *StepUtils) ResolvePage(pageName string) (string, error) {
+	if !s.Settings.Pages.IsSet(pageName) {
+		return "", fmt.Errorf("no entry found in the pages file for [%s]", pageName)
+	}
+
+	// get the environment base url
+	baseURL, _ := url.Parse(s.Settings.GetEnvironmentBaseURL())
+	log.Printf("BASE URL: %s", baseURL)
+
+	// get the URL of the specified page
+	pageURL := s.Settings.Pages.GetString(pageName)
+	log.Printf("PAGE URL: %s", pageURL)
+
+	// join the base URL and page path together
+	baseURL.Path = path.Join(baseURL.Path, pageURL)
+	return baseURL.String(), nil
 }
 
 // ResolveSelector attempts to retrieve the selector specified by `name` and convert it into an Agouti selector for the provided page.
@@ -218,4 +239,22 @@ func (s *StepUtils) IsTextBased(field string, sel *agouti.Selection) bool {
 	default:
 		return false
 	}
+}
+
+// GetOptionElements returns a map where the keys are the visible text of each option and
+// the values are bools indicating the selected statuses of those options
+func (s *StepUtils) GetSelectOptions(htmlSelect *agouti.Selection) map[string]bool {
+	// get the options
+	options := htmlSelect.All("option")
+	optionsElms, _ := options.Elements()
+
+	// map the options to (text, bool) pairs
+	var results = make(map[string]bool)
+	for _, nextElm := range optionsElms {
+		text, _ := nextElm.GetText()
+		selected, _ := nextElm.IsSelected()
+		results[strings.TrimSpace(text)] = selected
+	}
+
+	return results
 }
