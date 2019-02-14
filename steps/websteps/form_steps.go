@@ -392,7 +392,7 @@ func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error 
 
 	// ensure it's some form of the button
 	switch fieldType {
-	case "button", "submit", "reset", "a":
+	case "button", "submit", "reset", "image", "a":
 		log.Printf("Clicking button/a %d", btnNumber)
 		matches.At(btnNumber).Click()
 	default:

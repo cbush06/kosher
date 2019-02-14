@@ -222,6 +222,26 @@ func convertDateFormatToGoFormat(dateFormat string) string {
 	return dateFormat
 }
 
+// IsFormField determines if the selection provided is an HTML form field
+func (s *StepUtils) IsFormField(field string, sel *agouti.Selection) bool {
+	var (
+		fieldType string
+		err       error
+	)
+
+	if fieldType, err = s.GetFieldType(field, sel); err != nil {
+		return false
+	}
+
+	switch fieldType {
+	case "date", "datetime-local", "email", "month", "number", "password", "search", "tel", "time", "url", "week", "textarea", "text", "button", "submit",
+		"image", "reset", "radio", "checkbox", "select", "range", "file", "color":
+		return true
+	default:
+		return false
+	}
+}
+
 // IsTextBased determines if a given field is a form of textbox or textarea
 func (s *StepUtils) IsTextBased(field string, sel *agouti.Selection) bool {
 	var (
@@ -241,7 +261,7 @@ func (s *StepUtils) IsTextBased(field string, sel *agouti.Selection) bool {
 	}
 }
 
-// GetOptionElements returns a map where the keys are the visible text of each option and
+// GetSelectOptions returns a map where the keys are the visible text of each option and
 // the values are bools indicating the selected statuses of those options
 func (s *StepUtils) GetSelectOptions(htmlSelect *agouti.Selection) map[string]bool {
 	// get the options

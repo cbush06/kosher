@@ -51,10 +51,19 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^"([^"]*)" should not have (?:|the )following options selected:$`, shouldNotHaveTheFollowingOptionsSelected(utils))
 	suite.Step(`^the "([^"]*)" checkbox should be checked$`, shouldBeSelected(utils))
 	suite.Step(`^the "([^"]*)" checkbox should not be checked$`, shouldNotBeSelected(utils))
-	suite.Step(`^the "(.*?)" radio should be selected$`, shouldBeSelected(utils))
-	suite.Step(`^the "(.*?)" radio should not be selected$`, shouldNotBeSelected(utils))
+	suite.Step(`^the "([^"]*)" radio should be selected$`, shouldBeSelected(utils))
+	suite.Step(`^the "([^"]*)" radio should not be selected$`, shouldNotBeSelected(utils))
 
 	// navigation verification steps
-	suite.Step(`^I should be redirected to the "(.*)" page$`, iShouldBeRedirectedTo(utils))
-	suite.Step(`^(?:|I )should be on the "(.*)" page$`, iShouldBeOn(utils))
+	suite.Step(`^I should be redirected to the "([^"]*)" page$`, iShouldBeRedirectedTo(utils))
+	suite.Step(`^(?:|I )should be on the "([^"]*)" page$`, iShouldBeOn(utils))
+
+	// page verification steps
+	suite.Step(`^(?:|I )should see "([^"]*)"$`, iShouldSee(utils))
+	suite.Step(`^(?:|I )should not see "([^"]*)"$`, iShouldNotSee(utils))
+	suite.Step(`^(?:|I )should see all of the texts:$`, iShouldSeeAllOfTheTexts(utils))
+	suite.Step(`^(?:|I )should see (?:|the )"([^"]*)"(?: button| link)$`, iShouldSeeButtonLink(utils))
+	suite.Step(`^(?:|I )should not see (?:|the )"([^"]*)"(?: button| link)$`, iShouldNotSeeButtonLink(utils))
+	suite.Step(`^the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)" should be disabled$`, theNthInstanceOfShouldBeDisabled(utils))
+	suite.Step(`^the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)" should be enabled$`, theNthInstanceOfShouldBeEnabled(utils))
 }
