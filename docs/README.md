@@ -1,6 +1,4 @@
-## Kosher -- Automated, Functional Testing Made Easy
-
-!(images/kosher_logo.png)
+![Kosher](images/kosher_logo.png)
 
 Kosher is a tool that merges several technologies together to automate and simplify functional testing. These include:
 * Web Drivers (https://agouti.org/): automates tests by remote-controlling browsers
