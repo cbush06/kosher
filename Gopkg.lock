@@ -2,7 +2,7 @@
 
 
 [[projects]]
-  digest = "1:fee01db6f250415bf196bf53ace69190680007af75574a14977642a7537b621a"
+  digest = "1:84bb9c1287cbda49b753f981d0eec113b28426f224dce2edbf44a8dd69d6be96"
   name = "github.com/DATA-DOG/godog"
   packages = [
     ".",
@@ -10,8 +10,8 @@
     "gherkin",
   ]
   pruneopts = ""
-  revision = "75562b12d67aa758aba65b0072c763bccf7e9b00"
-  version = "v0.7.9"
+  revision = "d1db163b8f115dc74e1f504fc6a5558bdb5b3256"
+  version = "v0.7.10"
 
 [[projects]]
   digest = "1:eb53021a8aa3f599d29c7102e65026242bdedce998a54837dc67f14b6a97c5fd"
@@ -63,27 +63,6 @@
   pruneopts = ""
   revision = "3536a929edddb9a5b34bd6861dc4a9647cb459fe"
   version = "v1.1.2"
-
-[[projects]]
-  digest = "1:c8f0c8c28c9c1c51db72d0e7f04797cfe5d0d50528274099b6b2d6c314db7f97"
-  name = "github.com/onsi/gomega"
-  packages = [
-    ".",
-    "format",
-    "internal/assertion",
-    "internal/asyncassertion",
-    "internal/oraclematcher",
-    "internal/testingtsupport",
-    "matchers",
-    "matchers/support/goraph/bipartitegraph",
-    "matchers/support/goraph/edge",
-    "matchers/support/goraph/node",
-    "matchers/support/goraph/util",
-    "types",
-  ]
-  pruneopts = ""
-  revision = "65fb64232476ad9046e57c26cd0bff3d3a8dc6cd"
-  version = "v1.4.3"
 
 [[projects]]
   digest = "1:894aef961c056b6d85d12bac890bf60c44e99b46292888bfa66caf529f804457"
@@ -161,18 +140,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:1d52dac9bdc355f83ad9916bc657baa7d8735a108ae749da8e8d3513a1b15f28"
-  name = "golang.org/x/net"
-  packages = [
-    "html",
-    "html/atom",
-    "html/charset",
-  ]
-  pruneopts = ""
-  revision = "65e2d4e15006aab9813ff8769e768bbf4bb667a0"
-
-[[projects]]
-  branch = "master"
   digest = "1:489610147902fe0c7229218c749bb25a8a9ecce0d726ae4f8662517319f32554"
   name = "golang.org/x/sys"
   packages = ["unix"]
@@ -183,23 +150,9 @@
   digest = "1:5acd3512b047305d49e8763eef7ba423901e85d5dd2fd1e71778a0ea8de10bd4"
   name = "golang.org/x/text"
   packages = [
-    "encoding",
-    "encoding/charmap",
-    "encoding/htmlindex",
-    "encoding/internal",
-    "encoding/internal/identifier",
-    "encoding/japanese",
-    "encoding/korean",
-    "encoding/simplifiedchinese",
-    "encoding/traditionalchinese",
-    "encoding/unicode",
     "internal/gen",
-    "internal/tag",
     "internal/triegen",
     "internal/ucd",
-    "internal/utf8internal",
-    "language",
-    "runes",
     "transform",
     "unicode/cldr",
     "unicode/norm",
@@ -221,7 +174,9 @@
   analyzer-version = 1
   input-imports = [
     "github.com/DATA-DOG/godog",
+    "github.com/DATA-DOG/godog/gherkin",
     "github.com/sclevine/agouti",
+    "github.com/sclevine/agouti/api",
     "github.com/spf13/afero",
     "github.com/spf13/cobra",
     "github.com/spf13/viper",
