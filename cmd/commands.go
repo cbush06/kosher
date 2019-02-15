@@ -26,15 +26,13 @@ func configureEnv() {
 		log.Fatalf("Unable to retrieve PATH environment variable value")
 	}
 
-	libsDir, _ := os.Getwd()
+	libsDir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
 	libsDir = filepath.Join(libsDir, "libs")
 
 	switch runtime.GOOS {
 	case "linux":
-		log.Println("Setting PATH to: " + pathEnv + ":" + libsDir)
 		os.Setenv("PATH", pathEnv+":"+libsDir)
-	case "window":
-		log.Println("Setting PATH to: " + pathEnv + ";" + libsDir)
+	case "windows":
 		os.Setenv("PATH", pathEnv+";"+libsDir)
 	default:
 		log.Fatalf("Unsupported operating system detected [%s]\n", runtime.GOOS)

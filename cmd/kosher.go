@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -23,7 +21,7 @@ development methodology by automating functional testing.
 		
 Complete documentation is available at https://`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println("kosher")
+			cmd.Help()
 			return nil
 		},
 	},

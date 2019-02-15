@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"path/filepath"
 
 	"github.com/cbush06/kosher/common"
@@ -24,7 +25,10 @@ type runCommand struct {
 	command *cobra.Command
 }
 
-var environment string
+var (
+	environment string
+	pathArg     string
+)
 
 var cmdRun = &runCommand{
 	name: "run",
@@ -38,7 +42,8 @@ var cmdRun = &runCommand{
 			if len(arg) < 1 {
 				path, _ = os.Getwd()
 			} else {
-				path, _ = filepath.Abs(filepath.Clean(arg[0]))
+				pathArg = filepath.Clean(arg[0])
+				path, _ = filepath.Abs(pathArg)
 			}
 
 			fs, err := fs.NewFs(path)
@@ -59,7 +64,7 @@ var cmdRun = &runCommand{
 
 			// verify the environment exists in the environments file and, if so, set it as the environment for this run
 			if !settings.Environments.IsSet(environment) {
-				log.Fatalf(`No entry found for [%s] in the environments file.`)
+				log.Fatalf(`No entry found for [%s] in the environments file.`, environment)
 			} else {
 				settings.Settings.Set("environment", environment)
 			}
@@ -103,10 +108,9 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 }
 
 func buildGoDogOptions(settings *config.Settings, fs *fs.Fs) godog.Options {
-	featuresPath, err := fs.ProjectDir.RealPath(common.FeaturesDir)
-	if err != nil {
-		log.Fatalln("Failed to get path to features directory")
-	}
+	featuresPath := path.Join(pathArg, common.FeaturesDir)
+
+	fmt.Println(featuresPath)
 
 	return godog.Options{
 		Format: settings.Settings.GetString("reportFormat"),
