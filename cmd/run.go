@@ -4,10 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path"
 	"path/filepath"
-
-	"github.com/cbush06/kosher/common"
 
 	"github.com/DATA-DOG/godog"
 	"github.com/sclevine/agouti"
@@ -38,15 +35,14 @@ var cmdRun = &runCommand{
 		Long:  `run executes your tests. Depending on the arguments provided, it may execute all tests, a specific test, or tests in one or more subdirectories.`,
 		Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, arg []string) error {
-			var path string
 			if len(arg) < 1 {
-				path, _ = os.Getwd()
+				pathArg, _ = os.Getwd()
 			} else {
 				pathArg = filepath.Clean(arg[0])
-				path, _ = filepath.Abs(pathArg)
 			}
 
-			fs, err := fs.NewFs(path)
+			workingDir, _ := os.Getwd()
+			fs, err := fs.NewFs(workingDir)
 
 			if err != nil {
 				return err
@@ -108,12 +104,14 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 }
 
 func buildGoDogOptions(settings *config.Settings, fs *fs.Fs) godog.Options {
-	featuresPath := path.Join(pathArg, common.FeaturesDir)
+	featuresPath, _ := filepath.Abs(pathArg)
 
 	fmt.Println(featuresPath)
 
 	return godog.Options{
-		Format: settings.Settings.GetString("reportFormat"),
-		Paths:  []string{featuresPath},
+		Format:        settings.Settings.GetString("reportFormat"),
+		Paths:         []string{featuresPath},
+		StopOnFailure: settings.Settings.GetBool("quitOnFail"),
+		Strict:        settings.Settings.GetBool("quitOnFail"),
 	}
 }

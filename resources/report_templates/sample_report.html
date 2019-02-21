@@ -1,0 +1,269 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="jumbotron jumbotron-fluid bg-secondary text-white pt-3 pb-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm">
+                        <h1 class="display-4">MICAPS7</h1>
+                    </div>
+                    <div class="col-sm ml-auto text-right">
+                        <h2 class="mb-0">
+                            <span class="badge badge-success">Passed: 12</span>
+                            <span class="badge badge-danger">Failed: 19</span>
+                            <span class="badge badge-info">Pending: 3</span>
+                            <span class="badge badge-warning  text-white">Skipped: 1</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <h3>Kosher Test Results</h2>
+                    </div>
+                    <div class="col-sm ml-auto text-right">
+                        <h3>Fri Nov 18 2016 22:59:01 GMT-0500 (EST)</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Features</h4>
+                            <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
+                                <canvas id="featuresChart" width="400" height="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h4 class="card-title">Scenarios</h4>
+                            <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
+                                <canvas id="scenariosChart" width="400" height="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">
+                            Metadata
+                        </div>
+                        <div class="card-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <span class="col-2"><strong>App Version:</strong></span>
+                                    <span class="col-4">7.0.0.0.26</span>
+
+                                    <span class="col-2"><strong>Environment:</strong></span>
+                                    <span class="col-4">TEST</span>
+
+                                    <span class="col-2"><strong>Browser:</strong></span>
+                                    <span class="col-4">CHROME</span>
+
+                                    <span class="col-2"><strong>Platform:</strong></span>
+                                    <span class="col-4">WINDOWS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-3">
+                        <div class="card-header bg-success">
+                            <strong>Feature:</strong> Account Request
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">
+<pre>In order to obtain access to MICAPS7
+As an unregistered uer
+I want submit my account information
+So that I can request a new account in MICAPS7</pre>
+                            </div>
+                            <div class="container-fluid">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <div class="card-header bg-success">
+                                                <strong>Scenario:</strong> Verify Fields
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>Given</strong> I am on the "acct_request" page</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>When</strong> I fill in "First Name" with ""</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>And</strong> I fill in "First Name" with "Clinton"</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>And</strong> I click the "Save" button</div>
+                                                        <div class="col-1">1s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>Then</strong> I should see "Success!"</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-3">
+                        <div class="card-header bg-danger">
+                            <strong>Feature:</strong> Test the Home Page
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">
+<pre>Test to verify buttons, tabs, dropdown menus, and url links.</pre>
+                            </div>
+                            <div class="container-fluid">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <div class="card-header bg-danger">
+                                                <strong>Scenario:</strong> Test Search field
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>Given</strong> I am on the "home" page</div>
+                                                        <div class="col-1">2s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>When</strong> I key in "CALCUL" in the "Homesearch" field</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-danger"><i class="fa fa-times-circle"></i></span> <strong>Then</strong> I should see "CALCUL"</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-warning"><i class="fa fa-exclamation-triangle"></i></span> <strong>And</strong> I wait 2 seconds</div>
+                                                        <div class="col-1"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card mb-3">
+                                            <div class="card-header bg-info">
+                                                <strong>Scenario:</strong> Test First Ellipsis Button
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>Given</strong> I am on the "home" page</div>
+                                                        <div class="col-1">2s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>When</strong> I key in "CALCUL" in the "Homesearch" field</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-success"><i class="fa fa-check-square"></i></span> <strong>And</strong> I hover over "testHover"</div>
+                                                        <div class="col-1">0s</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-11"><span class="text-info"><i class="fa fa-question-circle"></i></span> <strong>And</strong> I click the "testElip" button</div>
+                                                        <div class="col-1"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            var ctx = document.getElementById("featuresChart");
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Passed', 'Failed'],
+                    datasets: [{
+                        data: [12, 19],
+                        backgroundColor: [
+                            'rgba(0, 255, 0, 0.2)',
+                            'rgba(255, 0, 0, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 255, 0, 0.2)',
+                            'rgba(255, 0, 0, 0.2)'
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+
+            var ctx = document.getElementById("scenariosChart");
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Passed', 'Failed', 'Pending', 'Skipped'],
+                    datasets: [{
+                        data: [12, 19, 3, 1],
+                        backgroundColor: [
+                            'rgba(0, 255, 0, 0.2)',
+                            'rgba(255, 0, 0, 0.2)',
+                            'rgba(0, 250, 255, 0.2)',
+                            'rgba(255, 200, 0, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 255, 0, 1)',
+                            'rgba(255, 0, 0, 1)',
+                            'rgba(0, 250, 255, 1)',
+                            'rgba(255, 200, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+        </script>
+    </body>
+</html>

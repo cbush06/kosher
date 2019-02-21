@@ -37,11 +37,9 @@ func (s *StepUtils) ResolvePage(pageName string) (string, error) {
 
 	// get the environment base url
 	baseURL, _ := url.Parse(s.Settings.GetEnvironmentBaseURL())
-	log.Printf("BASE URL: %s", baseURL)
 
 	// get the URL of the specified page
 	pageURL := s.Settings.Pages.GetString(pageName)
-	log.Printf("PAGE URL: %s", pageURL)
 
 	// join the base URL and page path together
 	baseURL.Path = path.Join(baseURL.Path, pageURL)
