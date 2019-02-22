@@ -13,7 +13,7 @@ import (
 	"github.com/spf13/afero"
 
 	"github.com/cbush06/kosher/common"
-	"github.com/cbush06/kosher/resources"
+	"github.com/cbush06/kosher/resources/configfiles"
 	"github.com/spf13/cobra"
 )
 
@@ -120,15 +120,15 @@ func initProject(fs *afero.OsFs, basepath string, force bool) error {
 	}
 
 	if initPlatform == "web" {
-		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(resources.GetSettingsJSON()))
+		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(configfiles.GetSettingsJSON()))
 	} else if initPlatform == "desktop" {
-		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(resources.GetSettingsDesktopJSON()))
+		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(configfiles.GetSettingsDesktopJSON()))
 	}
 
-	afero.WriteReader(fs, environmentsJSON, bytes.NewBufferString(resources.GetEnvironmentsJSON()))
-	afero.WriteReader(fs, pagesJSON, bytes.NewBufferString(resources.GetPagesJSON()))
-	afero.WriteReader(fs, selectorsJSON, bytes.NewBufferString(resources.GetSelectorsJSON()))
-	afero.WriteReader(fs, exampleFeature, bytes.NewBufferString(resources.GetExampleFeature()))
+	afero.WriteReader(fs, environmentsJSON, bytes.NewBufferString(configfiles.GetEnvironmentsJSON()))
+	afero.WriteReader(fs, pagesJSON, bytes.NewBufferString(configfiles.GetPagesJSON()))
+	afero.WriteReader(fs, selectorsJSON, bytes.NewBufferString(configfiles.GetSelectorsJSON()))
+	afero.WriteReader(fs, exampleFeature, bytes.NewBufferString(configfiles.GetExampleFeature()))
 
 	return nil
 }

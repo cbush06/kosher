@@ -23,8 +23,11 @@ type runCommand struct {
 }
 
 var (
+	err         error
 	environment string
 	pathArg     string
+	fileSys     *fs.Fs
+	settings    *config.Settings
 )
 
 var cmdRun = &runCommand{
@@ -41,14 +44,7 @@ var cmdRun = &runCommand{
 				pathArg = filepath.Clean(arg[0])
 			}
 
-			workingDir, _ := os.Getwd()
-			fs, err := fs.NewFs(workingDir)
-
-			if err != nil {
-				return err
-			}
-
-			settings := config.NewSettings(fs)
+			fmt.Printf("App Version: %s\n", settings.Settings.GetString("appversion"))
 
 			// confirm an environment is selected
 			if len(environment) < 1 {
@@ -65,7 +61,7 @@ var cmdRun = &runCommand{
 				settings.Settings.Set("environment", environment)
 			}
 
-			client, err := clients.NewClient(settings, fs)
+			client, err := clients.NewClient(settings, fileSys)
 			if err != nil {
 				log.Fatal(err)
 			} else {
@@ -81,7 +77,7 @@ var cmdRun = &runCommand{
 
 				godog.RunWithOptions(settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
 					buildFeatureContext(settings, page, suite)
-				}, buildGoDogOptions(settings, fs))
+				}, buildGoDogOptions(settings))
 			}
 
 			return nil
@@ -90,7 +86,16 @@ var cmdRun = &runCommand{
 }
 
 func (r *runCommand) registerWith(cmd *cobra.Command) {
+	workingDir, _ := os.Getwd()
+	if fileSys, err = fs.NewFs(workingDir); err != nil {
+		log.Fatal(err)
+	}
+
+	settings = config.NewSettings(fileSys)
+
 	r.command.Flags().StringVarP(&environment, "environment", "e", "", "Set the environment")
+	r.command.Flags().String("appversion", "", "Sets the version of the application being tested for reporting purposes.")
+	settings.Settings.BindPFlag("appversion", r.command.Flags().Lookup("appversion"))
 	cmd.AddCommand(r.command)
 }
 
@@ -103,7 +108,7 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 	}
 }
 
-func buildGoDogOptions(settings *config.Settings, fs *fs.Fs) godog.Options {
+func buildGoDogOptions(settings *config.Settings) godog.Options {
 	featuresPath, _ := filepath.Abs(pathArg)
 
 	fmt.Println(featuresPath)
