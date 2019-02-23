@@ -10,6 +10,9 @@ const (
 	// ResultsDir is the name given to the results directory where test results are written
 	ResultsDir = "results"
 
+	// ReportFile is the name given to the HTML report generated
+	ReportFile = "report.html"
+
 	// EnvironmentsFile is the name given to the environments file in a Kosher project
 	EnvironmentsFile = "environments.json"
 

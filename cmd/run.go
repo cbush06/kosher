@@ -12,6 +12,7 @@ import (
 	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/fs"
+	"github.com/cbush06/kosher/report"
 	"github.com/cbush06/kosher/steps/websteps"
 
 	"github.com/spf13/cobra"
@@ -38,13 +39,22 @@ var cmdRun = &runCommand{
 		Long:  `run executes your tests. Depending on the arguments provided, it may execute all tests, a specific test, or tests in one or more subdirectories.`,
 		Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, arg []string) error {
+			// grab the path arg if specified -- this determines what feature(s) get executed
 			if len(arg) < 1 {
 				pathArg, _ = os.Getwd()
 			} else {
 				pathArg = filepath.Clean(arg[0])
 			}
 
-			fmt.Printf("App Version: %s\n", settings.Settings.GetString("appversion"))
+			// determine where the executable was called from
+			workingDir, _ := os.Getwd()
+			if fileSys, err = fs.NewFs(workingDir); err != nil {
+				log.Fatal(err)
+			}
+
+			// build the settings file based on the working directory
+			settings = config.NewSettings(fileSys)
+			settings.Settings.BindPFlag("appversion", cmd.Flags().Lookup("appVersion"))
 
 			// confirm an environment is selected
 			if len(environment) < 1 {
@@ -75,9 +85,11 @@ var cmdRun = &runCommand{
 					log.Fatalf("failed to open page: %s", err)
 				}
 
+				reportBuilder := report.NewReport(settings, fileSys)
 				godog.RunWithOptions(settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
 					buildFeatureContext(settings, page, suite)
-				}, buildGoDogOptions(settings))
+				}, buildGoDogOptions(settings, reportBuilder))
+				reportBuilder.Process()
 			}
 
 			return nil
@@ -86,16 +98,8 @@ var cmdRun = &runCommand{
 }
 
 func (r *runCommand) registerWith(cmd *cobra.Command) {
-	workingDir, _ := os.Getwd()
-	if fileSys, err = fs.NewFs(workingDir); err != nil {
-		log.Fatal(err)
-	}
-
-	settings = config.NewSettings(fileSys)
-
 	r.command.Flags().StringVarP(&environment, "environment", "e", "", "Set the environment")
-	r.command.Flags().String("appversion", "", "Sets the version of the application being tested for reporting purposes.")
-	settings.Settings.BindPFlag("appversion", r.command.Flags().Lookup("appversion"))
+	r.command.Flags().String("appVersion", "", "Sets the version of the application being tested for reporting purposes.")
 	cmd.AddCommand(r.command)
 }
 
@@ -108,15 +112,23 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 	}
 }
 
-func buildGoDogOptions(settings *config.Settings) godog.Options {
+func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) godog.Options {
 	featuresPath, _ := filepath.Abs(pathArg)
 
-	fmt.Println(featuresPath)
+	// Convert kosher format to GoDog format
+	var reportFormat string
+	switch settings.Settings.GetString("reportFormat") {
+	case "html", "bootstrap":
+		reportFormat = "cucumber"
+	default:
+		reportFormat = settings.Settings.GetString("reportFormat")
+	}
 
 	return godog.Options{
-		Format:        settings.Settings.GetString("reportFormat"),
+		Format:        reportFormat,
 		Paths:         []string{featuresPath},
 		StopOnFailure: settings.Settings.GetBool("quitOnFail"),
 		Strict:        settings.Settings.GetBool("quitOnFail"),
+		Output:        reportBuilder,
 	}
 }

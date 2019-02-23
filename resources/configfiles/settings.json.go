@@ -4,6 +4,7 @@ package configfiles
 func GetSettingsJSON() string {
 	return `{
 	"projectName": "kosher",
+	"appVersion": "1.0.0",
 	"platform": "web",
 	"driver": "chrome",
 	"reportFormat": "pretty",

@@ -68,11 +68,11 @@ func newFs(base afero.Fs, projectDirPath string) (*Fs, error) {
 	}
 	featuresDir = afero.NewBasePathFs(projectDir, common.FeaturesDir).(*afero.BasePathFs)
 
-	resultsDirPath, _ := filepath.Abs(filepath.Join(projectDirPath, common.ResultsDir))
+	resultsDirPath, _ := filepath.Abs(filepath.Join(workingDirPath, common.ResultsDir))
 	if exists, _ := afero.DirExists(base, resultsDirPath); !exists {
 		return nil, errors.New("Directory does not exist: " + resultsDirPath)
 	}
-	resultsDir = afero.NewBasePathFs(projectDir, common.ResultsDir).(*afero.BasePathFs)
+	resultsDir = afero.NewBasePathFs(base, common.ResultsDir).(*afero.BasePathFs)
 
 	return &Fs{
 		WorkingDir:  workingDir,

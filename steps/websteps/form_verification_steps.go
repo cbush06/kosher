@@ -2,7 +2,6 @@ package websteps
 
 import (
 	"fmt"
-	"log"
 	"sort"
 	"strings"
 	"time"
@@ -44,7 +43,6 @@ func iVerifyHasTodaysDate(s *steputils.StepUtils) func(string) error {
 		today := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.Local)
 
 		if fieldValTime.Sub(today) != 0 {
-			log.Println(fieldValTime.Sub(today))
 			return fmt.Errorf("expected to find today's date [%s] in [%s] but found [%s] instead", s.FormatDate(now), field, fieldVal)
 		}
 

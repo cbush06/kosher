@@ -82,6 +82,8 @@ func modPagesProvider(v *viper.Viper) {
 }
 
 func modSettingsProvider(v *viper.Viper) {
+	v.SetDefault("projectName", "kosher tested app")
+	v.SetDefault("appVersion", "1.0.0")
 	v.SetDefault("platform", "web")
 	v.SetDefault("driver", "chrome")
 	v.SetDefault("reportFormat", "pretty")

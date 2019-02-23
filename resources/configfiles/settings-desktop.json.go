@@ -4,6 +4,7 @@ package configfiles
 func GetSettingsDesktopJSON() string {
 	return `{
 	"projectName": "kosher",
+	"appVersion": "1.0.0",
 	"platform": "desktop",
 	"driver": "appium",
 	"reportFormat": "pretty",
