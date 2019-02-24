@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -78,7 +77,7 @@ var cmdRun = &runCommand{
 				defer client.StopDriver()
 				client.StartDriver()
 
-				fmt.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
+				log.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
 
 				page, err := client.WebDriver.NewPage(agouti.Browser("chrome"))
 				if err != nil {
@@ -89,7 +88,10 @@ var cmdRun = &runCommand{
 				godog.RunWithOptions(settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
 					buildFeatureContext(settings, page, suite)
 				}, buildGoDogOptions(settings, reportBuilder))
-				reportBuilder.Process()
+
+				if err := reportBuilder.Process(); err != nil {
+					log.Printf("Failed to generate report: %s", err)
+				}
 			}
 
 			return nil

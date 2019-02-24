@@ -2,7 +2,6 @@ package config
 
 import (
 	"bytes"
-	"fmt"
 	"log"
 	"os"
 
@@ -54,7 +53,7 @@ func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) 
 	}
 	if exists, err := afero.Exists(fs.ConfigDir, fileName); !exists {
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 		}
 		log.Fatal("Configuration file does not exist: " + path)
 	}

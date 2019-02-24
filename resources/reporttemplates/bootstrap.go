@@ -6,7 +6,11 @@ func GetBootstrapTemplate() string {
         <meta charset="utf-8" />
         <title></title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<style type="text/css">
+			.bg-success { background-color: #c7fac9 !important; }
+			.bg-danger {background-color: #f9c8c9 !important; }
+		</style>
     </head>
     <body>
         <div class="jumbotron jumbotron-fluid bg-secondary text-white pt-3 pb-3">
@@ -40,9 +44,9 @@ func GetBootstrapTemplate() string {
                 <div class="col-6">
                     <div class="card bg-light mb-3">
                         <div class="card-body">
-                            <h4 class="card-title">Features</h4>
+                            <h4 class="card-title">Scenarios ({{.TotalElements}})</h4>
                             <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
-                                <canvas id="featuresChart" width="400" height="400"></canvas>
+                                <canvas id="scenariosChart" width="400" height="400"></canvas>
                             </div>
                         </div>
                     </div>
@@ -50,9 +54,9 @@ func GetBootstrapTemplate() string {
                 <div class="col-6">
                     <div class="card bg-light mb-3">
                         <div class="card-body">
-                            <h4 class="card-title">Scenarios</h4>
+                            <h4 class="card-title">Steps ({{.TotalSteps}})</h4>
                             <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
-                                <canvas id="scenariosChart" width="400" height="400"></canvas>
+                                <canvas id="stepsChart" width="400" height="400"></canvas>
                             </div>
                         </div>
                     </div>
@@ -85,11 +89,55 @@ func GetBootstrapTemplate() string {
                 </div>
             </div>
 			{{range .Features}}
+
+			<!-- FEATURE BLOCK -->
 			<div class="row">
                 <div class="col">
                     <div class="card mb-3">
-						<div class="card-header {{if .ElementsFailed}}.bg-success{{else}}.bg-danger{{end}}">
-							<strong>Feature:</strong> {{.Description}}
+						<div class="card-header {{if (lt .ElementsFailed 1)}}bg-success{{else}}bg-danger{{end}}">
+							<strong>Feature:</strong> {{.Name}}
+						</div>
+						<div class="card-body">
+							<div class="card-title"><pre>{{.Description}}</pre></div>
+							<div class="container-fluid">
+								{{range .Elements}}
+
+								<!-- SCENARIO, SCENARIO OUTLINE, OR BACKGROUND BLOCK -->
+								<div class="row">
+									<div class="col">
+										<div class="card mb-3">
+											<div class="card-header {{if (lt .StepsFailed 1)}}bg-success{{else}}bg-danger{{end}}">
+												<strong>{{.Keyword}}:</strong> {{.Name}}
+											</div>
+											<div class="card-body">
+												<div class="card-title"><pre>{{.Description}}</div>
+												<div class="container-fluid">
+
+													<!-- STEP BLOCK -->
+													{{range .Steps}}
+													<div class="row">
+														<div class="col-11">
+															{{if (eq .Result.Status "passed")}}
+															<span class="text-success"><i class="fa fa-check-square"></i></span>
+															{{else if (eq .Result.Status "failed")}}
+															<span class="text-danger"><i class="fa fa-times-circle"></i></span>
+															{{else if (eq .Result.Status "skipped")}}
+															<span class="text-warning"><i class="fa fa-exclamation-triangle"></i></span>
+															{{else if (eq .Result.Status "undefined")}}
+															<span class="text-info"><i class="fa fa-question-circle"></i></span>
+															{{end}}
+															<strong>{{.Keyword}}</strong>{{.Name}}
+														</div>
+														<div class="col-1">{{.Result.GetDurationInSeconds}}</div>
+													</div>
+													{{end}}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								{{end}}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -104,13 +152,13 @@ func GetBootstrapTemplate() string {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
         <script type="text/javascript">
-            var ctx = document.getElementById("featuresChart");
+            var ctx = document.getElementById("scenariosChart");
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Passed', 'Failed'],
                     datasets: [{
-                        data: [{{.FeaturesPassed}}, {{.FeaturesFailed}}],
+                        data: [{{.ElementsPassed}}, {{.ElementsFailed}}],
                         backgroundColor: [
                             'rgba(0, 255, 0, 0.2)',
                             'rgba(255, 0, 0, 0.2)'
@@ -121,10 +169,17 @@ func GetBootstrapTemplate() string {
                         ],
                         borderWidth: 1
                     }]
-                }
+				},
+				options: {
+					legend: {
+						labels: {
+							generateLabels: labelFunc
+						}
+					}
+				}
             });
 
-            var ctx = document.getElementById("scenariosChart");
+            var ctx = document.getElementById("stepsChart");
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
@@ -145,8 +200,47 @@ func GetBootstrapTemplate() string {
                         ],
                         borderWidth: 1
                     }]
-                }
-            });
+				},
+				options: {
+					legend: {
+						labels: {
+							generateLabels: labelFunc
+						}
+					}
+				}
+			});
+			
+			function labelFunc(chart) {
+				var data = chart.data;
+				if (data.labels.length && data.datasets.length) {
+					return data.labels.map(function(label, i) {
+						var meta = chart.getDatasetMeta(0);
+						var ds = data.datasets[0];
+						var arc = meta.data[i];
+						var custom = arc && arc.custom || {};
+						var getValueAtIndexOrDefault = Chart.helpers.getValueAtIndexOrDefault;
+						var arcOpts = chart.options.elements.arc;
+						var fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
+						var stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
+						var bw = custom.borderWidth ? custom.borderWidth : getValueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
+
+						// We get the value of the current label
+						var value = chart.config.data.datasets[arc._datasetIndex].data[arc._index];
+
+						return {
+							// Add value to label
+							text: label + " (" + value + ")",
+							fillStyle: fill,
+							strokeStyle: stroke,
+							lineWidth: bw,
+							hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+							index: i
+						};
+					});
+				} else {
+					return [];
+				}
+			}
         </script>
     </body>
 </html>`
