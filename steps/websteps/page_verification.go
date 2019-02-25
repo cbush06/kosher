@@ -41,7 +41,7 @@ func confirmSee(s *steputils.StepUtils, shouldSee bool) func(string) error {
 			err   error
 		)
 
-		matches := s.Page.AllByXPath(fmt.Sprintf(`//*[text()[contains(., "%s")]]`, text))
+		matches := s.Page.AllByXPath(fmt.Sprintf(`//*[text()[contains(., "%s") and not(ancestor::*[contains(@style, 'display: none')])]]`, text))
 		if count, err = matches.Count(); err != nil {
 			return fmt.Errorf(`error encountered searching page for text: %s`, err)
 		}

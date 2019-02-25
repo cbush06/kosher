@@ -88,12 +88,8 @@ func modSettingsProvider(v *viper.Viper) {
 	v.SetDefault("reportFormat", "pretty")
 	v.SetDefault("defaultDateFormat", "mm/dd/yyyy")
 	v.SetDefault("defaultEnvironment", "test")
-	v.SetDefault("maxWaitTime", 2)
-	v.SetDefault("minWaitTime", 0)
 	v.SetDefault("httpTimeout", 3)
-	v.SetDefault("waitForPageLoad", 0)
 	v.SetDefault("screenFormat", "desktop")
-	v.SetDefault("debugMode", "")
 	v.SetDefault("quitOnFail", false)
 	v.SetDefault("screenFormats", map[string]map[string]int{
 		"desktop": map[string]int{

@@ -2,7 +2,6 @@ package websteps
 
 import (
 	"fmt"
-	"log"
 	"regexp"
 	"sort"
 	"strconv"
@@ -393,7 +392,6 @@ func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error 
 	// ensure it's some form of the button
 	switch fieldType {
 	case "button", "submit", "reset", "image", "a":
-		log.Printf("Clicking button/a %d", btnNumber)
 		matches.At(btnNumber).Click()
 	default:
 		return fmt.Errorf(errMsg, fmt.Sprintf("must be some form of the button or link, but is of type [%s]", fieldType))

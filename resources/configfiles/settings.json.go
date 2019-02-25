@@ -10,13 +10,9 @@ func GetSettingsJSON() string {
 	"reportFormat": "pretty",
 	"dateFormat": "MM/DD/YYYY",
     "defaultEnvironment": "test",
-    "maxWaitTime": 2,
-    "minWaitTime": 0,
     "httpTimeout": 3,
-    "waitForPageLoad": 0,
     "screenFormat": "desktop",
-    "debugMode": "",
-    "quitOnFail": false,
+	"quitOnFail": false,
     "screenFormats": {
         "desktop": {
             "width": 2000,

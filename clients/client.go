@@ -48,7 +48,7 @@ func NewClient(sysSettings *config.Settings, fs *fs.Fs) (*Client, error) {
 	case "ie":
 		return &Client{
 			DriverType: driverSetting,
-			WebDriver:  agouti.NewWebDriver("http://{{.Address}}", []string{"IEDriverServer.exe", "/port={{.Port}}"}),
+			WebDriver:  agouti.NewWebDriver("http://{{.Address}}", []string{"IEDriverServer.exe", "/port={{.Port}} "}),
 		}, nil
 	case "edge":
 		return &Client{

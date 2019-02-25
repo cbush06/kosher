@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"os"
+	"regexp"
 	"time"
 
 	"github.com/cbush06/kosher/config"
@@ -14,6 +15,8 @@ import (
 )
 
 const errMsg = "Error encountered while generating HTML report: %s"
+
+var leadingWhitespace = regexp.MustCompile(`(?m)^(?:\s+)(.*)`)
 
 // cukeComment is any single-line comment.
 type cukeComment struct {
@@ -43,7 +46,7 @@ type cukeResult struct {
 
 func (r *cukeResult) GetDurationInSeconds() string {
 	if r.Duration != nil {
-		return fmt.Sprintf("%s", time.Duration(*r.Duration)/time.Second)
+		return fmt.Sprintf("%0.2fs", time.Duration(*r.Duration).Seconds())
 	}
 	return ""
 }
@@ -89,6 +92,10 @@ type cukeElement struct {
 	StepsSkipped int        `json:"-"`
 }
 
+func (e *cukeElement) GetTrimmedDescription() string {
+	return leadingWhitespace.ReplaceAllString(e.Description, "$1")
+}
+
 // cukeFeature is a single feature in JSONReport.
 type cukeFeature struct {
 	URI             string        `json:"uri"`
@@ -107,6 +114,11 @@ type cukeFeature struct {
 	StepsFailed     int           `json:"-"`
 	StepsPending    int           `json:"-"`
 	StepsSkipped    int           `json:"-"`
+}
+
+// GetTrimmedDescription returns the features description after removing leading whitespace from each line.
+func (f *cukeFeature) GetTrimmedDescription() string {
+	return leadingWhitespace.ReplaceAllString(f.Description, "$1")
 }
 
 // HTMLReport holds the jsonResults of a test execution

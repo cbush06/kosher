@@ -9,7 +9,8 @@ func GetBootstrapTemplate() string {
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<style type="text/css">
 			.bg-success { background-color: #c7fac9 !important; }
-			.bg-danger {background-color: #f9c8c9 !important; }
+			.bg-danger { background-color: #f9c8c9 !important; }
+			.bg-info { background-color: #c8f9fb !important; }
 		</style>
     </head>
     <body>
@@ -94,11 +95,13 @@ func GetBootstrapTemplate() string {
 			<div class="row">
                 <div class="col">
                     <div class="card mb-3">
-						<div class="card-header {{if (lt .ElementsFailed 1)}}bg-success{{else}}bg-danger{{end}}">
+						<div class="card-header {{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-info{{else}}bg-success{{end}}">
 							<strong>Feature:</strong> {{.Name}}
 						</div>
 						<div class="card-body">
-							<div class="card-title"><pre>{{.Description}}</pre></div>
+							<div class="card-title container-fluid">
+								<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</pre></div></div>
+							</div>
 							<div class="container-fluid">
 								{{range .Elements}}
 
@@ -106,11 +109,13 @@ func GetBootstrapTemplate() string {
 								<div class="row">
 									<div class="col">
 										<div class="card mb-3">
-											<div class="card-header {{if (lt .StepsFailed 1)}}bg-success{{else}}bg-danger{{end}}">
+											<div class="card-header {{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}">
 												<strong>{{.Keyword}}:</strong> {{.Name}}
 											</div>
 											<div class="card-body">
-												<div class="card-title"><pre>{{.Description}}</div>
+												<div class="card-title container-fluid">
+													<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</div></div>
+												</div>
 												<div class="container-fluid">
 
 													<!-- STEP BLOCK -->

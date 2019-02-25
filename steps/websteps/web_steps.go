@@ -28,7 +28,7 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	// form steps
 	suite.Step(`^(?:|I )fill in "([^"]*)" with "([^"]*)"$`, iFillInFieldWith(utils))
 	suite.Step(`^(?:|I )fill in the following:$`, iFillInTheFollowing(utils))
-	suite.Step(`^(?:|I )key in "([^"]*)" in (?:|the )"([^"]*)" (?:|field)$`, iKeyIn(utils))
+	suite.Step(`^(?:|I )key (?:|in )"([^"]*)" in (?:|the )"([^"]*)"(?:| field)$`, iKeyIn(utils))
 	suite.Step(`^(?:|I )select "([^"]*)" from "([^"]*)"$`, iSelectFrom(utils))
 	suite.Step(`^(?:|I )check "([^"]*)"$`, iCheck(utils))
 	suite.Step(`^(?:|I )uncheck "([^"]*)"$`, iUncheck(utils))

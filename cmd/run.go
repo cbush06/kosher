@@ -53,7 +53,7 @@ var cmdRun = &runCommand{
 
 			// build the settings file based on the working directory
 			settings = config.NewSettings(fileSys)
-			settings.Settings.BindPFlag("appversion", cmd.Flags().Lookup("appVersion"))
+			settings.Settings.BindPFlag("appVersion", cmd.Flags().Lookup("appVersion"))
 
 			// confirm an environment is selected
 			if len(environment) < 1 {
@@ -79,7 +79,7 @@ var cmdRun = &runCommand{
 
 				log.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
 
-				page, err := client.WebDriver.NewPage(agouti.Browser("chrome"))
+				page, err := client.WebDriver.NewPage()
 				if err != nil {
 					log.Fatalf("failed to open page: %s", err)
 				}
