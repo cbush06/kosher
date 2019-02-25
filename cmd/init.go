@@ -53,7 +53,7 @@ var cmdInit = &initCommand{
 				log.Fatal(errors.New("Invalid platform specified [" + initPlatform + "]. Valid options are: " + strings.Join(validPlatforms, ", ")))
 			}
 
-			return initProject(&afero.OsFs{}, path, initForce)
+			return initProject(&afero.OsFs{}, path, initForce, initEmpty)
 		},
 	},
 }
@@ -66,7 +66,7 @@ func (i *initCommand) registerWith(cmd *cobra.Command) {
 }
 
 // initProject initializes a new Kosher project with configuration file templates and a sample feature file
-func initProject(fs *afero.OsFs, basepath string, force bool) error {
+func initProject(fs *afero.OsFs, basepath string, force bool, empty bool) error {
 	var (
 		featuresDir      = filepath.Join(basepath, common.FeaturesDir)
 		configDir        = filepath.Join(basepath, common.ConfigDir)
@@ -128,7 +128,10 @@ func initProject(fs *afero.OsFs, basepath string, force bool) error {
 	afero.WriteReader(fs, environmentsJSON, bytes.NewBufferString(configfiles.GetEnvironmentsJSON()))
 	afero.WriteReader(fs, pagesJSON, bytes.NewBufferString(configfiles.GetPagesJSON()))
 	afero.WriteReader(fs, selectorsJSON, bytes.NewBufferString(configfiles.GetSelectorsJSON()))
-	afero.WriteReader(fs, exampleFeature, bytes.NewBufferString(configfiles.GetExampleFeature()))
+
+	if !empty {
+		afero.WriteReader(fs, exampleFeature, bytes.NewBufferString(configfiles.GetExampleFeature()))
+	}
 
 	return nil
 }

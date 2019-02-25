@@ -12,6 +12,10 @@ import (
 	"github.com/sclevine/agouti"
 )
 
+func shouldContainTodaysDate(s *steputils.StepUtils) func(string) error {
+	return iVerifyHasTodaysDate(s)
+}
+
 func iVerifyHasTodaysDate(s *steputils.StepUtils) func(string) error {
 	return func(field string) error {
 		var (

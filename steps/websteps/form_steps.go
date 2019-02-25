@@ -314,13 +314,13 @@ func iChoose(s *steputils.StepUtils) func(string) error {
 
 func iPress(s *steputils.StepUtils) func(string) error {
 	return func(field string) error {
-		return iPressButtonIdx(s, field, 0)
+		return iClickIdx(s, field, 0)
 	}
 }
 
 func iClickTheButtonLink(s *steputils.StepUtils) func(string) error {
 	return func(field string) error {
-		return iPressButtonIdx(s, field, 0)
+		return iClickIdx(s, field, 0)
 	}
 }
 
@@ -348,10 +348,10 @@ func iPressNth(s *steputils.StepUtils) func(string, string) error {
 		if nthNumeric, err = strconv.Atoi(nth); err != nil {
 			// if "first" or "last" was specified
 			if strings.EqualFold(nth, "first") {
-				return iPressButtonIdx(s, field, 0)
+				return iClickIdx(s, field, 0)
 			}
 			if strings.EqualFold(nth, "last") {
-				return iPressButtonIdx(s, field, fieldCnt-1)
+				return iClickIdx(s, field, fieldCnt-1)
 			}
 
 			re := regexp.MustCompile(`\d+`)
@@ -366,17 +366,16 @@ func iPressNth(s *steputils.StepUtils) func(string, string) error {
 		if nthNumeric > fieldCnt {
 			return fmt.Errorf("requested click on button [%d], but only [%d] buttons found", nthNumeric, fieldCnt)
 		}
-		return iPressButtonIdx(s, field, nthNumeric-1)
+		return iClickIdx(s, field, nthNumeric-1)
 
 	}
 }
 
-func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error {
+func iClickIdx(s *steputils.StepUtils, field string, btnNumber int) error {
 	var (
-		matches   *agouti.MultiSelection
-		fieldType string
-		errMsg    = fmt.Sprintf("error encountered while clicking button/link [%s]: ", field) + "%s"
-		err       error
+		matches *agouti.MultiSelection
+		errMsg  = fmt.Sprintf("error encountered while clicking button/link [%s]: ", field) + "%s"
+		err     error
 	)
 
 	// try to find the field(s) specified
@@ -384,18 +383,12 @@ func iPressButtonIdx(s *steputils.StepUtils, field string, btnNumber int) error 
 		return fmt.Errorf(errMsg, err)
 	}
 
-	// determine the field's type
-	if fieldType, err = s.GetFieldType(field, matches.At(0)); err != nil {
-		return fmt.Errorf(errMsg, err)
+	// confirm a match was found
+	if count, _ := matches.Count(); count < (btnNumber - 1) {
+		return fmt.Errorf(errMsg, fmt.Sprintf("instance [%d] not found", btnNumber))
 	}
 
-	// ensure it's some form of the button
-	switch fieldType {
-	case "button", "submit", "reset", "image", "a":
-		matches.At(btnNumber).Click()
-	default:
-		return fmt.Errorf(errMsg, fmt.Sprintf("must be some form of the button or link, but is of type [%s]", fieldType))
-	}
+	matches.At(btnNumber).Click()
 
 	return nil
 }

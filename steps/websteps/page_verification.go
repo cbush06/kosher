@@ -37,19 +37,42 @@ func iShouldSeeAllOfTheTexts(s *steputils.StepUtils) func(*gherkin.DataTable) er
 func confirmSee(s *steputils.StepUtils, shouldSee bool) func(string) error {
 	return func(text string) error {
 		var (
-			count int
-			err   error
+			matchCount   int
+			visibleCount int
+			isShown      bool
+			width        int
+			height       int
+			err          error
 		)
 
 		matches := s.Page.AllByXPath(fmt.Sprintf(`//*[text()[contains(., "%s") and not(ancestor::*[contains(@style, 'display: none')])]]`, text))
-		if count, err = matches.Count(); err != nil {
+		if matchCount, err = matches.Count(); err != nil {
 			return fmt.Errorf(`error encountered searching page for text: %s`, err)
 		}
 
-		if shouldSee && (count < 1) {
+		if shouldSee && (matchCount < 1) {
 			return fmt.Errorf(`expected to find [%s] but did not`, text)
-		} else if !shouldSee && (count > 0) {
-			return fmt.Errorf(`expected NOT to find [%s] but found it [%d] times`, text, count)
+		}
+
+		// determine how many of these elements are visible
+		for i := 0; i < matchCount; i++ {
+			els, _ := matches.At(i).Elements()
+			if isShown, err = els[0].IsDisplayed(); err != nil {
+				return fmt.Errorf(`error encountered determining if matched text is visible: %s`, err)
+			}
+			if width, height, err = els[0].GetSize(); err != nil {
+				return fmt.Errorf(`error encountered determining size of element containing matched text: %s`, err)
+			}
+			if isShown && (width > 0 || height > 0) {
+				visibleCount++
+			}
+		}
+
+		// show error message if applicable
+		if shouldSee && visibleCount < 1 {
+			return fmt.Errorf(`expected TO find [%s] but did not`, text)
+		} else if !shouldSee && visibleCount > 0 {
+			return fmt.Errorf(`expected NOT to find [%s] but found it [%d] times`, text, visibleCount)
 		}
 
 		return nil
@@ -67,11 +90,14 @@ func iShouldNotSeeButtonLink(s *steputils.StepUtils) func(string) error {
 func confirmSeeButtonLink(s *steputils.StepUtils, shouldSee bool) func(string) error {
 	return func(text string) error {
 		var (
-			matches    *agouti.MultiSelection
-			err        error
-			errMsg     = fmt.Sprintf(`error encountered while searching for [%s] button/link: `, text) + "%s"
-			found      bool
-			matchCount int
+			matches           *agouti.MultiSelection
+			buttonLinkMatches []*agouti.Selection
+			err               error
+			visibleCount      int
+			isShown           bool
+			width             int
+			height            int
+			errMsg            = fmt.Sprintf(`error encountered while searching for [%s] button/link: `, text) + "%s"
 		)
 
 		// resolve selector...not getting an error means a match was found
@@ -79,22 +105,48 @@ func confirmSeeButtonLink(s *steputils.StepUtils, shouldSee bool) func(string) e
 			// confirm one of matches is button or link
 			count, _ := matches.Count()
 			for i := 0; i < count; i++ {
-				if fieldType, err2 := s.GetFieldType("text", matches.At(i)); err2 != nil {
+				if fieldType, err2 := s.GetFieldType(text, matches.At(i)); err2 != nil {
 					return fmt.Errorf(errMsg, err2)
 				} else if strings.EqualFold(fieldType, "a") || strings.EqualFold(fieldType, "button") {
-					found = true
-					matchCount++
+					buttonLinkMatches = append(buttonLinkMatches, matches.At(i))
 				}
 			}
 		}
 
-		if (shouldSee && found) || !(shouldSee || found) {
-			return nil
-		} else if found {
-			return fmt.Errorf(`expected to not find elements for identifier [%s] but found [%d]`, text, matchCount)
-		} else {
-			return fmt.Errorf(`no element of type link/button found for identifier [%s]`, text)
+		// determine how many of these elements are visible
+		for _, match := range buttonLinkMatches {
+			els, _ := match.Elements()
+			if isShown, err = els[0].IsDisplayed(); err != nil {
+				return fmt.Errorf(`error encountered determining if matched button/link is visible: %s`, err)
+			}
+			if width, height, err = els[0].GetSize(); err != nil {
+				return fmt.Errorf(`error encountered determining size of matched button/link: %s`, err)
+			}
+			if isShown && (width > 0 || height > 0) {
+				visibleCount++
+			}
 		}
+
+		// show error message if applicable
+		if shouldSee && visibleCount < 1 {
+			return fmt.Errorf(`expected TO find button/link [%s] but did not`, text)
+		} else if !shouldSee && visibleCount > 0 {
+			return fmt.Errorf(`expected NOT to find button/link [%s] but found it [%d] times`, text, visibleCount)
+		}
+
+		return nil
+	}
+}
+
+func shouldBeDisabled(s *steputils.StepUtils) func(string) error {
+	return func(field string) error {
+		return confirmDisabled(s, true)("first", field)
+	}
+}
+
+func shouldBeEnabled(s *steputils.StepUtils) func(string) error {
+	return func(field string) error {
+		return confirmDisabled(s, false)("first", field)
 	}
 }
 

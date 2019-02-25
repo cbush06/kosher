@@ -26,7 +26,7 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )decline the popup$`, iDeclineThePopup(utils))
 
 	// form steps
-	suite.Step(`^(?:|I )fill in "([^"]*)" with "([^"]*)"$`, iFillInFieldWith(utils))
+	suite.Step(`^(?:|I )fill (?:|in )"([^"]*)" with "([^"]*)"$`, iFillInFieldWith(utils))
 	suite.Step(`^(?:|I )fill in the following:$`, iFillInTheFollowing(utils))
 	suite.Step(`^(?:|I )key (?:|in )"([^"]*)" in (?:|the )"([^"]*)"(?:| field)$`, iKeyIn(utils))
 	suite.Step(`^(?:|I )select "([^"]*)" from "([^"]*)"$`, iSelectFrom(utils))
@@ -35,14 +35,15 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )select (?:|the )following values from "([^"]*)":$`, iSelectTheFollowingValues(utils))
 	suite.Step(`^(?:|I )unselect (?:|the )following values from "([^"]*)":$`, iUnselectTheFollowingValues(utils))
 	suite.Step(`^(?:|I )choose (?:|the )"([^"]*)" radio$`, iChoose(utils))
-	suite.Step(`^(?:|I )press "([^"]*)"$`, iPress(utils))
+	suite.Step(`^(?:|I )(?:press|click) "([^"]*)"$`, iPress(utils))
 	suite.Step(`^(?:|I )(?:press|click) the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)"$`, iPressNth(utils))
-	suite.Step(`^(?:|I )click the "([^"]*)" (?:button|link)$`, iClickTheButtonLink(utils))
+	suite.Step(`^(?:|I )(?:press|click) the "([^"]*)" (?:button|link)$`, iClickTheButtonLink(utils))
 	suite.Step(`^(?:|I )(?:unfocus|blur) "([^"]*)"$`, iUnfocusBlur(utils))
 	suite.Step(`^(?:|I )hover over "([^"]*)"$`, iHoverOver(utils))
 	suite.Step(`^(?:|I )enter today's date in "([^"]*)"`, iEnterTodaysDateIn(utils))
 
 	// form verification steps
+	suite.Step(`^"([^"]*)" should contain today's date$`, shouldContainTodaysDate(utils))
 	suite.Step(`^(?:|I )verify "([^"]*)" has today's date$`, iVerifyHasTodaysDate(utils))
 	suite.Step(`^"([^"]*)" should contain "([^"]*)"$`, shouldContain(utils))
 	suite.Step(`^"([^"]*)" should not contain "([^"]*)"$`, shouldNotContain(utils))
@@ -64,6 +65,8 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )should see all of the texts:$`, iShouldSeeAllOfTheTexts(utils))
 	suite.Step(`^(?:|I )should see (?:|the )"([^"]*)"(?: button| link)$`, iShouldSeeButtonLink(utils))
 	suite.Step(`^(?:|I )should not see (?:|the )"([^"]*)"(?: button| link)$`, iShouldNotSeeButtonLink(utils))
+	suite.Step(`^"([^"]*)" should be disabled$`, shouldBeDisabled(utils))
+	suite.Step(`^"([^"]*)" should be enabled$`, shouldBeEnabled(utils))
 	suite.Step(`^the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)" should be disabled$`, theNthInstanceOfShouldBeDisabled(utils))
 	suite.Step(`^the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)" should be enabled$`, theNthInstanceOfShouldBeEnabled(utils))
 }

@@ -1,8 +1,10 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 
@@ -26,8 +28,9 @@ func configureEnv() {
 		log.Fatalf("Unable to retrieve PATH environment variable value")
 	}
 
-	libsDir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
-	libsDir = filepath.Join(libsDir, "libs")
+	libsDir, _ := exec.LookPath(os.Args[0])
+	libsDir = filepath.Join(filepath.Dir(libsDir), "libs")
+	fmt.Println(libsDir)
 
 	switch runtime.GOOS {
 	case "linux":

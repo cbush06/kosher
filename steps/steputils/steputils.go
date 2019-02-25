@@ -73,7 +73,7 @@ func (s *StepUtils) ResolveSelector(name string) (*agouti.MultiSelection, error)
 			}
 			break
 		default:
-			return nil, fmt.Errorf("invalid selector type [%s] specified for selector [%s]", selectorType, name)
+			return nil, fmt.Errorf(`invalid selector type [%s] specified for selector [%s] (expected "css:" or "xpath:")`, selectorType, name)
 		}
 	} else {
 		selector = strings.TrimSpace(name)
