@@ -180,10 +180,17 @@ func (r *HTMLReport) Process() error {
 		templ      *template.Template
 		fileHandle afero.File
 		err        error
+		writeLen   int
+	)
+
+	const (
+		resultsHTMLFile = "results.html"
+		resultsJSONFile = "results.json"
 	)
 
 	reportFormat := r.settings.Settings.GetString("reportFormat")
 
+	// build template and parse/unmarshall JSON results
 	switch reportFormat {
 	case "html", "bootstrap":
 		templ, _ = template.New("Bootstrap").Parse(reporttemplates.GetBootstrapTemplate())
@@ -195,17 +202,32 @@ func (r *HTMLReport) Process() error {
 		return err
 	}
 
-	filePath, _ := r.fileSystem.ResultsDir.RealPath("results.html")
-	if fileHandle, err = r.fileSystem.ResultsDir.OpenFile("results.html", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0777); err != nil {
+	// write HTML report file
+	filePath, _ := r.fileSystem.ResultsDir.RealPath(resultsHTMLFile)
+	if fileHandle, err = r.fileSystem.ResultsDir.OpenFile(resultsHTMLFile, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0664); err != nil {
 		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to open results file [%s]: %s"), filePath, err)
 	}
-
 	if err = templ.Execute(fileHandle, r); err != nil {
 		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to generate report file [%s]: %s"), filePath, err)
 	}
 	if err = fileHandle.Close(); err != nil {
 		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to close report file [%s]: %s"), filePath, err)
 	}
+
+	// write JSON results file
+	filePath, _ = r.fileSystem.ResultsDir.RealPath(resultsJSONFile)
+	if fileHandle, err = r.fileSystem.ResultsDir.OpenFile(resultsJSONFile, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0664); err != nil {
+		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to open results file [%s]: %s"), filePath, err)
+	}
+	if writeLen, err = fileHandle.Write(r.jsonResults); err != nil {
+		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to write report file [%s]: %s"), filePath, err)
+	} else if writeLen < len(r.jsonResults) {
+		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to write all bytes of report file [%s]"), filePath)
+	}
+	if err = fileHandle.Close(); err != nil {
+		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to close report file [%s]: %s"), filePath, err)
+	}
+
 	return nil
 }
 

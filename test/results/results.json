@@ -1,0 +1,94 @@
+[
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/radios_checkboxes.feature",
+        "id": "test-radio-button-and-checkbox-manipulation",
+        "keyword": "Feature",
+        "name": "Test Radio Button and Checkbox Manipulation",
+        "description": "    Verify that Kosher's steps for manipulating\n    and verifying radio buttons and checkboxes\n    work correctly.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "test-radio-button-and-checkbox-manipulation;selecting-a-radio-button",
+                "keyword": "Scenario",
+                "name": "Selecting a Radio Button",
+                "description": "",
+                "line": 6,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"radio-button\" page",
+                        "line": 7,
+                        "match": {
+                            "location": "navigation_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2521862349
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I choose the \"Female\" radio",
+                        "line": 8,
+                        "match": {
+                            "location": "form_steps.go:287"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 112607258
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I press \"Get Checked value\"",
+                        "line": 9,
+                        "match": {
+                            "location": "form_steps.go:316"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 117926569
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"Radio button 'Female' is checked\"",
+                        "line": 10,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 79777640
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "the \"Female\" radio should be selected",
+                        "line": 11,
+                        "match": {
+                            "location": "form_verification_steps.go:187"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 70328097
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "the \"Male\" radio should not be selected",
+                        "line": 12,
+                        "match": {
+                            "location": "form_verification_steps.go:187"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 76620536
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

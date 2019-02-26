@@ -1,5 +1,6 @@
 package reporttemplates
 
+// GetBootstrapTemplate returns the Bootstrap template for Kosher reports.
 func GetBootstrapTemplate() string {
 	return `<html lang="en">
     <head>
@@ -120,21 +121,36 @@ func GetBootstrapTemplate() string {
 
 													<!-- STEP BLOCK -->
 													{{range .Steps}}
-													<div class="row">
-														<div class="col-11">
-															{{if (eq .Result.Status "passed")}}
-															<span class="text-success"><i class="fa fa-check-square"></i></span>
-															{{else if (eq .Result.Status "failed")}}
-															<span class="text-danger"><i class="fa fa-times-circle"></i></span>
-															{{else if (eq .Result.Status "skipped")}}
-															<span class="text-warning"><i class="fa fa-exclamation-triangle"></i></span>
-															{{else if (eq .Result.Status "undefined")}}
-															<span class="text-info"><i class="fa fa-question-circle"></i></span>
-															{{end}}
-															<strong>{{.Keyword}}</strong>{{.Name}}
+														<div class="row">
+															<div class="col-11">
+																{{if (eq .Result.Status "passed")}}
+																	<span class="text-success"><i class="fa fa-check-square"></i></span>
+																{{else if (eq .Result.Status "failed")}}
+																	<span class="text-danger"><i class="fa fa-times-circle"></i></span>
+																{{else if (eq .Result.Status "skipped")}}
+																	<span class="text-warning"><i class="fa fa-exclamation-triangle"></i></span>
+																{{else if (eq .Result.Status "undefined")}}
+																	<span class="text-info"><i class="fa fa-question-circle"></i></span>
+																{{end}}
+
+																<strong>{{.Keyword}}</strong>{{.Name}}
+															</div>
+															<div class="col-1">{{.Result.GetDurationInSeconds}}</div>
 														</div>
-														<div class="col-1">{{.Result.GetDurationInSeconds}}</div>
-													</div>
+
+														{{if (eq .Result.Status "failed")}}
+															<div class="row">
+																<div class="col alert alert-danger">
+																	{{.Result.Error}}
+																</div>
+															</div>
+														{{else if (eq .Result.Status "undefined")}}
+															<div class="row">
+																<div class="col alert alert-info">
+																	Could not match step at <code>{{.Match.Location}}</code>
+																</div>
+															</div>
+														{{end}}
 													{{end}}
 												</div>
 											</div>

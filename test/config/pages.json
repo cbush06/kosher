@@ -3,5 +3,6 @@
     "jquery-dropdown": "jquery-dropdown-search-demo.html",
     "table-search": "table-search-filter-demo.html",
     "bootstrap-date-picker": "bootstrap-date-picker-demo.html",
-    "file-download": "generate-file-to-download-demo.html"
+    "file-download": "generate-file-to-download-demo.html",
+    "radio-button": "basic-radiobutton-demo.html"
 }

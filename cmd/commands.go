@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -30,7 +29,6 @@ func configureEnv() {
 
 	libsDir, _ := exec.LookPath(os.Args[0])
 	libsDir = filepath.Join(filepath.Dir(libsDir), "libs")
-	fmt.Println(libsDir)
 
 	switch runtime.GOOS {
 	case "linux":
