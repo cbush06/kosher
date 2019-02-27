@@ -194,6 +194,8 @@ func (r *HTMLReport) Process() error {
 	switch reportFormat {
 	case "html", "bootstrap":
 		templ, _ = template.New("Bootstrap").Parse(reporttemplates.GetBootstrapTemplate())
+	case "simple":
+		templ, _ = template.New("Simple").Parse(reporttemplates.GetSimpleTemplate())
 	default:
 		return fmt.Errorf(errMsg, "attempt made to generate HTML report with unrecognized template")
 	}

@@ -115,7 +115,7 @@ func GetBootstrapTemplate() string {
 											</div>
 											<div class="card-body">
 												<div class="card-title container-fluid">
-													<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</div></div>
+													<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</pre></div></div>
 												</div>
 												<div class="container-fluid">
 

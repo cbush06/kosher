@@ -1,89 +1,188 @@
 [
     {
-        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/radios_checkboxes.feature",
-        "id": "test-radio-button-and-checkbox-manipulation",
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/textboxes.feature",
+        "id": "test-textbox-manipulation-and-validation",
         "keyword": "Feature",
-        "name": "Test Radio Button and Checkbox Manipulation",
-        "description": "    Verify that Kosher's steps for manipulating\n    and verifying radio buttons and checkboxes\n    work correctly.",
+        "name": "Test Textbox Manipulation and Validation",
+        "description": "    Verify that Kosher's steps for manipulating\n    and verifying textboxes work correctly.",
         "line": 1,
         "elements": [
             {
-                "id": "test-radio-button-and-checkbox-manipulation;selecting-a-radio-button",
+                "id": "test-textbox-manipulation-and-validation;fill-a-textbox",
                 "keyword": "Scenario",
-                "name": "Selecting a Radio Button",
-                "description": "",
-                "line": 6,
+                "name": "Fill a Textbox",
+                "description": "        Verify steps for fill a textbox.",
+                "line": 5,
                 "type": "scenario",
                 "steps": [
                     {
                         "keyword": "Given ",
-                        "name": "I am on the \"radio-button\" page",
-                        "line": 7,
+                        "name": "I go to the \"basicform\" page",
+                        "line": 8,
                         "match": {
                             "location": "navigation_steps.go:11"
                         },
                         "result": {
                             "status": "passed",
+<<<<<<< HEAD
                             "duration": 2670263560
+=======
+                            "duration": 2670180577
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     },
                     {
                         "keyword": "When ",
-                        "name": "I choose the \"Female\" radio",
-                        "line": 8,
+                        "name": "I fill \"user-message\" with \"Hello, World\"",
+                        "line": 9,
                         "match": {
-                            "location": "form_steps.go:287"
+                            "location": "form_steps.go:35"
                         },
                         "result": {
                             "status": "passed",
+<<<<<<< HEAD
                             "duration": 95515940
+=======
+                            "duration": 442314405
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     },
                     {
                         "keyword": "And ",
-                        "name": "I press \"Get Checked value\"",
-                        "line": 9,
+                        "name": "I press \"Show Message\"",
+                        "line": 10,
                         "match": {
                             "location": "form_steps.go:316"
                         },
                         "result": {
                             "status": "passed",
+<<<<<<< HEAD
                             "duration": 85166426
+=======
+                            "duration": 185889330
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     },
                     {
                         "keyword": "Then ",
-                        "name": "I should see \"Radio button 'Female' is checked\"",
-                        "line": 10,
+                        "name": "I should see \"Hello, World\"",
+                        "line": 11,
                         "match": {
                             "location": "page_verification.go:38"
                         },
                         "result": {
                             "status": "passed",
+<<<<<<< HEAD
                             "duration": 44995623
+=======
+                            "duration": 63778497
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-textbox-manipulation-and-validation;fill-multiple-textboxes",
+                "keyword": "Scenario",
+                "name": "Fill Multiple Textboxes",
+                "description": "        Verify steps for filling multiple textboxes.",
+                "line": 13,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"basicform\" page",
+                        "line": 16,
+                        "match": {
+                            "location": "navigation_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 159379122
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I fill in the following:",
+                        "line": 17,
+                        "match": {
+                            "location": "form_steps.go:17"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 523512595
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     },
                     {
                         "keyword": "And ",
-                        "name": "the \"Female\" radio should be selected",
-                        "line": 11,
+                        "name": "I pres \"Get Total\"",
+                        "line": 20,
                         "match": {
-                            "location": "form_verification_steps.go:187"
+                            "location": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/textboxes.feature:20"
+                        },
+                        "result": {
+                            "status": "undefined"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"7\"",
+                        "line": 21,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-textbox-manipulation-and-validation;keying-characters",
+                "keyword": "Scenario",
+                "name": "Keying Characters",
+                "description": "        Verify that keying characters works.",
+                "line": 23,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"jquery-dropdown\" page",
+                        "line": 26,
+                        "match": {
+                            "location": "navigation_steps.go:11"
                         },
                         "result": {
                             "status": "passed",
+                            "duration": 787989444
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click \"SelectCountry\"",
+                        "line": 27,
+                        "match": {
+                            "location": "form_steps.go:316"
+                        },
+                        "result": {
+                            "status": "passed",
+<<<<<<< HEAD
                             "duration": 45922084
+=======
+                            "duration": 169752661
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     },
                     {
                         "keyword": "And ",
-                        "name": "the \"Male\" radio should not be selected",
-                        "line": 12,
+                        "name": "I key \"u\" in \"OpenSelectFilter\"",
+                        "line": 28,
                         "match": {
-                            "location": "form_verification_steps.go:187"
+                            "location": "form_steps.go:92"
                         },
                         "result": {
                             "status": "passed",
+<<<<<<< HEAD
                             "duration": 57084283
                         }
                     }
@@ -249,10 +348,14 @@
                         "result": {
                             "status": "passed",
                             "duration": 1002362464
+=======
+                            "duration": 113926444
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     },
                     {
                         "keyword": "Then ",
+<<<<<<< HEAD
                         "name": "I should see the \"Uncheck All\" button",
                         "line": 29,
                         "match": {
@@ -261,10 +364,22 @@
                         "result": {
                             "status": "passed",
                             "duration": 120952433
+=======
+                        "name": "I should not see \"United States of America\"",
+                        "line": 29,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "expected NOT to find [United States of America] but found it [1] times",
+                            "duration": 116343867
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     },
                     {
                         "keyword": "And ",
+<<<<<<< HEAD
                         "name": "I uncheck \"Option 4\"",
                         "line": 30,
                         "match": {
@@ -285,6 +400,15 @@
                         "result": {
                             "status": "passed",
                             "duration": 81144925
+=======
+                        "name": "I should see \"United States of America\"",
+                        "line": 30,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+>>>>>>> 4cda5592344a9d5d6e82adae90a39a1532269297
                         }
                     }
                 ]

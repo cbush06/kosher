@@ -17,7 +17,7 @@ Feature: Test Textbox Manipulation and Validation
         When I fill in the following:
             | sum1 | 4 |
             | sum2 | 3 |
-        And I press "Get Total"
+        And I pres "Get Total"
         Then I should see "7"
 
     Scenario: Keying Characters
@@ -26,5 +26,5 @@ Feature: Test Textbox Manipulation and Validation
         Given I go to the "jquery-dropdown" page
         When I click "SelectCountry"
         And I key "u" in "OpenSelectFilter"
-        Then I should not see "Bangladesh"
+        Then I should not see "United States of America"
         And I should see "United States of America"
