@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"os"
 	"regexp"
+	"runtime"
 	"time"
 
 	"github.com/cbush06/kosher/config"
@@ -132,6 +133,8 @@ type HTMLReport struct {
 	Environment     string
 	Browser         string
 	Platform        string
+	RunTime         time.Duration
+	OS              string
 	Timestamp       string
 	ElementsPassed  int
 	ElementsFailed  int
@@ -151,8 +154,10 @@ func newHTMLReport(s *config.Settings, f *fs.Fs) *HTMLReport {
 		ProjectName:     s.Settings.GetString("projectName"),
 		AppVersion:      s.Settings.GetString("appVersion"),
 		Environment:     s.Settings.GetString("environment"),
-		Browser:         "",
+		Browser:         s.Settings.GetString("driver"),
 		Platform:        s.Settings.GetString("platform"),
+		RunTime:         time.Duration(0),
+		OS:              "",
 		Timestamp:       "",
 		ElementsPassed:  0,
 		ElementsFailed:  0,
@@ -189,6 +194,8 @@ func (r *HTMLReport) Process() error {
 	)
 
 	reportFormat := r.settings.Settings.GetString("reportFormat")
+	r.Timestamp = time.Now().Format(time.RFC850)
+	r.OS = fmt.Sprintf("%s (%s)", runtime.GOOS, runtime.GOARCH)
 
 	// build template and parse/unmarshall JSON results
 	switch reportFormat {
@@ -257,6 +264,8 @@ func (r *HTMLReport) unmarshallJSON() error {
 				case "undefined":
 					element.StepsPending++
 				}
+
+				r.RunTime += time.Duration(*step.Result.Duration)
 
 				r.TotalSteps++
 			}

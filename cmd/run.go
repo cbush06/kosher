@@ -79,6 +79,7 @@ var cmdRun = &runCommand{
 
 				log.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
 
+				// Create new Window
 				page, err := client.WebDriver.NewPage()
 				if err != nil {
 					log.Fatalf("failed to open page: %s", err)

@@ -3,6 +3,9 @@ Feature: Test Radio Button and Checkbox Manipulation
     and verifying radio buttons and checkboxes
     work correctly.
 
+    Background:
+        Given I maximize the window
+        
     Scenario: Selecting a Radio Button
         Given I am on the "radio-button" page
         When I choose the "Female" radio
@@ -27,6 +30,8 @@ Feature: Test Radio Button and Checkbox Manipulation
         And I check "Option 4"
         And I wait 1 second
         Then I should see the "Uncheck All" button
+        And the "Option 4" checkbox should be checked
         And I uncheck "Option 4"
         And I wait 1 second
         Then I should see the "Check All" button
+        And the "Option 4" checkbox should not be checked

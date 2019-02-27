@@ -3,6 +3,9 @@ Feature: Verify Miscellaneous Elements of the Page
     Verify that Kosher's steps for verifying
     various elements on the page work properly.
 
+    Background:
+        Given I maximize the window
+        
     Scenario: Confirm I see all the Texts
         Verify that I see various labels and
         excerpts of text on the page.

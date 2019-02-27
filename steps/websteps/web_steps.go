@@ -24,6 +24,7 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )switch to the root frame$`, iSwitchToTheRootFrame(utils))
 	suite.Step(`^(?:|I )accept the popup$`, iAcceptThePopup(utils))
 	suite.Step(`^(?:|I )decline the popup$`, iDeclineThePopup(utils))
+	suite.Step(`^(?:|I )enter "([^"]*)" in the popup$`, iEnterInThePopup(utils))
 
 	// form steps
 	suite.Step(`^(?:|I )fill (?:|in )"([^"]*)" with "([^"]*)"$`, iFillInFieldWith(utils))
@@ -58,6 +59,8 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	// navigation verification steps
 	suite.Step(`^I should be redirected to the "([^"]*)" page$`, iShouldBeRedirectedTo(utils))
 	suite.Step(`^(?:|I )should be on the "([^"]*)" page$`, iShouldBeOn(utils))
+	suite.Step(`^(?:|I )should see (?:|the )popup (?:|text )"([^"]*)"`, iShouldSeeThePopupText(utils))
+	suite.Step(`^(?:|I )should not see (?:|the )popup (?:|text )"([^"]*)"`, iShouldNotSeeThePopupText(utils))
 
 	// page verification steps
 	suite.Step(`^(?:|I )should see "([^"]*)"$`, iShouldSee(utils))

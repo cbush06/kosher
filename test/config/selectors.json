@@ -4,5 +4,6 @@
     "DatePicker": "css:div.input-group.date .input-group-addon",
     "DatePickerTextbox": "css:div.input-group.date input[type='text']",
     "DatePickerToday": "css:div.datepicker.datepicker-dropdown > div.datepicker-days > table > tfoot > tr:nth-child(1) > th",
-    "CheckboxSet": "css:.cb1-element"
+    "CheckboxSet": "css:.cb1-element",
+    "ColumnHeader": "css:th"
 }

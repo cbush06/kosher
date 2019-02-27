@@ -2,6 +2,9 @@ Feature: Test Select Menu Manipulation
     Verify that Kosher's steps for manipulating
     and verifying select menus works correctly.
 
+    Background:
+        Given I maximize the window
+
     Scenario: Selecting a Single Option from a Dropdown
         Given I am on the "basic-dropdown" page
         When I select "Monday" from "select-demo"
@@ -35,3 +38,26 @@ Feature: Test Select Menu Manipulation
         Then "multi-select" should have the following options selected:
             | New York   |
             | Washington |
+
+    Scenario: Verify Available Options
+        Given I am on the "basic-dropdown" page
+        Then "select-demo" should have the following options:
+            | Please select |
+            | Sunday        |
+            | Monday        |
+            | Tuesday       |
+            | Wednesday     |
+            | Thursday      |
+            | Friday        |
+            | Saturday      |
+        And "multi-select" should have the following options:
+            | California   |
+            | Florida      |
+            | New Jersey   |
+            | New York     |
+            | Ohio         |
+            | Texas        |
+            | Pennsylvania |
+            | Washington   |
+    
+    Scenario: 
