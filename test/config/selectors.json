@@ -3,5 +3,6 @@
     "OpenSelectFilter": "css:.select2-dropdown:nth-child(1) .select2-search__field",
     "DatePicker": "css:div.input-group.date .input-group-addon",
     "DatePickerTextbox": "css:div.input-group.date input[type='text']",
-    "DatePickerToday": "css:div.datepicker.datepicker-dropdown > div.datepicker-days > table > tfoot > tr:nth-child(1) > th"
+    "DatePickerToday": "css:div.datepicker.datepicker-dropdown > div.datepicker-days > table > tfoot > tr:nth-child(1) > th",
+    "CheckboxSet": "css:.cb1-element"
 }

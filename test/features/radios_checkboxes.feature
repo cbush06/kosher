@@ -10,3 +10,23 @@ Feature: Test Radio Button and Checkbox Manipulation
         Then I should see "Radio button 'Female' is checked"
         And the "Female" radio should be selected
         And the "Male" radio should not be selected
+
+    Scenario: Check a Single Box
+        Given I am on the "basic-checkbox" page
+        When I check "Click on this check box"
+        Then I should see "Success - Check box is checked"
+    
+    Scenario: Check Multiple Checkboxes and I Uncheck a Checkbox
+        Given I am on the "basic-checkbox" page
+        And I wait 2 seconds
+        And I should not see the "Uncheck All" button
+        And I should see the "Check All" button
+        When I check "Option 1"
+        And I check "Option 2"
+        And I check "Option 3"
+        And I check "Option 4"
+        And I wait 1 second
+        Then I should see the "Uncheck All" button
+        And I uncheck "Option 4"
+        And I wait 1 second
+        Then I should see the "Check All" button

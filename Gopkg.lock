@@ -179,6 +179,7 @@
     "github.com/sclevine/agouti/api",
     "github.com/spf13/afero",
     "github.com/spf13/cobra",
+    "github.com/spf13/pflag",
     "github.com/spf13/viper",
   ]
   solver-name = "gps-cdcl"

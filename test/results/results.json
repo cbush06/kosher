@@ -24,7 +24,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2521862349
+                            "duration": 2670263560
                         }
                     },
                     {
@@ -36,7 +36,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 112607258
+                            "duration": 95515940
                         }
                     },
                     {
@@ -48,7 +48,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 117926569
+                            "duration": 85166426
                         }
                     },
                     {
@@ -60,7 +60,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 79777640
+                            "duration": 44995623
                         }
                     },
                     {
@@ -72,7 +72,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 70328097
+                            "duration": 45922084
                         }
                     },
                     {
@@ -84,7 +84,207 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 76620536
+                            "duration": 57084283
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-radio-button-and-checkbox-manipulation;check-a-single-box",
+                "keyword": "Scenario",
+                "name": "Check a Single Box",
+                "description": "",
+                "line": 14,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-checkbox\" page",
+                        "line": 15,
+                        "match": {
+                            "location": "navigation_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 1000286057
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I check \"Click on this check box\"",
+                        "line": 16,
+                        "match": {
+                            "location": "form_steps.go:165"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 108877311
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"Success - Check box is checked\"",
+                        "line": 17,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 59467776
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-radio-button-and-checkbox-manipulation;check-multiple-checkboxes-and-i-uncheck-a-checkbox",
+                "keyword": "Scenario",
+                "name": "Check Multiple Checkboxes and I Uncheck a Checkbox",
+                "description": "",
+                "line": 19,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-checkbox\" page",
+                        "line": 20,
+                        "match": {
+                            "location": "navigation_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 122982529
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I wait 2 seconds",
+                        "line": 21,
+                        "match": {
+                            "location": "browser_steps.go:20"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2000260188
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see the \"Uncheck All\" button",
+                        "line": 22,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 125021048
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should see the \"Check All\" button",
+                        "line": 23,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 69227223
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I check \"Option 1\"",
+                        "line": 24,
+                        "match": {
+                            "location": "form_steps.go:165"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 85167398
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I check \"Option 2\"",
+                        "line": 25,
+                        "match": {
+                            "location": "form_steps.go:165"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 89321929
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I check \"Option 3\"",
+                        "line": 26,
+                        "match": {
+                            "location": "form_steps.go:165"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 94014989
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I check \"Option 4\"",
+                        "line": 27,
+                        "match": {
+                            "location": "form_steps.go:165"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 83978045
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I wait 1 second",
+                        "line": 28,
+                        "match": {
+                            "location": "browser_steps.go:20"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 1002362464
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see the \"Uncheck All\" button",
+                        "line": 29,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 120952433
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I uncheck \"Option 4\"",
+                        "line": 30,
+                        "match": {
+                            "location": "form_steps.go:165"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 83343322
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see the \"Check All\" button",
+                        "line": 31,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 81144925
                         }
                     }
                 ]

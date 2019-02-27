@@ -4,5 +4,7 @@
     "table-search": "table-search-filter-demo.html",
     "bootstrap-date-picker": "bootstrap-date-picker-demo.html",
     "file-download": "generate-file-to-download-demo.html",
-    "radio-button": "basic-radiobutton-demo.html"
+    "radio-button": "basic-radiobutton-demo.html",
+    "basic-dropdown": "basic-select-dropdown-demo.html",
+    "basic-checkbox": "basic-checkbox-demo.html"
 }
