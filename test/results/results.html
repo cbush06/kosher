@@ -3,11 +3,11 @@
         <meta charset="utf-8" />
         <title></title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<style type="text/css">
 			.bg-success { background-color: #c7fac9 !important; }
 			.bg-danger { background-color: #f9c8c9 !important; }
 			.bg-info { background-color: #c8f9fb !important; }
+            .table td, .table th { border: none !important; }
 		</style>
     </head>
     <body>
@@ -19,10 +19,10 @@
                     </div>
                     <div class="col-sm ml-auto text-right">
                         <h2 class="mb-0">
-                            <span class="badge badge-success">Passed: 6</span>
-                            <span class="badge badge-danger">Failed: 0</span>
-                            <span class="badge badge-info">Pending: 0</span>
-                            <span class="badge badge-warning  text-white">Skipped: 0</span>
+                            <span class="badge badge-success">Passed: 9</span>
+                            <span class="badge badge-danger">Failed: 1</span>
+                            <span class="badge badge-info">Pending: 1</span>
+                            <span class="badge badge-warning  text-white">Skipped: 2</span>
                         </h2>
                     </div>
                 </div>
@@ -38,275 +38,252 @@
         </div>
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-6">
-                    <div class="card bg-light mb-3">
-                        <div class="card-body">
-                            <h4 class="card-title">Scenarios (1)</h4>
-                            <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
-                                <canvas id="scenariosChart" width="400" height="400"></canvas>
-                            </div>
-                        </div>
+            <table class="table border bg-light">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="table-secondary">Metadata</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>App Version:</th>
+                        <td>1.0.0</td>
+                        <th>Environment:</th>
+                        <td>test</td>
+                    </tr>
+                    <tr>
+                        <th>Browser:</th>
+                        <td></td>
+                        <th>Platform:</th>
+                        <td>web</td>
+                    </tr>
+                </tbody>
+            </table>
+		</div>
+		
+		<p>&nbsp;</p>
+
+        <div class="container-fluid">
+            
+            
+                
+                <h1 class="bg-danger">
+                    <strong>(FAILED) Feature:</strong> Test Textbox Manipulation and Validation
+                </h1>
+				<p class="ml-4 mr-4" style="font-size: 1rem;"><pre>Verify that Kosher&#39;s steps for manipulating
+and verifying textboxes work correctly.</pre></p>
+				<p>&nbsp;</p>
+                
+
+                    
+                    <div class="ml-4 mr-4">
+						<table class="table table-sm table-borderless">
+							<thead>
+								<th colspan="2" class="bg-success">
+									<h2><strong>(PASSED) Scenario:</strong> Fill a Textbox</h2>
+								</th>
+							</thead>
+							<tbody>
+								<tr><td colspan="2" class="pl-4 pr-4"><pre>Verify steps for fill a textbox.</pre></td></tr>
+
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I go to the &#34;basicform&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        2.67s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) When </strong>I fill &#34;user-message&#34; with &#34;Hello, World&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.44s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I press &#34;Show Message&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.19s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Then </strong>I should see &#34;Hello, World&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.06s
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="card bg-light mb-3">
-                        <div class="card-body">
-                            <h4 class="card-title">Steps (6)</h4>
-                            <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
-                                <canvas id="stepsChart" width="400" height="400"></canvas>
-                            </div>
-                        </div>
+                
+
+                    
+                    <div class="ml-4 mr-4">
+						<table class="table table-sm table-borderless">
+							<thead>
+								<th colspan="2" class="bg-info">
+									<h2><strong>(PENDING) Scenario:</strong> Fill Multiple Textboxes</h2>
+								</th>
+							</thead>
+							<tbody>
+								<tr><td colspan="2" class="pl-4 pr-4"><pre>Verify steps for filling multiple textboxes.</pre></td></tr>
+
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I go to the &#34;basicform&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.16s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) When </strong>I fill in the following:</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.52s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-info">
+										<strong>(PENDING) And </strong>I pres &#34;Get Total&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        
+                                    </td>
+                                </tr>
+                                
+                                    <tr>
+                                        <td colspan="2" class="bg-info">
+                                            Could not match step at <code>/home/cbush/go/src/github.com/cbush06/kosher/test/features/textboxes.feature:20</code>
+                                        </td>
+                                    </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-warn">
+										<strong>(SKIPPED) Then </strong>I should see &#34;7&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card bg-light mb-3">
-                        <div class="card-header">
-                            Metadata
-                        </div>
-                        <div class="card-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <span class="col-2"><strong>App Version:</strong></span>
-                                    <span class="col-4">1.0.0</span>
+                
 
-                                    <span class="col-2"><strong>Environment:</strong></span>
-                                    <span class="col-4">test</span>
+                    
+                    <div class="ml-4 mr-4">
+						<table class="table table-sm table-borderless">
+							<thead>
+								<th colspan="2" class="bg-danger">
+									<h2><strong>(FAILED) Scenario:</strong> Keying Characters</h2>
+								</th>
+							</thead>
+							<tbody>
+								<tr><td colspan="2" class="pl-4 pr-4"><pre>Verify that keying characters works.</pre></td></tr>
 
-                                    <span class="col-2"><strong>Browser:</strong></span>
-                                    <span class="col-4"></span>
-
-                                    <span class="col-2"><strong>Platform:</strong></span>
-                                    <span class="col-4">web</span>
-                                </div>
-                            </div>
-                        </div>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I go to the &#34;jquery-dropdown&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.79s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) When </strong>I click &#34;SelectCountry&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.17s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I key &#34;u&#34; in &#34;OpenSelectFilter&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.11s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-danger">
+										<strong>(FAILED) Then </strong>I should not see &#34;United States of America&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.12s
+                                    </td>
+                                </tr>
+                                
+                                    <tr>
+                                        <td colspan="2" class="bg-danger">
+                                            expected NOT to find [United States of America] but found it [1] times
+                                        </td>
+                                    </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-warn">
+										<strong>(SKIPPED) And </strong>I should see &#34;United States of America&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-			
-
-			
-			<div class="row">
-                <div class="col">
-                    <div class="card mb-3">
-						<div class="card-header bg-success">
-							<strong>Feature:</strong> Test Radio Button and Checkbox Manipulation
-						</div>
-						<div class="card-body">
-							<div class="card-title container-fluid">
-								<div class="row"><div class="col"><pre>Verify that Kosher&#39;s steps for manipulating
-and verifying radio buttons and checkboxes
-work correctly.</pre></div></div>
-							</div>
-							<div class="container-fluid">
-								
-
-								
-								<div class="row">
-									<div class="col">
-										<div class="card mb-3">
-											<div class="card-header bg-success">
-												<strong>Scenario:</strong> Selecting a Radio Button
-											</div>
-											<div class="card-body">
-												<div class="card-title container-fluid">
-													<div class="row"><div class="col"><pre></div></div>
-												</div>
-												<div class="container-fluid">
-
-													
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I am on the &#34;radio-button&#34; page
-															</div>
-															<div class="col-1">2.52s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>When </strong>I choose the &#34;Female&#34; radio
-															</div>
-															<div class="col-1">0.11s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>And </strong>I press &#34;Get Checked value&#34;
-															</div>
-															<div class="col-1">0.12s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Then </strong>I should see &#34;Radio button &#39;Female&#39; is checked&#34;
-															</div>
-															<div class="col-1">0.08s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>And </strong>the &#34;Female&#34; radio should be selected
-															</div>
-															<div class="col-1">0.07s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>And </strong>the &#34;Male&#34; radio should not be selected
-															</div>
-															<div class="col-1">0.08s</div>
-														</div>
-
-														
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                
 			
         </div>
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-            var ctx = document.getElementById("scenariosChart");
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Passed', 'Failed'],
-                    datasets: [{
-                        data: [ 1 ,  0 ],
-                        backgroundColor: [
-                            'rgba(0, 255, 0, 0.2)',
-                            'rgba(255, 0, 0, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(0, 255, 0, 0.2)',
-                            'rgba(255, 0, 0, 0.2)'
-                        ],
-                        borderWidth: 1
-                    }]
-				},
-				options: {
-					legend: {
-						labels: {
-							generateLabels: labelFunc
-						}
-					}
-				}
-            });
-
-            var ctx = document.getElementById("stepsChart");
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Passed', 'Failed', 'Pending', 'Skipped'],
-                    datasets: [{
-                        data: [ 6 ,  0 ,  0 ,  0 ],
-                        backgroundColor: [
-                            'rgba(0, 255, 0, 0.2)',
-                            'rgba(255, 0, 0, 0.2)',
-                            'rgba(0, 250, 255, 0.2)',
-                            'rgba(255, 200, 0, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(0, 255, 0, 1)',
-                            'rgba(255, 0, 0, 1)',
-                            'rgba(0, 250, 255, 1)',
-                            'rgba(255, 200, 0, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-				},
-				options: {
-					legend: {
-						labels: {
-							generateLabels: labelFunc
-						}
-					}
-				}
-			});
-			
-			function labelFunc(chart) {
-				var data = chart.data;
-				if (data.labels.length && data.datasets.length) {
-					return data.labels.map(function(label, i) {
-						var meta = chart.getDatasetMeta(0);
-						var ds = data.datasets[0];
-						var arc = meta.data[i];
-						var custom = arc && arc.custom || {};
-						var getValueAtIndexOrDefault = Chart.helpers.getValueAtIndexOrDefault;
-						var arcOpts = chart.options.elements.arc;
-						var fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
-						var stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
-						var bw = custom.borderWidth ? custom.borderWidth : getValueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
-
-						
-						var value = chart.config.data.datasets[arc._datasetIndex].data[arc._index];
-
-						return {
-							
-							text: label + " (" + value + ")",
-							fillStyle: fill,
-							strokeStyle: stroke,
-							lineWidth: bw,
-							hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
-							index: i
-						};
-					});
-				} else {
-					return [];
-				}
-			}
-        </script>
     </body>
 </html>

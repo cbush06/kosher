@@ -21,7 +21,7 @@ func NewReport(s *config.Settings, f *fs.Fs) Report {
 	reportFormat := s.Settings.GetString("reportFormat")
 
 	switch reportFormat {
-	case "html", "bootstrap":
+	case "html", "bootstrap", "simple":
 		return newHTMLReport(s, f)
 	case "pretty", "progress":
 		return newStdOutWriteThroughReport()

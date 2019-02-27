@@ -120,7 +120,7 @@ func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) g
 	// Convert kosher format to GoDog format
 	var reportFormat string
 	switch settings.Settings.GetString("reportFormat") {
-	case "html", "bootstrap":
+	case "html", "bootstrap", "simple":
 		reportFormat = "cucumber"
 	default:
 		reportFormat = settings.Settings.GetString("reportFormat")
