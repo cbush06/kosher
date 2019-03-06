@@ -1,0 +1,85 @@
+<izpack:installation version="5.0" 
+    xmlns:izpack="http://izpack.org/schema/installation" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+
+    <info>
+        <appname>Kosher</appname>
+        <appversion>1.0</appversion>
+        <appsubpath>kosher</appsubpath>
+        <run-privileged/>
+        <uninstaller write="yes" />
+        <authors>
+            <author name="Clinton Bush" email="cbush06@gmail.com" />
+        </authors>
+        <url>https://github.com/cbush06/kosher</url>
+    </info>
+
+    <listeners>
+        <listener classname="RegistryInstallerListener" stage="install">
+            <os family="windows" />
+        </listener>
+        <listener classname="RegistryUninstallerListener" stage="uninstall">
+            <os family="windows" />
+        </listener>
+    </listeners>
+
+    <resources>
+        <res id="Installer.image" src="docs/images/kosher_logo.png" parse="no" />
+        <res id="installer.langsel.img" src="docs/images/kosher_logo.png" parse="no" />
+        <res id="InfoPanel.info" src="README" />
+        <res id="LicencePanel.licence" src="LICENSE" />
+    </resources>
+
+    <locale>
+        <langpack iso3="eng">
+            <str id="installer.reversetitle" txt="$APP_NAME $APP_VER Installer" />
+        </langpack>
+    </locale>
+
+    <guiprefs width="800" height="600" resizable="no">
+        <modifier key="useHeadingPanel" value="yes" />
+    </guiprefs>
+
+    <panels>
+        <panel classname="LicencePanel"/>
+        <panel classname="TargetPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="FinishPanel"/>
+    </panels>
+
+    <packs name="core">
+        <pack id="core_unix" name="Kosher" required="yes" preselected="yes">
+            <description>Core Files</description>
+            <file src="kosher">
+                <os family="linux" />
+            </file>
+            <file src="kosher.exe">
+                <os family="windows" />
+            </file>
+            <fileset dir="." includes="LICENSE,README" />
+            <fileset dir="./libs" targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs">
+                <os family="linux" />
+                <executable type="bin" stage="never" failure="ask" keep="true">
+                    <fileset includes="chromedriver,phantomjs" />
+                </executable>
+            </fileset>
+            <fileset dir="./libs" targetedir="${INSTALL_PATH}/libs" includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe">
+                <os family="windows" />
+                <executable type="bin" stage="never" failure="ask" keep="true">
+                    <fileset includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe" />
+                </executable>
+            </fileset>
+        </pack>
+    </packs>
+
+
+    <natives>
+        <native type="3rdparty" name="COIOSHelper.dll" stage="both">
+            <os family="windows"/>
+        </native>
+        <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
+            <os family="windows"/>
+        </native>
+    </natives>
+
+</izpack:installation>
