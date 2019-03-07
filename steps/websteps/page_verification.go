@@ -214,3 +214,71 @@ func confirmDisabled(s *steputils.StepUtils, shouldBeDisabled bool) func(string,
 		return nil
 	}
 }
+
+func confirmSeeOfType(s *steputils.StepUtils) func(string, string, string) error {
+	return confirmSeeNotSeeOfType(s, true)
+}
+
+func confirmNotSeeOfType(s *steputils.StepUtils) func(string, string, string) error {
+	return confirmSeeNotSeeOfType(s, false)
+}
+
+func confirmSeeNotSeeOfType(s *steputils.StepUtils, shouldSee bool) func(string, string, string) error {
+	return func(tag string, attr string, attrVal string) error {
+		var (
+			matches      *agouti.MultiSelection
+			matchCount   int
+			visibleCount int
+			isShown      bool
+			width        int
+			height       int
+			err          error
+			errMsg       = fmt.Sprintf(`error encountered searching page for [%s] with [%s] of [%s]: `, tag, attr, attrVal) + "%s"
+		)
+
+		switch attr {
+		case "id":
+			matches = s.Page.AllByXPath(fmt.Sprintf(`//%s[@id="%s"]`, strings.ToLower(tag), attrVal))
+		case "name":
+			matches = s.Page.AllByXPath(fmt.Sprintf(`//%s[@name="%s"]`, strings.ToLower(tag), attrVal))
+		default:
+			return fmt.Errorf(errMsg, `expected attribute to be either [id] or [name]`)
+		}
+
+		if matchCount, err = matches.Count(); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		if shouldSee && (matchCount < 1) {
+			return fmt.Errorf(errMsg, "expected TO find match but did not")
+		}
+
+		// determine how many of these elements are visible
+		for i := 0; i < matchCount; i++ {
+			els, _ := matches.At(i).Elements()
+
+			if len(els) < 1 {
+				continue
+			}
+
+			if isShown, err = els[0].IsDisplayed(); err != nil {
+				return fmt.Errorf(errMsg, fmt.Sprintf(`error encountered determining if matched element is visible: %s`, err))
+			}
+			if width, height, err = els[0].GetSize(); err != nil {
+				return fmt.Errorf(errMsg, fmt.Sprintf(`error encountered determining size of matched element: %s`, err))
+			}
+			if isShown && (width > 0 || height > 0) {
+				visibleCount++
+			}
+		}
+
+		// show error message if applicable
+		if shouldSee && visibleCount < 1 {
+			return fmt.Errorf(`expected TO find [%s] with [%s] of [%s], but did not`, tag, attr, attrVal)
+		} else if !shouldSee && visibleCount > 0 {
+			return fmt.Errorf(`expected NOT to find [%s] with [%s] of [%s] but found it [%d] times`, tag, attr, attrVal, visibleCount)
+		}
+
+		return nil
+	}
+}

@@ -1,0 +1,133 @@
+<izpack:installation version="5.0" 
+    xmlns:izpack="http://izpack.org/schema/installation" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+
+    <info>
+        <appname>Kosher</appname>
+        <appversion>1.0</appversion>
+        <appsubpath>kosher</appsubpath>
+        <run-privileged/>
+        <uninstaller write="yes" />
+        <authors>
+            <author name="Clinton Bush" email="cbush06@gmail.com" />
+        </authors>
+        <url>https://github.com/cbush06/kosher</url>
+    </info>
+
+    <logging>
+        <log-file pattern="kosher-installer-log_%u-%g.log" append="true" level="ALL" encoding="UTF-8" />
+    </logging>
+
+    <resources>
+        <res id="Installer.image" src="installer-content/kosher_logo.png" parse="no" />
+        <res id="installer.langsel.img" src="installer-content/kosher_logo.png" parse="no" />
+        <res id="InfoPanel.info" src="README" />
+        <res id="LicencePanel.licence" src="LICENSE" />
+        <res id="CustomLangPack.xml_eng" src="installer-content/CustomLangPack.xml_eng" />
+        <res id="vscode-logo.png" src="installer-content/vscode-logo.png" />
+        <res id="HTMLInfoPanel.vscode-panel" src="installer-content/vscode-panel.html" />
+        <res id="gherkin-plugin.png" src="installer-content/gherkin-plugin.png" />
+        <res id="HTMLInfoPanel.proxy-panel" src="installer-content/proxy-panel.html" />
+        <res id="portswigger-web-security.png" src="installer-content/portswigger-web-security.png" />
+        <res id="fiddler.png" src="installer-content/fiddler.png" />
+        <res id="HTMLInfoPanel.version-control" src="installer-content/version-control.html" />
+        <res id="git.png" src="installer-content/git.png" />
+        <res id="HTMLInfoPanel.ie-config-panel" src="installer-content/ie-config.html" />
+        <res id="ie.png" src="installer-content/ie.png" />
+        <res id="HTMLInfoPanel.credits-panel" src="installer-content/credits.html" />
+        <res id="CGI_Federal.png" src="installer-content/CGI_Federal.png" />
+    </resources>
+
+    <locale>
+        <langpack iso3="eng" />
+    </locale>
+
+    <guiprefs width="800" height="600" resizable="yes">
+        <modifier key="useHeadingPanel" value="yes" />
+    </guiprefs>
+
+    <panels>
+        <panel classname="LicencePanel"/>
+        <panel classname="TargetPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="HTMLInfoPanel" id="vscode-panel" />
+        <panel classname="HTMLInfoPanel" id="proxy-panel" />
+        <panel classname="HTMLInfoPanel" id="credits-panel" />
+        <panel classname="HTMLInfoPanel" id="ie-config-panel" condition="izpack.windowsinstall" />
+        <panel classname="FinishPanel"/>
+    </panels>
+
+    <packs name="core">
+        <pack id="core_unix" name="Kosher" required="yes" preselected="yes">
+            <description>Core Files</description>
+
+            <file src="kosher">
+                <os family="linux" />
+            </file>
+            <file src="kosher.exe">
+                <os family="windows" />
+            </file>
+            <file src="linux-config">
+                <os family="linux" />
+            </file>
+            <file src="windows-config.exe">
+                <os family="windows" />
+            </file>
+
+            <executable targetfile="$INSTALL_PATH/kosher" stage="never" keep="true">
+                <os family="linux" />
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/kosher.exe" stage="never" keep="true">
+                <os family="windows" />
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/linux-config" stage="postinstall" failure="warn" keep="true">
+                <os family="linux" />
+                <args>
+                    <arg value="install" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/windows-config.exe" stage="postinstall" failure="warn" keep="true">
+                <os family="windows" />
+                <args>
+                    <arg value="install" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/linux-config" stage="uninstall" failure="warn" keep="true">
+                <os family="linux" />
+                <args>
+                    <arg value="uninstall" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/windows-config.exe" stage="uninstall" failure="warn" keep="true">
+                <os family="windows" />
+                <args>
+                    <arg value="uninstall" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
+            <fileset dir="." includes="LICENSE,README" />
+            <fileset dir="./libs" targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs">
+                <os family="linux" />
+                <executable type="bin" stage="never" failure="ask" keep="true">
+                    <fileset includes="chromedriver,phantomjs" />
+                </executable>
+            </fileset>
+            <fileset dir="./libs" targetedir="${INSTALL_PATH}/libs" includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe">
+                <os family="windows" />
+                <executable type="bin" stage="never" failure="ask" keep="true">
+                    <fileset includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe" />
+                </executable>
+            </fileset>
+        </pack>
+    </packs>
+
+</izpack:installation>

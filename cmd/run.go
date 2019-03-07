@@ -79,6 +79,7 @@ var cmdRun = &runCommand{
 
 				log.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
 
+				// Create new Window
 				page, err := client.WebDriver.NewPage()
 				if err != nil {
 					log.Fatalf("failed to open page: %s", err)
@@ -115,7 +116,8 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 }
 
 func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) godog.Options {
-	featuresPath, _ := filepath.Abs(pathArg)
+	// featuresPath, _ := filepath.Abs(pathArg)
+	featuresPath := pathArg // TODO: remove this and use above line once GoDog fixes their shit
 
 	// Convert kosher format to GoDog format
 	var reportFormat string

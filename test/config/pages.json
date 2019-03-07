@@ -2,7 +2,12 @@
     "basicform": "basic-first-form-demo.html",
     "jquery-dropdown": "jquery-dropdown-search-demo.html",
     "table-search": "table-search-filter-demo.html",
+    "table-sort": "table-sort-search-demo.html",
     "bootstrap-date-picker": "bootstrap-date-picker-demo.html",
     "file-download": "generate-file-to-download-demo.html",
-    "radio-button": "basic-radiobutton-demo.html"
+    "radio-button": "basic-radiobutton-demo.html",
+    "basic-dropdown": "basic-select-dropdown-demo.html",
+    "basic-checkbox": "basic-checkbox-demo.html",
+    "js-popup": "javascript-alert-box-demo.html",
+    "input-form": "input-form-demo.html"
 }

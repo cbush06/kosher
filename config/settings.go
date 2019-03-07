@@ -17,6 +17,7 @@ type Settings struct {
 	Pages        Provider
 	Selectors    Provider
 	Settings     Provider
+	FileSystem   *fs.Fs
 }
 
 // NewSettings attempts to build a Settings object based on the given Fs object
@@ -26,6 +27,7 @@ func NewSettings(fs *fs.Fs) *Settings {
 		Pages:        buildProvider(common.PagesFile, fs, modPagesProvider),
 		Selectors:    buildProvider(common.SelectorsFile, fs, nil),
 		Settings:     buildProvider(common.SettingsFile, fs, modSettingsProvider),
+		FileSystem:   fs,
 	}
 	return settings
 }

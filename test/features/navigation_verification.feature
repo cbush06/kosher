@@ -5,6 +5,7 @@ Feature: Verify Results of Navigation Actions
 
     Background: Start on the Table Filter page
         Given I go to the "table-search" page
+        And I maximize the window
 
     Scenario: Verify Page
         After clicking on a link, verify that appropriate page is shown.
@@ -19,3 +20,12 @@ Feature: Verify Results of Navigation Actions
         Given I click the "Date pickers" link
         And I click the "Bootstrap Date Picker" link
         Then I should be redirected to the "bootstrap-date-picker" page
+
+    Scenario: Verify Javascript Alerts
+        Verify that alerts can be verified.
+
+        Given I am on the "js-popup" page
+        And I should not see the popup "I am an alert box!"
+        When I click the first instance of "Click me!"
+        And I wait 1 seconds
+        Then I should see the popup "I am an alert box!"

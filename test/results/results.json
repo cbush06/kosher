@@ -1,192 +1,252 @@
 [
     {
-        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/textboxes.feature",
-        "id": "test-textbox-manipulation-and-validation",
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/page_verification.feature",
+        "id": "verify-miscellaneous-elements-of-the-page",
         "keyword": "Feature",
-        "name": "Test Textbox Manipulation and Validation",
-        "description": "    Verify that Kosher's steps for manipulating\n    and verifying textboxes work correctly.",
+        "name": "Verify Miscellaneous Elements of the Page",
+        "description": "    Verify that Kosher's steps for verifying\n    various elements on the page work properly.",
         "line": 1,
         "elements": [
             {
-                "id": "test-textbox-manipulation-and-validation;fill-a-textbox",
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-i-see-all-the-texts",
                 "keyword": "Scenario",
-                "name": "Fill a Textbox",
-                "description": "        Verify steps for fill a textbox.",
-                "line": 5,
+                "name": "Confirm I see all the Texts",
+                "description": "        Verify that I see various labels and\n        excerpts of text on the page.",
+                "line": 9,
                 "type": "scenario",
                 "steps": [
                     {
                         "keyword": "Given ",
-                        "name": "I go to the \"basicform\" page",
-                        "line": 8,
+                        "name": "I maximize the window",
+                        "line": 7,
                         "match": {
-                            "location": "navigation_steps.go:11"
+                            "location": "browser_steps.go:11"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2670180577
+                            "duration": 113381652
                         }
                     },
-                    {
-                        "keyword": "When ",
-                        "name": "I fill \"user-message\" with \"Hello, World\"",
-                        "line": 9,
-                        "match": {
-                            "location": "form_steps.go:35"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 442314405
-                        }
-                    },
-                    {
-                        "keyword": "And ",
-                        "name": "I press \"Show Message\"",
-                        "line": 10,
-                        "match": {
-                            "location": "form_steps.go:316"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 185889330
-                        }
-                    },
-                    {
-                        "keyword": "Then ",
-                        "name": "I should see \"Hello, World\"",
-                        "line": 11,
-                        "match": {
-                            "location": "page_verification.go:38"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 63778497
-                        }
-                    }
-                ]
-            },
-            {
-                "id": "test-textbox-manipulation-and-validation;fill-multiple-textboxes",
-                "keyword": "Scenario",
-                "name": "Fill Multiple Textboxes",
-                "description": "        Verify steps for filling multiple textboxes.",
-                "line": 13,
-                "type": "scenario",
-                "steps": [
-                    {
-                        "keyword": "Given ",
-                        "name": "I go to the \"basicform\" page",
-                        "line": 16,
-                        "match": {
-                            "location": "navigation_steps.go:11"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 159379122
-                        }
-                    },
-                    {
-                        "keyword": "When ",
-                        "name": "I fill in the following:",
-                        "line": 17,
-                        "match": {
-                            "location": "form_steps.go:17"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 523512595
-                        }
-                    },
-                    {
-                        "keyword": "And ",
-                        "name": "I pres \"Get Total\"",
-                        "line": 20,
-                        "match": {
-                            "location": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/textboxes.feature:20"
-                        },
-                        "result": {
-                            "status": "undefined"
-                        }
-                    },
-                    {
-                        "keyword": "Then ",
-                        "name": "I should see \"7\"",
-                        "line": 21,
-                        "match": {
-                            "location": "page_verification.go:38"
-                        },
-                        "result": {
-                            "status": "skipped"
-                        }
-                    }
-                ]
-            },
-            {
-                "id": "test-textbox-manipulation-and-validation;keying-characters",
-                "keyword": "Scenario",
-                "name": "Keying Characters",
-                "description": "        Verify that keying characters works.",
-                "line": 23,
-                "type": "scenario",
-                "steps": [
                     {
                         "keyword": "Given ",
                         "name": "I go to the \"jquery-dropdown\" page",
-                        "line": 26,
+                        "line": 13,
                         "match": {
                             "location": "navigation_steps.go:11"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 787989444
+                            "duration": 2914383857
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see all of the texts:",
+                        "line": 14,
+                        "match": {
+                            "location": "page_verification.go:27"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 140381219
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-buttons/links-are-visible-on-the-page",
+                "keyword": "Scenario",
+                "name": "Confirm Buttons/Links are Visible on the Page",
+                "description": "        Verify that I see a button and/or link on the page\n        and that I do not see a button and/or link on the page.",
+                "line": 19,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103492704
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"table-search\" page",
+                        "line": 23,
+                        "match": {
+                            "location": "navigation_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 588677808
                         }
                     },
                     {
                         "keyword": "When ",
-                        "name": "I click \"SelectCountry\"",
-                        "line": 27,
+                        "name": "I click \"Date pickers\"",
+                        "line": 24,
                         "match": {
                             "location": "form_steps.go:316"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 169752661
-                        }
-                    },
-                    {
-                        "keyword": "And ",
-                        "name": "I key \"u\" in \"OpenSelectFilter\"",
-                        "line": 28,
-                        "match": {
-                            "location": "form_steps.go:92"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 113926444
+                            "duration": 182087528
                         }
                     },
                     {
                         "keyword": "Then ",
-                        "name": "I should not see \"United States of America\"",
-                        "line": 29,
+                        "name": "I should see the \"Bootstrap Date Picker\" link",
+                        "line": 25,
                         "match": {
-                            "location": "page_verification.go:38"
+                            "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "expected NOT to find [United States of America] but found it [1] times",
-                            "duration": 116343867
+                            "status": "passed",
+                            "duration": 130894523
                         }
                     },
                     {
                         "keyword": "And ",
-                        "name": "I should see \"United States of America\"",
-                        "line": 30,
+                        "name": "I should not see the \"Table Pagination\" link",
+                        "line": 26,
                         "match": {
-                            "location": "page_verification.go:38"
+                            "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 148677535
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should see the \"Filter\" button",
+                        "line": 27,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 68175920
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-inputs-with-name",
+                "keyword": "Scenario",
+                "name": "Confirm INPUTs with NAME",
+                "description": "        Verify that I see an INPUT with a specific NAME.",
+                "line": 30,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 102669632
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"input-form\" page",
+                        "line": 33,
+                        "match": {
+                            "location": "navigation_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 616934268
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see an \"input\" with \"name\" of \"first_name\"",
+                        "line": 34,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 64531938
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see an \"input\" with \"name\" of \"middle_name\"",
+                        "line": 35,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 12349143
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-divs-with-id",
+                "keyword": "Scenario",
+                "name": "Confirm DIVs with ID",
+                "description": "        Verify that I see a DIV with a specific ID.",
+                "line": 37,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 112425873
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"basicform\" page",
+                        "line": 40,
+                        "match": {
+                            "location": "navigation_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 980980722
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see a \"div\" with \"id\" of \"user-message\"",
+                        "line": 41,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 58672789
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see a \"div\" with \"id\" of \"user-message2\"",
+                        "line": 42,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 11215623
                         }
                     }
                 ]

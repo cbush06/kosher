@@ -79,11 +79,17 @@ func GetBootstrapTemplate() string {
                                     <span class="col-2"><strong>Environment:</strong></span>
                                     <span class="col-4">{{.Environment}}</span>
 
-                                    <span class="col-2"><strong>Browser:</strong></span>
-                                    <span class="col-4">{{.Browser}}</span>
+									<span class="col-2"><strong>Platform:</strong></span>
+									<span class="col-4">{{.Platform}}</span>
 
-                                    <span class="col-2"><strong>Platform:</strong></span>
-                                    <span class="col-4">{{.Platform}}</span>
+                                    <span class="col-2"><strong>Browser:</strong></span>
+									<span class="col-4">{{.Browser}}</span>
+									
+									<span class="col-2"><strong>OS:</strong></span>
+									<span class="col-4">{{.OS}}</span>
+
+									<span class="col-2"><strong>Total Run Time:</strong></span>
+									<span class="col-4">{{.RunTime}}</span>
                                 </div>
                             </div>
                         </div>

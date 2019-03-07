@@ -57,11 +57,16 @@ func GetSimpleTemplate() string {
                         <td>{{.Environment}}</td>
                     </tr>
                     <tr>
+						<th>Platform:</th>
+						<td>{{.Platform}}</td>
                         <th>Browser:</th>
                         <td>{{.Browser}}</td>
-                        <th>Platform:</th>
-                        <td>{{.Platform}}</td>
-                    </tr>
+					</tr>
+					<tr>
+						<th>OS:</th>
+						<td>{{.OS}}</td>
+						<th>Total Run Time:</th>
+						<td>{{.RunTime}}</td>
                 </tbody>
             </table>
 		</div>

@@ -2,6 +2,9 @@ Feature: Test Textbox Manipulation and Validation
     Verify that Kosher's steps for manipulating
     and verifying textboxes work correctly.
 
+    Background:
+        Given I maximize the window
+
     Scenario: Fill a Textbox
         Verify steps for fill a textbox.
 
@@ -17,7 +20,7 @@ Feature: Test Textbox Manipulation and Validation
         When I fill in the following:
             | sum1 | 4 |
             | sum2 | 3 |
-        And I pres "Get Total"
+        And I press "Get Total"
         Then I should see "7"
 
     Scenario: Keying Characters
@@ -26,5 +29,5 @@ Feature: Test Textbox Manipulation and Validation
         Given I go to the "jquery-dropdown" page
         When I click "SelectCountry"
         And I key "u" in "OpenSelectFilter"
-        Then I should not see "United States of America"
+        Then I should not see "Bangladesh"
         And I should see "United States of America"

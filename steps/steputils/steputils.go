@@ -189,35 +189,13 @@ func (s *StepUtils) GetFieldType(name string, sel *agouti.Selection) (string, er
 // FormatDate converts a `time.Time` to a string using the `dateFormat` value specified in the settings file
 func (s *StepUtils) FormatDate(t time.Time) string {
 	dateFormat := s.Settings.Settings.GetString("dateFormat")
-	if len(dateFormat) < 1 {
-		return ""
-	}
-	return t.Format(convertDateFormatToGoFormat(dateFormat))
+	return common.FormatDate(t, dateFormat)
 }
 
 // ParseDate parses a given string to a `time.Time` using the `dateFormat` value specified in the settings file
 func (s *StepUtils) ParseDate(date string) time.Time {
 	dateFormat := s.Settings.Settings.GetString("dateFormat")
-	if len(dateFormat) < 1 {
-		return time.Time{}
-	}
-	if goDate, err := time.ParseInLocation(convertDateFormatToGoFormat(dateFormat), date, time.Local); err != nil {
-		return time.Time{}
-	} else {
-		return goDate
-	}
-}
-
-func convertDateFormatToGoFormat(dateFormat string) string {
-	dateFormat = strings.Replace(dateFormat, "MMMM", "January", 1)
-	dateFormat = strings.Replace(dateFormat, "MMM", "Jan", 1)
-	dateFormat = strings.Replace(dateFormat, "MM", "01", 1)
-	dateFormat = strings.Replace(dateFormat, "YYYY", "2006", 1)
-	dateFormat = strings.Replace(dateFormat, "YY", "06", 1)
-	dateFormat = strings.Replace(dateFormat, "DDDD", "Monday", 1)
-	dateFormat = strings.Replace(dateFormat, "DDD", "Mon", 1)
-	dateFormat = strings.Replace(dateFormat, "DD", "02", 1)
-	return dateFormat
+	return common.ParseDate(date, dateFormat)
 }
 
 // IsFormField determines if the selection provided is an HTML form field
