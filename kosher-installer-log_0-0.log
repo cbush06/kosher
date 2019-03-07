@@ -1,0 +1,2103 @@
+2019.03.07 11:11:15 INFO: ====================
+2019.03.07 11:11:15 INFO: Installation started
+2019.03.07 11:11:15 INFO: Framework: 5.1.3-84aaf (IzPack)
+2019.03.07 11:11:15 INFO: Platform: ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: Unpacker starting
+2019.03.07 11:11:15 FINE: Cannot find named resource: 'packsLang.xml' AND 'packsLang.xml_eng'
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/kosher (backreference: false)
+2019.03.07 11:11:15 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: OS constraints matched platform
+2019.03.07 11:11:15 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:11:15 FINE: |- Copying to file system (size: 14057546 bytes)
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/kosher.exe (backreference: false)
+2019.03.07 11:11:15 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/kosher.exe by 13772288 bytes 
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/linux-config (backreference: false)
+2019.03.07 11:11:15 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: OS constraints matched platform
+2019.03.07 11:11:15 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:11:15 FINE: |- Copying to file system (size: 2030220 bytes)
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/windows-config.exe (backreference: false)
+2019.03.07 11:11:15 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/windows-config.exe by 2534400 bytes 
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/LICENSE (backreference: false)
+2019.03.07 11:11:15 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:11:15 FINE: |- Copying to file system (size: 1069 bytes)
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/README (backreference: false)
+2019.03.07 11:11:15 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:11:15 FINE: |- Copying to file system (size: 855 bytes)
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/libs/chromedriver (backreference: false)
+2019.03.07 11:11:15 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: OS constraints matched platform
+2019.03.07 11:11:15 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:11:15 FINE: |- Copying to file system (size: 11892608 bytes)
+2019.03.07 11:11:15 FINE: Unpacking file ${INSTALL_PATH}/libs/phantomjs (backreference: false)
+2019.03.07 11:11:15 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:15 FINE: OS constraints matched platform
+2019.03.07 11:11:15 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:11:15 FINE: |- Copying to file system (size: 67932064 bytes)
+2019.03.07 11:11:16 FINE: Unpacking file ${INSTALL_PATH}/IEDriverServer.exe (backreference: false)
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/IEDriverServer.exe by 3000832 bytes 
+2019.03.07 11:11:16 FINE: Unpacking file ${INSTALL_PATH}/chromedriver.exe (backreference: false)
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/chromedriver.exe by 8543232 bytes 
+2019.03.07 11:11:16 FINE: Unpacking file ${INSTALL_PATH}/phantomjs.exe (backreference: false)
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/phantomjs.exe by 18587648 bytes 
+2019.03.07 11:11:16 FINE: Unpacked executable: path = $INSTALL_PATH/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:11:16 FINE: Unpacked executable: path = $INSTALL_PATH/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:11:16 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:11:16 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:11:16 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:11:16 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:11:16 FINE: Found 0 parsable files
+2019.03.07 11:11:16 FINE: Found 6 executable files
+2019.03.07 11:11:16 FINE: Handling executable file path = /usr/local/kosher/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints matched platform
+2019.03.07 11:11:16 FINE: Making file executable (setting executable flag)
+2019.03.07 11:11:16 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/kosher
+
+2019.03.07 11:11:16 FINE: stdout:
+2019.03.07 11:11:16 FINE: 
+2019.03.07 11:11:16 FINE: stderr:
+2019.03.07 11:11:16 FINE: 
+2019.03.07 11:11:16 FINE: exit status: 0
+2019.03.07 11:11:16 FINE: Handling executable file path = /usr/local/kosher/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints matched platform
+2019.03.07 11:11:16 FINE: Making file executable (setting executable flag)
+2019.03.07 11:11:16 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 11:11:16 FINE: stdout:
+2019.03.07 11:11:16 FINE: 
+2019.03.07 11:11:16 FINE: stderr:
+2019.03.07 11:11:16 FINE: 
+2019.03.07 11:11:16 FINE: exit status: 0
+2019.03.07 11:11:16 FINE: executeCommand
+	params: /usr/local/kosher/linux-config
+	params: install
+	params: /usr/local/kosher
+
+2019.03.07 11:11:16 FINE: stdout:
+2019.03.07 11:11:16 FINE: 
+2019.03.07 11:11:16 FINE: stderr:
+2019.03.07 11:11:16 FINE: 2019/03/07 11:11:16 Linux Install: /usr/local/kosher
+
+2019.03.07 11:11:16 FINE: exit status: 0
+2019.03.07 11:11:16 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints matched platform
+2019.03.07 11:11:16 FINE: Making file executable (setting executable flag)
+2019.03.07 11:11:16 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 11:11:16 FINE: stdout:
+2019.03.07 11:11:16 FINE: 
+2019.03.07 11:11:16 FINE: stderr:
+2019.03.07 11:11:16 FINE: 
+2019.03.07 11:11:16 FINE: exit status: 0
+2019.03.07 11:11:16 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:11:16 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:11:16 FINE: Writing installation information
+2019.03.07 11:11:16 FINE: Creating info file /usr/local/kosher/.installationinformation
+2019.03.07 11:11:16 FINE: Writing installation information finished
+2019.03.07 11:11:16 INFO: Installation finished
+2019.03.07 11:11:16 FINE: Current focus owner: null.glassPane
+2019.03.07 11:11:17 FINE: Refreshing dynamic variables
+2019.03.07 11:11:17 FINE: Refreshing dynamic variables
+2019.03.07 11:11:17 FINE: Panel FinishPanel_3 unconditionally activated
+2019.03.07 11:11:17 FINE: Panel 'FinishPanel_3' can be shown
+2019.03.07 11:11:17 FINE: Refreshing dynamic variables
+2019.03.07 11:11:17 FINE: Panel FinishPanel_3 unconditionally activated
+2019.03.07 11:11:17 FINE: Panel 'FinishPanel_3' can be shown
+2019.03.07 11:11:17 FINE: Refreshing dynamic variables
+2019.03.07 11:11:17 FINE: Switching panel, old index is 2
+2019.03.07 11:11:17 FINE: Blocked variables on panel 'FinishPanel_3': {}
+2019.03.07 11:11:17 FINE: Switched panel index: 2 -> 3
+2019.03.07 11:11:17 FINE: Refreshing dynamic variables
+2019.03.07 11:45:49 INFO: ====================
+2019.03.07 11:45:49 FINE: Blocked variables on panel 'InstallPanel_2': {}
+2019.03.07 11:45:49 INFO: Installation started
+2019.03.07 11:45:49 FINE: Switched panel index: 1 -> 2
+2019.03.07 11:45:49 FINE: Refreshing dynamic variables
+2019.03.07 11:45:49 FINE: Refreshing dynamic variables
+2019.03.07 11:45:49 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 11:45:49 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 11:45:49 INFO: Framework: 5.1.3-84aaf (IzPack)
+2019.03.07 11:45:49 INFO: Platform: ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: Unpacker starting
+2019.03.07 11:45:49 FINE: Cannot find named resource: 'packsLang.xml' AND 'packsLang.xml_eng'
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/kosher (backreference: false)
+2019.03.07 11:45:49 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: OS constraints matched platform
+2019.03.07 11:45:49 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:45:49 FINE: |- Copying to file system (size: 14057546 bytes)
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/kosher.exe (backreference: false)
+2019.03.07 11:45:49 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/kosher.exe by 13772288 bytes 
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/linux-config (backreference: false)
+2019.03.07 11:45:49 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: OS constraints matched platform
+2019.03.07 11:45:49 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:45:49 FINE: |- Copying to file system (size: 2030220 bytes)
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/windows-config.exe (backreference: false)
+2019.03.07 11:45:49 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/windows-config.exe by 2534400 bytes 
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/LICENSE (backreference: false)
+2019.03.07 11:45:49 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:45:49 FINE: |- Copying to file system (size: 1069 bytes)
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/README (backreference: false)
+2019.03.07 11:45:49 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:45:49 FINE: |- Copying to file system (size: 855 bytes)
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/libs/chromedriver (backreference: false)
+2019.03.07 11:45:49 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: OS constraints matched platform
+2019.03.07 11:45:49 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:45:49 FINE: |- Copying to file system (size: 11892608 bytes)
+2019.03.07 11:45:49 FINE: Unpacking file ${INSTALL_PATH}/libs/phantomjs (backreference: false)
+2019.03.07 11:45:49 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:49 FINE: OS constraints matched platform
+2019.03.07 11:45:49 FINE: |- Extracting file using com.izforge.izpack.installer.unpacker.DefaultFileUnpacker)
+2019.03.07 11:45:49 FINE: |- Copying to file system (size: 67932064 bytes)
+2019.03.07 11:45:50 FINE: Unpacking file ${INSTALL_PATH}/IEDriverServer.exe (backreference: false)
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/IEDriverServer.exe by 3000832 bytes 
+2019.03.07 11:45:50 FINE: Unpacking file ${INSTALL_PATH}/chromedriver.exe (backreference: false)
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/chromedriver.exe by 8543232 bytes 
+2019.03.07 11:45:50 FINE: Unpacking file ${INSTALL_PATH}/phantomjs.exe (backreference: false)
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/phantomjs.exe by 18587648 bytes 
+2019.03.07 11:45:50 FINE: Unpacked executable: path = $INSTALL_PATH/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:45:50 FINE: Unpacked executable: path = $INSTALL_PATH/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:45:50 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:45:50 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:45:50 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:45:50 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:45:50 FINE: Found 0 parsable files
+2019.03.07 11:45:50 FINE: Found 6 executable files
+2019.03.07 11:45:50 FINE: Handling executable file path = /usr/local/kosher/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints matched platform
+2019.03.07 11:45:50 FINE: Making file executable (setting executable flag)
+2019.03.07 11:45:50 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/kosher
+
+2019.03.07 11:45:50 FINE: stdout:
+2019.03.07 11:45:50 FINE: 
+2019.03.07 11:45:50 FINE: stderr:
+2019.03.07 11:45:50 FINE: 
+2019.03.07 11:45:50 FINE: exit status: 0
+2019.03.07 11:45:50 FINE: Handling executable file path = /usr/local/kosher/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints matched platform
+2019.03.07 11:45:50 FINE: Making file executable (setting executable flag)
+2019.03.07 11:45:50 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 11:45:50 FINE: stdout:
+2019.03.07 11:45:50 FINE: 
+2019.03.07 11:45:50 FINE: stderr:
+2019.03.07 11:45:50 FINE: 
+2019.03.07 11:45:50 FINE: exit status: 0
+2019.03.07 11:45:50 FINE: executeCommand
+	params: /usr/local/kosher/linux-config
+	params: install
+	params: /usr/local/kosher
+
+2019.03.07 11:45:50 FINE: stdout:
+2019.03.07 11:45:50 FINE: 
+2019.03.07 11:45:50 FINE: stderr:
+2019.03.07 11:45:50 FINE: 2019/03/07 11:45:50 Linux Install: /usr/local/kosher
+
+2019.03.07 11:45:50 FINE: exit status: 0
+2019.03.07 11:45:50 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints matched platform
+2019.03.07 11:45:50 FINE: Making file executable (setting executable flag)
+2019.03.07 11:45:50 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 11:45:50 FINE: stdout:
+2019.03.07 11:45:50 FINE: 
+2019.03.07 11:45:50 FINE: stderr:
+2019.03.07 11:45:50 FINE: 
+2019.03.07 11:45:50 FINE: exit status: 0
+2019.03.07 11:45:50 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:45:50 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:45:50 FINE: Writing installation information
+2019.03.07 11:45:50 FINE: Creating info file /usr/local/kosher/.installationinformation
+2019.03.07 11:45:50 FINE: Writing installation information finished
+2019.03.07 11:45:50 INFO: Installation finished
+2019.03.07 11:45:50 FINE: Current focus owner: null.glassPane
+2019.03.07 11:45:51 FINE: Refreshing dynamic variables
+2019.03.07 11:45:51 FINE: Refreshing dynamic variables
+2019.03.07 11:45:51 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 11:45:51 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 11:45:51 FINE: Refreshing dynamic variables
+2019.03.07 11:45:51 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 11:45:51 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 11:45:51 FINE: Refreshing dynamic variables
+2019.03.07 11:45:51 FINE: Switching panel, old index is 2
+2019.03.07 11:45:51 FINE: Blocked variables on panel 'vscode-panel': {}
+2019.03.07 11:45:51 FINE: Switched panel index: 2 -> 3
+2019.03.07 11:45:51 FINE: Refreshing dynamic variables
+2019.03.07 11:45:51 FINE: Refreshing dynamic variables
+2019.03.07 11:45:51 FINE: Panel FinishPanel_4 unconditionally activated
+2019.03.07 11:45:51 FINE: Panel 'FinishPanel_4' can be shown
+2019.03.07 11:45:51 FINE: Refreshing dynamic variables
+2019.03.07 11:45:51 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 11:45:51 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 11:46:07 FINE: Refreshing dynamic variables
+2019.03.07 11:46:07 FINE: Refreshing dynamic variables
+2019.03.07 11:46:07 FINE: Panel FinishPanel_4 unconditionally activated
+2019.03.07 11:46:07 FINE: Panel 'FinishPanel_4' can be shown
+2019.03.07 11:46:07 FINE: Refreshing dynamic variables
+2019.03.07 11:46:07 FINE: Panel FinishPanel_4 unconditionally activated
+2019.03.07 11:46:07 FINE: Panel 'FinishPanel_4' can be shown
+2019.03.07 11:46:07 FINE: Refreshing dynamic variables
+2019.03.07 11:46:07 FINE: Switching panel, old index is 3
+2019.03.07 11:46:07 FINE: Blocked variables on panel 'FinishPanel_4': {}
+2019.03.07 11:46:07 FINE: Switched panel index: 3 -> 4
+2019.03.07 11:46:07 FINE: Refreshing dynamic variables
+2019.03.07 11:48:29 FINE: Blocked variables on panel 'InstallPanel_2': {}
+2019.03.07 11:48:29 INFO: ====================
+2019.03.07 11:48:29 FINE: Switched panel index: 1 -> 2
+2019.03.07 11:48:29 FINE: Refreshing dynamic variables
+2019.03.07 11:48:29 INFO: Installation started
+2019.03.07 11:48:29 FINE: Refreshing dynamic variables
+2019.03.07 11:48:29 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 11:48:29 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 11:48:29 INFO: Framework: 5.1.3-84aaf (IzPack)
+2019.03.07 11:48:29 INFO: Platform: ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: Unpacker starting
+2019.03.07 11:48:29 FINE: Cannot find named resource: 'packsLang.xml' AND 'packsLang.xml_eng'
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/kosher (backreference: false)
+2019.03.07 11:48:29 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: OS constraints matched platform
+2019.03.07 11:48:29 FINE: |- No overwrite - skipping pack stream by 14057546 bytes
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/kosher.exe (backreference: false)
+2019.03.07 11:48:29 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/kosher.exe by 13772288 bytes 
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/linux-config (backreference: false)
+2019.03.07 11:48:29 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: OS constraints matched platform
+2019.03.07 11:48:29 FINE: |- No overwrite - skipping pack stream by 2030220 bytes
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/windows-config.exe (backreference: false)
+2019.03.07 11:48:29 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/windows-config.exe by 2534400 bytes 
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/LICENSE (backreference: false)
+2019.03.07 11:48:29 FINE: |- No overwrite - skipping pack stream by 1069 bytes
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/README (backreference: false)
+2019.03.07 11:48:29 FINE: |- No overwrite - skipping pack stream by 855 bytes
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/libs/chromedriver (backreference: false)
+2019.03.07 11:48:29 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: OS constraints matched platform
+2019.03.07 11:48:29 FINE: |- No overwrite - skipping pack stream by 11892608 bytes
+2019.03.07 11:48:29 FINE: Unpacking file ${INSTALL_PATH}/libs/phantomjs (backreference: false)
+2019.03.07 11:48:29 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:29 FINE: OS constraints matched platform
+2019.03.07 11:48:29 FINE: |- No overwrite - skipping pack stream by 67932064 bytes
+2019.03.07 11:48:30 FINE: Unpacking file ${INSTALL_PATH}/IEDriverServer.exe (backreference: false)
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/IEDriverServer.exe by 3000832 bytes 
+2019.03.07 11:48:30 FINE: Unpacking file ${INSTALL_PATH}/chromedriver.exe (backreference: false)
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/chromedriver.exe by 8543232 bytes 
+2019.03.07 11:48:30 FINE: Unpacking file ${INSTALL_PATH}/phantomjs.exe (backreference: false)
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/phantomjs.exe by 18587648 bytes 
+2019.03.07 11:48:30 FINE: Unpacked executable: path = $INSTALL_PATH/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:48:30 FINE: Unpacked executable: path = $INSTALL_PATH/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:48:30 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:48:30 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:48:30 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:48:30 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 11:48:30 FINE: Found 0 parsable files
+2019.03.07 11:48:30 FINE: Found 6 executable files
+2019.03.07 11:48:30 FINE: Handling executable file path = /usr/local/kosher/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints matched platform
+2019.03.07 11:48:30 FINE: Making file executable (setting executable flag)
+2019.03.07 11:48:30 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/kosher
+
+2019.03.07 11:48:30 FINE: stdout:
+2019.03.07 11:48:30 FINE: 
+2019.03.07 11:48:30 FINE: stderr:
+2019.03.07 11:48:30 FINE: 
+2019.03.07 11:48:30 FINE: exit status: 0
+2019.03.07 11:48:30 FINE: Handling executable file path = /usr/local/kosher/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints matched platform
+2019.03.07 11:48:30 FINE: Making file executable (setting executable flag)
+2019.03.07 11:48:30 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 11:48:30 FINE: stdout:
+2019.03.07 11:48:30 FINE: 
+2019.03.07 11:48:30 FINE: stderr:
+2019.03.07 11:48:30 FINE: 
+2019.03.07 11:48:30 FINE: exit status: 0
+2019.03.07 11:48:30 FINE: executeCommand
+	params: /usr/local/kosher/linux-config
+	params: install
+	params: /usr/local/kosher
+
+2019.03.07 11:48:30 FINE: stdout:
+2019.03.07 11:48:30 FINE: 
+2019.03.07 11:48:30 FINE: stderr:
+2019.03.07 11:48:30 FINE: 2019/03/07 11:48:30 Linux Install: /usr/local/kosher
+
+2019.03.07 11:48:30 FINE: exit status: 0
+2019.03.07 11:48:30 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints matched platform
+2019.03.07 11:48:30 FINE: Making file executable (setting executable flag)
+2019.03.07 11:48:30 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 11:48:30 FINE: stdout:
+2019.03.07 11:48:30 FINE: 
+2019.03.07 11:48:30 FINE: stderr:
+2019.03.07 11:48:30 FINE: 
+2019.03.07 11:48:30 FINE: exit status: 0
+2019.03.07 11:48:30 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 11:48:30 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 11:48:30 FINE: Writing installation information
+2019.03.07 11:48:30 FINE: Previous installation information found
+2019.03.07 11:48:30 FINE: Writing installation information finished
+2019.03.07 11:48:30 INFO: Installation finished
+2019.03.07 11:48:30 FINE: Current focus owner: null.glassPane
+2019.03.07 11:48:31 FINE: Refreshing dynamic variables
+2019.03.07 11:48:31 FINE: Refreshing dynamic variables
+2019.03.07 11:48:31 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 11:48:31 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 11:48:31 FINE: Refreshing dynamic variables
+2019.03.07 11:48:31 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 11:48:31 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 11:48:31 FINE: Refreshing dynamic variables
+2019.03.07 11:48:31 FINE: Switching panel, old index is 2
+2019.03.07 11:48:31 FINE: Blocked variables on panel 'vscode-panel': {}
+2019.03.07 11:48:31 FINE: Switched panel index: 2 -> 3
+2019.03.07 11:48:31 FINE: Refreshing dynamic variables
+2019.03.07 11:48:31 FINE: Refreshing dynamic variables
+2019.03.07 11:48:31 FINE: Panel FinishPanel_4 unconditionally activated
+2019.03.07 11:48:31 FINE: Panel 'FinishPanel_4' can be shown
+2019.03.07 11:48:31 FINE: Refreshing dynamic variables
+2019.03.07 11:48:31 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 11:48:31 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:01:13 INFO: ====================
+2019.03.07 12:01:13 FINE: Blocked variables on panel 'InstallPanel_2': {}
+2019.03.07 12:01:13 INFO: Installation started
+2019.03.07 12:01:13 FINE: Switched panel index: 1 -> 2
+2019.03.07 12:01:13 FINE: Refreshing dynamic variables
+2019.03.07 12:01:13 FINE: Refreshing dynamic variables
+2019.03.07 12:01:13 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:13 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:13 INFO: Framework: 5.1.3-84aaf (IzPack)
+2019.03.07 12:01:13 INFO: Platform: ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:13 FINE: Unpacker starting
+2019.03.07 12:01:13 FINE: Cannot find named resource: 'packsLang.xml' AND 'packsLang.xml_eng'
+2019.03.07 12:01:13 FINE: Unpacking file ${INSTALL_PATH}/kosher (backreference: false)
+2019.03.07 12:01:13 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:13 FINE: OS constraints matched platform
+2019.03.07 12:01:13 FINE: |- No overwrite - skipping pack stream by 14057546 bytes
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/kosher.exe (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/kosher.exe by 13772288 bytes 
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/linux-config (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints matched platform
+2019.03.07 12:01:14 FINE: |- No overwrite - skipping pack stream by 2030220 bytes
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/windows-config.exe (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/windows-config.exe by 2534400 bytes 
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/LICENSE (backreference: false)
+2019.03.07 12:01:14 FINE: |- No overwrite - skipping pack stream by 1069 bytes
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/README (backreference: false)
+2019.03.07 12:01:14 FINE: |- No overwrite - skipping pack stream by 855 bytes
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/libs/chromedriver (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints matched platform
+2019.03.07 12:01:14 FINE: |- No overwrite - skipping pack stream by 11892608 bytes
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/libs/phantomjs (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints matched platform
+2019.03.07 12:01:14 FINE: |- No overwrite - skipping pack stream by 67932064 bytes
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/IEDriverServer.exe (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/IEDriverServer.exe by 3000832 bytes 
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/chromedriver.exe (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/chromedriver.exe by 8543232 bytes 
+2019.03.07 12:01:14 FINE: Unpacking file ${INSTALL_PATH}/phantomjs.exe (backreference: false)
+2019.03.07 12:01:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:14 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/phantomjs.exe by 18587648 bytes 
+2019.03.07 12:01:15 FINE: Unpacked executable: path = $INSTALL_PATH/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:15 FINE: Unpacked executable: path = $INSTALL_PATH/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:15 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:15 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:15 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:15 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:15 FINE: Found 0 parsable files
+2019.03.07 12:01:15 FINE: Found 6 executable files
+2019.03.07 12:01:15 FINE: Handling executable file path = /usr/local/kosher/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:15 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: OS constraints matched platform
+2019.03.07 12:01:15 FINE: Making file executable (setting executable flag)
+2019.03.07 12:01:15 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/kosher
+
+2019.03.07 12:01:15 FINE: stdout:
+2019.03.07 12:01:15 FINE: 
+2019.03.07 12:01:15 FINE: stderr:
+2019.03.07 12:01:15 FINE: 
+2019.03.07 12:01:15 FINE: exit status: 0
+2019.03.07 12:01:15 FINE: Handling executable file path = /usr/local/kosher/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:15 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:15 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: OS constraints matched platform
+2019.03.07 12:01:15 FINE: Making file executable (setting executable flag)
+2019.03.07 12:01:15 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:01:15 FINE: stdout:
+2019.03.07 12:01:15 FINE: 
+2019.03.07 12:01:15 FINE: stderr:
+2019.03.07 12:01:15 FINE: 
+2019.03.07 12:01:15 FINE: exit status: 0
+2019.03.07 12:01:15 FINE: executeCommand
+	params: /usr/local/kosher/linux-config
+	params: install
+	params: /usr/local/kosher
+
+2019.03.07 12:01:15 FINE: stdout:
+2019.03.07 12:01:15 FINE: 
+2019.03.07 12:01:15 FINE: stderr:
+2019.03.07 12:01:15 FINE: 2019/03/07 12:01:15 Linux Install: /usr/local/kosher
+
+2019.03.07 12:01:15 FINE: exit status: 0
+2019.03.07 12:01:15 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:15 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:15 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: OS constraints matched platform
+2019.03.07 12:01:15 FINE: Making file executable (setting executable flag)
+2019.03.07 12:01:15 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:01:15 FINE: stdout:
+2019.03.07 12:01:15 FINE: 
+2019.03.07 12:01:15 FINE: stderr:
+2019.03.07 12:01:15 FINE: 
+2019.03.07 12:01:15 FINE: exit status: 0
+2019.03.07 12:01:15 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:15 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:15 FINE: Writing installation information
+2019.03.07 12:01:15 FINE: Previous installation information found
+2019.03.07 12:01:15 FINE: Writing installation information finished
+2019.03.07 12:01:15 INFO: Installation finished
+2019.03.07 12:01:15 FINE: Current focus owner: null.glassPane
+2019.03.07 12:01:15 FINE: Refreshing dynamic variables
+2019.03.07 12:01:15 FINE: Refreshing dynamic variables
+2019.03.07 12:01:15 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:15 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:15 FINE: Refreshing dynamic variables
+2019.03.07 12:01:15 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:15 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:15 FINE: Refreshing dynamic variables
+2019.03.07 12:01:15 FINE: Switching panel, old index is 2
+2019.03.07 12:01:15 FINE: Blocked variables on panel 'vscode-panel': {}
+2019.03.07 12:01:15 FINE: Switched panel index: 2 -> 3
+2019.03.07 12:01:15 FINE: Refreshing dynamic variables
+2019.03.07 12:01:16 FINE: Refreshing dynamic variables
+2019.03.07 12:01:16 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:01:16 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:01:16 FINE: Refreshing dynamic variables
+2019.03.07 12:01:16 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 12:01:16 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:01:23 FINE: Refreshing dynamic variables
+2019.03.07 12:01:23 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 12:01:23 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:01:23 FINE: Refreshing dynamic variables
+2019.03.07 12:01:23 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 12:01:23 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:01:23 FINE: Refreshing dynamic variables
+2019.03.07 12:01:23 FINE: Switching panel, old index is 3
+2019.03.07 12:01:23 INFO: ====================
+2019.03.07 12:01:23 INFO: Installation started
+2019.03.07 12:01:23 INFO: Framework: 5.1.3-84aaf (IzPack)
+2019.03.07 12:01:23 INFO: Platform: ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: Unblocked variables on panel 'FinishPanel_5': {}
+2019.03.07 12:01:23 FINE: Unblocked variables on panel 'proxy-panel': {}
+2019.03.07 12:01:23 FINE: Unblocked variables on panel 'vscode-panel': {}
+2019.03.07 12:01:23 FINE: Switched panel index: 3 -> 2
+2019.03.07 12:01:23 FINE: Refreshing dynamic variables
+2019.03.07 12:01:23 FINE: Refreshing dynamic variables
+2019.03.07 12:01:23 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:23 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:23 FINE: Unpacker starting
+2019.03.07 12:01:23 FINE: Cannot find named resource: 'packsLang.xml' AND 'packsLang.xml_eng'
+2019.03.07 12:01:23 FINE: Unpacking file ${INSTALL_PATH}/kosher (backreference: false)
+2019.03.07 12:01:23 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: OS constraints matched platform
+2019.03.07 12:01:23 FINE: |- No overwrite - skipping pack stream by 14057546 bytes
+2019.03.07 12:01:23 FINE: Unpacking file ${INSTALL_PATH}/kosher.exe (backreference: false)
+2019.03.07 12:01:23 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/kosher.exe by 13772288 bytes 
+2019.03.07 12:01:23 FINE: Unpacking file ${INSTALL_PATH}/linux-config (backreference: false)
+2019.03.07 12:01:23 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: OS constraints matched platform
+2019.03.07 12:01:23 FINE: |- No overwrite - skipping pack stream by 2030220 bytes
+2019.03.07 12:01:23 FINE: Unpacking file ${INSTALL_PATH}/windows-config.exe (backreference: false)
+2019.03.07 12:01:23 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/windows-config.exe by 2534400 bytes 
+2019.03.07 12:01:23 FINE: Unpacking file ${INSTALL_PATH}/LICENSE (backreference: false)
+2019.03.07 12:01:23 FINE: |- No overwrite - skipping pack stream by 1069 bytes
+2019.03.07 12:01:23 FINE: Unpacking file ${INSTALL_PATH}/README (backreference: false)
+2019.03.07 12:01:23 FINE: |- No overwrite - skipping pack stream by 855 bytes
+2019.03.07 12:01:23 FINE: Unpacking file ${INSTALL_PATH}/libs/chromedriver (backreference: false)
+2019.03.07 12:01:23 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:23 FINE: OS constraints matched platform
+2019.03.07 12:01:23 FINE: |- No overwrite - skipping pack stream by 11892608 bytes
+2019.03.07 12:01:24 FINE: Unpacking file ${INSTALL_PATH}/libs/phantomjs (backreference: false)
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints matched platform
+2019.03.07 12:01:24 FINE: |- No overwrite - skipping pack stream by 67932064 bytes
+2019.03.07 12:01:24 FINE: Unpacking file ${INSTALL_PATH}/IEDriverServer.exe (backreference: false)
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/IEDriverServer.exe by 3000832 bytes 
+2019.03.07 12:01:24 FINE: Unpacking file ${INSTALL_PATH}/chromedriver.exe (backreference: false)
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/chromedriver.exe by 8543232 bytes 
+2019.03.07 12:01:24 FINE: Unpacking file ${INSTALL_PATH}/phantomjs.exe (backreference: false)
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/phantomjs.exe by 18587648 bytes 
+2019.03.07 12:01:24 FINE: Unpacked executable: path = $INSTALL_PATH/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:24 FINE: Unpacked executable: path = $INSTALL_PATH/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:24 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:24 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:24 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:24 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:01:24 FINE: Found 0 parsable files
+2019.03.07 12:01:24 FINE: Found 6 executable files
+2019.03.07 12:01:24 FINE: Handling executable file path = /usr/local/kosher/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints matched platform
+2019.03.07 12:01:24 FINE: Making file executable (setting executable flag)
+2019.03.07 12:01:24 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/kosher
+
+2019.03.07 12:01:24 FINE: stdout:
+2019.03.07 12:01:24 FINE: 
+2019.03.07 12:01:24 FINE: stderr:
+2019.03.07 12:01:24 FINE: 
+2019.03.07 12:01:24 FINE: exit status: 0
+2019.03.07 12:01:24 FINE: Handling executable file path = /usr/local/kosher/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints matched platform
+2019.03.07 12:01:24 FINE: Making file executable (setting executable flag)
+2019.03.07 12:01:24 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:01:24 FINE: stdout:
+2019.03.07 12:01:24 FINE: 
+2019.03.07 12:01:24 FINE: stderr:
+2019.03.07 12:01:24 FINE: 
+2019.03.07 12:01:24 FINE: exit status: 0
+2019.03.07 12:01:24 FINE: executeCommand
+	params: /usr/local/kosher/linux-config
+	params: install
+	params: /usr/local/kosher
+
+2019.03.07 12:01:24 FINE: stdout:
+2019.03.07 12:01:24 FINE: 
+2019.03.07 12:01:24 FINE: stderr:
+2019.03.07 12:01:24 FINE: 2019/03/07 12:01:24 Linux Install: /usr/local/kosher
+
+2019.03.07 12:01:24 FINE: exit status: 0
+2019.03.07 12:01:24 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints matched platform
+2019.03.07 12:01:24 FINE: Making file executable (setting executable flag)
+2019.03.07 12:01:24 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:01:24 FINE: stdout:
+2019.03.07 12:01:24 FINE: 
+2019.03.07 12:01:24 FINE: stderr:
+2019.03.07 12:01:24 FINE: 
+2019.03.07 12:01:24 FINE: exit status: 0
+2019.03.07 12:01:24 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:01:24 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:01:24 FINE: Writing installation information
+2019.03.07 12:01:24 FINE: Previous installation information found
+2019.03.07 12:01:24 FINE: Writing installation information finished
+2019.03.07 12:01:24 INFO: Installation finished
+2019.03.07 12:01:24 FINE: Current focus owner: null.glassPane
+2019.03.07 12:01:25 FINE: Refreshing dynamic variables
+2019.03.07 12:01:25 FINE: Refreshing dynamic variables
+2019.03.07 12:01:25 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:25 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:25 FINE: Refreshing dynamic variables
+2019.03.07 12:01:25 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:25 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:25 FINE: Refreshing dynamic variables
+2019.03.07 12:01:25 FINE: Switching panel, old index is 2
+2019.03.07 12:01:26 FINE: Blocked variables on panel 'vscode-panel': {}
+2019.03.07 12:01:26 FINE: Switched panel index: 2 -> 3
+2019.03.07 12:01:26 FINE: Refreshing dynamic variables
+2019.03.07 12:01:26 FINE: Refreshing dynamic variables
+2019.03.07 12:01:26 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:01:26 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:01:26 FINE: Refreshing dynamic variables
+2019.03.07 12:01:26 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 12:01:26 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:01:38 FINE: Refreshing dynamic variables
+2019.03.07 12:01:38 FINE: Refreshing dynamic variables
+2019.03.07 12:01:38 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:01:38 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:01:38 FINE: Refreshing dynamic variables
+2019.03.07 12:01:38 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:01:38 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:01:38 FINE: Refreshing dynamic variables
+2019.03.07 12:01:38 FINE: Switching panel, old index is 3
+2019.03.07 12:01:38 FINE: Blocked variables on panel 'proxy-panel': {}
+2019.03.07 12:01:38 FINE: Switched panel index: 3 -> 4
+2019.03.07 12:01:38 FINE: Refreshing dynamic variables
+2019.03.07 12:01:38 FINE: Refreshing dynamic variables
+2019.03.07 12:01:38 FINE: Panel FinishPanel_5 unconditionally activated
+2019.03.07 12:01:38 FINE: Panel 'FinishPanel_5' can be shown
+2019.03.07 12:01:38 FINE: Refreshing dynamic variables
+2019.03.07 12:01:38 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:38 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:50 FINE: Refreshing dynamic variables
+2019.03.07 12:01:50 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:50 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:50 FINE: Refreshing dynamic variables
+2019.03.07 12:01:50 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:01:50 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:01:50 FINE: Refreshing dynamic variables
+2019.03.07 12:01:50 FINE: Switching panel, old index is 4
+2019.03.07 12:01:50 FINE: Unblocked variables on panel 'FinishPanel_5': {}
+2019.03.07 12:01:50 FINE: Unblocked variables on panel 'proxy-panel': {}
+2019.03.07 12:01:50 FINE: Switched panel index: 4 -> 3
+2019.03.07 12:01:50 FINE: Refreshing dynamic variables
+2019.03.07 12:01:50 FINE: Refreshing dynamic variables
+2019.03.07 12:01:50 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:01:50 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:01:50 FINE: Refreshing dynamic variables
+2019.03.07 12:01:50 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 12:01:50 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:05:42 INFO: ====================
+2019.03.07 12:05:42 INFO: Installation started
+2019.03.07 12:05:42 FINE: Blocked variables on panel 'InstallPanel_2': {}
+2019.03.07 12:05:42 FINE: Switched panel index: 1 -> 2
+2019.03.07 12:05:42 FINE: Refreshing dynamic variables
+2019.03.07 12:05:42 FINE: Refreshing dynamic variables
+2019.03.07 12:05:42 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:05:42 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:05:42 INFO: Framework: 5.1.3-84aaf (IzPack)
+2019.03.07 12:05:42 INFO: Platform: ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: Unpacker starting
+2019.03.07 12:05:42 FINE: Cannot find named resource: 'packsLang.xml' AND 'packsLang.xml_eng'
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/kosher (backreference: false)
+2019.03.07 12:05:42 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: OS constraints matched platform
+2019.03.07 12:05:42 FINE: |- No overwrite - skipping pack stream by 14057546 bytes
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/kosher.exe (backreference: false)
+2019.03.07 12:05:42 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/kosher.exe by 13772288 bytes 
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/linux-config (backreference: false)
+2019.03.07 12:05:42 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: OS constraints matched platform
+2019.03.07 12:05:42 FINE: |- No overwrite - skipping pack stream by 2030220 bytes
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/windows-config.exe (backreference: false)
+2019.03.07 12:05:42 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/windows-config.exe by 2534400 bytes 
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/LICENSE (backreference: false)
+2019.03.07 12:05:42 FINE: |- No overwrite - skipping pack stream by 1069 bytes
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/README (backreference: false)
+2019.03.07 12:05:42 FINE: |- No overwrite - skipping pack stream by 855 bytes
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/libs/chromedriver (backreference: false)
+2019.03.07 12:05:42 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: OS constraints matched platform
+2019.03.07 12:05:42 FINE: |- No overwrite - skipping pack stream by 11892608 bytes
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/libs/phantomjs (backreference: false)
+2019.03.07 12:05:42 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: OS constraints matched platform
+2019.03.07 12:05:42 FINE: |- No overwrite - skipping pack stream by 67932064 bytes
+2019.03.07 12:05:42 FINE: Unpacking file ${INSTALL_PATH}/IEDriverServer.exe (backreference: false)
+2019.03.07 12:05:42 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:42 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/IEDriverServer.exe by 3000832 bytes 
+2019.03.07 12:05:43 FINE: Unpacking file ${INSTALL_PATH}/chromedriver.exe (backreference: false)
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/chromedriver.exe by 8543232 bytes 
+2019.03.07 12:05:43 FINE: Unpacking file ${INSTALL_PATH}/phantomjs.exe (backreference: false)
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/phantomjs.exe by 18587648 bytes 
+2019.03.07 12:05:43 FINE: Unpacked executable: path = $INSTALL_PATH/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:05:43 FINE: Unpacked executable: path = $INSTALL_PATH/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:05:43 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:05:43 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:05:43 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:05:43 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:05:43 FINE: Found 0 parsable files
+2019.03.07 12:05:43 FINE: Found 6 executable files
+2019.03.07 12:05:43 FINE: Handling executable file path = /usr/local/kosher/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints matched platform
+2019.03.07 12:05:43 FINE: Making file executable (setting executable flag)
+2019.03.07 12:05:43 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/kosher
+
+2019.03.07 12:05:43 FINE: stdout:
+2019.03.07 12:05:43 FINE: 
+2019.03.07 12:05:43 FINE: stderr:
+2019.03.07 12:05:43 FINE: 
+2019.03.07 12:05:43 FINE: exit status: 0
+2019.03.07 12:05:43 FINE: Handling executable file path = /usr/local/kosher/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints matched platform
+2019.03.07 12:05:43 FINE: Making file executable (setting executable flag)
+2019.03.07 12:05:43 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:05:43 FINE: stdout:
+2019.03.07 12:05:43 FINE: 
+2019.03.07 12:05:43 FINE: stderr:
+2019.03.07 12:05:43 FINE: 
+2019.03.07 12:05:43 FINE: exit status: 0
+2019.03.07 12:05:43 FINE: executeCommand
+	params: /usr/local/kosher/linux-config
+	params: install
+	params: /usr/local/kosher
+
+2019.03.07 12:05:43 FINE: stdout:
+2019.03.07 12:05:43 FINE: 
+2019.03.07 12:05:43 FINE: stderr:
+2019.03.07 12:05:43 FINE: 2019/03/07 12:05:43 Linux Install: /usr/local/kosher
+
+2019.03.07 12:05:43 FINE: exit status: 0
+2019.03.07 12:05:43 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints matched platform
+2019.03.07 12:05:43 FINE: Making file executable (setting executable flag)
+2019.03.07 12:05:43 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:05:43 FINE: stdout:
+2019.03.07 12:05:43 FINE: 
+2019.03.07 12:05:43 FINE: stderr:
+2019.03.07 12:05:43 FINE: 
+2019.03.07 12:05:43 FINE: exit status: 0
+2019.03.07 12:05:43 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:05:43 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:05:43 FINE: Writing installation information
+2019.03.07 12:05:43 FINE: Previous installation information found
+2019.03.07 12:05:43 FINE: Writing installation information finished
+2019.03.07 12:05:43 INFO: Installation finished
+2019.03.07 12:05:43 FINE: Current focus owner: null.glassPane
+2019.03.07 12:05:44 FINE: Refreshing dynamic variables
+2019.03.07 12:05:44 FINE: Refreshing dynamic variables
+2019.03.07 12:05:44 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:05:44 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:05:44 FINE: Refreshing dynamic variables
+2019.03.07 12:05:44 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:05:44 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:05:44 FINE: Refreshing dynamic variables
+2019.03.07 12:05:44 FINE: Switching panel, old index is 2
+2019.03.07 12:05:44 FINE: Blocked variables on panel 'vscode-panel': {}
+2019.03.07 12:05:44 FINE: Switched panel index: 2 -> 3
+2019.03.07 12:05:44 FINE: Refreshing dynamic variables
+2019.03.07 12:05:44 FINE: Refreshing dynamic variables
+2019.03.07 12:05:44 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:05:44 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:05:44 FINE: Refreshing dynamic variables
+2019.03.07 12:05:44 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 12:05:44 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:05:51 FINE: Refreshing dynamic variables
+2019.03.07 12:05:51 FINE: Refreshing dynamic variables
+2019.03.07 12:05:51 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:05:51 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:05:51 FINE: Refreshing dynamic variables
+2019.03.07 12:05:51 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:05:51 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:05:51 FINE: Refreshing dynamic variables
+2019.03.07 12:05:51 FINE: Switching panel, old index is 3
+2019.03.07 12:05:51 FINE: Blocked variables on panel 'proxy-panel': {}
+2019.03.07 12:05:51 FINE: Switched panel index: 3 -> 4
+2019.03.07 12:05:51 FINE: Refreshing dynamic variables
+2019.03.07 12:05:51 FINE: Refreshing dynamic variables
+2019.03.07 12:05:51 FINE: Panel FinishPanel_5 unconditionally activated
+2019.03.07 12:05:51 FINE: Panel 'FinishPanel_5' can be shown
+2019.03.07 12:05:51 FINE: Refreshing dynamic variables
+2019.03.07 12:05:51 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:05:51 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:06:03 FINE: Refreshing dynamic variables
+2019.03.07 12:06:03 FINE: Refreshing dynamic variables
+2019.03.07 12:06:03 FINE: Panel FinishPanel_5 unconditionally activated
+2019.03.07 12:06:03 FINE: Panel 'FinishPanel_5' can be shown
+2019.03.07 12:06:03 FINE: Refreshing dynamic variables
+2019.03.07 12:06:03 FINE: Panel FinishPanel_5 unconditionally activated
+2019.03.07 12:06:03 FINE: Panel 'FinishPanel_5' can be shown
+2019.03.07 12:06:03 FINE: Refreshing dynamic variables
+2019.03.07 12:06:03 FINE: Switching panel, old index is 4
+2019.03.07 12:06:03 FINE: Blocked variables on panel 'FinishPanel_5': {}
+2019.03.07 12:06:03 FINE: Switched panel index: 4 -> 5
+2019.03.07 12:06:03 FINE: Refreshing dynamic variables
+2019.03.07 12:16:12 INFO: ====================
+2019.03.07 12:16:12 INFO: Installation started
+2019.03.07 12:16:12 FINE: Blocked variables on panel 'InstallPanel_2': {}
+2019.03.07 12:16:12 FINE: Switched panel index: 1 -> 2
+2019.03.07 12:16:12 FINE: Refreshing dynamic variables
+2019.03.07 12:16:12 FINE: Refreshing dynamic variables
+2019.03.07 12:16:12 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:16:12 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:16:12 INFO: Framework: 5.1.3-84aaf (IzPack)
+2019.03.07 12:16:12 INFO: Platform: ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:12 FINE: Unpacker starting
+2019.03.07 12:16:12 FINE: Cannot find named resource: 'packsLang.xml' AND 'packsLang.xml_eng'
+2019.03.07 12:16:12 FINE: Unpacking file ${INSTALL_PATH}/kosher (backreference: false)
+2019.03.07 12:16:12 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:12 FINE: OS constraints matched platform
+2019.03.07 12:16:12 FINE: |- No overwrite - skipping pack stream by 14057546 bytes
+2019.03.07 12:16:12 FINE: Unpacking file ${INSTALL_PATH}/kosher.exe (backreference: false)
+2019.03.07 12:16:12 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:12 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:12 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/kosher.exe by 13772288 bytes 
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/linux-config (backreference: false)
+2019.03.07 12:16:13 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: OS constraints matched platform
+2019.03.07 12:16:13 FINE: |- No overwrite - skipping pack stream by 2030220 bytes
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/windows-config.exe (backreference: false)
+2019.03.07 12:16:13 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/windows-config.exe by 2534400 bytes 
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/LICENSE (backreference: false)
+2019.03.07 12:16:13 FINE: |- No overwrite - skipping pack stream by 1069 bytes
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/README (backreference: false)
+2019.03.07 12:16:13 FINE: |- No overwrite - skipping pack stream by 855 bytes
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/libs/chromedriver (backreference: false)
+2019.03.07 12:16:13 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: OS constraints matched platform
+2019.03.07 12:16:13 FINE: |- No overwrite - skipping pack stream by 11892608 bytes
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/libs/phantomjs (backreference: false)
+2019.03.07 12:16:13 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: OS constraints matched platform
+2019.03.07 12:16:13 FINE: |- No overwrite - skipping pack stream by 67932064 bytes
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/IEDriverServer.exe (backreference: false)
+2019.03.07 12:16:13 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/IEDriverServer.exe by 3000832 bytes 
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/chromedriver.exe (backreference: false)
+2019.03.07 12:16:13 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/chromedriver.exe by 8543232 bytes 
+2019.03.07 12:16:13 FINE: Unpacking file ${INSTALL_PATH}/phantomjs.exe (backreference: false)
+2019.03.07 12:16:13 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:13 FINE: |- Condition not fulfilled - skipping pack stream ${INSTALL_PATH}/phantomjs.exe by 18587648 bytes 
+2019.03.07 12:16:14 FINE: Unpacked executable: path = $INSTALL_PATH/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:16:14 FINE: Unpacked executable: path = $INSTALL_PATH/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:16:14 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:16:14 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, $INSTALL_PATH]
+	arg: install
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:16:14 FINE: Unpacked executable: path = $INSTALL_PATH/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:16:14 FINE: Unpacked executable: path = $INSTALL_PATH/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, $INSTALL_PATH]
+	arg: uninstall
+	arg: $INSTALL_PATH
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+
+2019.03.07 12:16:14 FINE: Found 0 parsable files
+2019.03.07 12:16:14 FINE: Found 6 executable files
+2019.03.07 12:16:14 FINE: Handling executable file path = /usr/local/kosher/kosher
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:16:14 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: OS constraints matched platform
+2019.03.07 12:16:14 FINE: Making file executable (setting executable flag)
+2019.03.07 12:16:14 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/kosher
+
+2019.03.07 12:16:14 FINE: stdout:
+2019.03.07 12:16:14 FINE: 
+2019.03.07 12:16:14 FINE: stderr:
+2019.03.07 12:16:14 FINE: 
+2019.03.07 12:16:14 FINE: exit status: 0
+2019.03.07 12:16:14 FINE: Handling executable file path = /usr/local/kosher/kosher.exe
+mainClass = null
+type = 0
+executionStage = 1
+onFailure = 2
+argList: []
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:16:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:16:14 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: OS constraints matched platform
+2019.03.07 12:16:14 FINE: Making file executable (setting executable flag)
+2019.03.07 12:16:14 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:16:14 FINE: stdout:
+2019.03.07 12:16:14 FINE: 
+2019.03.07 12:16:14 FINE: stderr:
+2019.03.07 12:16:14 FINE: 
+2019.03.07 12:16:14 FINE: exit status: 0
+2019.03.07 12:16:14 FINE: executeCommand
+	params: /usr/local/kosher/linux-config
+	params: install
+	params: /usr/local/kosher
+
+2019.03.07 12:16:14 FINE: stdout:
+2019.03.07 12:16:14 FINE: 
+2019.03.07 12:16:14 FINE: stderr:
+2019.03.07 12:16:14 FINE: 2019/03/07 12:16:14 Linux Install: /usr/local/kosher
+
+2019.03.07 12:16:14 FINE: exit status: 0
+2019.03.07 12:16:14 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 0
+onFailure = 1
+argList: [install, /usr/local/kosher]
+	arg: install
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:16:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: Handling executable file path = /usr/local/kosher/linux-config
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='linux', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='linux', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:16:14 FINE: Checking if OS constraints OsModel{arch='null', family='linux', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: OS constraints matched platform
+2019.03.07 12:16:14 FINE: Making file executable (setting executable flag)
+2019.03.07 12:16:14 FINE: executeCommand
+	params: /bin/chmod
+	params: a+x
+	params: /usr/local/kosher/linux-config
+
+2019.03.07 12:16:14 FINE: stdout:
+2019.03.07 12:16:14 FINE: 
+2019.03.07 12:16:14 FINE: stderr:
+2019.03.07 12:16:14 FINE: 
+2019.03.07 12:16:14 FINE: exit status: 0
+2019.03.07 12:16:14 FINE: Handling executable file path = /usr/local/kosher/windows-config.exe
+mainClass = null
+type = 0
+executionStage = 2
+onFailure = 1
+argList: [uninstall, /usr/local/kosher]
+	arg: uninstall
+	arg: /usr/local/kosher
+
+osList = [OsModel{arch='null', family='windows', jre='null', name='null', version='null'}]
+	os: OsModel{arch='null', family='windows', jre='null', name='null', version='null'}
+keepFile = true
+...
+2019.03.07 12:16:14 FINE: Checking if OS constraints OsModel{arch='null', family='windows', jre='null', name='null', version='null'} match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: OS constraints do not match platform=ubuntu_linux,version=4.15.0-46-generic,arch=x64,symbolicName=null,javaVersion=10.0.2
+2019.03.07 12:16:14 FINE: Writing installation information
+2019.03.07 12:16:14 FINE: Previous installation information found
+2019.03.07 12:16:14 FINE: Writing installation information finished
+2019.03.07 12:16:14 INFO: Installation finished
+2019.03.07 12:16:14 FINE: Current focus owner: null.glassPane
+2019.03.07 12:16:15 FINE: Refreshing dynamic variables
+2019.03.07 12:16:15 FINE: Refreshing dynamic variables
+2019.03.07 12:16:15 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:16:15 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:16:15 FINE: Refreshing dynamic variables
+2019.03.07 12:16:15 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:16:15 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:16:15 FINE: Refreshing dynamic variables
+2019.03.07 12:16:15 FINE: Switching panel, old index is 2
+2019.03.07 12:16:15 FINE: Blocked variables on panel 'vscode-panel': {}
+2019.03.07 12:16:15 FINE: Switched panel index: 2 -> 3
+2019.03.07 12:16:15 FINE: Refreshing dynamic variables
+2019.03.07 12:16:15 FINE: Refreshing dynamic variables
+2019.03.07 12:16:15 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:16:15 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:16:15 FINE: Refreshing dynamic variables
+2019.03.07 12:16:15 FINE: Panel InstallPanel_2 unconditionally activated
+2019.03.07 12:16:15 FINE: Panel 'InstallPanel_2' can be shown
+2019.03.07 12:16:18 FINE: Refreshing dynamic variables
+2019.03.07 12:16:18 FINE: Refreshing dynamic variables
+2019.03.07 12:16:18 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:16:18 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:16:18 FINE: Refreshing dynamic variables
+2019.03.07 12:16:18 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:16:18 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:16:18 FINE: Refreshing dynamic variables
+2019.03.07 12:16:18 FINE: Switching panel, old index is 3
+2019.03.07 12:16:18 FINE: Blocked variables on panel 'proxy-panel': {}
+2019.03.07 12:16:18 FINE: Switched panel index: 3 -> 4
+2019.03.07 12:16:18 FINE: Refreshing dynamic variables
+2019.03.07 12:16:18 FINE: Refreshing dynamic variables
+2019.03.07 12:16:18 FINE: Panel credits-panel unconditionally activated
+2019.03.07 12:16:18 FINE: Panel 'credits-panel' can be shown
+2019.03.07 12:16:18 FINE: Refreshing dynamic variables
+2019.03.07 12:16:18 FINE: Panel vscode-panel unconditionally activated
+2019.03.07 12:16:18 FINE: Panel 'vscode-panel' can be shown
+2019.03.07 12:16:20 FINE: Refreshing dynamic variables
+2019.03.07 12:16:20 FINE: Refreshing dynamic variables
+2019.03.07 12:16:20 FINE: Panel credits-panel unconditionally activated
+2019.03.07 12:16:20 FINE: Panel 'credits-panel' can be shown
+2019.03.07 12:16:20 FINE: Refreshing dynamic variables
+2019.03.07 12:16:20 FINE: Panel credits-panel unconditionally activated
+2019.03.07 12:16:20 FINE: Panel 'credits-panel' can be shown
+2019.03.07 12:16:20 FINE: Refreshing dynamic variables
+2019.03.07 12:16:20 FINE: Switching panel, old index is 4
+2019.03.07 12:16:20 FINE: Blocked variables on panel 'credits-panel': {}
+2019.03.07 12:16:20 FINE: Switched panel index: 4 -> 5
+2019.03.07 12:16:20 FINE: Refreshing dynamic variables
+2019.03.07 12:16:20 FINE: Refreshing dynamic variables
+2019.03.07 12:16:20 FINE: Panel FinishPanel_6 unconditionally activated
+2019.03.07 12:16:20 FINE: Panel 'FinishPanel_6' can be shown
+2019.03.07 12:16:20 FINE: Refreshing dynamic variables
+2019.03.07 12:16:20 FINE: Panel proxy-panel unconditionally activated
+2019.03.07 12:16:20 FINE: Panel 'proxy-panel' can be shown
+2019.03.07 12:17:16 FINE: Refreshing dynamic variables
+2019.03.07 12:17:16 FINE: Refreshing dynamic variables
+2019.03.07 12:17:16 FINE: Panel FinishPanel_6 unconditionally activated
+2019.03.07 12:17:16 FINE: Panel 'FinishPanel_6' can be shown
+2019.03.07 12:17:16 FINE: Refreshing dynamic variables
+2019.03.07 12:17:16 FINE: Panel FinishPanel_6 unconditionally activated
+2019.03.07 12:17:16 FINE: Panel 'FinishPanel_6' can be shown
+2019.03.07 12:17:16 FINE: Refreshing dynamic variables
+2019.03.07 12:17:16 FINE: Switching panel, old index is 5
+2019.03.07 12:17:16 FINE: Blocked variables on panel 'FinishPanel_6': {}
+2019.03.07 12:17:16 FINE: Switched panel index: 5 -> 6
+2019.03.07 12:17:16 FINE: Refreshing dynamic variables

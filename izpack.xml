@@ -14,29 +14,31 @@
         <url>https://github.com/cbush06/kosher</url>
     </info>
 
-    <listeners>
-        <listener classname="RegistryInstallerListener" stage="install">
-            <os family="windows" />
-        </listener>
-        <listener classname="RegistryUninstallerListener" stage="uninstall">
-            <os family="windows" />
-        </listener>
-    </listeners>
+    <logging>
+        <log-file pattern="kosher-installer-log_%u-%g.log" append="true" level="ALL" encoding="UTF-8" />
+    </logging>
 
     <resources>
-        <res id="Installer.image" src="docs/images/kosher_logo.png" parse="no" />
-        <res id="installer.langsel.img" src="docs/images/kosher_logo.png" parse="no" />
+        <res id="Installer.image" src="installer-content/kosher_logo.png" parse="no" />
+        <res id="installer.langsel.img" src="installer-content/kosher_logo.png" parse="no" />
         <res id="InfoPanel.info" src="README" />
         <res id="LicencePanel.licence" src="LICENSE" />
+        <res id="CustomLangPack.xml_eng" src="installer-content/CustomLangPack.xml_eng" />
+        <res id="vscode-logo.png" src="installer-content/vscode-logo.png" />
+        <res id="HTMLInfoPanel.vscode-panel" src="installer-content/vscode-panel.html" />
+        <res id="gherkin-plugin.png" src="installer-content/gherkin-plugin.png" />
+        <res id="HTMLInfoPanel.proxy-panel" src="installer-content/proxy-panel.html" />
+        <res id="portswigger-web-security.png" src="installer-content/portswigger-web-security.png" />
+        <res id="fiddler.png" src="installer-content/fiddler.png" />
+        <res id="HTMLInfoPanel.credits-panel" src="installer-content/credits.html" />
+        <res id="CGI_Federal.png" src="installer-content/CGI_Federal.png" />
     </resources>
 
     <locale>
-        <langpack iso3="eng">
-            <str id="installer.reversetitle" txt="$APP_NAME $APP_VER Installer" />
-        </langpack>
+        <langpack iso3="eng" />
     </locale>
 
-    <guiprefs width="800" height="600" resizable="no">
+    <guiprefs width="800" height="600" resizable="yes">
         <modifier key="useHeadingPanel" value="yes" />
     </guiprefs>
 
@@ -44,18 +46,69 @@
         <panel classname="LicencePanel"/>
         <panel classname="TargetPanel"/>
         <panel classname="InstallPanel"/>
+        <panel classname="HTMLInfoPanel" id="vscode-panel" />
+        <panel classname="HTMLInfoPanel" id="proxy-panel" />
+        <panel classname="HTMLInfoPanel" id="credits-panel" />
         <panel classname="FinishPanel"/>
     </panels>
 
     <packs name="core">
         <pack id="core_unix" name="Kosher" required="yes" preselected="yes">
             <description>Core Files</description>
+
             <file src="kosher">
                 <os family="linux" />
             </file>
             <file src="kosher.exe">
                 <os family="windows" />
             </file>
+            <file src="linux-config">
+                <os family="linux" />
+            </file>
+            <file src="windows-config.exe">
+                <os family="windows" />
+            </file>
+
+            <executable targetfile="$INSTALL_PATH/kosher" stage="never" keep="true">
+                <os family="linux" />
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/kosher.exe" stage="never" keep="true">
+                <os family="windows" />
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/linux-config" stage="postinstall" failure="warn" keep="true">
+                <os family="linux" />
+                <args>
+                    <arg value="install" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/windows-config.exe" stage="postinstall" failure="warn" keep="true">
+                <os family="windows" />
+                <args>
+                    <arg value="install" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/linux-config" stage="uninstall" failure="warn" keep="true">
+                <os family="linux" />
+                <args>
+                    <arg value="uninstall" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
+            <executable targetfile="$INSTALL_PATH/windows-config.exe" stage="uninstall" failure="warn" keep="true">
+                <os family="windows" />
+                <args>
+                    <arg value="uninstall" />
+                    <arg value="$INSTALL_PATH" />
+                </args>
+            </executable>
+
             <fileset dir="." includes="LICENSE,README" />
             <fileset dir="./libs" targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs">
                 <os family="linux" />
@@ -71,15 +124,5 @@
             </fileset>
         </pack>
     </packs>
-
-
-    <natives>
-        <native type="3rdparty" name="COIOSHelper.dll" stage="both">
-            <os family="windows"/>
-        </native>
-        <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
-            <os family="windows"/>
-        </native>
-    </natives>
 
 </izpack:installation>
