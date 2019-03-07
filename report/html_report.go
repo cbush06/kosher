@@ -265,7 +265,9 @@ func (r *HTMLReport) unmarshallJSON() error {
 					element.StepsPending++
 				}
 
-				r.RunTime += time.Duration(*step.Result.Duration)
+				if step.Result.Duration != nil {
+					r.RunTime += time.Duration(*step.Result.Duration)
+				}
 
 				r.TotalSteps++
 			}

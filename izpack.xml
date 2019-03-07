@@ -30,6 +30,10 @@
         <res id="HTMLInfoPanel.proxy-panel" src="installer-content/proxy-panel.html" />
         <res id="portswigger-web-security.png" src="installer-content/portswigger-web-security.png" />
         <res id="fiddler.png" src="installer-content/fiddler.png" />
+        <res id="HTMLInfoPanel.version-control" src="installer-content/version-control.html" />
+        <res id="git.png" src="installer-content/git.png" />
+        <res id="HTMLInfoPanel.ie-config-panel" src="installer-content/ie-config.html" />
+        <res id="ie.png" src="installer-content/ie.png" />
         <res id="HTMLInfoPanel.credits-panel" src="installer-content/credits.html" />
         <res id="CGI_Federal.png" src="installer-content/CGI_Federal.png" />
     </resources>
@@ -49,6 +53,7 @@
         <panel classname="HTMLInfoPanel" id="vscode-panel" />
         <panel classname="HTMLInfoPanel" id="proxy-panel" />
         <panel classname="HTMLInfoPanel" id="credits-panel" />
+        <panel classname="HTMLInfoPanel" id="ie-config-panel" condition="izpack.windowsinstall" />
         <panel classname="FinishPanel"/>
     </panels>
 
