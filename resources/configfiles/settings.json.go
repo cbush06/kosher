@@ -1,9 +1,9 @@
 package configfiles
 
 // GetSettingsJSON returns the settings.json template file
-func GetSettingsJSON() string {
+func GetSettingsJSON(projectName string) string {
 	return `{
-	"projectName": "kosher",
+	"projectName": "` + projectName + `",
 	"appVersion": "1.0.0",
 	"platform": "web",
 	"driver": "chrome",

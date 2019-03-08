@@ -11,7 +11,7 @@ description: Web driver wrapper written in Golang that empowers non-developers t
 kosher tests are a _single source of truth_ for your projects: requirements, documentation, and tests all in one
 {: .fs-6 .fw-300 }
 
-[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/cbush06/kosher){: .btn .fs-5 .mb-4 .mb-md-0 } [Download it <i class="fas fa-download"></i>](https://github.com/cbush06/kosher/releases/){: .btn fs-5 .mb-4 .mb-md-0 }
+[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/cbush06/kosher){: .btn .fs-5 .mb-4 .mb-md-0 } 
 
 ---
 
@@ -42,7 +42,8 @@ $ cd kosher-project
 ```
 2. Initialize the project (create its basic structure, configuration fils, and an example test script):
 ```bash
-$ kosher init
+$ kosher init KosherProject
+Project [KosherProject] initialized...
 ```
 3. Assuming you have Chrome installed, run the example test with the following command:
 ```bash

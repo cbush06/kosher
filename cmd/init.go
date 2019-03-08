@@ -32,19 +32,19 @@ var (
 var cmdInit = &initCommand{
 	name: "init",
 	command: &cobra.Command{
-		Use:   "init [path to directory]",
+		Use:   "init [flags] [project name] [path to directory]",
 		Short: "Initializes a new Kosher project",
 		Long:  `init creates the necessary project structure with simple example tests and config files to quickly get you started.`,
-		Args:  cobra.MaximumNArgs(1),
+		Args:  cobra.RangeArgs(1, 2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			var err error
 			path := ""
-			if len(args) < 1 {
+			if len(args) < 2 {
 				if path, err = os.Getwd(); err != nil {
 					log.Fatal(err)
 				}
 			} else {
-				if path, err = filepath.Abs(filepath.Clean(args[0])); err != nil {
+				if path, err = filepath.Abs(filepath.Clean(args[1])); err != nil {
 					log.Fatal(err)
 				}
 			}
@@ -53,7 +53,11 @@ var cmdInit = &initCommand{
 				log.Fatal(errors.New("Invalid platform specified [" + initPlatform + "]. Valid options are: " + strings.Join(validPlatforms, ", ")))
 			}
 
-			return initProject(&afero.OsFs{}, path, initForce, initEmpty)
+			if err = initProject(args[0], &afero.OsFs{}, path, initForce, initEmpty); err == nil {
+				fmt.Printf("Project [%s] initialized...\n", args[0])
+			}
+
+			return err
 		},
 	},
 }
@@ -66,7 +70,7 @@ func (i *initCommand) registerWith(cmd *cobra.Command) {
 }
 
 // initProject initializes a new Kosher project with configuration file templates and a sample feature file
-func initProject(fs *afero.OsFs, basepath string, force bool, empty bool) error {
+func initProject(projectName string, fs *afero.OsFs, basepath string, force bool, empty bool) error {
 	var (
 		featuresDir      = filepath.Join(basepath, common.FeaturesDir)
 		configDir        = filepath.Join(basepath, common.ConfigDir)
@@ -120,9 +124,9 @@ func initProject(fs *afero.OsFs, basepath string, force bool, empty bool) error 
 	}
 
 	if initPlatform == "web" {
-		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(configfiles.GetSettingsJSON()))
+		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(configfiles.GetSettingsJSON(projectName)))
 	} else if initPlatform == "desktop" {
-		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(configfiles.GetSettingsDesktopJSON()))
+		afero.WriteReader(fs, settingsJSON, bytes.NewBufferString(configfiles.GetSettingsDesktopJSON(projectName)))
 	}
 
 	afero.WriteReader(fs, environmentsJSON, bytes.NewBufferString(configfiles.GetEnvironmentsJSON()))
