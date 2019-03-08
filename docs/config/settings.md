@@ -3,7 +3,7 @@ layout: default
 title: settings.json
 description: Options for settings.json
 parent: Configuration
-nav_order: 2
+nav_order: 4
 ---
 
 # settings.json
