@@ -3,6 +3,7 @@ layout: default
 title: environments.json
 description: Format of environments.json
 parent: Configuration
+nav_order: 1
 ---
 
 # environments.json
