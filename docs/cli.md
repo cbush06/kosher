@@ -57,6 +57,7 @@ $ kosher run [flags] [path]
 ```
 
 ### Flags
+
 | Flag              | Description                                                                                                              |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | --appVersion      | Version of the application being tested. This will be used when creating the report after testing has completed.         |
@@ -64,6 +65,7 @@ $ kosher run [flags] [path]
 | -h, --help        | help for run                                                                                                             |
 
 ### Arguments
+
 | Argument | Required | Description                                                                                                                                                                 |
 | -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | path     | no       | Providing this argument restricts the selection of `*.feature` files executed to a specific subfolder or even a specific file. Standard Linux _glob_ patterns are accepted. |
