@@ -2,6 +2,11 @@
 layout: default
 title: kosher
 ---
+# Automated Testing Without Coding
+{: .fs-9}
+
+## kosher tests are a single source of truth: requirements, documentation, and tests all in one
+{: .fs-6 .fw-300}
 
 ![kosher](images/kosher_logo.png)
 

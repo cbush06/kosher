@@ -1,3 +1,7 @@
+title: kosher
+description: Selenium wrapper written in Golang that empowers non-developers to functionally test web applications using simple Gherkin scripts.
+url: "https://cbush06.github.io"
+baseurl: "kosher"
 remote_theme: just-the-docs
 search_enabled: true
 aux_links: "kosher on GitHub:"
