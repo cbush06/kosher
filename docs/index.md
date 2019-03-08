@@ -1,6 +1,6 @@
 ---
 layout: default
-title: kosher
+title: kosher2
 nav_order: 1
 description: Web driver wrapper written in Golang that empowers non-developers to functionally test web applications using simple Gherkin scripts.
 ---
