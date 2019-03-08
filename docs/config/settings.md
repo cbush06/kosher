@@ -173,8 +173,8 @@ Defines available screen formats. One of these must be selected by the [screenFo
         </tr>
         <tr>
             <td>default</td>
-            <td>
-```json
+            <td><pre>
+{
     "desktop": {
         "width": 2000,
         "height": 980
@@ -191,7 +191,7 @@ Defines available screen formats. One of these must be selected by the [screenFo
         "width": 522,
         "height": 362
     }
-```
+}</pre>
             </td>
         </tr>
     </tbody>
