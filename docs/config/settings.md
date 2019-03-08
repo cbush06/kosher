@@ -6,3 +6,40 @@ parent: Configuration
 ---
 
 # settings.json
+
+The `settings.json` file allows the user to specify global settings for a kosher project. Some values in the file are defaults but can be overridden by flags of the `run` command (e.g. `--appVersion`, `--environment`).
+{: .fs-6 .fw-300 }
+
+## Format
+
+```json
+{
+    "projectName": "kosher",
+    "appVersion": "1.0.0",
+    "platform": "web",
+    "driver": "chrome",
+    "reportFormat": "pretty",
+    "dateFormat": "MM/DD/YYYY",
+    "defaultEnvironment": "test",
+    "screenFormat": "desktop",
+    "quitOnFail": false,
+    "screenFormats": {
+        "desktop": {
+            "width": 2000,
+            "height": 980
+         },
+        "mobile": {
+            "width": 362,
+            "height": 868
+        },
+        "tablet": {
+            "width": 814,
+            "height": 868
+        },
+        "landscape": {
+            "width": 522,
+            "height": 362
+        }
+    }
+}
+```
