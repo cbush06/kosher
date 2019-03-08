@@ -4,7 +4,11 @@ title: CLI
 nav_order: 2
 ---
 
+# CLI
+{: .no_toc }
+
 kosher is a command-line utility; thus, you interface with it via the following terminal commands:
+{: .fs-6 .fw-300 }
 
 {:toc}
 
