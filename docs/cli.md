@@ -82,10 +82,32 @@ $ kosher version
 
 ### Flags
 
-| Flag              | Description                                                                                                              |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| -h, --help        | help for run                                                                                                             |
+| Flag       | Description      |
+| ---------- | ---------------- |
+| -h, --help | help for version |
 
 ### Arguments
 
-> There are no arguments for `version`
+> There are no arguments for `version`.
+
+## help
+
+`help` prints the usage instructions for kosher to the terminal.
+
+### Format
+
+```bash
+$ kosher help
+```
+
+### Flags
+
+| Flag       | Description   |
+| ---------- | ------------- |
+| -h, --help | help for help |
+
+### Arguments
+
+| Argument | Required | Description                                       |
+| -------- | -------- | ------------------------------------------------- |
+| command  | no       | Specifies a kosher command to print the help for. |
