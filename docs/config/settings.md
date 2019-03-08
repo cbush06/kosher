@@ -43,3 +43,46 @@ The `settings.json` file allows the user to specify global settings for a kosher
     }
 }
 ```
+
+## Properties
+
+### projectName
+
+Sets the name of the project recorded in results files.
+
+| Characteristic | Description       |
+| -------------- | ----------------- |
+| type           | string            |
+| required       | no                |
+| default        | kosher tested app |
+
+### appVersion
+
+Sets the version of the project recorded in results files.
+
+| Characteristic | Description |
+| -------------- | ----------- |
+| type           | string      |
+| required       | no          |
+| default        | 1.0.0       |
+
+### platform
+
+Specifies if steps are tailored for desktop or web use. Valid options are: `web`, `desktop`
+
+| Characteristic | Description |
+| -------------- | ----------- |
+| type           | string      |
+| required       | no          |
+| default        | web         |
+
+### driver
+
+Specifies which webdriver is used to execute the tests. Valid options are `chrome`, `ie`, `phantomjs`, `desktop`
+
+| Characteristic | Description |
+| -------------- | ----------- |
+| type           | string      |
+| required       | no          |
+| default        | chrome      |
+
