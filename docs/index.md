@@ -1,6 +1,8 @@
 ---
 layout: default
 title: kosher
+nav_order: 1
+description: Web driver wrapper written in Golang that empowers non-developers to functionally test web applications using simple Gherkin scripts.
 ---
 # Automated Testing Without Coding
 {: .fs-9}
