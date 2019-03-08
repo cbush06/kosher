@@ -1,1 +1,4 @@
 remote_theme: just-the-docs
+search_enabled: true
+aux_links: "kosher on GitHub:"
+  - "https://github.com/cbush06/kosher"

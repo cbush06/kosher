@@ -1,2 +1,4 @@
-# About the kosher Team
-
+---
+layout: default
+title: About kosher
+---
