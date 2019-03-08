@@ -155,6 +155,8 @@ Specifies if kosher continues executing remaining scenarios after a step fails.
 
 Defines available screen formats. One of these must be selected by the [screenFormat](#screenformat) option above.
 
+Each option in the `screenFormats` object must define a `width` and `height` property, both of type `int`.
+
 <table>
     <thead>
         <tr>
@@ -173,7 +175,7 @@ Defines available screen formats. One of these must be selected by the [screenFo
         </tr>
         <tr>
             <td>default</td>
-            <td><pre>json
+            <td><pre>
 {
     "desktop": {
         "width": 2000,
