@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -12,6 +13,7 @@ import (
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/fs"
 	"github.com/cbush06/kosher/report"
+	"github.com/cbush06/kosher/steps/steputils"
 	"github.com/cbush06/kosher/steps/websteps"
 
 	"github.com/spf13/cobra"
@@ -85,6 +87,12 @@ var cmdRun = &runCommand{
 					log.Fatalf("failed to open page: %s", err)
 				}
 
+				// Size the window
+				stepUtils := steputils.NewStepUtils(settings, page)
+				if err := page.Size(stepUtils.GetMaxWindowSize()); err != nil {
+					return fmt.Errorf("error encountered resizing window at startup: %s", err)
+				}
+
 				reportBuilder := report.NewReport(settings, fileSys)
 				godog.RunWithOptions(settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
 					buildFeatureContext(settings, page, suite)
@@ -117,7 +125,7 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 
 func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) godog.Options {
 	// featuresPath, _ := filepath.Abs(pathArg)
-	featuresPath := pathArg // TODO: remove this and use above line once GoDog fixes their shit
+	featuresPath := pathArg // TODO: remove this and use above line once GoDog fixes their windows issue
 
 	// Convert kosher format to GoDog format
 	var reportFormat string
