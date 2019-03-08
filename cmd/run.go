@@ -35,7 +35,7 @@ var (
 var cmdRun = &runCommand{
 	name: "run",
 	command: &cobra.Command{
-		Use:   "run",
+		Use:   "run [flags] [path]",
 		Short: "executes your tests",
 		Long:  `run executes your tests. Depending on the arguments provided, it may execute all tests, a specific test, or tests in one or more subdirectories.`,
 		Args:  cobra.MaximumNArgs(1),
