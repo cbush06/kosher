@@ -69,3 +69,23 @@ $ kosher run [flags] [path]
 | Argument | Required | Description                                                                                                                                                                 |
 | -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | path     | no       | Providing this argument restricts the selection of `*.feature` files executed to a specific subfolder or even a specific file. Standard Linux _glob_ patterns are accepted. |
+
+## version
+
+`version` prints the version of kosher running to the terminal.
+
+### Format
+
+```bash
+$ kosher version
+```
+
+### Flags
+
+| Flag              | Description                                                                                                              |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| -h, --help        | help for run                                                                                                             |
+
+### Arguments
+
+> There are no arguments for `version`
