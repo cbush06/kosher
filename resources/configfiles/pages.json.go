@@ -3,9 +3,8 @@ package configfiles
 // GetPagesJSON returns the pages.json template file
 func GetPagesJSON() string {
 	return `{
-	"home": "",
-	"registration": "user/new_user",
-	"profile": "user/profile",
-	"contact": "forms/contact"
+	"home": "/",
+	"basicform": "basic-first-form-demo.html",
+	"table-sort": "table-sort-search-demo.html"
 }`
 }

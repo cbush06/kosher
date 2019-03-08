@@ -4,7 +4,7 @@ package configfiles
 func GetEnvironmentsJSON() string {
 	return `{
 	"production": "http://www.your-production-env.com/",
-	"test": "http://www.your-test-env.com",
+	"test": "https://www.seleniumeasy.com/test",
 	"dev": "http://www.your-dev-env.com",
 	"uat": "http://www.your-uat-env.com"
 }`
