@@ -1,4 +1,4 @@
-title: "kosher2"
+title: "kosher"
 description: "Web driver wrapper written in Golang that empowers non-developers to functionally test web applications using simple Gherkin scripts."
 url: "https://cbush06.github.io"
 baseurl: "kosher"
