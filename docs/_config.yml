@@ -4,5 +4,6 @@ url: "https://cbush06.github.io"
 baseurl: "kosher"
 remote_theme: pmarsceill/just-the-docs
 search_enabled: true
-aux_links: "kosher on GitHub":
-  - "https://github.com/cbush06/kosher"
+aux_links: 
+  "kosher on GitHub":
+    - "https://github.com/cbush06/kosher"
