@@ -173,8 +173,7 @@ Defines available screen formats. One of these must be selected by the [screenFo
         </tr>
         <tr>
             <td>default</td>
-            <td><pre>
-{
+            <td><pre>{
     "desktop": {
         "width": 2000,
         "height": 980
