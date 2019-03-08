@@ -77,7 +77,7 @@ $ kosher run [flags] [path]
 ### Format
 
 ```bash
-$ kosher version
+$ kosher version [flags]
 ```
 
 ### Flags
@@ -97,7 +97,7 @@ $ kosher version
 ### Format
 
 ```bash
-$ kosher help
+$ kosher help [flags] [command]
 ```
 
 ### Flags
