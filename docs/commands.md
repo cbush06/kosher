@@ -10,6 +10,9 @@ nav_order: 2
 kosher is a command-line utility; thus, you interface with it via the following terminal commands:
 {: .fs-6 .fw-300 }
 
+## Commands
+{: .no_toc .text-delta }
+
 1. TOC
 {:toc}
 
