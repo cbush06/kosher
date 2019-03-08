@@ -86,3 +86,14 @@ Specifies which webdriver is used to execute the tests. Valid options are `chrom
 | required       | no          |
 | default        | chrome      |
 
+### reportFormat
+
+Specifies what format is used to report test results. Valid options are: `pretty`, `html`, `bootstrap`, `simple`, `pretty`, `progress`, `junit`, `cucumber`
+
+For descriptions of the reports, see [Reports](../reports/reports.md)
+
+| Characteristic | Description |
+| -------------- | ----------- |
+| type           | string      |
+| required       | no          |
+| default        | pretty      |
