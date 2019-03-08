@@ -88,9 +88,8 @@ func modSettingsProvider(v *viper.Viper) {
 	v.SetDefault("platform", "web")
 	v.SetDefault("driver", "chrome")
 	v.SetDefault("reportFormat", "pretty")
-	v.SetDefault("defaultDateFormat", "mm/dd/yyyy")
+	v.SetDefault("dateFormat", "MM/DD/YYYY")
 	v.SetDefault("defaultEnvironment", "test")
-	v.SetDefault("httpTimeout", 3)
 	v.SetDefault("screenFormat", "desktop")
 	v.SetDefault("quitOnFail", false)
 	v.SetDefault("screenFormats", map[string]map[string]int{
