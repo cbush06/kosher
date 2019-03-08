@@ -25,8 +25,25 @@ kosher tests are a _single source of truth_ for your projects: requirements, doc
 ```bash
 $ sudo java -jar kosher.jar
 ```
-3. The installer should automatically add kosher to the PATH. To verify the installation, open a new terminal and key in the commnad below. Your output should look similar.
+> The installer will suggest several tools to aid in writing Gherkin scripts and running kosher tests. At a minimum, we recommend Chrome, Git (and Git Bash, if you're using Windows), and Visual Studio Code.
+3. The installer should automatically add kosher to the PATH. To verify the installation, open a new terminal and key in the command below. Your output should look similar.
 ```bash
 $ kosher version
 1.0.0
+```
+
+### Trying it Out
+
+1. Create a new directory to house your first kosher project. Using a bash terminal, enter:
+```bash
+$ mkdir kosher-project
+$ cd kosher-project
+```
+2. Initialize the project (create its basic structure, configuration fils, and an example test script):
+```bash
+$ kosher init
+```
+3. Assuming you have Chrome installed, run the example test with the following command:
+```bash
+$ kosher run features/
 ```

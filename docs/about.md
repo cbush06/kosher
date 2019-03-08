@@ -14,3 +14,4 @@ kosher is a tool that merges several technologies together to automate and simpl
 * Virtual File System ([https://github.com/spf13/afero](https://github.com/spf13/afero)): abstracts away differences between operating systems making the application platform-agnostic and easier to test
 * Command-line parser ([https://github.com/spf13/cobra](https://github.com/spf13/cobra)): enables powerful, maintainable, and user-friendly CLI control
 * Configuration-file parser ([https://github.com/spf13/viper](https://github.com/spf13/viper)): simplifies use of JSON-based configuration files
+* Universal Installer ([http://izpack.org/](http://izpack.org/)): allows a single installer to be developed for all platforms (or in kosher's case, Windows and Linux)
