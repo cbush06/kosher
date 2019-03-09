@@ -15,6 +15,12 @@ The `simple` report format produces an HTML file that is easily imported by Word
 
 The `simple` format generates an HTML file that displays summary statistics followed by the results of each `*.feature` file, scenario, and step executed.
 
+The report displays the `project name` in the upper left-hand corner, summary statistics in the upper right-hand corner, and the date of test execution below those statistics.
+
+Next, it provides meta data about the project is shown.
+
+The final section of the report shows the statuses of feature files, scenarios, and steps.
+
 For the `*.feature` file:
 
 ```gherkin
