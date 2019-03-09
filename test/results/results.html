@@ -3,11 +3,11 @@
         <meta charset="utf-8" />
         <title></title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<style type="text/css">
 			.bg-success { background-color: #c7fac9 !important; }
 			.bg-danger { background-color: #f9c8c9 !important; }
 			.bg-info { background-color: #c8f9fb !important; }
+            .table td, .table th { border: none !important; }
 		</style>
     </head>
     <body>
@@ -31,498 +31,296 @@
                         <h3>Kosher Test Results</h2>
                     </div>
                     <div class="col-sm ml-auto text-right">
-                        <h3>Thursday, 07-Mar-19 15:56:59 EST</h2>
+                        <h3>Friday, 08-Mar-19 19:52:44 EST</h2>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-6">
-                    <div class="card bg-light mb-3">
-                        <div class="card-body">
-                            <h4 class="card-title">Scenarios (4)</h4>
-                            <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
-                                <canvas id="scenariosChart" width="400" height="400"></canvas>
-                            </div>
-                        </div>
+            <table class="table border bg-light">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="table-secondary">Metadata</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>App Version:</th>
+                        <td>1.0.0</td>
+                        <th>Environment:</th>
+                        <td>test</td>
+                    </tr>
+                    <tr>
+						<th>Platform:</th>
+						<td>web</td>
+                        <th>Browser:</th>
+                        <td>chrome</td>
+					</tr>
+					<tr>
+						<th>OS:</th>
+						<td>linux (amd64)</td>
+						<th>Total Run Time:</th>
+						<td>6.920685768s</td>
+                </tbody>
+            </table>
+		</div>
+		
+		<p>&nbsp;</p>
+
+        <div class="container-fluid">
+            
+            
+                
+                <h1 class="bg-success">
+                    <strong>(PASSED) Feature:</strong> Verify Results of Navigation Actions
+                </h1>
+				<p class="ml-4 mr-4" style="font-size: 1rem;"><pre>After clicking a link, clicking a button, or submitting
+a form, verfiy that the correct navigations take place.</pre></p>
+				<p>&nbsp;</p>
+                
+
+                    
+                    <div class="ml-4 mr-4">
+						<table class="table table-sm table-borderless">
+							<thead>
+								<th colspan="2" class="bg-success">
+									<h2><strong>(PASSED) Scenario:</strong> Verify Page</h2>
+								</th>
+							</thead>
+							<tbody>
+								<tr><td colspan="2" class="pl-4 pr-4"><pre>After clicking on a link, verify that appropriate page is shown.</pre></td></tr>
+
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I go to the &#34;table-search&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        2.28s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I maximize the window</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.12s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I click the &#34;Date pickers&#34; link</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.19s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I click the &#34;Bootstrap Date Picker&#34; link</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.98s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Then </strong>I should be on the &#34;bootstrap-date-picker&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.01s
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="card bg-light mb-3">
-                        <div class="card-body">
-                            <h4 class="card-title">Steps (17)</h4>
-                            <div class="ml-auto mr-auto" style="width: 400px; height: 400px;">
-                                <canvas id="stepsChart" width="400" height="400"></canvas>
-                            </div>
-                        </div>
+                
+
+                    
+                    <div class="ml-4 mr-4">
+						<table class="table table-sm table-borderless">
+							<thead>
+								<th colspan="2" class="bg-success">
+									<h2><strong>(PASSED) Scenario:</strong> Verify Redirect</h2>
+								</th>
+							</thead>
+							<tbody>
+								<tr><td colspan="2" class="pl-4 pr-4"><pre>After clicking on a link, verify redirection to the appropriate page.</pre></td></tr>
+
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I go to the &#34;table-search&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.17s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I maximize the window</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.12s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I click the &#34;Date pickers&#34; link</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.21s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I click the &#34;Bootstrap Date Picker&#34; link</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.38s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Then </strong>I should be redirected to the &#34;bootstrap-date-picker&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.02s
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card bg-light mb-3">
-                        <div class="card-header">
-                            Metadata
-                        </div>
-                        <div class="card-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <span class="col-2"><strong>App Version:</strong></span>
-                                    <span class="col-4">1.0.0</span>
+                
 
-                                    <span class="col-2"><strong>Environment:</strong></span>
-                                    <span class="col-4">test</span>
+                    
+                    <div class="ml-4 mr-4">
+						<table class="table table-sm table-borderless">
+							<thead>
+								<th colspan="2" class="bg-success">
+									<h2><strong>(PASSED) Scenario:</strong> Verify Javascript Alerts</h2>
+								</th>
+							</thead>
+							<tbody>
+								<tr><td colspan="2" class="pl-4 pr-4"><pre>Verify that alerts can be verified.</pre></td></tr>
 
-									<span class="col-2"><strong>Platform:</strong></span>
-									<span class="col-4">web</span>
-
-                                    <span class="col-2"><strong>Browser:</strong></span>
-									<span class="col-4">chrome</span>
-									
-									<span class="col-2"><strong>OS:</strong></span>
-									<span class="col-4">linux (amd64)</span>
-
-									<span class="col-2"><strong>Total Run Time:</strong></span>
-									<span class="col-4">6.349932734s</span>
-                                </div>
-                            </div>
-                        </div>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I go to the &#34;table-search&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.18s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I maximize the window</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.11s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Given </strong>I am on the &#34;js-popup&#34; page</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.94s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I should not see the popup &#34;I am an alert box!&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.03s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) When </strong>I click the first instance of &#34;Click me!&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.18s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) And </strong>I wait 1 seconds</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        1.00s
+                                    </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td class="text-success">
+										<strong>(PASSED) Then </strong>I should see the popup &#34;I am an alert box!&#34;</span>
+									</td>
+                                    </td>
+                                    <td style="width: 10%;">
+                                        0.01s
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-			
-
-			
-			<div class="row">
-                <div class="col">
-                    <div class="card mb-3">
-						<div class="card-header bg-success">
-							<strong>Feature:</strong> Verify Miscellaneous Elements of the Page
-						</div>
-						<div class="card-body">
-							<div class="card-title container-fluid">
-								<div class="row"><div class="col"><pre>Verify that Kosher&#39;s steps for verifying
-various elements on the page work properly.</pre></div></div>
-							</div>
-							<div class="container-fluid">
-								
-
-								
-								<div class="row">
-									<div class="col">
-										<div class="card mb-3">
-											<div class="card-header bg-success">
-												<strong>Scenario:</strong> Confirm I see all the Texts
-											</div>
-											<div class="card-body">
-												<div class="card-title container-fluid">
-													<div class="row"><div class="col"><pre>Verify that I see various labels and
-excerpts of text on the page.</pre></div></div>
-												</div>
-												<div class="container-fluid">
-
-													
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I maximize the window
-															</div>
-															<div class="col-1">0.11s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I go to the &#34;jquery-dropdown&#34; page
-															</div>
-															<div class="col-1">2.91s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Then </strong>I should see all of the texts:
-															</div>
-															<div class="col-1">0.14s</div>
-														</div>
-
-														
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-
-								
-								<div class="row">
-									<div class="col">
-										<div class="card mb-3">
-											<div class="card-header bg-success">
-												<strong>Scenario:</strong> Confirm Buttons/Links are Visible on the Page
-											</div>
-											<div class="card-body">
-												<div class="card-title container-fluid">
-													<div class="row"><div class="col"><pre>Verify that I see a button and/or link on the page
-and that I do not see a button and/or link on the page.</pre></div></div>
-												</div>
-												<div class="container-fluid">
-
-													
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I maximize the window
-															</div>
-															<div class="col-1">0.10s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I go to the &#34;table-search&#34; page
-															</div>
-															<div class="col-1">0.59s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>When </strong>I click &#34;Date pickers&#34;
-															</div>
-															<div class="col-1">0.18s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Then </strong>I should see the &#34;Bootstrap Date Picker&#34; link
-															</div>
-															<div class="col-1">0.13s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>And </strong>I should not see the &#34;Table Pagination&#34; link
-															</div>
-															<div class="col-1">0.15s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>And </strong>I should see the &#34;Filter&#34; button
-															</div>
-															<div class="col-1">0.07s</div>
-														</div>
-
-														
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-
-								
-								<div class="row">
-									<div class="col">
-										<div class="card mb-3">
-											<div class="card-header bg-success">
-												<strong>Scenario:</strong> Confirm INPUTs with NAME
-											</div>
-											<div class="card-body">
-												<div class="card-title container-fluid">
-													<div class="row"><div class="col"><pre>Verify that I see an INPUT with a specific NAME.</pre></div></div>
-												</div>
-												<div class="container-fluid">
-
-													
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I maximize the window
-															</div>
-															<div class="col-1">0.10s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I go to the &#34;input-form&#34; page
-															</div>
-															<div class="col-1">0.62s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Then </strong>I should see an &#34;input&#34; with &#34;name&#34; of &#34;first_name&#34;
-															</div>
-															<div class="col-1">0.06s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>And </strong>I should not see an &#34;input&#34; with &#34;name&#34; of &#34;middle_name&#34;
-															</div>
-															<div class="col-1">0.01s</div>
-														</div>
-
-														
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-
-								
-								<div class="row">
-									<div class="col">
-										<div class="card mb-3">
-											<div class="card-header bg-success">
-												<strong>Scenario:</strong> Confirm DIVs with ID
-											</div>
-											<div class="card-body">
-												<div class="card-title container-fluid">
-													<div class="row"><div class="col"><pre>Verify that I see a DIV with a specific ID.</pre></div></div>
-												</div>
-												<div class="container-fluid">
-
-													
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I maximize the window
-															</div>
-															<div class="col-1">0.11s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Given </strong>I go to the &#34;basicform&#34; page
-															</div>
-															<div class="col-1">0.98s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>Then </strong>I should see a &#34;div&#34; with &#34;id&#34; of &#34;user-message&#34;
-															</div>
-															<div class="col-1">0.06s</div>
-														</div>
-
-														
-													
-														<div class="row">
-															<div class="col-11">
-																
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																
-
-																<strong>And </strong>I should not see a &#34;div&#34; with &#34;id&#34; of &#34;user-message2&#34;
-															</div>
-															<div class="col-1">0.01s</div>
-														</div>
-
-														
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                
 			
         </div>
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-            var ctx = document.getElementById("scenariosChart");
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Passed', 'Failed'],
-                    datasets: [{
-                        data: [ 4 ,  0 ],
-                        backgroundColor: [
-                            'rgba(0, 255, 0, 0.2)',
-                            'rgba(255, 0, 0, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(0, 255, 0, 0.2)',
-                            'rgba(255, 0, 0, 0.2)'
-                        ],
-                        borderWidth: 1
-                    }]
-				},
-				options: {
-					legend: {
-						labels: {
-							generateLabels: labelFunc
-						}
-					}
-				}
-            });
-
-            var ctx = document.getElementById("stepsChart");
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Passed', 'Failed', 'Pending', 'Skipped'],
-                    datasets: [{
-                        data: [ 17 ,  0 ,  0 ,  0 ],
-                        backgroundColor: [
-                            'rgba(0, 255, 0, 0.2)',
-                            'rgba(255, 0, 0, 0.2)',
-                            'rgba(0, 250, 255, 0.2)',
-                            'rgba(255, 200, 0, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(0, 255, 0, 1)',
-                            'rgba(255, 0, 0, 1)',
-                            'rgba(0, 250, 255, 1)',
-                            'rgba(255, 200, 0, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-				},
-				options: {
-					legend: {
-						labels: {
-							generateLabels: labelFunc
-						}
-					}
-				}
-			});
-			
-			function labelFunc(chart) {
-				var data = chart.data;
-				if (data.labels.length && data.datasets.length) {
-					return data.labels.map(function(label, i) {
-						var meta = chart.getDatasetMeta(0);
-						var ds = data.datasets[0];
-						var arc = meta.data[i];
-						var custom = arc && arc.custom || {};
-						var getValueAtIndexOrDefault = Chart.helpers.getValueAtIndexOrDefault;
-						var arcOpts = chart.options.elements.arc;
-						var fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
-						var stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
-						var bw = custom.borderWidth ? custom.borderWidth : getValueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
-
-						
-						var value = chart.config.data.datasets[arc._datasetIndex].data[arc._index];
-
-						return {
-							
-							text: label + " (" + value + ")",
-							fillStyle: fill,
-							strokeStyle: stroke,
-							lineWidth: bw,
-							hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
-							index: i
-						};
-					});
-				} else {
-					return [];
-				}
-			}
-        </script>
     </body>
 </html>
