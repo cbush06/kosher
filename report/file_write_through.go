@@ -15,13 +15,19 @@ type FileWriteThroughReport struct {
 }
 
 func newFileWriteThroughReport(fileName string, f *fs.Fs) (*FileWriteThroughReport, error) {
-	if fileHandle, err := f.ResultsDir.OpenFile(fileName, os.O_RDWR|os.O_TRUNC, 0777); err != nil {
-		return &FileWriteThroughReport{
-			fileHandle: fileHandle,
-		}, nil
+	var (
+		err        error
+		fileHandle afero.File
+	)
+
+	if fileHandle, err = f.ResultsDir.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644); err != nil {
+		filePath, _ := f.ResultsDir.RealPath(fileName)
+		return nil, fmt.Errorf("Unable to create results file [%s]: %s", filePath, err)
 	}
-	filePath, _ := f.ResultsDir.RealPath("results.xml")
-	return nil, fmt.Errorf("Unable to create results file [%s]", filePath)
+
+	return &FileWriteThroughReport{
+		fileHandle: fileHandle,
+	}, nil
 }
 
 func (s *FileWriteThroughReport) Write(b []byte) (int, error) {
