@@ -23,7 +23,7 @@ The `pages.json` file allows the user to define page names to be used in Gherkin
 
 ## Relation to environments.json
 
-As mentiond before, `environments.json` contains the base URLs for the application being tested for each of its environments.
+As mentiond before, `environments.json` contains a base URL of application being tested for each of its environments.
 
 The `pages.json` file contains the portion of each page's URL that follows the environment URLs. The names assigned to each page URL are used in the Gherkin steps for navigating to different pages and verifying that redirections and navigations were performed correctly.
 
@@ -39,8 +39,8 @@ and a `pages.json` file with this content:
 
 ```json
 {
-    "products": "/products"
+    "prods": "/products"
 }
 ```
 
-The Gherkin step `When I go to the "about" page` would cause the browser to navigate to `https://about.google/products`.
+The Gherkin step `When I go to the "prods" page` would cause the browser to navigate to `https://about.google/products`.
