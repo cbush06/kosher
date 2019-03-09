@@ -10,4 +10,4 @@ nav_order: 6
 
 The `simple` report format generates an HTML file in the `results/` directory of your project that displays summary statistics followed by the results of each `*.feature` file, scenario, and step executed. The `simple` format is tailored to import well in Word and to export well to PDF.
 
-![simple report format](../images/simple.png)
+![simple report format]({{site.baseurl}}/assets/images/simple.png)

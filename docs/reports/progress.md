@@ -10,4 +10,4 @@ nav_order: 5
 
 The `progress` report format marks each step executed with a period in the terminal followed by summary statistics for the test execution.
 
-![progress report format](../images/progress.png)
+![progress report format]({{site.baseurl}}/assets/images/progress.png)
