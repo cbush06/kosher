@@ -8,6 +8,11 @@ nav_order: 2
 
 # cucumber Report Format
 
+The `cucumber` report format generates a Cucumber-style JSON report named `results.json`.
+{: .fs-6 .fw-300 }
+
+## Format
+
 For the `*.feature` file:
 ```gherkin
 Feature: Verify Results of Navigation Actions
