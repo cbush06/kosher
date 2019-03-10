@@ -12,7 +12,7 @@ Fill in multiple fields with a single step.
 ## Pattern
 
 ```golang
-^(?:|I )fill in the following:$^(?:|I )check "([^"]*)"$
+^(?:|I )fill in the following:$
 ```
 
 ## Parameters
