@@ -6,5 +6,6 @@ parent: Step Definitions
 
 # I check "__"
 
-## Set checkboxes to the <em>checked</em> state. {: .fs-6 .fw-300 }
+## Set checkboxes to the <em>checked</em> state.
+{: .fs-6 .fw-300 }
 
