@@ -34,11 +34,12 @@ func iFillInTheFollowing(s *steputils.StepUtils) func(*gherkin.DataTable) error 
 func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 	return func(field string, value string) error {
 		var (
-			matches   *agouti.MultiSelection
-			matchCnt  int
-			fieldType string
-			errMsg    = "error encountered while filling in multiple fields: %s"
-			err       error
+			matches     *agouti.MultiSelection
+			matchCnt    int
+			fieldType   string
+			shouldCheck bool
+			errMsg      = "error encountered while filling in multiple fields: %s"
+			err         error
 		)
 
 		// try to find the field(s) specified
@@ -69,9 +70,8 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 			case "checkbox":
 				matches.Uncheck()
 				for i := 0; i < matchCnt; i++ {
-					nextCheckEls, _ := matches.At(i).Elements()
-					nextCheckValue, _ := nextCheckEls[0].GetAttribute("value")
-					if strings.EqualFold(nextCheckValue, strings.TrimSpace(value)) {
+					shouldCheck, err = strconv.ParseBool(strings.TrimSpace(value))
+					if shouldCheck && err == nil {
 						matches.At(i).Check()
 						return nil
 					}
@@ -240,14 +240,10 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 		switch fieldType {
 		case "checkbox":
 			for i := 0; i < matchCnt; i++ {
-				nextCheckEls, _ := matches.At(i).Elements()
-				nextCheckValue, _ := nextCheckEls[0].GetAttribute("value")
-				if searchIdx := sort.SearchStrings(valuesLookup, nextCheckValue); searchIdx < len(valuesLookup) && strings.EqualFold(valuesLookup[searchIdx], nextCheckValue) {
-					if selected {
-						matches.At(i).Check()
-					} else {
-						matches.At(i).Uncheck()
-					}
+				if selected {
+					matches.At(i).Check()
+				} else {
+					matches.At(i).Uncheck()
 				}
 			}
 		case "select":
