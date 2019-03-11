@@ -11,7 +11,7 @@ Set a checkbox to the <em>unchecked</em> state.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )uncheck "([^"]*)"$
 ```
 

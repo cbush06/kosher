@@ -11,7 +11,7 @@ Verifies that the specified field contains the provided value.
 
 ## Pattern
 
-```golang
+```
 ^"([^"]*)" should contain "([^"]*)"$
 ```
 

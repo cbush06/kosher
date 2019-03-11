@@ -11,7 +11,7 @@ Set a checkbox to the <em>checked</em> state.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )choose "([^"]*)"$
 ```
 

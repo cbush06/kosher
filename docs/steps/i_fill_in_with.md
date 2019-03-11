@@ -11,7 +11,7 @@ Fill in a form field with a value.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )fill (?:|in )"([^"]*)" with "([^"]*)"$
 ```
 

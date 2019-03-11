@@ -11,7 +11,7 @@ Enter the current date in the specified field using the `dateFormat` format in t
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )enter today's date in "([^"]*)"$
 ```
 

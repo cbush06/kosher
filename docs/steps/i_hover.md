@@ -11,7 +11,7 @@ Simulate a mouseover action on the specified element.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )hover over "([^"]*)"$
 ```
 

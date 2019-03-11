@@ -11,7 +11,7 @@ Verifies that a select list has **exactly** the specified options.
 
 ## Pattern
 
-```golang
+```
 ^"([^"]*)" should have (?:|the )following options:$
 ```
 

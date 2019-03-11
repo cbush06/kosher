@@ -11,7 +11,7 @@ Unfocuses/blurs an the specified element. First, kosher tries to build a selecto
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )(?:unfocus|blur) "([^"]*)"$
 ```
 

@@ -11,7 +11,7 @@ Simulate a user keying a value into a field.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )key (?:|in )"([^"]*)" in (?:|the )"([^"]*)"(?:| field)$
 ```
 

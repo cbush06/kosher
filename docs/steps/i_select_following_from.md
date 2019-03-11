@@ -11,7 +11,7 @@ Select one or more values from a multi-select list.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )select (?:|the )following values from "([^"]*)":$
 ```
 

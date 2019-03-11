@@ -11,7 +11,7 @@ Verifies that the specified field does not contain the provided value.
 
 ## Pattern
 
-```golang
+```
 ^"([^"]*)" should not contain "([^"]*)"$
 ```
 

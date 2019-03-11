@@ -11,7 +11,7 @@ Take a screenshot of the browser's rendered web page. The screenshot will be nam
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )take a screenshot$
 ```
 

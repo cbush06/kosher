@@ -11,7 +11,7 @@ Select a single value from a single- or multi-select list.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )select "([^"]*)" from "([^"]*)"$
 ```
 

@@ -11,7 +11,7 @@ Given multiple elements that match parameter 2, press/click the n<sup>th</sup> e
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )(?:press|click) the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)"$
 ```
 

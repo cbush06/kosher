@@ -11,7 +11,7 @@ Unselects one or more values from a multi-select list.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )unselect (?:|the )following values from "([^"]*)":$
 ```
 

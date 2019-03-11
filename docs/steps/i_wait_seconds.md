@@ -11,7 +11,7 @@ Force test execution to pause for a specified number of seconds. This is often u
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )wait (\d+) second(?:|s)$
 ```
 

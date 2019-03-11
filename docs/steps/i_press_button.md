@@ -11,7 +11,7 @@ Presses/clicks first element matched by parameter 1.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )(?:press|click) the "([^"]*)" (?:button|link)$
 ```
 

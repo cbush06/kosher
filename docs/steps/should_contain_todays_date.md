@@ -11,8 +11,8 @@ Parses the value the field's value as a date using the `dateFormat` in the `sett
 
 ## Pattern
 
-```perl
-/^"([^"]*)" should contain today's date$/
+```
+^"([^"]*)" should contain today's date$
 ```
 
 ## Parameters

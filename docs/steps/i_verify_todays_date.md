@@ -11,7 +11,7 @@ Parses the value the field's value as a date using the `dateFormat` in the `sett
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )verify "([^"]*)" has today's date$
 ```
 

@@ -11,7 +11,7 @@ Fill in multiple fields with a single step.
 
 ## Pattern
 
-```golang
+```
 ^(?:|I )fill in the following:$
 ```
 
