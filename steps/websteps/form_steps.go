@@ -254,9 +254,9 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 				optionCnt, _ := optionMatches.Count()
 				for i := 0; i < optionCnt; i++ {
 					nextOptionElms, _ := optionMatches.At(i).Elements()
-					nextOptionValue, _ := nextOptionElms[0].GetAttribute("value")
+					nextOptionValue, _ := nextOptionElms[0].GetText()
 					if searchIdx := sort.SearchStrings(valuesLookup, nextOptionValue); searchIdx < len(valuesLookup) && strings.EqualFold(valuesLookup[searchIdx], nextOptionValue) {
-						optionMatches.At(i).Click()
+						nextOptionElms[0].Clear()
 					}
 				}
 			}

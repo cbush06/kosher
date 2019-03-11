@@ -34,3 +34,9 @@ kosher provides an extensive list of step definitions for controlling the browse
 | form              | [And I hover over "BidPlansMenu"](i_hover.html)                                                              | any                                 |
 | form              | [Then I enter today's date in "Date"](i_enter_todays_date.html)                                              | text-based                          |
 | form verification | [Then I verify "date" has today's date](i_verify_todays_date.html)                                           | text-based                          |
+| form verification | [Then "date" should contain today's date](should_contain_todays_date.md)                                     | text-based                          |
+| form verification | [Then "Name" should contain "my name"](should_contain.html)                                                  | text-based                          |
+| form verification | [Then "Name" should not contain "my name"](should_not_contain.html)                                          | text-based                          |
+| form verification | [Then "states" should have the following options:](should_have_options.html)                                 | select                              |
+| form verification | [Then "states" should have the following options selected:](should_have_options_selected.html)               | select                              |
+| form verification | [And "states" should not have the following options selected:](should_not_have_options_selected.html)        | select                              |
