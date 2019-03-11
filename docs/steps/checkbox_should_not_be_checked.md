@@ -1,29 +1,28 @@
 ---
 layout: default
-title: "I check \"__\""
+title: "the \"__\" checkbox should not be checked"
 parent: Step Definitions
 ---
 
-# I check "\_\_"
+# the "\_\_" checkbox should not be checked
 
-Set a checkbox to the <em>checked</em> state.
+Verifies that the specified checkbox is unchecked.
 {: .fs-6 .fw-300 }
 
 ## Pattern
 
 ```
-^(?:|I )check "([^"]*)"$
+^the "([^"]*)" checkbox should not be checked$
 ```
 
 ## Parameters
 
 | Position | Description | Value Type                   | Restrictions                                                                         |
 | :------: | ----------- | ---------------------------- | ------------------------------------------------------------------------------------ |
-|    1     | checkbox    | field id/name/label/selector | Must refer to a [checkbox field]({{site.baseurl}}/field_types.html#checkbox-fields). |
+|    1     | field       | field id/name/label/selector | Must refer to a [checkbox field]({{site.baseurl}}/field_types.html#checkbox-fields). |
 
 ## Examples
 
 ```gherkin
-When I check "Accept terms"
-And check "Receive newsletters"
+Then the "Accept terms" checkbox should not be checked
 ```

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I verify "__" has today's date
+title: "I verify \"__\" has today's date"
 parent: Step Definitions
 ---
 

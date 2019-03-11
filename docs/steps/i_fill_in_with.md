@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I fill in "__" with "__"
+title: "I fill in \"__\" with \"__\""
 parent: Step Definitions
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I select "__" from "__"
+title: "I select \"__\" from \"__\""
 parent: Step Definitions
 ---
 

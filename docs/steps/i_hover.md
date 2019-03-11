@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I hover over "__"
+title: "I hover over \"__\""
 parent: Step Definitions
 ---
 

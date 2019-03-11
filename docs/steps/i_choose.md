@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I choose "__"
+title: "I choose \"__\""
 parent: Step Definitions
 ---
 

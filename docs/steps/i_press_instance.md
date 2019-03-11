@@ -1,10 +1,10 @@
 ---
 layout: default
-title: I press the __ instance of "__"
+title: "I press/click the __ instance of \"__\""
 parent: Step Definitions
 ---
 
-# I press the \_\_ instance of "\_\_"
+# I press/click the \_\_ instance of "\_\_"
 
 Given multiple elements that match parameter 2, press/click the n<sup>th</sup> element as specified by parameter 1.
 {: .fs-6 .fw-300 }

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I check "__"
+title: "I check \"__\""
 parent: Step Definitions
 ---
 

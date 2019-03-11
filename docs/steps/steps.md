@@ -27,10 +27,10 @@ kosher provides an extensive list of step definitions for controlling the browse
 | form                    | [When I select the following values from "Filters": Accepts Gherkin Table](i_select_following_from.html)     | select                                      |
 | form                    | [When I unselect the following values from "Filters": Accepts Gherkin Table](i_unselect_following_from.html) | select                                      |
 | form                    | [When I choose the "radio1"](i_choose.html)                                                                  | radio                                       |
-| form                    | [When I press "Submit"](i_press.html)                                                                        | any                                         |
-| form                    | [When I press the 4th instance of "nextButton"](i_press_instance.html)                                       | any                                         |
-| form                    | [When I press the "Submit" button/link](i_press_button.html)                                                 | button, hyperlink                           |
-| form                    | [When I unfocus "first_name"](i_unfocus.html)                                                                | any                                         |
+| form                    | [When I press/click "Submit"](i_press.html)                                                                  | any                                         |
+| form                    | [When I press/click the 4th instance of "nextButton"](i_press_instance.html)                                 | any                                         |
+| form                    | [When I press/click the "Submit" button/link](i_press_button.html)                                           | button, hyperlink                           |
+| form                    | [When I unfocus/blur "first_name"](i_unfocus.html)                                                           | any                                         |
 | form                    | [When I hover over "BidPlansMenu"](i_hover.html)                                                             | any                                         |
 | form                    | [Then I enter today's date in "Date"](i_enter_todays_date.html)                                              | text-based                                  |
 | form verification       | [Then I verify "date" has today's date](i_verify_todays_date.html)                                           | text-based                                  |
@@ -45,22 +45,20 @@ kosher provides an extensive list of step definitions for controlling the browse
 | form verification       | [Then the "radio 1" radio should be selected](radio_should_be_selected.html)                                 | radio                                       |
 | form verification       | [Then the "radio 2" radio should not be selected](radio_should_not_be_selected.html)                         | radio                                       |
 | navigation              | [Given I am on the "home" page](i_am_on_page.html)                                                           | N/A                                         |
-| navigation              | [When I go to the "other" page](go_to_page.html)                                                             | N/A                                         |
+| navigation              | [When I go to the "other" page](i_go_to_page.html)                                                           | N/A                                         |
 | navigation              | [When I follow "Privacy Policy"](i_follow.html)                                                              | N/A                                         |
 | navigation verification | [Then I should be redirected to the "congratulations" page](i_should_be_redirected.html)                     | N/A                                         |
 | navigation verification | [Then I should be on the "congratulations" page](i_should_be_on.html)                                        | N/A                                         |
 | browser                 | [When I maximize the window](i_maximize.html)                                                                | N/A                                         |
-| browser                 | [When I switch to the frame](i_switch_frame.html)                                                            | frame                                       |
 | browser                 | [When I switch to frame 2](i_switch_frame_num.html)                                                          | frame                                       |
 | browser                 | [When I accept the popup](i_accept_popup.html)                                                               | N/A                                         |
 | browser                 | [When I decline the popup](i_decline_popup.html)                                                             | N/A                                         |
-| browser                 | [When I switch to the iframe](i_switch_iframe.html)                                                          | iframe                                      |
 | browser                 | [When I switch to iframe 2](i_switch_iframe_num.html)                                                        | iframe                                      |
 | browser                 | [When I switch to the root frame](i_swtich_root_frame.html)                                                  | N/A                                         |
 | browser verification    | [Then I should see the popup text "Hello, World!"](i_should_see_popup_text.html)                             | N/A                                         |
 | browser verification    | [And I should not see the popup text "Hello, World!"](i_should_not_see_popup_text.html)                      | N/A                                         |
 | verification            | [And I should see "Great, you can click links!"](i_should_see.html)                                          | N/A                                         |
-| verification            | [And I should not see "some bla-bla"](i_should_no_see.html)                                                  | N/A                                         |
+| verification            | [And I should not see "some bla-bla"](i_should_not_see.html)                                                 | N/A                                         |
 | verification            | [Then I should see all of the texts:](i_should_see_all_of.html)                                              | N/A                                         |
 | verification            | [Then I should see the "Submit" button/link](i_should_see_button_link.html)                                  | N/A                                         |
 | verification            | [And I should not see the "Click Me" button/link](i_should_not_see_button_link.html)                         | N/A                                         |

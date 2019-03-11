@@ -1,10 +1,10 @@
 ---
 layout: default
-title: I press "__"
+title: "I press/click the \"__\" button/link"
 parent: Step Definitions
 ---
 
-# I press the "\_\_" button
+# I press/click the "\_\_" button/link
 
 Presses/clicks first element matched by parameter 1.
 {: .fs-6 .fw-300 }

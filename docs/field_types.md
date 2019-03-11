@@ -19,15 +19,22 @@ kosher supports most common HTML field types.
 
 ---
 
-## Buttons and Links
+## Buttons and Hyperlinks
 
 Most steps that support clicking/pressing buttons also support hyperlinks. Additionally, unless otherwise stated, these steps support pressing/clicking any element visible on the screen.
+
+### Button Elements
 
 ```html
 <input type="button" />
 <input type="reset" />
 <input type="submit" />
 <button></button>
+```
+
+### Hyperlink Elements
+
+```html
 <a href="#"></a>
 ```
 

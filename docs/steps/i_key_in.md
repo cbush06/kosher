@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I key in "__" in the "__" field
+title: "I key in \"__\" in the \"__\" field"
 parent: Step Definitions
 ---
 

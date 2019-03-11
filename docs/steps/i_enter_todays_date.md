@@ -1,6 +1,6 @@
 ---
 layout: default
-title: I enter today's date in "__"
+title: "I enter today's date in \"__\""
 parent: Step Definitions
 ---
 
