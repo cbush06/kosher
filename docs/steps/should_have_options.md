@@ -25,7 +25,7 @@ Verifies that a select list has **exactly** the specified options.
 
 | Column Position | Description | Value Type | Restrictions |
 | :-------------: | ----------- | ---------- | ------------ |
-|        1        | value       | string     |              |
+|        1        | option text | string     |              |
 
 ## Examples
 
