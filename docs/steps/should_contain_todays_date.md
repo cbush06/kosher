@@ -12,7 +12,7 @@ Parses the value the field's value as a date using the `dateFormat` in the `sett
 ## Pattern
 
 ```json
-^"([^"]*)" should contain today's date$
+/^"([^"]*)" should contain today's date$/
 ```
 
 ## Parameters
