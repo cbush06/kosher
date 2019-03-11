@@ -212,7 +212,6 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 	return func(field string, values *gherkin.DataTable) error {
 		var (
 			matches      *agouti.MultiSelection
-			matchCnt     int
 			fieldType    string
 			errMsg       = fmt.Sprintf("error encountered while selecting/unselecting multiple values from [%s]: ", field) + "%s"
 			err          error
@@ -235,18 +234,8 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 			return fmt.Errorf(errMsg, err)
 		}
 
-		// handle either checkbox or select
-		matchCnt, _ = matches.Count()
-		switch fieldType {
-		case "checkbox":
-			for i := 0; i < matchCnt; i++ {
-				if selected {
-					matches.At(i).Check()
-				} else {
-					matches.At(i).Uncheck()
-				}
-			}
-		case "select":
+		// only handle multi-selects
+		if fieldType == "select" {
 			selectElms, _ := matches.At(0).Elements()
 			isMultiple, _ := selectElms[0].GetAttribute("multiple")
 
@@ -271,7 +260,7 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 					}
 				}
 			}
-		default:
+		} else {
 			return fmt.Errorf(errMsg, "field is of type [%s] but must be type [select,checkbox]", fieldType)
 		}
 

@@ -4,9 +4,9 @@ title: I check "__"
 parent: Step Definitions
 ---
 
-# I check "__"
+# I check "\_\_"
 
-Set checkboxes to the <em>checked</em> state.
+Set a checkbox to the <em>checked</em> state.
 {: .fs-6 .fw-300 }
 
 ## Pattern
@@ -17,12 +17,13 @@ Set checkboxes to the <em>checked</em> state.
 
 ## Parameters
 
-| Position | Description | Value Type                   | Restrictions                     |
-| :------: | ----------- | ---------------------------- | -------------------------------- |
-|    1     | checkbox    | field id/name/label/selector | Must refer to a checkbox element |
+| Position | Description | Value Type                   | Restrictions                                                                         |
+| :------: | ----------- | ---------------------------- | ------------------------------------------------------------------------------------ |
+|    1     | checkbox    | field id/name/label/selector | Must refer to a [checkbox field]({{site.baseurl}}/field_types.html#checkbox-fields). |
 
 ## Examples
 
 ```gherkin
 When I check "Accept terms"
+And check "Receive newsletters"
 ```

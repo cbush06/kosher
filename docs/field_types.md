@@ -19,6 +19,18 @@ kosher supports most common HTML field types.
 
 ---
 
+## Buttons and Links
+
+Most steps that support clicking/pressing buttons also support hyperlinks. Additionally, unless otherwise stated, these steps support pressing/clicking any element visible on the screen.
+
+```html
+<input type="button" />
+<input type="reset" />
+<input type="submit" />
+<button></button>
+<a href="#"></a>
+```
+
 ## Text-based Fields
 
 kosher supports interacting with all text-based HTML fields. Examples of those follow:
@@ -38,18 +50,37 @@ kosher supports interacting with all text-based HTML fields. Examples of those f
 <textarea></textarea>
 <input type="text" />
 ```
-## Selection Fields
 
-Some step definitions enable interactions with the 3 selection field types: checkboxes, radio buttons, and selects. Examples of these follow:
+## Checkbox Fields
+
+Some steps allow checking or un-checking checkbox fields. For the purposes of kosher, checkbox fields must actually be an HTML checkbox element:
 
 ```html
 <input type="checkbox" name="favorite_colors_green" />
 <input type="checkbox" name="favorite_colors_red" />
+```
 
+## Radio Button Fields
+
+kosher allows selecting a value from a group of radio buttons linked together by a common name value. Again, with kosher, the radio button fields must actually be an HTML radio button element:
+
+```html
 <input type="radio" name="favorite_colors" value="green" />
 <input type="radio" name="favorite_colors" value="red" />
+```
 
-<select name="favorite_colors">
+### Select Fields
+
+Some step definitions enable interactions with select lists. As with the above types, these must actuall be HTML select elements. Pay _careful attention_ to the documentation for these step definitions, as some restrict their applicability to select lists with the `multiple` attribute set.
+
+```html
+<select name="state">
+    <option value="al">Alabama</option>
+    <option value="ak">Alaska</option>
+    <option value="ar">Arkansas</option>
+</select>
+
+<select name="favorite_colors" size="2" multiple>
     <option value="green">Green</option>
     <option value="red">Red</option>
 </select>
