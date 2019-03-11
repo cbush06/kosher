@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "__" should contain today's date
+title: "\"__\" should contain today's date"
 parent: Step Definitions
 ---
 

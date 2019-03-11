@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "__" should contain "__"
+title: "\"__\" should contain \"__\""
 parent: Step Definitions
 ---
 

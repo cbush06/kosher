@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "__" should not contain "__"
+title: "\"__\" should not contain \"__\""
 parent: Step Definitions
 ---
 
