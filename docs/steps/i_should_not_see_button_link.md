@@ -17,10 +17,9 @@ Verifies that the page does not contain a button or link with the specified labe
 
 ## Parameters
 
-| Position | Description | Value Type | Restrictions |
-| :------: | ----------- | ---------- | ------------ |
-|    1     | text        | string     |              |
-
+| Position | Description | Value Type | Restrictions                                                                                                                                      |
+| :------: | ----------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    1     | text        | string     | Must refer to a [button]({{site.baseurl}}/field_types.html#button-elements) or [hyperlink]({{site.baseurl}}/field_types.html#hyperlink-elements). |
 ## Examples
 
 ```gherkin

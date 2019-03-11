@@ -6,7 +6,7 @@ parent: Step Definitions
 
 # I verify "\_\_" has today's date
 
-Parses the value the field's value as a date using the `dateFormat` in the `settings.json` file and verifies that it is equal to the current date.
+Parses the field's value as a date using the `dateFormat` in the `settings.json` file and verifies that it is equal to the current date.
 {: .fs-6 .fw-300 }
 
 ## Pattern

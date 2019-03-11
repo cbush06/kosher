@@ -6,7 +6,7 @@ parent: Step Definitions
 
 # I should not see "\_\_"
 
-Verifies that the page does not the specified text. **Note** that this step may sometimes fail if the text is split across multiple elements (e.g. parts of the text are styled individually using multiple `<span></span>` elements).
+Verifies that the page does not contain the specified text. **Note** that this step may sometimes fail if the text is split across multiple elements (e.g. parts of the text are styled individually using multiple `<span></span>` elements).
 {: .fs-6 .fw-300 }
 
 ## Pattern

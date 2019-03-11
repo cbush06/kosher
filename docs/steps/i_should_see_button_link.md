@@ -17,9 +17,9 @@ Verifies that the page contains a button or link with the specified label.
 
 ## Parameters
 
-| Position | Description | Value Type | Restrictions |
-| :------: | ----------- | ---------- | ------------ |
-|    1     | text        | string     |              |
+| Position | Description | Value Type | Restrictions                                                                                                                                      |
+| :------: | ----------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    1     | text        | string     | Must refer to a [button]({{site.baseurl}}/field_types.html#button-elements) or [hyperlink]({{site.baseurl}}/field_types.html#hyperlink-elements). |
 
 ## Examples
 
