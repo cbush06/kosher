@@ -69,7 +69,7 @@ kosher allows selecting a value from a group of radio buttons linked together by
 <input type="radio" name="favorite_colors" value="red" />
 ```
 
-### Select Fields
+## Select Fields
 
 Some step definitions enable interactions with select lists. As with the above types, these must actuall be HTML select elements. Pay _careful attention_ to the documentation for these step definitions, as some restrict their applicability to select lists with the `multiple` attribute set.
 

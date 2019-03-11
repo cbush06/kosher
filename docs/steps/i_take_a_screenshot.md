@@ -6,7 +6,7 @@ parent: Step Definitions
 
 # I take a screenshot
 
-Take a screenshot of the browser's rendered web page. The screenshot will be named with the following pattern `DDMMMYYYY-HHMMSS.MIL.png` (where `MIL` is 3 digit millisecond value). Screenshots are saved in the `results` directory of a project.
+Take a screenshot of the browser's rendered web page. The screenshot will be named with the following pattern `DDMMMYYYY-HHMMSS.MIL.png` (where `MIL` is a 3 digit millisecond value). Screenshots are saved in the `/results` directory of a project.
 {: .fs-6 .fw-300 }
 
 ## Pattern

@@ -6,7 +6,7 @@ parent: Step Definitions
 
 # I wait \_\_ seconds
 
-Force test execution to pause for a specified number of seconds. This is often useful when you must wait for an AJAX request/response or long-running calculatino to complete. **Note** that you do not need to "wait" for normal browser navigations, test execution is automatically paused until these complete.
+Force test execution to pause for a specified number of seconds. This is often useful when you must wait for an AJAX request/response or long-running calculation to complete. **Note** that you do not need to "wait" for normal browser navigations, as test execution is automatically paused until these complete.
 {: .fs-6 .fw-300 }
 
 ## Pattern
