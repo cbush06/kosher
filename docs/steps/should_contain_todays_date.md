@@ -11,7 +11,7 @@ Parses the value the field's value as a date using the `dateFormat` in the `sett
 
 ## Pattern
 
-```json
+```perl
 /^"([^"]*)" should contain today's date$/
 ```
 
