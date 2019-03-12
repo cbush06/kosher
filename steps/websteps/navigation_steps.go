@@ -2,6 +2,7 @@ package websteps
 
 import (
 	"fmt"
+	"net/url"
 
 	"github.com/cbush06/kosher/steps/steputils"
 )
@@ -10,17 +11,20 @@ import (
 func iAmOnThePage(s *steputils.StepUtils) func(string) error {
 	return func(pageName string) error {
 		var (
-			url string
-			err error
+			pageURL string
+			err     error
 		)
 
-		if url, err = s.ResolvePage(pageName); err != nil {
+		if pageURL, err = s.ResolvePage(pageName); err != nil {
 			return fmt.Errorf("error encountered while resolving page URL: %s", err)
-		} else if len(url) < 1 {
+		} else if len(pageURL) < 1 {
 			return fmt.Errorf("no page found for name [%s]", pageName)
 		}
 
-		if err = s.Page.Navigate(url); err != nil {
+		unescapedURL, _ := url.PathUnescape(pageURL)
+		fmt.Println("URL: " + unescapedURL)
+
+		if err = s.Page.Navigate(unescapedURL); err != nil {
 			return fmt.Errorf("failed to load page [%s]: %s", pageName, err)
 		}
 		return nil
