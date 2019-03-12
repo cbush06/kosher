@@ -20,11 +20,11 @@
                         "name": "I go to the \"table-search\" page",
                         "line": 7,
                         "match": {
-                            "location": "navigation_steps.go:11"
+                            "location": "navigation_steps.go:12"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2435623068
+                            "duration": 2556327586
                         }
                     },
                     {
@@ -36,7 +36,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 128706640
+                            "duration": 103859574
                         }
                     },
                     {
@@ -44,11 +44,11 @@
                         "name": "I click the \"Date pickers\" link",
                         "line": 13,
                         "match": {
-                            "location": "form_steps.go:322"
+                            "location": "form_steps.go:307"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 175812580
+                            "duration": 191586482
                         }
                     },
                     {
@@ -56,11 +56,11 @@
                         "name": "I click the \"Bootstrap Date Picker\" link",
                         "line": 14,
                         "match": {
-                            "location": "form_steps.go:322"
+                            "location": "form_steps.go:307"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 954473192
+                            "duration": 936613971
                         }
                     },
                     {
@@ -72,7 +72,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 4891489
+                            "duration": 24805428
                         }
                     }
                 ]
@@ -90,11 +90,11 @@
                         "name": "I go to the \"table-search\" page",
                         "line": 7,
                         "match": {
-                            "location": "navigation_steps.go:11"
+                            "location": "navigation_steps.go:12"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 163556475
+                            "duration": 126888455
                         }
                     },
                     {
@@ -106,7 +106,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 107583869
+                            "duration": 107455888
                         }
                     },
                     {
@@ -114,11 +114,11 @@
                         "name": "I click the \"Date pickers\" link",
                         "line": 20,
                         "match": {
-                            "location": "form_steps.go:322"
+                            "location": "form_steps.go:307"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 220182695
+                            "duration": 192741927
                         }
                     },
                     {
@@ -126,11 +126,11 @@
                         "name": "I click the \"Bootstrap Date Picker\" link",
                         "line": 21,
                         "match": {
-                            "location": "form_steps.go:322"
+                            "location": "form_steps.go:307"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 367662570
+                            "duration": 339253750
                         }
                     },
                     {
@@ -142,7 +142,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 6169461
+                            "duration": 7243927
                         }
                     }
                 ]
@@ -160,11 +160,11 @@
                         "name": "I go to the \"table-search\" page",
                         "line": 7,
                         "match": {
-                            "location": "navigation_steps.go:11"
+                            "location": "navigation_steps.go:12"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 157212896
+                            "duration": 146614140
                         }
                     },
                     {
@@ -176,7 +176,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 117385741
+                            "duration": 116661130
                         }
                     },
                     {
@@ -184,11 +184,11 @@
                         "name": "I am on the \"js-popup\" page",
                         "line": 27,
                         "match": {
-                            "location": "navigation_steps.go:11"
+                            "location": "navigation_steps.go:12"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 932731293
+                            "duration": 882109822
                         }
                     },
                     {
@@ -200,7 +200,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2517622
+                            "duration": 4706958
                         }
                     },
                     {
@@ -208,11 +208,11 @@
                         "name": "I click the first instance of \"Click me!\"",
                         "line": 29,
                         "match": {
-                            "location": "form_steps.go:328"
+                            "location": "form_steps.go:313"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 177863312
+                            "duration": 206484511
                         }
                     },
                     {
@@ -224,7 +224,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 1001867205
+                            "duration": 1001100745
                         }
                     },
                     {
@@ -236,7 +236,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 4109402
+                            "duration": 6863124
                         }
                     }
                 ]
