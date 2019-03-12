@@ -18,7 +18,7 @@ kosher tests are a _single source of truth_ for your projects: requirements, doc
 
 ### Installing kosher
 
-1. Download the installer from the latest published release of kosher: [https://github.com/cbush06/kosher/releases/](https://github.com/cbush06/kosher/releases/)
+1. Download the installer from the latest published release of kosher: [https://github.com/cbush06/kosher/releases/latest](https://github.com/cbush06/kosher/releases/latest)
 2. Run the installer with *administrative privileges*. You can do one of the following:
    * Simply double-click the `kosher.jar` file
    * If double-clicking fails on a linux system, open a terminal and run
