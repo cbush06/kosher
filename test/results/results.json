@@ -1,252 +1,242 @@
 [
     {
-        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/page_verification.feature",
-        "id": "verify-miscellaneous-elements-of-the-page",
+        "uri": "features/navigation_verification.feature",
+        "id": "verify-results-of-navigation-actions",
         "keyword": "Feature",
-        "name": "Verify Miscellaneous Elements of the Page",
-        "description": "    Verify that Kosher's steps for verifying\n    various elements on the page work properly.",
+        "name": "Verify Results of Navigation Actions",
+        "description": "    After clicking a link, clicking a button, or submitting\n    a form, verfiy that the correct navigations take place.",
         "line": 1,
         "elements": [
             {
-                "id": "verify-miscellaneous-elements-of-the-page;confirm-i-see-all-the-texts",
+                "id": "verify-results-of-navigation-actions;verify-page",
                 "keyword": "Scenario",
-                "name": "Confirm I see all the Texts",
-                "description": "        Verify that I see various labels and\n        excerpts of text on the page.",
-                "line": 9,
+                "name": "Verify Page",
+                "description": "        After clicking on a link, verify that appropriate page is shown.",
+                "line": 10,
                 "type": "scenario",
                 "steps": [
                     {
                         "keyword": "Given ",
-                        "name": "I maximize the window",
+                        "name": "I go to the \"table-search\" page",
                         "line": 7,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2556327586
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I maximize the window",
+                        "line": 8,
                         "match": {
                             "location": "browser_steps.go:11"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 113381652
+                            "duration": 103859574
                         }
                     },
                     {
                         "keyword": "Given ",
-                        "name": "I go to the \"jquery-dropdown\" page",
+                        "name": "I click the \"Date pickers\" link",
                         "line": 13,
                         "match": {
-                            "location": "navigation_steps.go:11"
+                            "location": "form_steps.go:307"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2914383857
+                            "duration": 191586482
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I click the \"Bootstrap Date Picker\" link",
+                        "line": 14,
+                        "match": {
+                            "location": "form_steps.go:307"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 936613971
                         }
                     },
                     {
                         "keyword": "Then ",
-                        "name": "I should see all of the texts:",
-                        "line": 14,
+                        "name": "I should be on the \"bootstrap-date-picker\" page",
+                        "line": 15,
                         "match": {
-                            "location": "page_verification.go:27"
+                            "location": "navigation_verification_steps.go:15"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 140381219
+                            "duration": 24805428
                         }
                     }
                 ]
             },
             {
-                "id": "verify-miscellaneous-elements-of-the-page;confirm-buttons/links-are-visible-on-the-page",
+                "id": "verify-results-of-navigation-actions;verify-redirect",
                 "keyword": "Scenario",
-                "name": "Confirm Buttons/Links are Visible on the Page",
-                "description": "        Verify that I see a button and/or link on the page\n        and that I do not see a button and/or link on the page.",
-                "line": 19,
+                "name": "Verify Redirect",
+                "description": "        After clicking on a link, verify redirection to the appropriate page.",
+                "line": 17,
                 "type": "scenario",
                 "steps": [
                     {
                         "keyword": "Given ",
-                        "name": "I maximize the window",
+                        "name": "I go to the \"table-search\" page",
                         "line": 7,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 126888455
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I maximize the window",
+                        "line": 8,
                         "match": {
                             "location": "browser_steps.go:11"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103492704
+                            "duration": 107455888
                         }
                     },
                     {
                         "keyword": "Given ",
-                        "name": "I go to the \"table-search\" page",
-                        "line": 23,
+                        "name": "I click the \"Date pickers\" link",
+                        "line": 20,
                         "match": {
-                            "location": "navigation_steps.go:11"
+                            "location": "form_steps.go:307"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 588677808
+                            "duration": 192741927
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I click the \"Bootstrap Date Picker\" link",
+                        "line": 21,
+                        "match": {
+                            "location": "form_steps.go:307"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 339253750
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should be redirected to the \"bootstrap-date-picker\" page",
+                        "line": 22,
+                        "match": {
+                            "location": "navigation_verification_steps.go:15"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 7243927
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-results-of-navigation-actions;verify-javascript-alerts",
+                "keyword": "Scenario",
+                "name": "Verify Javascript Alerts",
+                "description": "        Verify that alerts can be verified.",
+                "line": 24,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"table-search\" page",
+                        "line": 7,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 146614140
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I maximize the window",
+                        "line": 8,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 116661130
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"js-popup\" page",
+                        "line": 27,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 882109822
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see the popup \"I am an alert box!\"",
+                        "line": 28,
+                        "match": {
+                            "location": "navigation_verification_steps.go:48"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 4706958
                         }
                     },
                     {
                         "keyword": "When ",
-                        "name": "I click \"Date pickers\"",
-                        "line": 24,
+                        "name": "I click the first instance of \"Click me!\"",
+                        "line": 29,
                         "match": {
-                            "location": "form_steps.go:316"
+                            "location": "form_steps.go:313"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 182087528
+                            "duration": 206484511
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I wait 1 seconds",
+                        "line": 30,
+                        "match": {
+                            "location": "browser_steps.go:20"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 1001100745
                         }
                     },
                     {
                         "keyword": "Then ",
-                        "name": "I should see the \"Bootstrap Date Picker\" link",
-                        "line": 25,
+                        "name": "I should see the popup \"I am an alert box!\"",
+                        "line": 31,
                         "match": {
-                            "location": "page_verification.go:91"
+                            "location": "navigation_verification_steps.go:48"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 130894523
-                        }
-                    },
-                    {
-                        "keyword": "And ",
-                        "name": "I should not see the \"Table Pagination\" link",
-                        "line": 26,
-                        "match": {
-                            "location": "page_verification.go:91"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 148677535
-                        }
-                    },
-                    {
-                        "keyword": "And ",
-                        "name": "I should see the \"Filter\" button",
-                        "line": 27,
-                        "match": {
-                            "location": "page_verification.go:91"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 68175920
-                        }
-                    }
-                ]
-            },
-            {
-                "id": "verify-miscellaneous-elements-of-the-page;confirm-inputs-with-name",
-                "keyword": "Scenario",
-                "name": "Confirm INPUTs with NAME",
-                "description": "        Verify that I see an INPUT with a specific NAME.",
-                "line": 30,
-                "type": "scenario",
-                "steps": [
-                    {
-                        "keyword": "Given ",
-                        "name": "I maximize the window",
-                        "line": 7,
-                        "match": {
-                            "location": "browser_steps.go:11"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 102669632
-                        }
-                    },
-                    {
-                        "keyword": "Given ",
-                        "name": "I go to the \"input-form\" page",
-                        "line": 33,
-                        "match": {
-                            "location": "navigation_steps.go:11"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 616934268
-                        }
-                    },
-                    {
-                        "keyword": "Then ",
-                        "name": "I should see an \"input\" with \"name\" of \"first_name\"",
-                        "line": 34,
-                        "match": {
-                            "location": "page_verification.go:227"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 64531938
-                        }
-                    },
-                    {
-                        "keyword": "And ",
-                        "name": "I should not see an \"input\" with \"name\" of \"middle_name\"",
-                        "line": 35,
-                        "match": {
-                            "location": "page_verification.go:227"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 12349143
-                        }
-                    }
-                ]
-            },
-            {
-                "id": "verify-miscellaneous-elements-of-the-page;confirm-divs-with-id",
-                "keyword": "Scenario",
-                "name": "Confirm DIVs with ID",
-                "description": "        Verify that I see a DIV with a specific ID.",
-                "line": 37,
-                "type": "scenario",
-                "steps": [
-                    {
-                        "keyword": "Given ",
-                        "name": "I maximize the window",
-                        "line": 7,
-                        "match": {
-                            "location": "browser_steps.go:11"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 112425873
-                        }
-                    },
-                    {
-                        "keyword": "Given ",
-                        "name": "I go to the \"basicform\" page",
-                        "line": 40,
-                        "match": {
-                            "location": "navigation_steps.go:11"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 980980722
-                        }
-                    },
-                    {
-                        "keyword": "Then ",
-                        "name": "I should see a \"div\" with \"id\" of \"user-message\"",
-                        "line": 41,
-                        "match": {
-                            "location": "page_verification.go:227"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 58672789
-                        }
-                    },
-                    {
-                        "keyword": "And ",
-                        "name": "I should not see a \"div\" with \"id\" of \"user-message2\"",
-                        "line": 42,
-                        "match": {
-                            "location": "page_verification.go:227"
-                        },
-                        "result": {
-                            "status": "passed",
-                            "duration": 11215623
+                            "duration": 6863124
                         }
                     }
                 ]

@@ -40,7 +40,7 @@ $ kosher version
 $ mkdir kosher-project
 $ cd kosher-project
 ```
-2. Initialize the project (create its basic structure, configuration fils, and an example test script):
+2. Initialize the project (create its basic structure, configuration files, and an example test script):
 ```bash
 $ kosher init KosherProject
 Project [KosherProject] initialized...
