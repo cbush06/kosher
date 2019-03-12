@@ -4,9 +4,8 @@ title: Home
 nav_order: 1
 description: Web driver wrapper written in Golang that empowers non-developers to functionally test web applications using simple Gherkin scripts.
 ---
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
 # Automated Testing Without Coding
-{: .fs-9 }
 
 kosher tests are a _single source of truth_ for your projects: requirements, documentation, and tests all in one
 {: .fs-6 .fw-300 }

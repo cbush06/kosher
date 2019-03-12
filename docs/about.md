@@ -5,7 +5,6 @@ nav_order: 10
 ---
 
 # About kosher
-{: .fs-9 }
 
 kosher is a tool that merges several technologies together to automate and simplify functional testing. These include:
 {: .fs-6 .fw-300 }
