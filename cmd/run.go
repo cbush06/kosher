@@ -124,8 +124,8 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 }
 
 func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) godog.Options {
-	// featuresPath, _ := filepath.Abs(pathArg)
-	featuresPath := pathArg // TODO: remove this and use above line once GoDog fixes their windows issue
+	featuresPath, _ := filepath.Abs(pathArg)
+	// featuresPath := pathArg // TODO: remove this and use above line once GoDog fixes their windows issue
 
 	// Convert kosher format to GoDog format
 	var reportFormat string
