@@ -11,7 +11,8 @@ func GetSettingsJSON(projectName string) string {
     "dateFormat": "MM/DD/YYYY",
     "defaultEnvironment": "test",
     "screenFormat": "desktop",
-    "quitOnFail": false,
+	"quitOnFail": false,
+	"ignoreInvisible": true,
     "screenFormats": {
         "desktop": {
             "width": 2000,

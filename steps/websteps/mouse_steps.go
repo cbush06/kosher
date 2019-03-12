@@ -10,7 +10,7 @@ import (
 func iHoverOver(s *steputils.StepUtils) func(string) error {
 	return func(field string) error {
 		var (
-			matches *agouti.MultiSelection
+			matches []*agouti.Selection
 			errMsg  = fmt.Sprintf("error encountered while hovering over [%s]: ", field) + "%s"
 			err     error
 		)
@@ -21,13 +21,13 @@ func iHoverOver(s *steputils.StepUtils) func(string) error {
 		}
 
 		// ensure there's at least 1
-		fieldCnt, _ := matches.Count()
+		fieldCnt := len(matches)
 		if fieldCnt < 0 {
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
 
 		// hover over it
-		if err = matches.At(0).MouseToElement(); err != nil {
+		if err = matches[0].MouseToElement(); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 

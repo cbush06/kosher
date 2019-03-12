@@ -92,6 +92,7 @@ func modSettingsProvider(v *viper.Viper) {
 	v.SetDefault("defaultEnvironment", "test")
 	v.SetDefault("screenFormat", "desktop")
 	v.SetDefault("quitOnFail", false)
+	v.SetDefault("ignoreInvisible", true)
 	v.SetDefault("screenFormats", map[string]map[string]int{
 		"desktop": map[string]int{
 			"width":  2000,

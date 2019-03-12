@@ -19,7 +19,7 @@ func shouldContainTodaysDate(s *steputils.StepUtils) func(string) error {
 func iVerifyHasTodaysDate(s *steputils.StepUtils) func(string) error {
 	return func(field string) error {
 		var (
-			matches *agouti.MultiSelection
+			matches []*agouti.Selection
 			errMsg  = fmt.Sprintf("error encountered while verifying today's date is in [%s]: ", field) + "%s"
 			err     error
 		)
@@ -30,13 +30,13 @@ func iVerifyHasTodaysDate(s *steputils.StepUtils) func(string) error {
 		}
 
 		// ensure there's at least 1
-		fieldCnt, _ := matches.Count()
+		fieldCnt := len(matches)
 		if fieldCnt < 0 {
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
 
 		// get the value
-		fieldElms, _ := matches.At(0).Elements()
+		fieldElms, _ := matches[0].Elements()
 		fieldVal, _ := fieldElms[0].GetAttribute("value")
 
 		// convert it to a `time.Time`
@@ -65,7 +65,7 @@ func shouldNotContain(s *steputils.StepUtils) func(string, string) error {
 func confirmContents(s *steputils.StepUtils, shouldContain bool) func(string, string) error {
 	return func(field string, value string) error {
 		var (
-			matches *agouti.MultiSelection
+			matches []*agouti.Selection
 			errMsg  = fmt.Sprintf("error encountered while verifying contents of [%s]: ", field) + "%s"
 			err     error
 		)
@@ -76,14 +76,14 @@ func confirmContents(s *steputils.StepUtils, shouldContain bool) func(string, st
 		}
 
 		// ensure there's at least 1
-		fieldCnt, _ := matches.Count()
+		fieldCnt := len(matches)
 		if fieldCnt < 0 {
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
 
 		// get the value
-		if s.IsTextBased(field, matches.At(0)) {
-			fieldElms, _ := matches.At(0).Elements()
+		if s.IsTextBased(field, matches[0]) {
+			fieldElms, _ := matches[0].Elements()
 			fieldVal, _ := fieldElms[0].GetAttribute("value")
 			doesMatch := value == fieldVal
 
@@ -118,7 +118,7 @@ func shouldNotHaveTheFollowingOptionsSelected(s *steputils.StepUtils) func(strin
 func confirmSelectOptions(s *steputils.StepUtils, only bool, selected bool) func(string, *gherkin.DataTable) error {
 	return func(field string, expectedOptions *gherkin.DataTable) error {
 		var (
-			matches    *agouti.MultiSelection
+			matches    []*agouti.Selection
 			errMsg     = fmt.Sprintf("error encountered while verifying options for [%s]: ", field) + "%s"
 			noMatchMsg = "actual options differed from expected options"
 			err        error
@@ -130,20 +130,20 @@ func confirmSelectOptions(s *steputils.StepUtils, only bool, selected bool) func
 		}
 
 		// ensure there's at least 1
-		fieldCnt, _ := matches.Count()
+		fieldCnt := len(matches)
 		if fieldCnt < 1 {
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
 
 		// ensure its a select
-		if fieldType, err := s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err := s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, fmt.Sprintf("error encountered determining field type: %s", err))
 		} else if !strings.EqualFold(fieldType, "select") {
 			return fmt.Errorf(errMsg, "[%s] must be of type [select] but is [%s]", field, fieldType)
 		}
 
 		// get option elements
-		optionElms := s.GetSelectOptions(matches.At(0))
+		optionElms := s.GetSelectOptions(matches[0])
 
 		// map expected values to a slice
 		var expected []string
@@ -186,7 +186,7 @@ func shouldNotBeSelected(s *steputils.StepUtils) func(string) error {
 func confirmCheckboxOrRadio(s *steputils.StepUtils, expectChecked bool) func(string) error {
 	return func(field string) error {
 		var (
-			matches *agouti.MultiSelection
+			matches []*agouti.Selection
 			errMsg  = fmt.Sprintf("error encountered while verifying selected status of [%s]: ", field) + "%s"
 			err     error
 		)
@@ -197,20 +197,20 @@ func confirmCheckboxOrRadio(s *steputils.StepUtils, expectChecked bool) func(str
 		}
 
 		// ensure there's at least 1
-		fieldCnt, _ := matches.Count()
+		fieldCnt := len(matches)
 		if fieldCnt < 1 {
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
 
 		// ensure its a checkbox or radio
-		if fieldType, err := s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err := s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, fmt.Sprintf("error encountered determining field type: %s", err))
 		} else if !strings.EqualFold(fieldType, "checkbox") && !strings.EqualFold(fieldType, "radio") {
 			return fmt.Errorf(errMsg, "[%s] must be of type [checkbox] or [radio] but is [%s]", field, fieldType)
 		}
 
 		// determine checked status
-		checkboxElms, _ := matches.At(0).Elements()
+		checkboxElms, _ := matches[0].Elements()
 		isChecked, _ := checkboxElms[0].IsSelected()
 
 		// verify checked status

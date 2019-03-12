@@ -90,7 +90,7 @@ func iShouldNotSeeButtonLink(s *steputils.StepUtils) func(string) error {
 func confirmSeeButtonLink(s *steputils.StepUtils, shouldSee bool) func(string) error {
 	return func(text string) error {
 		var (
-			matches           *agouti.MultiSelection
+			matches           []*agouti.Selection
 			buttonLinkMatches []*agouti.Selection
 			err               error
 			visibleCount      int
@@ -103,12 +103,12 @@ func confirmSeeButtonLink(s *steputils.StepUtils, shouldSee bool) func(string) e
 		// resolve selector...not getting an error means a match was found
 		if matches, err = s.ResolveSelector(text); err == nil {
 			// confirm one of matches is button or link
-			count, _ := matches.Count()
+			count := len(matches)
 			for i := 0; i < count; i++ {
-				if fieldType, err2 := s.GetFieldType(text, matches.At(i)); err2 != nil {
+				if fieldType, err2 := s.GetFieldType(text, matches[i]); err2 != nil {
 					return fmt.Errorf(errMsg, err2)
 				} else if strings.EqualFold(fieldType, "a") || strings.EqualFold(fieldType, "button") {
-					buttonLinkMatches = append(buttonLinkMatches, matches.At(i))
+					buttonLinkMatches = append(buttonLinkMatches, matches[i])
 				}
 			}
 		}
@@ -161,7 +161,7 @@ func theNthInstanceOfShouldBeDisabled(s *steputils.StepUtils) func(string, strin
 func confirmDisabled(s *steputils.StepUtils, shouldBeDisabled bool) func(string, string) error {
 	return func(nth string, field string) error {
 		var (
-			matches    *agouti.MultiSelection
+			matches    []*agouti.Selection
 			errMsg     = fmt.Sprintf("error encountered while confirming [%s] instance of [%s] is disabled: ", nth, field) + "%s"
 			nthNumeric int
 			err        error
@@ -173,7 +173,7 @@ func confirmDisabled(s *steputils.StepUtils, shouldBeDisabled bool) func(string,
 		}
 
 		// ensure there's enough of these to satisfy the `nth` argument
-		fieldCnt, _ := matches.Count()
+		fieldCnt := len(matches)
 		if fieldCnt < 0 {
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
@@ -203,7 +203,7 @@ func confirmDisabled(s *steputils.StepUtils, shouldBeDisabled bool) func(string,
 		}
 
 		// verify it's disabled
-		fieldElms, _ := matches.At(nthNumeric).Elements()
+		fieldElms, _ := matches[nthNumeric].Elements()
 		enabled, _ := fieldElms[0].IsEnabled()
 
 		if shouldBeDisabled && enabled {

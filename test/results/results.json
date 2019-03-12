@@ -1,6 +1,422 @@
 [
     {
-        "uri": "features/navigation_verification.feature",
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/browser.feature",
+        "id": "test-browser-interaction-features",
+        "keyword": "Feature",
+        "name": "Test Browser Interaction Features",
+        "description": "   Test browser interaction features like screernshots, wait\n   maximizing, etc.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "test-browser-interaction-features;test-screenshot",
+                "keyword": "Scenario",
+                "name": "Test Screenshot",
+                "description": "",
+                "line": 6,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"file-download\" page",
+                        "line": 7,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2701943407
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "take a screenshot",
+                        "line": 8,
+                        "match": {
+                            "location": "browser_steps.go:27"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 179708922
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/form_verification.feature",
+        "id": "verify-characteristics-and-values-of-a-form",
+        "keyword": "Feature",
+        "name": "Verify Characteristics and Values of a Form",
+        "description": "    Verify various characteristics (e.g. disabled fields) and\n    values of a form.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "verify-characteristics-and-values-of-a-form;verify-disabled-fields",
+                "keyword": "Scenario",
+                "name": "Verify Disabled Fields",
+                "description": "        Verify that fields are disabled as expected.",
+                "line": 9,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 101932085
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"file-download\" page",
+                        "line": 12,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 131513029
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "the first instance of \"Generate File\" should be disabled",
+                        "line": 13,
+                        "match": {
+                            "location": "page_verification.go:162"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 189377850
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "\"Generate File\" should be disabled",
+                        "line": 14,
+                        "match": {
+                            "location": "page_verification.go:142"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 128756277
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-characteristics-and-values-of-a-form;verify-enabled-fields",
+                "keyword": "Scenario",
+                "name": "Verify Enabled Fields",
+                "description": "        Verify that fields are enabled as expected.",
+                "line": 16,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 101930925
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"file-download\" page",
+                        "line": 19,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 119316913
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I fill \"textbox\" with \"Hello, World.\"",
+                        "line": 20,
+                        "match": {
+                            "location": "form_steps.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 356665297
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "the first instance of \"Generate File\" should be enabled",
+                        "line": 21,
+                        "match": {
+                            "location": "page_verification.go:162"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 157726109
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "\"Generate File\" should be enabled",
+                        "line": 22,
+                        "match": {
+                            "location": "page_verification.go:148"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 120157002
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-characteristics-and-values-of-a-form;verify-selecting-today's-date",
+                "keyword": "Scenario",
+                "name": "Verify Selecting Today's Date",
+                "description": "        Verify a date field contain's todays date after selecting from a date picker.",
+                "line": 24,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 102297707
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"bootstrap-date-picker\" page",
+                        "line": 27,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 663677585
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click \"DatePicker\"",
+                        "line": 28,
+                        "match": {
+                            "location": "form_steps.go:298"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103322903
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I click the \"DatePickerToday\" link",
+                        "line": 29,
+                        "match": {
+                            "location": "form_steps.go:304"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 92212746
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "\"DatePickerTextbox\" should contain today's date",
+                        "line": 30,
+                        "match": {
+                            "location": "form_verification_steps.go:20"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 32582557
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-characteristics-and-values-of-a-form;verify-entering-today's-date",
+                "keyword": "Scenario",
+                "name": "Verify Entering Today's Date",
+                "description": "        Verify a date field contain's todays date after entering it.",
+                "line": 32,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 104334634
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"bootstrap-date-picker\" page",
+                        "line": 35,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 188091411
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I enter today's date in \"DatePickerTextbox\"",
+                        "line": 36,
+                        "match": {
+                            "location": "form_steps.go:434"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 234517758
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "\"DatePickerTextbox\" should contain today's date",
+                        "line": 37,
+                        "match": {
+                            "location": "form_verification_steps.go:20"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 33452625
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-characteristics-and-values-of-a-form;verify-textbox-value",
+                "keyword": "Scenario",
+                "name": "Verify Textbox Value",
+                "description": "        Verify a textbox contains a certain value.",
+                "line": 39,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 105555448
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"input-form\" page",
+                        "line": 42,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 600096655
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I fill \"first_name\" with \"Some\"",
+                        "line": 43,
+                        "match": {
+                            "location": "form_steps.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 277320497
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I fill \"last_name\" with \"User\"",
+                        "line": 44,
+                        "match": {
+                            "location": "form_steps.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 280367443
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "\"first_name\" should contain \"Some\"",
+                        "line": 45,
+                        "match": {
+                            "location": "form_verification_steps.go:66"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 124864846
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "\"first_name\" should not contain \"User\"",
+                        "line": 46,
+                        "match": {
+                            "location": "form_verification_steps.go:66"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 105566246
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "\"last_name\" should contain \"User\"",
+                        "line": 47,
+                        "match": {
+                            "location": "form_verification_steps.go:66"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 107674265
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "\"last_name\" should not contain \"Some\"",
+                        "line": 48,
+                        "match": {
+                            "location": "form_verification_steps.go:66"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 117814062
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/navigation_verification.feature",
         "id": "verify-results-of-navigation-actions",
         "keyword": "Feature",
         "name": "Verify Results of Navigation Actions",
@@ -24,7 +440,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2556327586
+                            "duration": 668787665
                         }
                     },
                     {
@@ -36,7 +452,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103859574
+                            "duration": 112160293
                         }
                     },
                     {
@@ -44,11 +460,11 @@
                         "name": "I click the \"Date pickers\" link",
                         "line": 13,
                         "match": {
-                            "location": "form_steps.go:307"
+                            "location": "form_steps.go:304"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 191586482
+                            "duration": 315032036
                         }
                     },
                     {
@@ -56,11 +472,11 @@
                         "name": "I click the \"Bootstrap Date Picker\" link",
                         "line": 14,
                         "match": {
-                            "location": "form_steps.go:307"
+                            "location": "form_steps.go:304"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 936613971
+                            "duration": 378243928
                         }
                     },
                     {
@@ -72,7 +488,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 24805428
+                            "duration": 22890862
                         }
                     }
                 ]
@@ -94,7 +510,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 126888455
+                            "duration": 136464582
                         }
                     },
                     {
@@ -106,7 +522,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 107455888
+                            "duration": 109716827
                         }
                     },
                     {
@@ -114,11 +530,11 @@
                         "name": "I click the \"Date pickers\" link",
                         "line": 20,
                         "match": {
-                            "location": "form_steps.go:307"
+                            "location": "form_steps.go:304"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 192741927
+                            "duration": 252554875
                         }
                     },
                     {
@@ -126,11 +542,11 @@
                         "name": "I click the \"Bootstrap Date Picker\" link",
                         "line": 21,
                         "match": {
-                            "location": "form_steps.go:307"
+                            "location": "form_steps.go:304"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 339253750
+                            "duration": 308124124
                         }
                     },
                     {
@@ -142,7 +558,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 7243927
+                            "duration": 2263219
                         }
                     }
                 ]
@@ -164,7 +580,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 146614140
+                            "duration": 130571562
                         }
                     },
                     {
@@ -176,7 +592,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 116661130
+                            "duration": 103814084
                         }
                     },
                     {
@@ -188,7 +604,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 882109822
+                            "duration": 1149847517
                         }
                     },
                     {
@@ -200,7 +616,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 4706958
+                            "duration": 4652662
                         }
                     },
                     {
@@ -208,11 +624,11 @@
                         "name": "I click the first instance of \"Click me!\"",
                         "line": 29,
                         "match": {
-                            "location": "form_steps.go:313"
+                            "location": "form_steps.go:310"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 206484511
+                            "duration": 401320770
                         }
                     },
                     {
@@ -224,7 +640,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 1001100745
+                            "duration": 1003668756
                         }
                     },
                     {
@@ -236,7 +652,1475 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 6863124
+                            "duration": 5237721
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/page_interaction.feature",
+        "id": "test-general-interaction-steps",
+        "keyword": "Feature",
+        "name": "Test General Interaction Steps",
+        "description": "    Verify that Kosher's general interaction steps\n    work as expected.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "test-general-interaction-steps;indexing-matches",
+                "keyword": "Scenario",
+                "name": "Indexing Matches",
+                "description": "        Verify first element.",
+                "line": 5,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"table-sort\" page",
+                        "line": 8,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 4372315
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I press the first instance of \"ColumnHeader\"",
+                        "line": 9,
+                        "match": {
+                            "location": "form_steps.go:310"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while pressing button/link [ColumnHeader]: no matches found for field [ColumnHeader]",
+                            "duration": 4566939
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"Y. Berry\"",
+                        "line": 10,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see \"A. Cox\"",
+                        "line": 11,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-general-interaction-steps;indexing-matches-part-2",
+                "keyword": "Scenario",
+                "name": "Indexing Matches Part 2",
+                "description": "        Verify last element.",
+                "line": 13,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"table-sort\" page",
+                        "line": 16,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 4888035
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click the last instance of \"ColumnHeader\"",
+                        "line": 17,
+                        "match": {
+                            "location": "form_steps.go:310"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while pressing button/link [ColumnHeader]: no matches found for field [ColumnHeader]",
+                            "duration": 5087388
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"$85,600/y\"",
+                        "line": 18,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see \"$1,200,000/y\"",
+                        "line": 19,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-general-interaction-steps;accepting-javascript-alerts",
+                "keyword": "Scenario",
+                "name": "Accepting JavaScript Alerts",
+                "description": "        Verify that alerts can be accepted.",
+                "line": 21,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"js-popup\" page",
+                        "line": 24,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 3559782
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click the first instance of \"Click me!\"",
+                        "line": 25,
+                        "match": {
+                            "location": "form_steps.go:310"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while pressing button/link [Click me!]: no matches found for field [Click me!]",
+                            "duration": 16480490
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I accept the popup",
+                        "line": 26,
+                        "match": {
+                            "location": "navigation_steps.go:79"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should not see the popup \"I am an alert box!\"",
+                        "line": 27,
+                        "match": {
+                            "location": "navigation_verification_steps.go:48"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-general-interaction-steps;declining-javascript-alerts",
+                "keyword": "Scenario",
+                "name": "Declining JavaScript Alerts",
+                "description": "        Verify that alerts can be declined.",
+                "line": 29,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"js-popup\" page",
+                        "line": 32,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2696584
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click the first instance of \"Click me!\"",
+                        "line": 33,
+                        "match": {
+                            "location": "form_steps.go:310"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while pressing button/link [Click me!]: no matches found for field [Click me!]",
+                            "duration": 15107863
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I decline the popup",
+                        "line": 34,
+                        "match": {
+                            "location": "navigation_steps.go:89"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should not see the popup \"I am an alert box!\"",
+                        "line": 35,
+                        "match": {
+                            "location": "navigation_verification_steps.go:48"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-general-interaction-steps;fill-in-javascript-prompt",
+                "keyword": "Scenario",
+                "name": "Fill in JavaScript Prompt",
+                "description": "        Verfiy that text can be entered in a JavaScript prompt.",
+                "line": 37,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"js-popup\" page",
+                        "line": 40,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2061156
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click the \"Click for Prompt Box\" button",
+                        "line": 41,
+                        "match": {
+                            "location": "form_steps.go:304"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while clicking button/link [Click for Prompt Box]: no matches found for field [Click for Prompt Box]",
+                            "duration": 11265947
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I enter \"Some User\" in the popup",
+                        "line": 42,
+                        "match": {
+                            "location": "navigation_steps.go:99"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I accept the popup",
+                        "line": 43,
+                        "match": {
+                            "location": "navigation_steps.go:79"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"You have entered 'Some User' !\"",
+                        "line": 44,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/page_verification.feature",
+        "id": "verify-miscellaneous-elements-of-the-page",
+        "keyword": "Feature",
+        "name": "Verify Miscellaneous Elements of the Page",
+        "description": "    Verify that Kosher's steps for verifying\n    various elements on the page work properly.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-i-see-all-the-texts",
+                "keyword": "Scenario",
+                "name": "Confirm I see all the Texts",
+                "description": "        Verify that I see various labels and\n        excerpts of text on the page.",
+                "line": 9,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 106318057
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"jquery-dropdown\" page",
+                        "line": 13,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 7335711
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see all of the texts:",
+                        "line": 14,
+                        "match": {
+                            "location": "page_verification.go:27"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered searching page for text: failed to select elements from selection 'XPath: //*[text()[contains(., \"Select Country\") and not(ancestor::*[contains(@style, 'display: none')])]]': unexpected response: {\"sessionId\":\"6d8cf6c102c93daabc2256c8ced3ac76\",\"status\":26,\"value\":{\"message\":\"unexpected alert open: {Alert text : I am an alert box!}\\n  (Session info: chrome=72.0.3626.121)\\n  (Driver info: chromedriver=2.46.628388 (4a34a70827ac54148e092aafb70504c4ea7ae926),platform=Linux 4.15.0-46-generic x86_64)\"}}",
+                            "duration": 6880725
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-buttons/links-are-visible-on-the-page",
+                "keyword": "Scenario",
+                "name": "Confirm Buttons/Links are Visible on the Page",
+                "description": "        Verify that I see a button and/or link on the page\n        and that I do not see a button and/or link on the page.",
+                "line": 19,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 107259382
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"table-search\" page",
+                        "line": 23,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 5583849
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click \"Date pickers\"",
+                        "line": 24,
+                        "match": {
+                            "location": "form_steps.go:298"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while clicking button/link [Date pickers]: no matches found for field [Date pickers]",
+                            "duration": 28114270
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see the \"Bootstrap Date Picker\" link",
+                        "line": 25,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see the \"Table Pagination\" link",
+                        "line": 26,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should see the \"Filter\" button",
+                        "line": 27,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-inputs-with-name",
+                "keyword": "Scenario",
+                "name": "Confirm INPUTs with NAME",
+                "description": "        Verify that I see an INPUT with a specific NAME.",
+                "line": 30,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103737009
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"input-form\" page",
+                        "line": 33,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 3134950
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see an \"input\" with \"name\" of \"first_name\"",
+                        "line": 34,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered searching page for [input] with [name] of [first_name]: failed to select elements from selection 'XPath: //input[@name=\"first_name\"]': unexpected response: {\"sessionId\":\"6d8cf6c102c93daabc2256c8ced3ac76\",\"status\":26,\"value\":{\"message\":\"unexpected alert open: {Alert text : I am an alert box!}\\n  (Session info: chrome=72.0.3626.121)\\n  (Driver info: chromedriver=2.46.628388 (4a34a70827ac54148e092aafb70504c4ea7ae926),platform=Linux 4.15.0-46-generic x86_64)\"}}",
+                            "duration": 2966557
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see an \"input\" with \"name\" of \"middle_name\"",
+                        "line": 35,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "verify-miscellaneous-elements-of-the-page;confirm-divs-with-id",
+                "keyword": "Scenario",
+                "name": "Confirm DIVs with ID",
+                "description": "        Verify that I see a DIV with a specific ID.",
+                "line": 37,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 107232993
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"basicform\" page",
+                        "line": 40,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 3070051
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see a \"div\" with \"id\" of \"user-message\"",
+                        "line": 41,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered searching page for [div] with [id] of [user-message]: failed to select elements from selection 'XPath: //div[@id=\"user-message\"]': unexpected response: {\"sessionId\":\"6d8cf6c102c93daabc2256c8ced3ac76\",\"status\":26,\"value\":{\"message\":\"unexpected alert open: {Alert text : I am an alert box!}\\n  (Session info: chrome=72.0.3626.121)\\n  (Driver info: chromedriver=2.46.628388 (4a34a70827ac54148e092aafb70504c4ea7ae926),platform=Linux 4.15.0-46-generic x86_64)\"}}",
+                            "duration": 2908145
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see a \"div\" with \"id\" of \"user-message2\"",
+                        "line": 42,
+                        "match": {
+                            "location": "page_verification.go:227"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/radios_checkboxes.feature",
+        "id": "test-radio-button-and-checkbox-manipulation",
+        "keyword": "Feature",
+        "name": "Test Radio Button and Checkbox Manipulation",
+        "description": "    Verify that Kosher's steps for manipulating\n    and verifying radio buttons and checkboxes\n    work correctly.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "test-radio-button-and-checkbox-manipulation;selecting-a-radio-button",
+                "keyword": "Scenario",
+                "name": "Selecting a Radio Button",
+                "description": "",
+                "line": 9,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103492601
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"radio-button\" page",
+                        "line": 10,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 3400446
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I choose the \"Female\" radio",
+                        "line": 11,
+                        "match": {
+                            "location": "form_steps.go:269"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while choosing radio button [Female]: no matches found for field [Female]",
+                            "duration": 18249590
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I press \"Get Checked value\"",
+                        "line": 12,
+                        "match": {
+                            "location": "form_steps.go:298"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"Radio button 'Female' is checked\"",
+                        "line": 13,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "the \"Female\" radio should be selected",
+                        "line": 14,
+                        "match": {
+                            "location": "form_verification_steps.go:187"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "the \"Male\" radio should not be selected",
+                        "line": 15,
+                        "match": {
+                            "location": "form_verification_steps.go:187"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-radio-button-and-checkbox-manipulation;check-a-single-box",
+                "keyword": "Scenario",
+                "name": "Check a Single Box",
+                "description": "",
+                "line": 17,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103466901
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-checkbox\" page",
+                        "line": 18,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 6474853
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I check \"Click on this check box\"",
+                        "line": 19,
+                        "match": {
+                            "location": "form_steps.go:162"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while unchecking [Click on this check box]: no matches found for field [Click on this check box]",
+                            "duration": 22484429
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"Success - Check box is checked\"",
+                        "line": 20,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-radio-button-and-checkbox-manipulation;check-multiple-checkboxes-and-i-uncheck-a-checkbox",
+                "keyword": "Scenario",
+                "name": "Check Multiple Checkboxes and I Uncheck a Checkbox",
+                "description": "",
+                "line": 22,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 7,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 110457896
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-checkbox\" page",
+                        "line": 23,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2040527
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I wait 2 seconds",
+                        "line": 24,
+                        "match": {
+                            "location": "browser_steps.go:20"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2008861780
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should not see the \"Uncheck All\" button",
+                        "line": 25,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 24534632
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should see the \"Check All\" button",
+                        "line": 26,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "expected TO find button/link [Check All] but did not",
+                            "duration": 17406522
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I check \"Option 1\"",
+                        "line": 27,
+                        "match": {
+                            "location": "form_steps.go:162"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I check \"Option 2\"",
+                        "line": 28,
+                        "match": {
+                            "location": "form_steps.go:162"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I check \"Option 3\"",
+                        "line": 29,
+                        "match": {
+                            "location": "form_steps.go:162"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I check \"Option 4\"",
+                        "line": 30,
+                        "match": {
+                            "location": "form_steps.go:162"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I wait 1 second",
+                        "line": 31,
+                        "match": {
+                            "location": "browser_steps.go:20"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see the \"Uncheck All\" button",
+                        "line": 32,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "the \"Option 4\" checkbox should be checked",
+                        "line": 33,
+                        "match": {
+                            "location": "form_verification_steps.go:187"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I uncheck \"Option 4\"",
+                        "line": 34,
+                        "match": {
+                            "location": "form_steps.go:162"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I wait 1 second",
+                        "line": 35,
+                        "match": {
+                            "location": "browser_steps.go:20"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see the \"Check All\" button",
+                        "line": 36,
+                        "match": {
+                            "location": "page_verification.go:91"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "the \"Option 4\" checkbox should not be checked",
+                        "line": 37,
+                        "match": {
+                            "location": "form_verification_steps.go:187"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/select_menus.feature",
+        "id": "test-select-menu-manipulation",
+        "keyword": "Feature",
+        "name": "Test Select Menu Manipulation",
+        "description": "    Verify that Kosher's steps for manipulating\n    and verifying select menus works correctly.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "test-select-menu-manipulation;selecting-a-single-option-from-a-dropdown",
+                "keyword": "Scenario",
+                "name": "Selecting a Single Option from a Dropdown",
+                "description": "",
+                "line": 8,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103284850
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-dropdown\" page",
+                        "line": 9,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2044004
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I select \"Monday\" from \"select-demo\"",
+                        "line": 10,
+                        "match": {
+                            "location": "form_steps.go:121"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while selecting [Monday] from [select-demo]: no matches found for field [select-demo]",
+                            "duration": 11696961
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"Day selected :- Monday\"",
+                        "line": 11,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-select-menu-manipulation;selecting-a-single-option-from-a-select-list",
+                "keyword": "Scenario",
+                "name": "Selecting a Single Option from a Select List",
+                "description": "",
+                "line": 13,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 114197576
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-dropdown\" page",
+                        "line": 14,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2521054
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I select \"New York\" from \"multi-select\"",
+                        "line": 15,
+                        "match": {
+                            "location": "form_steps.go:121"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while selecting [New York] from [multi-select]: no matches found for field [multi-select]",
+                            "duration": 11641165
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I click \"First Selected\"",
+                        "line": 16,
+                        "match": {
+                            "location": "form_steps.go:298"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"First selected option is : New York\"",
+                        "line": 17,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-select-menu-manipulation;select-multiple-options-from-a-select-list",
+                "keyword": "Scenario",
+                "name": "Select Multiple Options from a Select List",
+                "description": "",
+                "line": 19,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 108523556
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-dropdown\" page",
+                        "line": 20,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 6354248
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I select the following values from \"multi-select\":",
+                        "line": 21,
+                        "match": {
+                            "location": "form_steps.go:209"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while selecting/unselecting multiple values from [multi-select]: no matches found for field [multi-select]",
+                            "duration": 28028399
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "\"multi-select\" should have the following options selected:",
+                        "line": 25,
+                        "match": {
+                            "location": "form_verification_steps.go:119"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-select-menu-manipulation;deselect-options-from-a-select-list",
+                "keyword": "Scenario",
+                "name": "Deselect Options from a Select List",
+                "description": "",
+                "line": 30,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 104684551
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-dropdown\" page",
+                        "line": 31,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 6351488
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I select the following values from \"multi-select\":",
+                        "line": 32,
+                        "match": {
+                            "location": "form_steps.go:209"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while selecting/unselecting multiple values from [multi-select]: no matches found for field [multi-select]",
+                            "duration": 28668626
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I unselect the following values from \"multi-select\":",
+                        "line": 36,
+                        "match": {
+                            "location": "form_steps.go:209"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "\"multi-select\" should have the following options selected:",
+                        "line": 38,
+                        "match": {
+                            "location": "form_verification_steps.go:119"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-select-menu-manipulation;verify-available-options",
+                "keyword": "Scenario",
+                "name": "Verify Available Options",
+                "description": "",
+                "line": 42,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103554014
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I am on the \"basic-dropdown\" page",
+                        "line": 43,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 6775468
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "\"select-demo\" should have the following options:",
+                        "line": 44,
+                        "match": {
+                            "location": "form_verification_steps.go:119"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while verifying options for [select-demo]: no matches found for field [select-demo]",
+                            "duration": 29031043
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "\"multi-select\" should have the following options:",
+                        "line": 53,
+                        "match": {
+                            "location": "form_verification_steps.go:119"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-select-menu-manipulation;",
+                "keyword": "Scenario",
+                "name": "",
+                "description": "",
+                "line": 63,
+                "type": "scenario"
+            }
+        ]
+    },
+    {
+        "uri": "/home/cbush/go/src/github.com/cbush06/kosher/test/features/textboxes.feature",
+        "id": "test-textbox-manipulation-and-validation",
+        "keyword": "Feature",
+        "name": "Test Textbox Manipulation and Validation",
+        "description": "    Verify that Kosher's steps for manipulating\n    and verifying textboxes work correctly.",
+        "line": 1,
+        "elements": [
+            {
+                "id": "test-textbox-manipulation-and-validation;fill-a-textbox",
+                "keyword": "Scenario",
+                "name": "Fill a Textbox",
+                "description": "        Verify steps for fill a textbox.",
+                "line": 8,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103455568
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"basicform\" page",
+                        "line": 11,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 7187794
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I fill \"user-message\" with \"Hello, World\"",
+                        "line": 12,
+                        "match": {
+                            "location": "form_steps.go:35"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while filling in multiple fields: no matches found for field [user-message]",
+                            "duration": 27754753
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I press \"Show Message\"",
+                        "line": 13,
+                        "match": {
+                            "location": "form_steps.go:298"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"Hello, World\"",
+                        "line": 14,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-textbox-manipulation-and-validation;fill-multiple-textboxes",
+                "keyword": "Scenario",
+                "name": "Fill Multiple Textboxes",
+                "description": "        Verify steps for filling multiple textboxes.",
+                "line": 16,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103627836
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"basicform\" page",
+                        "line": 19,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 4395120
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I fill in the following:",
+                        "line": 20,
+                        "match": {
+                            "location": "form_steps.go:17"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while filling in multiple fields: no matches found for field [sum1]",
+                            "duration": 23985478
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I press \"Get Total\"",
+                        "line": 23,
+                        "match": {
+                            "location": "form_steps.go:298"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should see \"7\"",
+                        "line": 24,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "test-textbox-manipulation-and-validation;keying-characters",
+                "keyword": "Scenario",
+                "name": "Keying Characters",
+                "description": "        Verify that keying characters works.",
+                "line": 26,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I maximize the window",
+                        "line": 6,
+                        "match": {
+                            "location": "browser_steps.go:11"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 103582619
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I go to the \"jquery-dropdown\" page",
+                        "line": 29,
+                        "match": {
+                            "location": "navigation_steps.go:12"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 6212940
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I click \"SelectCountry\"",
+                        "line": 30,
+                        "match": {
+                            "location": "form_steps.go:298"
+                        },
+                        "result": {
+                            "status": "failed",
+                            "error_message": "error encountered while clicking button/link [SelectCountry]: no matches found for field [SelectCountry]",
+                            "duration": 6191698
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I key \"u\" in \"OpenSelectFilter\"",
+                        "line": 31,
+                        "match": {
+                            "location": "form_steps.go:89"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should not see \"Bangladesh\"",
+                        "line": 32,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should see \"United States of America\"",
+                        "line": 33,
+                        "match": {
+                            "location": "page_verification.go:38"
+                        },
+                        "result": {
+                            "status": "skipped"
                         }
                     }
                 ]

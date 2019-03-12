@@ -34,7 +34,7 @@ func iFillInTheFollowing(s *steputils.StepUtils) func(*gherkin.DataTable) error 
 func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 	return func(field string, value string) error {
 		var (
-			matches     *agouti.MultiSelection
+			matches     []*agouti.Selection
 			matchCnt    int
 			fieldType   string
 			shouldCheck bool
@@ -48,36 +48,33 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 		}
 
 		// determine the field's type
-		if fieldType, err = s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err = s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
 		// based on the field type, we apply the actual value
-		if s.IsTextBased(field, matches.At(0)) {
-			matches.Fill(value)
+		if s.IsTextBased(field, matches[0]) {
+			matches[0].Fill(value)
 		} else {
-			matchCnt, _ = matches.Count()
+			matchCnt = len(matches)
 			switch fieldType {
 			case "radio":
 				for i := 0; i < matchCnt; i++ {
-					nextRadioEls, _ := matches.At(i).Elements()
+					nextRadioEls, _ := matches[i].Elements()
 					nextRadioValue, _ := nextRadioEls[0].GetAttribute("value")
 					if strings.EqualFold(nextRadioValue, strings.TrimSpace(value)) {
-						matches.At(i).Click()
+						matches[i].Click()
 						return nil
 					}
 				}
 			case "checkbox":
-				matches.Uncheck()
-				for i := 0; i < matchCnt; i++ {
-					shouldCheck, err = strconv.ParseBool(strings.TrimSpace(value))
-					if shouldCheck && err == nil {
-						matches.At(i).Check()
-						return nil
-					}
+				shouldCheck, err = strconv.ParseBool(strings.TrimSpace(value))
+				if shouldCheck && err == nil {
+					matches[0].Check()
+					return nil
 				}
 			case "select":
-				if err = matches.Select(value); err != nil {
+				if err = matches[0].Select(value); err != nil {
 					return fmt.Errorf(errMsg, err)
 				}
 			default:
@@ -91,7 +88,7 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 	return func(value string, field string) error {
 		var (
-			matches   *agouti.MultiSelection
+			matches   []*agouti.Selection
 			fieldType string
 			err       error
 			errMsg    = fmt.Sprintf("error encountered while keying [%s] into [%s]: ", value, field) + "%s"
@@ -103,13 +100,13 @@ func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 		}
 
 		// determine the field's type
-		if fieldType, err = s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err = s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
-		if s.IsTextBased(field, matches.At(0)) {
+		if s.IsTextBased(field, matches[0]) {
 			// fill it in
-			if err = matches.At(0).SendKeys(value); err != nil {
+			if err = matches[0].SendKeys(value); err != nil {
 				return fmt.Errorf(errMsg, err)
 			}
 		} else {
@@ -123,7 +120,7 @@ func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
 	return func(value string, field string) error {
 		var (
-			matches   *agouti.MultiSelection
+			matches   []*agouti.Selection
 			fieldType string
 			errMsg    = fmt.Sprintf("error encountered while selecting [%s] from [%s]: ", value, field) + "%s"
 			err       error
@@ -135,7 +132,7 @@ func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
 		}
 
 		// determine the field's type
-		if fieldType, err = s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err = s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
@@ -145,7 +142,7 @@ func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
 		}
 
 		// select the value
-		if err = matches.At(0).Select(value); err != nil {
+		if err = matches[0].Select(value); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
@@ -164,7 +161,7 @@ func iUncheck(s *steputils.StepUtils) func(string) error {
 func iCheckUncheck(s *steputils.StepUtils, checked bool) func(string) error {
 	return func(field string) error {
 		var (
-			matches   *agouti.MultiSelection
+			matches   []*agouti.Selection
 			fieldType string
 			errMsg    = fmt.Sprintf("error encountered while unchecking [%s]: ", field) + "%s"
 			err       error
@@ -176,7 +173,7 @@ func iCheckUncheck(s *steputils.StepUtils, checked bool) func(string) error {
 		}
 
 		// determine the field's type
-		if fieldType, err = s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err = s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
@@ -187,11 +184,11 @@ func iCheckUncheck(s *steputils.StepUtils, checked bool) func(string) error {
 
 		// set the value
 		if checked {
-			if err = matches.At(0).Check(); err != nil {
+			if err = matches[0].Check(); err != nil {
 				return fmt.Errorf(errMsg, err)
 			}
 		} else {
-			if err = matches.At(0).Uncheck(); err != nil {
+			if err = matches[0].Uncheck(); err != nil {
 				return fmt.Errorf(errMsg, err)
 			}
 		}
@@ -211,7 +208,7 @@ func iUnselectTheFollowingValues(s *steputils.StepUtils) func(string, *gherkin.D
 func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) func(string, *gherkin.DataTable) error {
 	return func(field string, values *gherkin.DataTable) error {
 		var (
-			matches      *agouti.MultiSelection
+			matches      []*agouti.Selection
 			fieldType    string
 			errMsg       = fmt.Sprintf("error encountered while selecting/unselecting multiple values from [%s]: ", field) + "%s"
 			err          error
@@ -230,13 +227,13 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 		}
 
 		// determine the field's type
-		if fieldType, err = s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err = s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
 		// only handle multi-selects
 		if fieldType == "select" {
-			selectElms, _ := matches.At(0).Elements()
+			selectElms, _ := matches[0].Elements()
 			isMultiple, _ := selectElms[0].GetAttribute("multiple")
 
 			if !strings.EqualFold(isMultiple, "true") && !strings.EqualFold(isMultiple, "multiple") {
@@ -245,12 +242,12 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 
 			if selected {
 				for _, nextValue := range valuesLookup {
-					if err = matches.Select(nextValue); err != nil {
+					if err = matches[0].Select(nextValue); err != nil {
 						return fmt.Errorf(errMsg, err)
 					}
 				}
 			} else {
-				optionMatches := matches.At(0).All("option")
+				optionMatches := matches[0].All("option")
 				optionCnt, _ := optionMatches.Count()
 				for i := 0; i < optionCnt; i++ {
 					nextOptionElms, _ := optionMatches.At(i).Elements()
@@ -271,7 +268,7 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 func iChoose(s *steputils.StepUtils) func(string) error {
 	return func(field string) error {
 		var (
-			matches   *agouti.MultiSelection
+			matches   []*agouti.Selection
 			fieldType string
 			errMsg    = fmt.Sprintf("error encountered while choosing radio button [%s]: ", field) + "%s"
 			err       error
@@ -283,13 +280,13 @@ func iChoose(s *steputils.StepUtils) func(string) error {
 		}
 
 		// determine the field's type
-		if fieldType, err = s.GetFieldType(field, matches.At(0)); err != nil {
+		if fieldType, err = s.GetFieldType(field, matches[0]); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
 		// if it's a radio, click it
 		if fieldType == "radio" {
-			matches.At(0).Click()
+			matches[0].Click()
 			return nil
 		}
 
@@ -312,7 +309,7 @@ func iClickTheButtonLink(s *steputils.StepUtils) func(string) error {
 func iPressNth(s *steputils.StepUtils) func(string, string) error {
 	return func(nth string, field string) error {
 		var (
-			matches    *agouti.MultiSelection
+			matches    []*agouti.Selection
 			errMsg     = fmt.Sprintf("error encountered while pressing button/link [%s]: ", field) + "%s"
 			nthNumeric int
 			err        error
@@ -324,8 +321,8 @@ func iPressNth(s *steputils.StepUtils) func(string, string) error {
 		}
 
 		// ensure there's enough of these to satisfy the `nth` argument
-		fieldCnt, _ := matches.Count()
-		if fieldCnt < 0 {
+		fieldCnt := len(matches)
+		if fieldCnt < 1 {
 			return fmt.Errorf(errMsg, "no matching buttons/links found")
 		}
 
@@ -358,9 +355,10 @@ func iPressNth(s *steputils.StepUtils) func(string, string) error {
 
 func iClickIdx(s *steputils.StepUtils, field string, btnNumber int) error {
 	var (
-		matches *agouti.MultiSelection
+		matches []*agouti.Selection
 		errMsg  = fmt.Sprintf("error encountered while clicking button/link [%s]: ", field) + "%s"
 		err     error
+		count   int
 	)
 
 	// try to find the field(s) specified
@@ -369,11 +367,11 @@ func iClickIdx(s *steputils.StepUtils, field string, btnNumber int) error {
 	}
 
 	// confirm a match was found
-	if count, _ := matches.Count(); count < (btnNumber - 1) {
+	if count = len(matches); count < (btnNumber - 1) {
 		return fmt.Errorf(errMsg, fmt.Sprintf("instance [%d] not found", btnNumber))
 	}
 
-	matches.At(btnNumber).Click()
+	matches[btnNumber].Click()
 
 	return nil
 }
@@ -381,7 +379,7 @@ func iClickIdx(s *steputils.StepUtils, field string, btnNumber int) error {
 func iUnfocusBlur(s *steputils.StepUtils) func(string) error {
 	return func(field string) error {
 		var (
-			matches *agouti.MultiSelection
+			matches []*agouti.Selection
 			errMsg  = fmt.Sprintf("error encountered while unfocusing/blurring [%s]: ", field) + "%s"
 			err     error
 		)
@@ -392,13 +390,13 @@ func iUnfocusBlur(s *steputils.StepUtils) func(string) error {
 		}
 
 		// ensure there's at least 1
-		fieldCnt, _ := matches.Count()
+		fieldCnt := len(matches)
 		if fieldCnt < 0 {
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
 
 		// unfocus the field
-		fieldElms, _ := matches.At(0).Elements()
+		fieldElms, _ := matches[0].Elements()
 		fieldID, _ := fieldElms[0].GetAttribute("id")
 		fieldName, _ := fieldElms[0].GetAttribute("name")
 		var fieldSelector string
@@ -419,7 +417,7 @@ func iUnfocusBlur(s *steputils.StepUtils) func(string) error {
 			`, map[string]interface{}{"selector": fieldSelector}, nil)
 		} else {
 			// if no fieldSelector was derived, try sending a TAB key
-			err = matches.At(0).SendKeys("\t")
+			err = matches[0].SendKeys("\t")
 		}
 
 		if err != nil {

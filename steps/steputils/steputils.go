@@ -48,8 +48,12 @@ func (s *StepUtils) ResolvePage(pageName string) (string, error) {
 
 // ResolveSelector attempts to retrieve the selector specified by `name` and convert it into an Agouti selector for the provided page.
 // If no selector is found, `name` is used to search by label, name, and ID (in that order).
-func (s *StepUtils) ResolveSelector(name string) (*agouti.MultiSelection, error) {
-	var selector = s.Settings.Selectors.GetString(name)
+func (s *StepUtils) ResolveSelector(name string) ([]*agouti.Selection, error) {
+	var (
+		selector        = s.Settings.Selectors.GetString(name)
+		ignoreInvisible = s.Settings.Settings.GetBool("ignoreInvisible")
+		results         []*agouti.Selection
+	)
 
 	if len(selector) > 0 {
 		// the name matched an entry in the selectors file, so use that to query
@@ -62,14 +66,24 @@ func (s *StepUtils) ResolveSelector(name string) (*agouti.MultiSelection, error)
 			agoutiSel := s.Page.All(selectorBody)
 			matchCnt, _ := agoutiSel.Count()
 			if matchCnt > 0 {
-				return agoutiSel, nil
+				for i := 0; i < matchCnt; i++ {
+					if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+						results = append(results, agoutiSel.At(i))
+					}
+				}
+				return results, nil
 			}
 			break
 		case "xpath":
 			agoutiSel := s.Page.AllByXPath(selectorBody)
 			matchCnt, _ := agoutiSel.Count()
 			if matchCnt > 0 {
-				return agoutiSel, nil
+				for i := 0; i < matchCnt; i++ {
+					if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+						results = append(results, agoutiSel.At(i))
+					}
+				}
+				return results, nil
 			}
 			break
 		default:
@@ -82,42 +96,70 @@ func (s *StepUtils) ResolveSelector(name string) (*agouti.MultiSelection, error)
 		agoutiSel := s.Page.AllByLabel(selector)
 		matchCnt, _ := agoutiSel.Count()
 		if matchCnt > 0 {
-			return agoutiSel, nil
+			for i := 0; i < matchCnt; i++ {
+				if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+					results = append(results, agoutiSel.At(i))
+				}
+			}
 		}
 
 		// try to find a button
 		agoutiSel = s.Page.AllByButton(selector)
 		matchCnt, _ = agoutiSel.Count()
 		if matchCnt > 0 {
-			return agoutiSel, nil
+			for i := 0; i < matchCnt; i++ {
+				if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+					results = append(results, agoutiSel.At(i))
+				}
+			}
 		}
 
 		// try to find a match by link text
 		agoutiSel = s.Page.AllByLink(selector)
 		matchCnt, _ = agoutiSel.Count()
 		if matchCnt > 0 {
-			return agoutiSel, nil
+			for i := 0; i < matchCnt; i++ {
+				if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+					results = append(results, agoutiSel.At(i))
+				}
+			}
 		}
 
 		// try to find a match by name
 		agoutiSel = s.Page.AllByName(selector)
 		matchCnt, _ = agoutiSel.Count()
 		if matchCnt > 0 {
-			return agoutiSel, nil
+			for i := 0; i < matchCnt; i++ {
+				if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+					results = append(results, agoutiSel.At(i))
+				}
+			}
 		}
 
 		// try to find a match by id
 		agoutiSel = s.Page.AllByID(name)
 		matchCnt, _ = agoutiSel.Count()
 		if matchCnt > 0 {
-			return agoutiSel, nil
+			for i := 0; i < matchCnt; i++ {
+				if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+					results = append(results, agoutiSel.At(i))
+				}
+			}
 		}
 
 		// try to find by text
 		agoutiSel = s.Page.AllByXPath(fmt.Sprintf(`//*[contains(text(), '%s')]`, selector))
 		matchCnt, _ = agoutiSel.Count()
 		if matchCnt > 0 {
-			return agoutiSel, nil
+			for i := 0; i < matchCnt; i++ {
+				if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
+					results = append(results, agoutiSel.At(i))
+				}
+			}
+		}
+
+		if len(results) > 0 {
+			return results, nil
 		}
 	}
 	return nil, fmt.Errorf("no matches found for field [%s]", name)

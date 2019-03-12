@@ -24,6 +24,7 @@ The `settings.json` file allows the user to specify global settings for a kosher
     "defaultEnvironment": "test",
     "screenFormat": "desktop",
     "quitOnFail": false,
+    "ignoreInvisible": true,
     "screenFormats": {
         "desktop": {
             "width": 2000,
@@ -151,6 +152,16 @@ Specifies if kosher continues executing remaining scenarios after a step fails.
 | type           | boolean     |
 | required       | no          |
 | default        | false       |
+
+### ignoreInvisible
+
+Specifies if kosher should act as if elements that are invisible to the user do not exist.
+
+| Characteristic | Description |
+| -------------- | ----------- |
+| type           | boolean     |
+| required       | no          |
+| default        | true        |
 
 ### screenFormats
 

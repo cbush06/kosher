@@ -10,6 +10,8 @@ func GetSettingsDesktopJSON(projectName string) string {
     "reportFormat": "pretty",
     "dateFormat": "MM/DD/YYYY",
     "appId": "<appId for desktop application>",
-    "deviceName": "PC name"
+	"deviceName": "PC name",
+	"quitOnFail": false,
+	"ignoreInvisible": true,
 }`
 }
