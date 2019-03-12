@@ -22,8 +22,6 @@ func iAmOnThePage(s *steputils.StepUtils) func(string) error {
 		}
 
 		unescapedURL, _ := url.PathUnescape(pageURL)
-		fmt.Println("URL: " + unescapedURL)
-
 		if err = s.Page.Navigate(unescapedURL); err != nil {
 			return fmt.Errorf("failed to load page [%s]: %s", pageName, err)
 		}
