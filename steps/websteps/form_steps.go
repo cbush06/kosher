@@ -54,7 +54,9 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 
 		// based on the field type, we apply the actual value
 		if s.IsTextBased(field, matches[0]) {
-			matches[0].Fill(value)
+			matches[0].SendKeys(string(0xE009) + "a") // Send CTRL+A
+			matches[0].SendKeys(string(0xE003))
+			matches[0].SendKeys(value)
 		} else {
 			matchCnt = len(matches)
 			switch fieldType {
@@ -428,7 +430,7 @@ func iEnterTodaysDateIn(s *steputils.StepUtils) func(string) error {
 	}
 }
 
-func iSendKey(s *steputils.StepUtils) func(string, string) error {
+func iPressTheKeyOn(s *steputils.StepUtils) func(string, string) error {
 	var (
 		err     error
 		errMsg  = "Error encountered while keying down [%s]: %s"

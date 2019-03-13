@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "I send key \"__\" to \"__\""
+title: "I press the \"__\" on \"__\""
 parent: Step Definitions
 ---
 
-# I send key "\_\_" to "\_\_"
+# I press the "\_\_" key on "\_\_"
 
 Simulate a user typing a character or special key into/onto an element of the screen.
 {: .fs-6 .fw-300 }
@@ -12,7 +12,7 @@ Simulate a user typing a character or special key into/onto an element of the sc
 ## Pattern
 
 ```
-^(?:|I )send key "([^"]*)" to "([^"]*)"$
+^(?:|I )press (?:the) "([^"]*)" key (on|in) "([^"]*)"$
 ```
 
 ## Parameters
@@ -26,10 +26,10 @@ Simulate a user typing a character or special key into/onto an element of the sc
 
 ```gherkin
 Given I am on the "input-form" page
-When I send key "${ENTER}" to "comment"
+When I press the "${ENTER}" key on "comment"
 And I key "Hello, World" in the "comment" field
-And I send key "${BACKSPACE}" to "comment"
-And I send key "${ENTER}" to "Send"
+And I press "${BACKSPACE}" key in "comment"
+And I press the "${ENTER}" key on "Send"
 ```
 
 ## Key Codes
