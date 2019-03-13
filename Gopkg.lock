@@ -140,14 +140,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:ad777c6e9bcac96dca729a89c9458e9817ec7f703763907abcd968f8c0d4240c"
-  name = "github.com/yakshaveinc/go-keycodes"
-  packages = ["."]
-  pruneopts = ""
-  revision = "ac92171a61029f161124de0564da975161a690f6"
-
-[[projects]]
-  branch = "master"
   digest = "1:489610147902fe0c7229218c749bb25a8a9ecce0d726ae4f8662517319f32554"
   name = "golang.org/x/sys"
   packages = ["unix"]
@@ -189,7 +181,6 @@
     "github.com/spf13/cobra",
     "github.com/spf13/pflag",
     "github.com/spf13/viper",
-    "github.com/yakshaveinc/go-keycodes",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
