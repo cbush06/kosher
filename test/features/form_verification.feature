@@ -56,4 +56,6 @@ Feature: Verify Characteristics and Values of a Form
         And I key "Hello, World" in the "comment" field
         And I press "${BACKSPACE}" key in "comment"
         And I wait 1 second
+        And I fill in "comment" with "HELLO WORLD"
+        And I wait 2 seconds
         And I press the "${ENTER}" key on "Send"

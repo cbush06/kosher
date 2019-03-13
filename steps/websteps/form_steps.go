@@ -361,7 +361,7 @@ func iClickIdx(s *steputils.StepUtils, field string, btnNumber int) error {
 	}
 
 	// confirm a match was found
-	if count = len(matches); count < (btnNumber - 1) {
+	if count = len(matches); count < (btnNumber + 1) {
 		return fmt.Errorf(errMsg, fmt.Sprintf("instance [%d] not found", btnNumber))
 	}
 
