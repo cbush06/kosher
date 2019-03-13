@@ -13,5 +13,11 @@
 # Test binary, build with `go test -c`
 *.test
 
+# Vendor Libraries Installed by GoDep
+**/vendor/*
+
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# Ignore results of tests
+**/test/results/*

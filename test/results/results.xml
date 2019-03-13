@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="kosher" tests="3" skipped="0" failures="0" errors="0" time="6.765098222s">
-  <testsuite name="Verify Results of Navigation Actions" tests="3" skipped="0" failures="0" errors="0" time="6.763860018s">
-    <testcase name="Verify Page" status="passed" time="3.527778577s"></testcase>
-    <testcase name="Verify Redirect" status="passed" time="850.200106ms"></testcase>
-    <testcase name="Verify Javascript Alerts" status="passed" time="2.385874047s"></testcase>
-  </testsuite>
-</testsuites>
