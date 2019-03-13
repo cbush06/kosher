@@ -205,7 +205,7 @@ func iUnselectTheFollowingValues(s *steputils.StepUtils) func(string, *gherkin.D
 	return iSelectUnselectTheFollowingValues(s, false)
 }
 
-func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) func(string, *gherkin.DataTable) error {
+func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, doSelect bool) func(string, *gherkin.DataTable) error {
 	return func(field string, values *gherkin.DataTable) error {
 		var (
 			matches      []*agouti.Selection
@@ -213,6 +213,7 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 			errMsg       = fmt.Sprintf("error encountered while selecting/unselecting multiple values from [%s]: ", field) + "%s"
 			err          error
 			valuesLookup []string
+			isSelected   bool
 		)
 
 		// build a sorted array of values
@@ -240,21 +241,12 @@ func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, selected bool) fu
 				return fmt.Errorf(errMsg, "cannot select/unselect multiple values on a single select list")
 			}
 
-			if selected {
-				for _, nextValue := range valuesLookup {
-					if err = matches[0].Select(nextValue); err != nil {
-						return fmt.Errorf(errMsg, err)
-					}
-				}
-			} else {
-				optionMatches := matches[0].All("option")
-				optionCnt, _ := optionMatches.Count()
-				for i := 0; i < optionCnt; i++ {
-					nextOptionElms, _ := optionMatches.At(i).Elements()
-					nextOptionValue, _ := nextOptionElms[0].GetText()
-					if searchIdx := sort.SearchStrings(valuesLookup, nextOptionValue); searchIdx < len(valuesLookup) && strings.EqualFold(valuesLookup[searchIdx], nextOptionValue) {
-						nextOptionElms[0].Clear()
-					}
+			for _, nextValue := range valuesLookup {
+				nextOption := matches[0].AllByXPath(`option[normalize-space(text())="` + nextValue + `"]`)
+				if isSelected, err = nextOption.Selected(); err != nil {
+					return fmt.Errorf(errMsg, err)
+				} else if (doSelect && !isSelected) || (!doSelect && isSelected) {
+					nextOption.Click()
 				}
 			}
 		} else {

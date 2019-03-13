@@ -29,3 +29,4 @@ Feature: Verify Results of Navigation Actions
         When I click the first instance of "Click me!"
         And I wait 1 seconds
         Then I should see the popup "I am an alert box!"
+        And I accept the popup

@@ -24,7 +24,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2701943407
+                            "duration": 4620597438
                         }
                     },
                     {
@@ -36,7 +36,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 179708922
+                            "duration": 167549568
                         }
                     }
                 ]
@@ -68,7 +68,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 101932085
+                            "duration": 107676911
                         }
                     },
                     {
@@ -80,7 +80,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 131513029
+                            "duration": 179055262
                         }
                     },
                     {
@@ -92,7 +92,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 189377850
+                            "duration": 247243524
                         }
                     },
                     {
@@ -104,7 +104,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 128756277
+                            "duration": 162244876
                         }
                     }
                 ]
@@ -126,7 +126,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 101930925
+                            "duration": 104258060
                         }
                     },
                     {
@@ -138,7 +138,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 119316913
+                            "duration": 152659503
                         }
                     },
                     {
@@ -150,7 +150,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 356665297
+                            "duration": 450560758
                         }
                     },
                     {
@@ -162,7 +162,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 157726109
+                            "duration": 209783521
                         }
                     },
                     {
@@ -174,7 +174,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 120157002
+                            "duration": 151738917
                         }
                     }
                 ]
@@ -196,7 +196,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 102297707
+                            "duration": 105863166
                         }
                     },
                     {
@@ -208,7 +208,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 663677585
+                            "duration": 3190623138
                         }
                     },
                     {
@@ -216,11 +216,11 @@
                         "name": "I click \"DatePicker\"",
                         "line": 28,
                         "match": {
-                            "location": "form_steps.go:298"
+                            "location": "form_steps.go:290"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103322903
+                            "duration": 132977475
                         }
                     },
                     {
@@ -228,11 +228,11 @@
                         "name": "I click the \"DatePickerToday\" link",
                         "line": 29,
                         "match": {
-                            "location": "form_steps.go:304"
+                            "location": "form_steps.go:296"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 92212746
+                            "duration": 129264760
                         }
                     },
                     {
@@ -244,7 +244,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 32582557
+                            "duration": 67876021
                         }
                     }
                 ]
@@ -266,7 +266,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 104334634
+                            "duration": 103667939
                         }
                     },
                     {
@@ -278,7 +278,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 188091411
+                            "duration": 224379105
                         }
                     },
                     {
@@ -286,11 +286,11 @@
                         "name": "I enter today's date in \"DatePickerTextbox\"",
                         "line": 36,
                         "match": {
-                            "location": "form_steps.go:434"
+                            "location": "form_steps.go:426"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 234517758
+                            "duration": 321552985
                         }
                     },
                     {
@@ -302,7 +302,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 33452625
+                            "duration": 54949337
                         }
                     }
                 ]
@@ -324,7 +324,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 105555448
+                            "duration": 106168057
                         }
                     },
                     {
@@ -336,7 +336,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 600096655
+                            "duration": 660867016
                         }
                     },
                     {
@@ -348,7 +348,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 277320497
+                            "duration": 340264854
                         }
                     },
                     {
@@ -360,7 +360,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 280367443
+                            "duration": 335477007
                         }
                     },
                     {
@@ -372,7 +372,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 124864846
+                            "duration": 167585405
                         }
                     },
                     {
@@ -384,7 +384,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 105566246
+                            "duration": 139017504
                         }
                     },
                     {
@@ -396,7 +396,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 107674265
+                            "duration": 132642967
                         }
                     },
                     {
@@ -408,7 +408,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 117814062
+                            "duration": 128490861
                         }
                     }
                 ]
@@ -440,7 +440,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 668787665
+                            "duration": 786192608
                         }
                     },
                     {
@@ -452,7 +452,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 112160293
+                            "duration": 107966509
                         }
                     },
                     {
@@ -460,11 +460,11 @@
                         "name": "I click the \"Date pickers\" link",
                         "line": 13,
                         "match": {
-                            "location": "form_steps.go:304"
+                            "location": "form_steps.go:296"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 315032036
+                            "duration": 343816352
                         }
                     },
                     {
@@ -472,11 +472,11 @@
                         "name": "I click the \"Bootstrap Date Picker\" link",
                         "line": 14,
                         "match": {
-                            "location": "form_steps.go:304"
+                            "location": "form_steps.go:296"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 378243928
+                            "duration": 456923435
                         }
                     },
                     {
@@ -488,7 +488,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 22890862
+                            "duration": 17768118
                         }
                     }
                 ]
@@ -510,7 +510,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 136464582
+                            "duration": 167384042
                         }
                     },
                     {
@@ -522,7 +522,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 109716827
+                            "duration": 104745225
                         }
                     },
                     {
@@ -530,11 +530,11 @@
                         "name": "I click the \"Date pickers\" link",
                         "line": 20,
                         "match": {
-                            "location": "form_steps.go:304"
+                            "location": "form_steps.go:296"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 252554875
+                            "duration": 300426018
                         }
                     },
                     {
@@ -542,11 +542,11 @@
                         "name": "I click the \"Bootstrap Date Picker\" link",
                         "line": 21,
                         "match": {
-                            "location": "form_steps.go:304"
+                            "location": "form_steps.go:296"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 308124124
+                            "duration": 386026230
                         }
                     },
                     {
@@ -558,7 +558,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2263219
+                            "duration": 3493429
                         }
                     }
                 ]
@@ -580,7 +580,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 130571562
+                            "duration": 180325503
                         }
                     },
                     {
@@ -592,7 +592,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103814084
+                            "duration": 119864452
                         }
                     },
                     {
@@ -604,7 +604,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 1149847517
+                            "duration": 1815218047
                         }
                     },
                     {
@@ -616,7 +616,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 4652662
+                            "duration": 3385365
                         }
                     },
                     {
@@ -624,11 +624,11 @@
                         "name": "I click the first instance of \"Click me!\"",
                         "line": 29,
                         "match": {
-                            "location": "form_steps.go:310"
+                            "location": "form_steps.go:302"
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 401320770
+                            "duration": 459923553
                         }
                     },
                     {
@@ -640,7 +640,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 1003668756
+                            "duration": 1000382628
                         }
                     },
                     {
@@ -652,7 +652,19 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 5237721
+                            "duration": 6445007
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I accept the popup",
+                        "line": 32,
+                        "match": {
+                            "location": "navigation_steps.go:79"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 3096686
                         }
                     }
                 ]
@@ -684,7 +696,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 4372315
+                            "duration": 799219565
                         }
                     },
                     {
@@ -692,12 +704,11 @@
                         "name": "I press the first instance of \"ColumnHeader\"",
                         "line": 9,
                         "match": {
-                            "location": "form_steps.go:310"
+                            "location": "form_steps.go:302"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while pressing button/link [ColumnHeader]: no matches found for field [ColumnHeader]",
-                            "duration": 4566939
+                            "status": "passed",
+                            "duration": 368879972
                         }
                     },
                     {
@@ -708,7 +719,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 88632812
                         }
                     },
                     {
@@ -719,7 +731,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 14595614
                         }
                     }
                 ]
@@ -741,7 +754,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 4888035
+                            "duration": 199536157
                         }
                     },
                     {
@@ -749,12 +762,11 @@
                         "name": "I click the last instance of \"ColumnHeader\"",
                         "line": 17,
                         "match": {
-                            "location": "form_steps.go:310"
+                            "location": "form_steps.go:302"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while pressing button/link [ColumnHeader]: no matches found for field [ColumnHeader]",
-                            "duration": 5087388
+                            "status": "passed",
+                            "duration": 394793847
                         }
                     },
                     {
@@ -765,7 +777,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 65027245
                         }
                     },
                     {
@@ -776,7 +789,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 14634007
                         }
                     }
                 ]
@@ -798,7 +812,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 3559782
+                            "duration": 178989798
                         }
                     },
                     {
@@ -806,12 +820,11 @@
                         "name": "I click the first instance of \"Click me!\"",
                         "line": 25,
                         "match": {
-                            "location": "form_steps.go:310"
+                            "location": "form_steps.go:302"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while pressing button/link [Click me!]: no matches found for field [Click me!]",
-                            "duration": 16480490
+                            "status": "passed",
+                            "duration": 427180052
                         }
                     },
                     {
@@ -822,7 +835,8 @@
                             "location": "navigation_steps.go:79"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 3419334
                         }
                     },
                     {
@@ -833,7 +847,8 @@
                             "location": "navigation_verification_steps.go:48"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 12570719
                         }
                     }
                 ]
@@ -855,7 +870,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2696584
+                            "duration": 199224729
                         }
                     },
                     {
@@ -863,12 +878,11 @@
                         "name": "I click the first instance of \"Click me!\"",
                         "line": 33,
                         "match": {
-                            "location": "form_steps.go:310"
+                            "location": "form_steps.go:302"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while pressing button/link [Click me!]: no matches found for field [Click me!]",
-                            "duration": 15107863
+                            "status": "passed",
+                            "duration": 478947448
                         }
                     },
                     {
@@ -879,7 +893,8 @@
                             "location": "navigation_steps.go:89"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 5041522
                         }
                     },
                     {
@@ -890,7 +905,8 @@
                             "location": "navigation_verification_steps.go:48"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 19502748
                         }
                     }
                 ]
@@ -912,7 +928,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2061156
+                            "duration": 181457946
                         }
                     },
                     {
@@ -920,12 +936,11 @@
                         "name": "I click the \"Click for Prompt Box\" button",
                         "line": 41,
                         "match": {
-                            "location": "form_steps.go:304"
+                            "location": "form_steps.go:296"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while clicking button/link [Click for Prompt Box]: no matches found for field [Click for Prompt Box]",
-                            "duration": 11265947
+                            "status": "passed",
+                            "duration": 281561170
                         }
                     },
                     {
@@ -936,7 +951,8 @@
                             "location": "navigation_steps.go:99"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 2654774
                         }
                     },
                     {
@@ -947,7 +963,8 @@
                             "location": "navigation_steps.go:79"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 13180799
                         }
                     },
                     {
@@ -958,7 +975,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 111524928
                         }
                     }
                 ]
@@ -990,7 +1008,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 106318057
+                            "duration": 105653664
                         }
                     },
                     {
@@ -1002,7 +1020,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 7335711
+                            "duration": 631004337
                         }
                     },
                     {
@@ -1013,9 +1031,8 @@
                             "location": "page_verification.go:27"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered searching page for text: failed to select elements from selection 'XPath: //*[text()[contains(., \"Select Country\") and not(ancestor::*[contains(@style, 'display: none')])]]': unexpected response: {\"sessionId\":\"6d8cf6c102c93daabc2256c8ced3ac76\",\"status\":26,\"value\":{\"message\":\"unexpected alert open: {Alert text : I am an alert box!}\\n  (Session info: chrome=72.0.3626.121)\\n  (Driver info: chromedriver=2.46.628388 (4a34a70827ac54148e092aafb70504c4ea7ae926),platform=Linux 4.15.0-46-generic x86_64)\"}}",
-                            "duration": 6880725
+                            "status": "passed",
+                            "duration": 172700168
                         }
                     }
                 ]
@@ -1037,7 +1054,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 107259382
+                            "duration": 108998112
                         }
                     },
                     {
@@ -1049,7 +1066,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 5583849
+                            "duration": 179722718
                         }
                     },
                     {
@@ -1057,12 +1074,11 @@
                         "name": "I click \"Date pickers\"",
                         "line": 24,
                         "match": {
-                            "location": "form_steps.go:298"
+                            "location": "form_steps.go:290"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while clicking button/link [Date pickers]: no matches found for field [Date pickers]",
-                            "duration": 28114270
+                            "status": "passed",
+                            "duration": 375568973
                         }
                     },
                     {
@@ -1073,7 +1089,8 @@
                             "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 273467913
                         }
                     },
                     {
@@ -1084,7 +1101,8 @@
                             "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 153297481
                         }
                     },
                     {
@@ -1095,7 +1113,8 @@
                             "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 291718959
                         }
                     }
                 ]
@@ -1117,7 +1136,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103737009
+                            "duration": 107307775
                         }
                     },
                     {
@@ -1129,7 +1148,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 3134950
+                            "duration": 200631546
                         }
                     },
                     {
@@ -1140,9 +1159,8 @@
                             "location": "page_verification.go:227"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered searching page for [input] with [name] of [first_name]: failed to select elements from selection 'XPath: //input[@name=\"first_name\"]': unexpected response: {\"sessionId\":\"6d8cf6c102c93daabc2256c8ced3ac76\",\"status\":26,\"value\":{\"message\":\"unexpected alert open: {Alert text : I am an alert box!}\\n  (Session info: chrome=72.0.3626.121)\\n  (Driver info: chromedriver=2.46.628388 (4a34a70827ac54148e092aafb70504c4ea7ae926),platform=Linux 4.15.0-46-generic x86_64)\"}}",
-                            "duration": 2966557
+                            "status": "passed",
+                            "duration": 66229584
                         }
                     },
                     {
@@ -1153,7 +1171,8 @@
                             "location": "page_verification.go:227"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 21251630
                         }
                     }
                 ]
@@ -1175,7 +1194,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 107232993
+                            "duration": 106259236
                         }
                     },
                     {
@@ -1187,7 +1206,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 3070051
+                            "duration": 456350072
                         }
                     },
                     {
@@ -1198,9 +1217,8 @@
                             "location": "page_verification.go:227"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered searching page for [div] with [id] of [user-message]: failed to select elements from selection 'XPath: //div[@id=\"user-message\"]': unexpected response: {\"sessionId\":\"6d8cf6c102c93daabc2256c8ced3ac76\",\"status\":26,\"value\":{\"message\":\"unexpected alert open: {Alert text : I am an alert box!}\\n  (Session info: chrome=72.0.3626.121)\\n  (Driver info: chromedriver=2.46.628388 (4a34a70827ac54148e092aafb70504c4ea7ae926),platform=Linux 4.15.0-46-generic x86_64)\"}}",
-                            "duration": 2908145
+                            "status": "passed",
+                            "duration": 62550267
                         }
                     },
                     {
@@ -1211,7 +1229,8 @@
                             "location": "page_verification.go:227"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 15721709
                         }
                     }
                 ]
@@ -1243,7 +1262,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103492601
+                            "duration": 108525955
                         }
                     },
                     {
@@ -1255,7 +1274,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 3400446
+                            "duration": 447399954
                         }
                     },
                     {
@@ -1263,12 +1282,11 @@
                         "name": "I choose the \"Female\" radio",
                         "line": 11,
                         "match": {
-                            "location": "form_steps.go:269"
+                            "location": "form_steps.go:261"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while choosing radio button [Female]: no matches found for field [Female]",
-                            "duration": 18249590
+                            "status": "passed",
+                            "duration": 351001232
                         }
                     },
                     {
@@ -1276,10 +1294,11 @@
                         "name": "I press \"Get Checked value\"",
                         "line": 12,
                         "match": {
-                            "location": "form_steps.go:298"
+                            "location": "form_steps.go:290"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 250083290
                         }
                     },
                     {
@@ -1290,7 +1309,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 73213755
                         }
                     },
                     {
@@ -1301,7 +1321,8 @@
                             "location": "form_verification_steps.go:187"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 227897224
                         }
                     },
                     {
@@ -1312,7 +1333,8 @@
                             "location": "form_verification_steps.go:187"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 259182283
                         }
                     }
                 ]
@@ -1334,7 +1356,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103466901
+                            "duration": 104852011
                         }
                     },
                     {
@@ -1346,7 +1368,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 6474853
+                            "duration": 668289952
                         }
                     },
                     {
@@ -1357,9 +1379,8 @@
                             "location": "form_steps.go:162"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while unchecking [Click on this check box]: no matches found for field [Click on this check box]",
-                            "duration": 22484429
+                            "status": "passed",
+                            "duration": 260723173
                         }
                     },
                     {
@@ -1370,7 +1391,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 74994519
                         }
                     }
                 ]
@@ -1392,7 +1414,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 110457896
+                            "duration": 104140199
                         }
                     },
                     {
@@ -1404,7 +1426,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2040527
+                            "duration": 176456941
                         }
                     },
                     {
@@ -1416,7 +1438,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2008861780
+                            "duration": 2005367649
                         }
                     },
                     {
@@ -1428,7 +1450,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 24534632
+                            "duration": 167178964
                         }
                     },
                     {
@@ -1439,9 +1461,8 @@
                             "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "expected TO find button/link [Check All] but did not",
-                            "duration": 17406522
+                            "status": "passed",
+                            "duration": 265547820
                         }
                     },
                     {
@@ -1452,7 +1473,8 @@
                             "location": "form_steps.go:162"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 274932467
                         }
                     },
                     {
@@ -1463,7 +1485,8 @@
                             "location": "form_steps.go:162"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 259509326
                         }
                     },
                     {
@@ -1474,7 +1497,8 @@
                             "location": "form_steps.go:162"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 253707542
                         }
                     },
                     {
@@ -1485,7 +1509,8 @@
                             "location": "form_steps.go:162"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 241994638
                         }
                     },
                     {
@@ -1496,7 +1521,8 @@
                             "location": "browser_steps.go:20"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 1002029269
                         }
                     },
                     {
@@ -1507,7 +1533,8 @@
                             "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 200647411
                         }
                     },
                     {
@@ -1518,7 +1545,8 @@
                             "location": "form_verification_steps.go:187"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 154736588
                         }
                     },
                     {
@@ -1529,7 +1557,8 @@
                             "location": "form_steps.go:162"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 202701677
                         }
                     },
                     {
@@ -1540,7 +1569,8 @@
                             "location": "browser_steps.go:20"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 1000210259
                         }
                     },
                     {
@@ -1551,7 +1581,8 @@
                             "location": "page_verification.go:91"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 217294197
                         }
                     },
                     {
@@ -1562,7 +1593,8 @@
                             "location": "form_verification_steps.go:187"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 141287585
                         }
                     }
                 ]
@@ -1594,7 +1626,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103284850
+                            "duration": 103432808
                         }
                     },
                     {
@@ -1606,7 +1638,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2044004
+                            "duration": 1003236961
                         }
                     },
                     {
@@ -1617,9 +1649,8 @@
                             "location": "form_steps.go:121"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while selecting [Monday] from [select-demo]: no matches found for field [select-demo]",
-                            "duration": 11696961
+                            "status": "passed",
+                            "duration": 289691330
                         }
                     },
                     {
@@ -1630,7 +1661,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 118296975
                         }
                     }
                 ]
@@ -1652,7 +1684,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 114197576
+                            "duration": 107204248
                         }
                     },
                     {
@@ -1664,7 +1696,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 2521054
+                            "duration": 166240743
                         }
                     },
                     {
@@ -1675,9 +1707,8 @@
                             "location": "form_steps.go:121"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while selecting [New York] from [multi-select]: no matches found for field [multi-select]",
-                            "duration": 11641165
+                            "status": "passed",
+                            "duration": 273247664
                         }
                     },
                     {
@@ -1685,10 +1716,11 @@
                         "name": "I click \"First Selected\"",
                         "line": 16,
                         "match": {
-                            "location": "form_steps.go:298"
+                            "location": "form_steps.go:290"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 254794244
                         }
                     },
                     {
@@ -1699,7 +1731,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 66396868
                         }
                     }
                 ]
@@ -1721,7 +1754,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 108523556
+                            "duration": 104796065
                         }
                     },
                     {
@@ -1733,7 +1766,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 6354248
+                            "duration": 152855814
                         }
                     },
                     {
@@ -1744,9 +1777,8 @@
                             "location": "form_steps.go:209"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while selecting/unselecting multiple values from [multi-select]: no matches found for field [multi-select]",
-                            "duration": 28028399
+                            "status": "passed",
+                            "duration": 480786870
                         }
                     },
                     {
@@ -1757,7 +1789,8 @@
                             "location": "form_verification_steps.go:119"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 358174799
                         }
                     }
                 ]
@@ -1779,7 +1812,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 104684551
+                            "duration": 103837446
                         }
                     },
                     {
@@ -1791,7 +1824,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 6351488
+                            "duration": 170114081
                         }
                     },
                     {
@@ -1802,9 +1835,8 @@
                             "location": "form_steps.go:209"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while selecting/unselecting multiple values from [multi-select]: no matches found for field [multi-select]",
-                            "duration": 28668626
+                            "status": "passed",
+                            "duration": 445134587
                         }
                     },
                     {
@@ -1815,7 +1847,8 @@
                             "location": "form_steps.go:209"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 224733702
                         }
                     },
                     {
@@ -1826,7 +1859,8 @@
                             "location": "form_verification_steps.go:119"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 381294710
                         }
                     }
                 ]
@@ -1848,7 +1882,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103554014
+                            "duration": 110193158
                         }
                     },
                     {
@@ -1860,7 +1894,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 6775468
+                            "duration": 175723925
                         }
                     },
                     {
@@ -1871,9 +1905,8 @@
                             "location": "form_verification_steps.go:119"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while verifying options for [select-demo]: no matches found for field [select-demo]",
-                            "duration": 29031043
+                            "status": "passed",
+                            "duration": 466442648
                         }
                     },
                     {
@@ -1884,7 +1917,8 @@
                             "location": "form_verification_steps.go:119"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 392643688
                         }
                     }
                 ]
@@ -1924,7 +1958,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103455568
+                            "duration": 108881871
                         }
                     },
                     {
@@ -1936,7 +1970,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 7187794
+                            "duration": 209391063
                         }
                     },
                     {
@@ -1947,9 +1981,8 @@
                             "location": "form_steps.go:35"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while filling in multiple fields: no matches found for field [user-message]",
-                            "duration": 27754753
+                            "status": "passed",
+                            "duration": 414985205
                         }
                     },
                     {
@@ -1957,10 +1990,11 @@
                         "name": "I press \"Show Message\"",
                         "line": 13,
                         "match": {
-                            "location": "form_steps.go:298"
+                            "location": "form_steps.go:290"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 296834490
                         }
                     },
                     {
@@ -1971,7 +2005,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 100042728
                         }
                     }
                 ]
@@ -1993,7 +2028,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103627836
+                            "duration": 102932079
                         }
                     },
                     {
@@ -2005,7 +2040,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 4395120
+                            "duration": 156343684
                         }
                     },
                     {
@@ -2016,9 +2051,8 @@
                             "location": "form_steps.go:17"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while filling in multiple fields: no matches found for field [sum1]",
-                            "duration": 23985478
+                            "status": "passed",
+                            "duration": 629751094
                         }
                     },
                     {
@@ -2026,10 +2060,11 @@
                         "name": "I press \"Get Total\"",
                         "line": 23,
                         "match": {
-                            "location": "form_steps.go:298"
+                            "location": "form_steps.go:290"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 318827142
                         }
                     },
                     {
@@ -2040,7 +2075,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 114138016
                         }
                     }
                 ]
@@ -2062,7 +2098,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 103582619
+                            "duration": 109214831
                         }
                     },
                     {
@@ -2074,7 +2110,7 @@
                         },
                         "result": {
                             "status": "passed",
-                            "duration": 6212940
+                            "duration": 269812210
                         }
                     },
                     {
@@ -2082,12 +2118,11 @@
                         "name": "I click \"SelectCountry\"",
                         "line": 30,
                         "match": {
-                            "location": "form_steps.go:298"
+                            "location": "form_steps.go:290"
                         },
                         "result": {
-                            "status": "failed",
-                            "error_message": "error encountered while clicking button/link [SelectCountry]: no matches found for field [SelectCountry]",
-                            "duration": 6191698
+                            "status": "passed",
+                            "duration": 166544401
                         }
                     },
                     {
@@ -2098,7 +2133,8 @@
                             "location": "form_steps.go:89"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 140945769
                         }
                     },
                     {
@@ -2109,7 +2145,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 78964013
                         }
                     },
                     {
@@ -2120,7 +2157,8 @@
                             "location": "page_verification.go:38"
                         },
                         "result": {
-                            "status": "skipped"
+                            "status": "passed",
+                            "duration": 128497027
                         }
                     }
                 ]
