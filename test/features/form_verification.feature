@@ -46,3 +46,12 @@ Feature: Verify Characteristics and Values of a Form
         And "first_name" should not contain "User"
         And "last_name" should contain "User"
         And "last_name" should not contain "Some"
+    
+    Scenario: Test Send Key
+        Verify a new line can be sent using "I send key" step.
+
+        Given I am on the "input-form" page
+        When I send key "${ENTER}" to "comment"
+        And I key "Hello, World" in the "comment" field
+        And I send key "${BACKSPACE}" to "comment"
+        And I send key "${ENTER}" to "Send"

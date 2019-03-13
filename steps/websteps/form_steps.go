@@ -427,3 +427,65 @@ func iEnterTodaysDateIn(s *steputils.StepUtils) func(string) error {
 		return fillInFieldFunc(field, today)
 	}
 }
+
+func iSendKey(s *steputils.StepUtils) func(string, string) error {
+	var (
+		err     error
+		errMsg  = "Error encountered while keying down [%s]: %s"
+		matches []*agouti.Selection
+	)
+
+	return func(key string, field string) error {
+		var parsedKeyCode string
+
+		if parsedKeyCode, err = parseKeyCodes(key); err != nil {
+			return fmt.Errorf(errMsg, key, err)
+		}
+
+		// try to find the field(s) specified
+		if matches, err = s.ResolveSelector(field); err != nil {
+			return fmt.Errorf(errMsg, key, err)
+		}
+
+		// ensure there's at least 1
+		fieldCnt := len(matches)
+		if fieldCnt < 0 {
+			return fmt.Errorf(errMsg, key, "no matching elements found")
+		}
+
+		// send the key
+		if err = matches[0].SendKeys(parsedKeyCode); err != nil {
+			return fmt.Errorf(errMsg, key, err)
+		}
+
+		return nil
+	}
+}
+
+func parseKeyCodes(key string) (string, error) {
+	var unicodeHexValue uint16
+	regEx := regexp.MustCompile(`\$\{(.+)\}`)
+	matches := regEx.FindStringSubmatch(key)
+
+	if len(matches) < 2 {
+		return "", fmt.Errorf("invalid key code")
+	}
+
+	// Borrowed these unicodes from https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/Keys.java
+	switch matches[1] {
+	case "BACKSPACE":
+		unicodeHexValue = 0xE003
+	case "ENTER":
+		unicodeHexValue = 0xE007
+	case "ESCAPE":
+		unicodeHexValue = 0xE00C
+	case "SPACE":
+		unicodeHexValue = 0xE00D
+	case "DELETE":
+		unicodeHexValue = 0xE017
+	default:
+		return "", fmt.Errorf("unrecognized key code [%s]", matches[1])
+	}
+
+	return string(unicodeHexValue), nil
+}
