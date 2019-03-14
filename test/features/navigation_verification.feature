@@ -1,3 +1,4 @@
+@test @verify
 Feature: Verify Results of Navigation Actions
 
     After clicking a link, clicking a button, or submitting
@@ -7,6 +8,7 @@ Feature: Verify Results of Navigation Actions
         Given I go to the "table-search" page
         And I maximize the window
 
+    @test @verify
     Scenario: Verify Page
         After clicking on a link, verify that appropriate page is shown.
 
@@ -14,6 +16,7 @@ Feature: Verify Results of Navigation Actions
         And I click the "Bootstrap Date Picker" link
         Then I should be on the "bootstrap-date-picker" page
 
+    @verify
     Scenario: Verify Page with Trailing Slash
         After clicking on a link, verify that appropriate page is shown.
 
