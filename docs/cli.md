@@ -62,8 +62,8 @@ $ kosher run [flags] [path]
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | --appVersion      | Version of the application being tested. This will be used when creating the report after testing has completed.         |
 | -e, --environment | Sets the environment to execute tests against. This overrides the default environemnt specified in config/settings.json. |
-| -h, --help        | help for run                                                                                                             |
 | -t, --tags        | Filter features, scenarios, scenario outlines, and examples by tags.                                                     |
+| -h, --help        | help for run                                                                                                             |
 
 ### Arguments
 

@@ -10,6 +10,9 @@ nav_order: 8
 kosher follows a very specific algorithm when attempting to identify an element using either a literal selector or one defined in the `selectors.json` file.
 {: .fs-6 .fw-300 }
 
+## Table of Contents
+{: .no_toc .text-delta }
+
 1. TOC
 {:toc}
 
