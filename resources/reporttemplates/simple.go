@@ -75,69 +75,70 @@ func GetSimpleTemplate() string {
 
         <div class="container-fluid">
             {{range .Features}}
-            
-                <!-- FEATURE BLOCK -->
-				<div class="{{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-inf{{else}}bg-success{{end}} text-left">
-					{{ if (gt (len .Tags) 0) }}
-					<small>
-						{{range .Tags}}
-							{{.Name}}&nbsp;
+				{{if (gt (len .Elements) 0)}}
+					<!-- FEATURE BLOCK -->
+					<div class="{{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-inf{{else}}bg-success{{end}} text-left">
+						{{ if (gt (len .Tags) 0) }}
+						<small>
+							{{range .Tags}}
+								{{.Name}}&nbsp;
+							{{end}}
+						</small>
 						{{end}}
-					</small>
-					{{end}}
-                    <h1><strong>{{if (gt .ElementsFailed 0)}}(FAILED){{else if (gt .ElementsPending 0)}}(PENDING){{else}}(PASSED){{end}} Feature:</strong> {{.Name}}</h1>
-                </div>
-				<p class="ml-4 mr-4" style="font-size: 1rem;"><pre>{{.GetTrimmedDescription}}</pre></p>
-				<p>&nbsp;</p>
-                {{range .Elements}}
+						<h1><strong>{{if (gt .ElementsFailed 0)}}(FAILED){{else if (gt .ElementsPending 0)}}(PENDING){{else}}(PASSED){{end}} Feature:</strong> {{.Name}}</h1>
+					</div>
+					<p class="ml-4 mr-4" style="font-size: 1rem;"><pre>{{.GetTrimmedDescription}}</pre></p>
+					<p>&nbsp;</p>
+					{{range .Elements}}
 
-                    <!-- SCENARIO, SCENARIO OUTLINE, OR BACKGROUND BLOCK -->
-                    <div class="ml-4 mr-4">
-						<table class="table table-sm table-borderless">
-							<thead>
-								<th colspan="2" class="{{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}" align="left">
-									{{ if (gt (len .Tags) 0) }}
-									<small>
-										{{range .Tags}}
-											{{.Name}}&nbsp;
+						<!-- SCENARIO, SCENARIO OUTLINE, OR BACKGROUND BLOCK -->
+						<div class="ml-4 mr-4">
+							<table class="table table-sm table-borderless">
+								<thead>
+									<th colspan="2" class="{{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}" align="left">
+										{{ if (gt (len .Tags) 0) }}
+										<small>
+											{{range .Tags}}
+												{{.Name}}&nbsp;
+											{{end}}
+										</small>
 										{{end}}
-									</small>
-									{{end}}
-									<h2><strong>{{if (gt .StepsFailed 0)}}(FAILED){{else if (gt .StepsSkipped 0)}}(PENDING){{else}}(PASSED){{end}} {{.Keyword}}:</strong> {{.Name}}</h2>
-								</th>
-							</thead>
-							<tbody>
-								<tr><td colspan="2" class="pl-4 pr-4"><pre>{{.GetTrimmedDescription}}</pre></td></tr>
+										<h2><strong>{{if (gt .StepsFailed 0)}}(FAILED){{else if (gt .StepsSkipped 0)}}(PENDING){{else}}(PASSED){{end}} {{.Keyword}}:</strong> {{.Name}}</h2>
+									</th>
+								</thead>
+								<tbody>
+									<tr><td colspan="2" class="pl-4 pr-4"><pre>{{.GetTrimmedDescription}}</pre></td></tr>
 
-                                <!-- STEP BLOCK -->
-                                {{range .Steps}}
-                                <tr>
-                                    <td class="{{if (eq .Result.Status "passed")}}text-success{{else if (eq .Result.Status "failed")}}text-danger{{else if (eq .Result.Status "skipped")}}text-warn{{else if (eq .Result.Status "undefined")}}text-info{{end}}">
-										<strong>{{if (eq .Result.Status "passed")}}(PASSED){{else if (eq .Result.Status "failed")}}(FAILED){{else if (eq .Result.Status "skipped")}}(SKIPPED){{else if (eq .Result.Status "undefined")}}(PENDING){{end}} {{.Keyword}}</strong>{{.Name}}</span>
-									</td>
-                                    </td>
-                                    <td style="width: 10%;">
-                                        {{.Result.GetDurationInSeconds}}
-                                    </td>
-                                </tr>
-                                {{if (eq .Result.Status "failed")}}
-                                    <tr>
-                                        <td colspan="2" class="bg-danger">
-                                            {{.Result.Error}}
-                                        </td>
-                                    </tr>
-                                {{else if (eq .Result.Status "undefined")}}
-                                    <tr>
-                                        <td colspan="2" class="bg-info">
-                                            Could not match step at <code>{{.Match.Location}}</code>
-                                        </td>
-                                    </tr>
-                                {{end}}
-                                {{end}}
-                            </tbody>
-                        </table>
-                    </div>
-                {{end}}
+									<!-- STEP BLOCK -->
+									{{range .Steps}}
+									<tr>
+										<td class="{{if (eq .Result.Status "passed")}}text-success{{else if (eq .Result.Status "failed")}}text-danger{{else if (eq .Result.Status "skipped")}}text-warn{{else if (eq .Result.Status "undefined")}}text-info{{end}}">
+											<strong>{{if (eq .Result.Status "passed")}}(PASSED){{else if (eq .Result.Status "failed")}}(FAILED){{else if (eq .Result.Status "skipped")}}(SKIPPED){{else if (eq .Result.Status "undefined")}}(PENDING){{end}} {{.Keyword}}</strong>{{.Name}}</span>
+										</td>
+										</td>
+										<td style="width: 10%;">
+											{{.Result.GetDurationInSeconds}}
+										</td>
+									</tr>
+									{{if (eq .Result.Status "failed")}}
+										<tr>
+											<td colspan="2" class="bg-danger">
+												{{.Result.Error}}
+											</td>
+										</tr>
+									{{else if (eq .Result.Status "undefined")}}
+										<tr>
+											<td colspan="2" class="bg-info">
+												Could not match step at <code>{{.Match.Location}}</code>
+											</td>
+										</tr>
+									{{end}}
+									{{end}}
+								</tbody>
+							</table>
+						</div>
+					{{end}}
+				{{end}}
 			{{end}}
         </div>
     </body>

@@ -97,96 +97,97 @@ func GetBootstrapTemplate() string {
                 </div>
             </div>
 			{{range .Features}}
-
-			<!-- FEATURE BLOCK -->
-			<div class="row">
-                <div class="col">
-                    <div class="card mb-3">
-						<div class="card-header {{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-info{{else}}bg-success{{end}}">
-							{{ if (gt (len .Tags) 0) }}
-							<small>
-								{{range .Tags}}
-									{{.Name}}&nbsp;
+				{{if (gt (len .Elements) 0)}}
+				<!-- FEATURE BLOCK -->
+				<div class="row">
+					<div class="col">
+						<div class="card mb-3">
+							<div class="card-header {{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-info{{else}}bg-success{{end}}">
+								{{ if (gt (len .Tags) 0) }}
+								<small>
+									{{range .Tags}}
+										{{.Name}}&nbsp;
+									{{end}}
+								</small>
+								<br />
 								{{end}}
-							</small>
-							<br />
-							{{end}}
 
-							<strong>Feature:</strong> {{.Name}}
-						</div>
-						<div class="card-body">
-							<div class="card-title container-fluid">
-								<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</pre></div></div>
+								<strong>Feature:</strong> {{.Name}}
 							</div>
-							<div class="container-fluid">
-								{{range .Elements}}
+							<div class="card-body">
+								<div class="card-title container-fluid">
+									<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</pre></div></div>
+								</div>
+								<div class="container-fluid">
+									{{range .Elements}}
 
-								<!-- SCENARIO, SCENARIO OUTLINE, OR BACKGROUND BLOCK -->
-								<div class="row">
-									<div class="col">
-										<div class="card mb-3">
-											<div class="card-header {{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}">
-												{{ if (gt (len .Tags) 0) }}
-												<small>
-													{{range .Tags}}
-														{{.Name}}&nbsp;
-													{{end}}
-												</small>
-												<br />
-												{{end}}
-												
-												<strong>{{.Keyword}}:</strong> {{.Name}}
-											</div>
-											<div class="card-body">
-												<div class="card-title container-fluid">
-													<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</pre></div></div>
-												</div>
-												<div class="container-fluid">
-
-													<!-- STEP BLOCK -->
-													{{range .Steps}}
-														<div class="row">
-															<div class="col-11">
-																{{if (eq .Result.Status "passed")}}
-																	<span class="text-success"><i class="fa fa-check-square"></i></span>
-																{{else if (eq .Result.Status "failed")}}
-																	<span class="text-danger"><i class="fa fa-times-circle"></i></span>
-																{{else if (eq .Result.Status "skipped")}}
-																	<span class="text-warning"><i class="fa fa-exclamation-triangle"></i></span>
-																{{else if (eq .Result.Status "undefined")}}
-																	<span class="text-info"><i class="fa fa-question-circle"></i></span>
-																{{end}}
-
-																<strong>{{.Keyword}}</strong>{{.Name}}
-															</div>
-															<div class="col-1">{{.Result.GetDurationInSeconds}}</div>
-														</div>
-
-														{{if (eq .Result.Status "failed")}}
-															<div class="row">
-																<div class="col alert alert-danger">
-																	{{.Result.Error}}
-																</div>
-															</div>
-														{{else if (eq .Result.Status "undefined")}}
-															<div class="row">
-																<div class="col alert alert-info">
-																	Could not match step at <code>{{.Match.Location}}</code>
-																</div>
-															</div>
+									<!-- SCENARIO, SCENARIO OUTLINE, OR BACKGROUND BLOCK -->
+									<div class="row">
+										<div class="col">
+											<div class="card mb-3">
+												<div class="card-header {{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}">
+													{{ if (gt (len .Tags) 0) }}
+													<small>
+														{{range .Tags}}
+															{{.Name}}&nbsp;
 														{{end}}
+													</small>
+													<br />
 													{{end}}
+													
+													<strong>{{.Keyword}}:</strong> {{.Name}}
+												</div>
+												<div class="card-body">
+													<div class="card-title container-fluid">
+														<div class="row"><div class="col"><pre>{{.GetTrimmedDescription}}</pre></div></div>
+													</div>
+													<div class="container-fluid">
+
+														<!-- STEP BLOCK -->
+														{{range .Steps}}
+															<div class="row">
+																<div class="col-11">
+																	{{if (eq .Result.Status "passed")}}
+																		<span class="text-success"><i class="fa fa-check-square"></i></span>
+																	{{else if (eq .Result.Status "failed")}}
+																		<span class="text-danger"><i class="fa fa-times-circle"></i></span>
+																	{{else if (eq .Result.Status "skipped")}}
+																		<span class="text-warning"><i class="fa fa-exclamation-triangle"></i></span>
+																	{{else if (eq .Result.Status "undefined")}}
+																		<span class="text-info"><i class="fa fa-question-circle"></i></span>
+																	{{end}}
+
+																	<strong>{{.Keyword}}</strong>{{.Name}}
+																</div>
+																<div class="col-1">{{.Result.GetDurationInSeconds}}</div>
+															</div>
+
+															{{if (eq .Result.Status "failed")}}
+																<div class="row">
+																	<div class="col alert alert-danger">
+																		{{.Result.Error}}
+																	</div>
+																</div>
+															{{else if (eq .Result.Status "undefined")}}
+																<div class="row">
+																	<div class="col alert alert-info">
+																		Could not match step at <code>{{.Match.Location}}</code>
+																	</div>
+																</div>
+															{{end}}
+														{{end}}
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+									{{end}}
 								</div>
-								{{end}}
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+				{{end}}
 			{{end}}
         </div>
 
