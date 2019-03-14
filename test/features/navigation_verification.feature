@@ -1,4 +1,3 @@
-@test @verify
 Feature: Verify Results of Navigation Actions
 
     After clicking a link, clicking a button, or submitting
@@ -8,7 +7,7 @@ Feature: Verify Results of Navigation Actions
         Given I go to the "table-search" page
         And I maximize the window
 
-    @test @verify
+    @test
     Scenario: Verify Page
         After clicking on a link, verify that appropriate page is shown.
 
