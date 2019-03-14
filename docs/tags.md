@@ -16,6 +16,12 @@ Gherkin tags are an easy method for running subsets of your overall test suite.
 1. TOC
 {:toc}
 
+## What are tags?
+
+Tags are a simple way of organizing/categorizing features, scenarios, scenario outlines, and examples. Tags are any space-delimited 
+string in a feature file that begins with the 'at' (@) symbol. After you've added tags to your `*.feature` files, you can specify
+which tags to execute when you run the tests.
+
 ## Where can tags go?
 
 Kosher (via [GoDog](https://github.com/DATA-DOG/godog)) supports tagging features, scenarios, scenario outlines, and examples. 
@@ -47,6 +53,7 @@ Feature: Verify Results of Navigation Actions
         Given I click the "Demo Home" link
         Then I should be on the "home" page
 
+    @Smoke @Regression
     Scenario Outline: Verify Redirect
         After clicking on a link, verify redirection to the appropriate page.
 
@@ -70,9 +77,12 @@ Feature: Verify Results of Navigation Actions
 
 ## How to Run Specific Tags
 
-In the example above, executing `kosher run -t @Navigation` would run everything in the _Verify Results of Navigation Actions_ feature. If, 
-instead, you executed `kosher run -t @Smoke`, only the `Background` and _Verify Page_ scenario would be ran.
+In the example above, executing `kosher run -t @Navigation` would run everything in the _Verify Results of Navigation Actions_ feature. 
 
-To run multiple scenarios from the feature file, you could add the `@Regression` tag like this: `kosher run -t @Smoke,@Regression`
+If, instead, you executed `kosher run -t @Smoke`, only the `Background` section, _Verify Page_ scenario, and _Verify Redirect_ scenario outline
+would be ran. Likewise, executing `kosher run -t @Regression` would cause the `Background` section, _Verify Page with Trailing Slash_ scenario,
+and _Verify Redirect_ scenario outline to be ran.
+
+To run multiple scenarios from the feature file, you could add the `@Regression` tag like this: `kosher run -t @Smoke,@Regression`. This command
 
 Finally, you can also run specific example lists for scenario outlines by specifying tags: `kosher run -t @FormsNavigation`
