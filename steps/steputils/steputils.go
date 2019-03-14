@@ -43,6 +43,7 @@ func (s *StepUtils) ResolvePage(pageName string) (string, error) {
 
 	// join the base URL and page path together
 	baseURL.Path = path.Join(baseURL.Path, pageURL)
+
 	return baseURL.String(), nil
 }
 

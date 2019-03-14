@@ -14,6 +14,12 @@ Feature: Verify Results of Navigation Actions
         And I click the "Bootstrap Date Picker" link
         Then I should be on the "bootstrap-date-picker" page
 
+    Scenario: Verify Page with Trailing Slash
+        After clicking on a link, verify that appropriate page is shown.
+
+        Given I click the "Demo Home" link
+        Then I should be on the "home" page
+
     Scenario: Verify Redirect
         After clicking on a link, verify redirection to the appropriate page.
 

@@ -2,6 +2,7 @@ package websteps
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/cbush06/kosher/steps/steputils"
@@ -24,6 +25,10 @@ func iShouldBeOn(s *steputils.StepUtils) func(string) error {
 
 		// get this page's URL
 		currentURL, _ := s.Page.URL()
+
+		// trim trailing forward slashes
+		trailingForwardSlashRegex := regexp.MustCompile("/$")
+		currentURL = trailingForwardSlashRegex.ReplaceAllString(currentURL, "")
 
 		// assert their equality
 		if expectedURL != currentURL {

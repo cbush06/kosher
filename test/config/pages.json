@@ -1,4 +1,5 @@
 {
+    "home": "/",
     "basicform": "basic-first-form-demo.html",
     "jquery-dropdown": "jquery-dropdown-search-demo.html",
     "table-search": "table-search-filter-demo.html",
