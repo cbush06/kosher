@@ -103,6 +103,15 @@ func GetBootstrapTemplate() string {
                 <div class="col">
                     <div class="card mb-3">
 						<div class="card-header {{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-info{{else}}bg-success{{end}}">
+							{{ if (gt (len .Tags) 0) }}
+							<small>
+								{{range .Tags}}
+									{{.Name}}&nbsp;
+								{{end}}
+							</small>
+							<br />
+							{{end}}
+
 							<strong>Feature:</strong> {{.Name}}
 						</div>
 						<div class="card-body">
@@ -117,6 +126,15 @@ func GetBootstrapTemplate() string {
 									<div class="col">
 										<div class="card mb-3">
 											<div class="card-header {{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}">
+												{{ if (gt (len .Tags) 0) }}
+												<small>
+													{{range .Tags}}
+														{{.Name}}&nbsp;
+													{{end}}
+												</small>
+												<br />
+												{{end}}
+												
 												<strong>{{.Keyword}}:</strong> {{.Name}}
 											</div>
 											<div class="card-body">

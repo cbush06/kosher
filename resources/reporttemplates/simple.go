@@ -77,9 +77,16 @@ func GetSimpleTemplate() string {
             {{range .Features}}
             
                 <!-- FEATURE BLOCK -->
-                <h1 class="{{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-inf{{else}}bg-success{{end}}">
-                    <strong>{{if (gt .ElementsFailed 0)}}(FAILED){{else if (gt .ElementsPending 0)}}(PENDING){{else}}(PASSED){{end}} Feature:</strong> {{.Name}}
-                </h1>
+				<div class="{{if (gt .ElementsFailed 0)}}bg-danger{{else if (gt .ElementsPending 0)}}bg-inf{{else}}bg-success{{end}} text-left">
+					{{ if (gt (len .Tags) 0) }}
+					<small>
+						{{range .Tags}}
+							{{.Name}}&nbsp;
+						{{end}}
+					</small>
+					{{end}}
+                    <h1><strong>{{if (gt .ElementsFailed 0)}}(FAILED){{else if (gt .ElementsPending 0)}}(PENDING){{else}}(PASSED){{end}} Feature:</strong> {{.Name}}</h1>
+                </div>
 				<p class="ml-4 mr-4" style="font-size: 1rem;"><pre>{{.GetTrimmedDescription}}</pre></p>
 				<p>&nbsp;</p>
                 {{range .Elements}}
@@ -88,7 +95,14 @@ func GetSimpleTemplate() string {
                     <div class="ml-4 mr-4">
 						<table class="table table-sm table-borderless">
 							<thead>
-								<th colspan="2" class="{{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}">
+								<th colspan="2" class="{{if (gt .StepsFailed 0)}}bg-danger{{else if (gt .StepsSkipped 0)}}bg-info{{else}}bg-success{{end}}" align="left">
+									{{ if (gt (len .Tags) 0) }}
+									<small>
+										{{range .Tags}}
+											{{.Name}}&nbsp;
+										{{end}}
+									</small>
+									{{end}}
 									<h2><strong>{{if (gt .StepsFailed 0)}}(FAILED){{else if (gt .StepsSkipped 0)}}(PENDING){{else}}(PASSED){{end}} {{.Keyword}}:</strong> {{.Name}}</h2>
 								</th>
 							</thead>

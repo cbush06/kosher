@@ -28,6 +28,7 @@ var (
 	err         error
 	environment string
 	pathArg     string
+	tags        string
 	fileSys     *fs.Fs
 	settings    *config.Settings
 )
@@ -109,8 +110,9 @@ var cmdRun = &runCommand{
 }
 
 func (r *runCommand) registerWith(cmd *cobra.Command) {
-	r.command.Flags().StringVarP(&environment, "environment", "e", "", "Set the environment")
+	r.command.Flags().StringVarP(&environment, "environment", "e", "", "Set the environment.")
 	r.command.Flags().String("appVersion", "", "Sets the version of the application being tested for reporting purposes.")
+	r.command.Flags().StringVarP(&tags, "tags", "t", "", "Filter features, scenarios, scenario outlines, and examples by tags.")
 	cmd.AddCommand(r.command)
 }
 
@@ -139,6 +141,7 @@ func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) g
 	return godog.Options{
 		Format:        reportFormat,
 		Paths:         []string{featuresPath},
+		Tags:          tags,
 		StopOnFailure: settings.Settings.GetBool("quitOnFail"),
 		Strict:        settings.Settings.GetBool("quitOnFail"),
 		Output:        reportBuilder,
