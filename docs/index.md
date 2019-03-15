@@ -2,12 +2,12 @@
 layout: default
 title: Home
 nav_order: 1
-description: Web driver wrapper written in Golang that empowers non-developers to functionally test web applications using simple Gherkin scripts.
+description: Functionally test your web application through simple, readable Gherkin scripts. No programming required!
 ---
 
 # Automated Testing Without Coding
 
-kosher tests are a _single source of truth_ for your projects: requirements, documentation, and tests all in one
+Functionally test your web application through simple, readable Gherkin scripts. No programming required!
 {: .fs-6 .fw-300 }
 
 [Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/cbush06/kosher){: .btn .fs-5 .mb-4 .mb-md-0 } 
