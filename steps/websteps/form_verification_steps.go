@@ -87,17 +87,20 @@ func confirmContents(s *steputils.StepUtils, shouldContain bool) func(string, st
 			fieldVal, _ := fieldElms[0].GetAttribute("value")
 			doesMatch := value == fieldVal
 
+			fmt.Printf("[%s] Value [%s] Actual [%s]: matches %t", field, value, fieldVal, doesMatch)
+
 			if doesMatch {
 				if shouldContain {
 					return nil
 				}
-				return fmt.Errorf("expected [%s] to contain [%s] but it contained [%s]", field, value, fieldVal)
+				return fmt.Errorf("expected [%s] to NOT contain [%s] but it contained [%s]", field, value, fieldVal)
 			}
 
 			if !shouldContain {
 				return nil
 			}
-			return fmt.Errorf("expected [%s] to NOT contain [%s] but it contained [%s]", field, value, fieldVal)
+
+			return fmt.Errorf("expected [%s] to contain [%s] but it contained [%s]", field, value, fieldVal)
 		}
 		return fmt.Errorf(errMsg, "field must be some form of textbox")
 	}
