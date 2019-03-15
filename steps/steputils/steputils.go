@@ -100,6 +100,8 @@ func (s *StepUtils) ResolveSelector(name string) ([]*agouti.Selection, error) {
 			for i := 0; i < matchCnt; i++ {
 				if visible, _ := agoutiSel.At(i).Visible(); visible || !ignoreInvisible {
 					results = append(results, agoutiSel.At(i))
+				} else {
+					fmt.Printf("%t\n", visible)
 				}
 			}
 		}
