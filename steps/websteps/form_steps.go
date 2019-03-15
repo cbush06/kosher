@@ -179,9 +179,9 @@ func iCheckUncheck(s *steputils.StepUtils, checked bool) func(string) error {
 			return fmt.Errorf(errMsg, err)
 		}
 
-		// ensure it's a select
+		// ensure it's a check
 		if fieldType != "checkbox" {
-			return fmt.Errorf(errMsg, "field is of type [%s] but must be type [checkbox]", fieldType)
+			return fmt.Errorf(fmt.Sprintf(errMsg, "field is of type [%s] but must be type [checkbox]"), fieldType)
 		}
 
 		// set the value
