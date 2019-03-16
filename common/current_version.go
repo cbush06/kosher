@@ -4,5 +4,5 @@ package common
 var CurrentVersion = &Version{
 	Major: 1,
 	Minor: 1,
-	Patch: 4,
+	Patch: 5,
 }
