@@ -26,6 +26,15 @@ Feature: Verify Miscellaneous Elements of the Page
         And I should not see the "Table Pagination" link
         And I should see the "Filter" button
 
+    Scenario: Confirm Table of Data is Visible on the Page
+        Verify that a table of data is on the page.
+
+        Given I go to the "table-search" page
+        Then I should see the following:
+            | # | Task         | Assignee   | Status      |
+            | 1 | Wireframes   | John Smith | in progress |
+            | 2 | Landing Page | Mike Trout | completed   |
+            | 3 | SEO tags     | Loblab Dan | failed qa   |
 
     Scenario: Confirm INPUTs with NAME
         Verify that I see an INPUT with a specific NAME.
