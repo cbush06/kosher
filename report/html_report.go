@@ -65,13 +65,19 @@ type cukeEmbedding struct {
 
 // cukeStep is a single step in a cukeElement.
 type cukeStep struct {
-	Keyword    string          `json:"keyword"`
-	Name       string          `json:"name"`
-	Line       int             `json:"line"`
-	Docstring  *cukeDocstring  `json:"doc_string,omitempty"`
-	Match      cukeMatch       `json:"match"`
-	Result     cukeResult      `json:"result"`
-	Embeddings []cukeEmbedding `json:"embeddings,omitempty"`
+	Keyword    string              `json:"keyword"`
+	Name       string              `json:"name"`
+	Line       int                 `json:"line"`
+	Docstring  *cukeDocstring      `json:"doc_string,omitempty"`
+	Match      cukeMatch           `json:"match"`
+	Result     cukeResult          `json:"result"`
+	Embeddings []cukeEmbedding     `json:"embeddings,omitempty"`
+	DataTable  []*cukeDataTableRow `json:"rows,omitempty"`
+}
+
+// cukeDataTableRow represents a row in a DataTable owned by a step
+type cukeDataTableRow struct {
+	Cells []string `json:"cells"`
 }
 
 // cukeElement represents any block nested within a Feature:
@@ -253,6 +259,10 @@ func (r *HTMLReport) unmarshallJSON() error {
 
 			for s := 0; s < len(element.Steps); s++ {
 				step := &element.Steps[s]
+
+				if step.DataTable == nil {
+					step.DataTable = make([]*cukeDataTableRow, 0)
+				}
 
 				switch step.Result.Status {
 				case "passed":
