@@ -21,6 +21,26 @@ func iShouldNotSee(s *steputils.StepUtils) func(string) error {
 	return confirmSee(s, false)
 }
 
+func iShouldSeeTheFollowing(s *steputils.StepUtils) func(*gherkin.DataTable) error {
+	confirmSeeFunc := confirmSee(s, true)
+
+	return func(textsTable *gherkin.DataTable) error {
+		if textsTable == nil || len(textsTable.Rows) < 1 {
+			return fmt.Errorf("no data table rows provided")
+		}
+
+		for _, row := range textsTable.Rows {
+			for _, cell := range row.Cells {
+				if err := confirmSeeFunc(cell.Value); err != nil {
+					return err
+				}
+			}
+		}
+
+		return nil
+	}
+}
+
 func iShouldSeeAllOfTheTexts(s *steputils.StepUtils) func(*gherkin.DataTable) error {
 	confirmSeeFunc := confirmSee(s, true)
 
