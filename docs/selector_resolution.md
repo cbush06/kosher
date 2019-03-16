@@ -77,3 +77,30 @@ Unless otherwise stated in a step's documentation, the first element in the list
 ### Defined Selectors
 
 Defined selectors are fairly straightforward; they are resolved using a browser's native CSS or XPath utilities.
+
+## Selector Flags
+
+Selector flags temporarily change the selector resolution algorithm for a single selector. Selector flags will appear
+as a prefix to a selector in the form `@{some_selector_flag}the actual selector`.
+
+Selector flags are case-insensitive (i.e. you can type them in UPPERCASE or in lowercase).
+
+### Selector Flags List
+
+| Flag      | Effect                                                                                                                                   |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| INVISIBLE | Sets the [`ignoreInvisible` setting](config/settings.html#ignoreInvisible) to false so the selector's matches include invisible elements |
+
+### Selector Flags Example
+
+Assuming the `Bootstrap Date Picker` link mentioned below is an invisible element (e.g. in a drop-down menu that is not shown),
+the test scenario below would pass:
+
+```gherkin
+Scenario: Confirm Flags Work
+    Verify that selector flags work.
+
+    Given I go to the "home" page
+    Then I should see the "@{INVISIBLE}Bootstrap Date Picker" link
+    And I should not see the "Bootstrap Date Picker" link
+```

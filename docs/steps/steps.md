@@ -60,6 +60,7 @@ kosher provides an extensive list of step definitions for controlling the browse
 | verification            | [And I should see "Great, you can click links!"](i_should_see.html)                                          | N/A                                         |
 | verification            | [And I should not see "some bla-bla"](i_should_not_see.html)                                                 | N/A                                         |
 | verification            | [Then I should see all of the texts:](i_should_see_all_of.html)                                              | N/A                                         |
+| verification            | [Then I should see the following list:](i_should_see_the_following.html)                                     | N/A                                         |
 | verification            | [Then I should see the "Submit" button/link](i_should_see_button_link.html)                                  | N/A                                         |
 | verification            | [And I should not see the "Click Me" button/link](i_should_not_see_button_link.html)                         | N/A                                         |
 | verification            | [Then "Submit" should be disabled](should_be_disabled.html)                                                  | text-based, radio, checkbox, select, button |
