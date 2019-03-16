@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/url"
 	"path"
+	"regexp"
 	"strings"
 	"time"
 
@@ -13,6 +14,10 @@ import (
 	"github.com/cbush06/kosher/config"
 	"github.com/sclevine/agouti"
 	"github.com/sclevine/agouti/api"
+)
+
+var (
+	flagRegEx = regexp.MustCompile(`^\@\{(.+)\}(.+)$`)
 )
 
 // StepUtils is a set of utility functions tailored to a given Settings object and Agouti Page
@@ -51,11 +56,32 @@ func (s *StepUtils) ResolvePage(pageName string) (string, error) {
 // If no selector is found, `name` is used to search by label, name, and ID (in that order).
 func (s *StepUtils) ResolveSelector(name string) ([]*agouti.Selection, error) {
 	var (
-		selector        = s.Settings.Selectors.GetString(name)
 		ignoreInvisible = s.Settings.Settings.GetBool("ignoreInvisible")
 		results         []*agouti.Selection
 	)
 
+	// parse flags
+	matches := flagRegEx.FindStringSubmatch(name)
+	if len(matches) > 0 {
+		if len(matches) != 3 {
+			return nil, fmt.Errorf("invalid selector flag(s)")
+		}
+
+		// split flags and process each
+		flags := strings.Split(matches[1], ",")
+		for _, flag := range flags {
+			switch strings.ToUpper(flag) {
+			case "INVISIBLE":
+				ignoreInvisible = false
+			default:
+				return nil, fmt.Errorf("unrecognized flag [%s]", flag)
+			}
+		}
+
+		name = matches[2]
+	}
+
+	selector := s.Settings.Selectors.GetString(name)
 	if len(selector) > 0 {
 		// the name matched an entry in the selectors file, so use that to query
 		firstColonIdx := strings.Index(selector, ":")

@@ -111,12 +111,8 @@ func confirmSeeButtonLink(s *steputils.StepUtils, shouldSee bool) func(string) e
 	return func(text string) error {
 		var (
 			matches           []*agouti.Selection
-			buttonLinkMatches []*agouti.Selection
+			buttonLinkMatches int
 			err               error
-			visibleCount      int
-			isShown           bool
-			width             int
-			height            int
 			errMsg            = fmt.Sprintf(`error encountered while searching for [%s] button/link: `, text) + "%s"
 		)
 
@@ -127,31 +123,17 @@ func confirmSeeButtonLink(s *steputils.StepUtils, shouldSee bool) func(string) e
 			for i := 0; i < count; i++ {
 				if fieldType, err2 := s.GetFieldType(text, matches[i]); err2 != nil {
 					return fmt.Errorf(errMsg, err2)
-				} else if strings.EqualFold(fieldType, "a") || strings.EqualFold(fieldType, "button") {
-					buttonLinkMatches = append(buttonLinkMatches, matches[i])
+				} else if fieldType == "a" || fieldType == "button" || fieldType == "submit" || fieldType == "reset" {
+					buttonLinkMatches++
 				}
 			}
 		}
 
-		// determine how many of these elements are visible
-		for _, match := range buttonLinkMatches {
-			els, _ := match.Elements()
-			if isShown, err = els[0].IsDisplayed(); err != nil {
-				return fmt.Errorf(`error encountered determining if matched button/link is visible: %s`, err)
-			}
-			if width, height, err = els[0].GetSize(); err != nil {
-				return fmt.Errorf(`error encountered determining size of matched button/link: %s`, err)
-			}
-			if isShown && (width > 0 || height > 0) {
-				visibleCount++
-			}
-		}
-
 		// show error message if applicable
-		if shouldSee && visibleCount < 1 {
+		if shouldSee && buttonLinkMatches < 1 {
 			return fmt.Errorf(`expected TO find button/link [%s] but did not`, text)
-		} else if !shouldSee && visibleCount > 0 {
-			return fmt.Errorf(`expected NOT to find button/link [%s] but found it [%d] times`, text, visibleCount)
+		} else if !shouldSee && buttonLinkMatches > 0 {
+			return fmt.Errorf(`expected NOT to find button/link [%s] but found it [%d] times`, text, buttonLinkMatches)
 		}
 
 		return nil
