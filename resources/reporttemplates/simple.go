@@ -12,7 +12,9 @@ func GetSimpleTemplate() string {
 			.bg-success { background-color: #c7fac9 !important; }
 			.bg-danger { background-color: #f9c8c9 !important; }
 			.bg-info { background-color: #c8f9fb !important; }
-            .table td, .table th { border: none !important; }
+			.table > tbody > tr > td, .table > thead > tr > th { border: none !important; }
+			.data-table { border-collapse: collapse; }
+			.data-table > tbody > tr > td { border-top: none; border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 4px solid #fff; padding: 4px; }
 		</style>
     </head>
     <body>
@@ -120,6 +122,25 @@ func GetSimpleTemplate() string {
 											{{.Result.GetDurationInSeconds}}
 										</td>
 									</tr>
+									{{if gt (len .DataTable) 0}}
+										<tr>
+											<td style="padding-left: 1.3em">
+												<table class="data-table">
+													<tbody>
+														{{range .DataTable}}
+														<tr>
+															{{range .Cells}}
+															<td>
+																{{.}}
+															</td>
+															{{end}}
+														</tr>
+														{{end}}
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									{{end}}
 									{{if (eq .Result.Status "failed")}}
 										<tr>
 											<td colspan="2" class="bg-danger">

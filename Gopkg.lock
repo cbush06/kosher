@@ -2,7 +2,7 @@
 
 
 [[projects]]
-  digest = "1:90e7ae254a102582b0b50e5d007f54e684d1e8ed2d49a61d375761563585de4f"
+  digest = "1:5a459636df63cedd32013f118f775670e1394c680fe5017bb8b4babc4ef030d3"
   name = "github.com/DATA-DOG/godog"
   packages = [
     ".",
@@ -10,8 +10,8 @@
     "gherkin",
   ]
   pruneopts = ""
-  revision = "ee4ee478e2f2b39584e59c58285547c1a36f8701"
-  version = "v0.7.11"
+  revision = "8e7bc15e741c4f6c93c0fc2e797ed869cbc1b8f7"
+  version = "v0.7.13"
 
 [[projects]]
   digest = "1:eb53021a8aa3f599d29c7102e65026242bdedce998a54837dc67f14b6a97c5fd"
