@@ -469,12 +469,14 @@ func parseKeyCodes(key string) (string, error) {
 	regEx := regexp.MustCompile(`\$\{(.+)\}`)
 	matches := regEx.FindStringSubmatch(key)
 
-	if len(matches) < 2 {
+	if len(matches) == 0 {
+		return key, nil
+	} else if len(matches) != 2 {
 		return "", fmt.Errorf("invalid key code")
 	}
 
 	// Borrowed these unicodes from https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/Keys.java
-	switch matches[1] {
+	switch strings.ToUpper(matches[1]) {
 	case "BACKSPACE":
 		unicodeHexValue = 0xE003
 	case "ENTER":

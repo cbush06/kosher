@@ -16,6 +16,14 @@ Feature: Verify Miscellaneous Elements of the Page
             | Select State                   |
             | Select US Outlying Territories |
 
+	Scenario: Confirm Flags Work
+        Verify that selector flags work.
+
+        Given I go to the "home" page
+        Then I should see the "@{INVISIBLE}Bootstrap Date Picker" link
+        And I should not see the "Bootstrap Date Picker" link
+		
+
     Scenario: Confirm Buttons/Links are Visible on the Page
         Verify that I see a button and/or link on the page
         and that I do not see a button and/or link on the page.

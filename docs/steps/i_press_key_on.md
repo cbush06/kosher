@@ -34,7 +34,7 @@ And I press the "${ENTER}" key on "Send"
 
 ## Key Codes
 
-This step will accept any of the following key codes:
+This step will accept any of the following key codes. They are case-insensitive (i.e. you may use either UPPERCASE or lowercase).
 
 | Key Code     | Meaning   | Unicode Value |
 | ------------ | --------- | ------------- |
