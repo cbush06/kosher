@@ -29,7 +29,7 @@ and this step will fail on the first cell contents that could not be found.
 
 ```gherkin
 Given I am on the "home" page
-Then I should see the following:
+Then I should see the following list:
     | # | Task         | Assignee   | Status      |
     | 1 | Wireframes   | John Smith | in progress |
     | 2 | Landing Page | Mike Trout | completed   |
