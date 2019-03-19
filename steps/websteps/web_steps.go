@@ -29,6 +29,7 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 
 	// form steps
 	suite.Step(`^(?:|I )fill (?:|in )"([^"]*)" with "([^"]*)"$`, iFillInFieldWith(utils))
+	suite.Step(`^(?:|I )fill (?:|in )"([^"]*)" with:$`, iFillInFieldWithMultiline(utils))
 	suite.Step(`^(?:|I )fill in the following:$`, iFillInTheFollowing(utils))
 	suite.Step(`^(?:|I )key (?:|in )"([^"]*)" in (?:|the )"([^"]*)"(?:| field)$`, iKeyIn(utils))
 	suite.Step(`^(?:|I )press (?:|the )"([^"]*)" key (?:on|in) "([^"]*)"$`, iPressTheKeyOn(utils))
@@ -48,7 +49,9 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	// form verification steps
 	suite.Step(`^"([^"]*)" should contain today's date$`, shouldContainTodaysDate(utils))
 	suite.Step(`^(?:|I )verify "([^"]*)" has today's date$`, iVerifyHasTodaysDate(utils))
+	suite.Step(`^"([^"]*)" should contain:$`, shouldContainMultiline(utils))
 	suite.Step(`^"([^"]*)" should contain "([^"]*)"$`, shouldContain(utils))
+	suite.Step(`^"([^"]*)" should not contain:$`, shouldNotContainMultiline(utils))
 	suite.Step(`^"([^"]*)" should not contain "([^"]*)"$`, shouldNotContain(utils))
 	suite.Step(`^"([^"]*)" should have (?:|the )following options:$`, shouldHaveTheFollowingOptions(utils))
 	suite.Step(`^"([^"]*)" should have (?:|the )following options selected:$`, shouldHaveTheFollowingOptionsSelected(utils))

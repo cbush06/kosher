@@ -13,6 +13,21 @@ Feature: Test Textbox Manipulation and Validation
         And I press "Show Message"
         Then I should see "Hello, World"
 
+    Scenario: Fill in Textarea
+        Verify that filling a textarea with multiline text works.
+
+        Given I go to the "input-form" page
+        When I fill "comment" with:
+            """
+            Hello, World!
+            I am Bob.
+            """
+        Then "comment" should contain:
+            """
+            Hello, World!
+            I am Bob.
+            """
+
     Scenario: Fill Multiple Textboxes
         Verify steps for filling multiple textboxes.
 

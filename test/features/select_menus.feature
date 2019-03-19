@@ -59,5 +59,3 @@ Feature: Test Select Menu Manipulation
             | Texas        |
             | Pennsylvania |
             | Washington   |
-    
-    Scenario: 

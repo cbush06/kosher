@@ -141,6 +141,15 @@ func GetSimpleTemplate() string {
 											</td>
 										</tr>
 									{{end}}
+
+									{{if .Docstring}}
+									<tr>
+										<td style="padding-left: 1.5em">
+											<pre class="mb-0">{{.Docstring.Value}}</pre>
+										</td>
+									</tr>
+									{{end}}
+
 									{{if (eq .Result.Status "failed")}}
 										<tr>
 											<td colspan="2" class="bg-danger">
