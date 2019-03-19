@@ -13,6 +13,7 @@ import (
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/fs"
 	"github.com/cbush06/kosher/report"
+	"github.com/cbush06/kosher/steps/macros"
 	"github.com/cbush06/kosher/steps/steputils"
 	"github.com/cbush06/kosher/steps/websteps"
 
@@ -117,11 +118,22 @@ func (r *runCommand) registerWith(cmd *cobra.Command) {
 }
 
 func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *godog.Suite) {
+	// Load primary steps based on platform
 	switch settings.Settings.Get("platform") {
 	case "desktop":
 		log.Fatal("desktop is not implemented")
 	case "web":
 		websteps.BuildGoDogSuite(settings, page, suite)
+	}
+
+	// Load macro steps
+	if macros, err := macros.BuildMacros(settings.FileSystem); err != nil {
+		log.Fatalf("error encountered while parsing macros: %s", err)
+	} else {
+		for _, m := range macros {
+			nextMacro := m
+			suite.Step("^"+nextMacro.Step+"$", func() godog.Steps { return *nextMacro.Substeps })
+		}
 	}
 }
 

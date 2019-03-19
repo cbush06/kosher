@@ -87,8 +87,6 @@ func confirmContents(s *steputils.StepUtils, shouldContain bool) func(string, st
 			fieldVal, _ := fieldElms[0].GetAttribute("value")
 			doesMatch := value == fieldVal
 
-			fmt.Printf("[%s] Value [%s] Actual [%s]: matches %t", field, value, fieldVal, doesMatch)
-
 			if doesMatch {
 				if shouldContain {
 					return nil

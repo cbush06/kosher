@@ -4,22 +4,20 @@ import (
 	"fmt"
 	"os"
 	"reflect"
-	"strings"
 
-	"github.com/spf13/afero"
-
-	"github.com/cbush06/godog"
-	"github.com/cbush06/godog/gherkin"
+	"github.com/DATA-DOG/godog"
+	"github.com/DATA-DOG/godog/gherkin"
 	"github.com/cbush06/kosher/fs"
+	"github.com/spf13/afero"
 )
 
 // Macro wraps a macro's step text and substeps into a tidy package.
 type Macro struct {
-	step     string
-	substeps *godog.Steps
+	Step     string
+	Substeps *godog.Steps
 }
 
-// BuildMacros parses macro feature fils and builds an array of
+// BuildMacros parses macro feature files and builds an array of
 // Macros that can easily be added to the GoDog Suite as steps.
 func BuildMacros(fs *fs.Fs) ([]*Macro, error) {
 	var (
@@ -76,46 +74,37 @@ func parseFeatures(fs *fs.Fs) ([]*gherkin.Feature, error) {
 
 func createMacros(features []*gherkin.Feature) ([]*Macro, error) {
 	var macros []*Macro
+
 	for _, feature := range features {
-		newMacro := &Macro{
-			step:     "",
-			substeps: &godog.Steps{},
-		}
+		for _, scenarioDef := range feature.ScenarioDefinitions {
+			newMacro := &Macro{
+				Step:     "",
+				Substeps: &godog.Steps{},
+			}
 
-		var substeps []string
+			substeps := []string{}
 
-		for _, step := range feature.ScenarioDefinitions {
-			switch scenarioStep := step.(type) {
+			switch scenario := scenarioDef.(type) {
 			case *gherkin.Scenario:
-				newMacro.step = scenarioStep.Name
-				for _, substep := range scenarioStep.Steps {
+				newMacro.Step = scenario.Name
+				for _, substep := range scenario.Steps {
 					stepText := substep.Text
 
-					// If a DataTable or DocString is part of the step,
-					// deserialize it and add it to the step's text
+					// If a DataTable or DocString is part
+					// of the step, return an error
 					if substep.Argument != nil {
-						switch subStepArg := substep.Argument.(type) {
-						case *gherkin.DataTable:
-							for _, nextRow := range subStepArg.Rows {
-								rowCells := []string{}
-								for _, cell := range nextRow.Cells {
-									rowCells = append(rowCells, cell.Value)
-								}
-								stepText += "\n" + strings.Join(rowCells, "|")
-							}
-						case *gherkin.DocString:
-							stepText += "\n\"\"\"" + subStepArg.Content + "\n\"\"\""
-						}
+						return nil, fmt.Errorf("Macros cannot contain data tables, docstrings, or scenario outlines")
 					}
 					substeps = append(substeps, stepText)
 				}
 
-				newMacro.substeps = (*godog.Steps)(&substeps)
+				newMacro.Substeps = (*godog.Steps)(&substeps)
 			default:
-				return nil, fmt.Errorf("Only Scenarios permitted in macro Feature file. Encountered: %s", reflect.TypeOf(step))
+				return nil, fmt.Errorf("Only Scenarios permitted in macro Feature file. Encountered: %s", reflect.TypeOf(scenarioDef))
 			}
+
+			macros = append(macros, newMacro)
 		}
-		macros = append(macros, newMacro)
 	}
 
 	return macros, nil
