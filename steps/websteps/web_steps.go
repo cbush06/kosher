@@ -15,6 +15,7 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )wait (\d+) second(?:|s)$`, iWaitSeconds())
 	suite.Step(`^(?:|I )maximize the window$`, iMaximizeTheWindow(utils))
 	suite.Step(`^(?:|I )take a screenshot$`, iTakeAScreenshot(utils))
+	suite.Step(`^(?:|I )switch to the (first|last|[0-9]+(?:th|st|rd|nd)) window$`, iSwitchToTheWindow(utils))
 
 	// navigation steps
 	suite.Step(`^(?:|I )am on the "([^"]*)" page$`, iAmOnThePage(utils))
