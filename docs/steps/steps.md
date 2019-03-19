@@ -67,6 +67,8 @@ kosher provides an extensive list of step definitions for controlling the browse
 | verification            | [Then I should see the following list:](i_should_see_the_following.html)                                     | N/A                                         |
 | verification            | [Then I should see the "Submit" button/link](i_should_see_button_link.html)                                  | N/A                                         |
 | verification            | [And I should not see the "Click Me" button/link](i_should_not_see_button_link.html)                         | N/A                                         |
+| verification            | [Then I should see a link that points to "/about-us"](i_should_see_url_link.html)                            | N/A                                         |
+| verification            | [And I should not see a link that points to "/contact-us"](i_should_not_see_url_link.html)                   | N/A                                         |
 | verification            | [Then "Submit" should be disabled](should_be_disabled.html)                                                  | text-based, radio, checkbox, select, button |
 | verification            | [Then "Submit" should be enabled](should_be_enabled.html)                                                    | text-based, radio, checkbox, select, button |
 | verification            | [Then the 5th instance of "Page1PaginationLinks" should be disabled](nth_instance_disabled.html)             | text-based, radio, checkbox, select, button |

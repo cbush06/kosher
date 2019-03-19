@@ -2,6 +2,8 @@ package websteps
 
 import (
 	"fmt"
+	"net/url"
+	"path"
 	"regexp"
 	"strconv"
 	"strings"
@@ -279,6 +281,58 @@ func confirmSeeNotSeeOfType(s *steputils.StepUtils, shouldSee bool) func(string,
 			return fmt.Errorf(`expected TO find [%s] with [%s] of [%s], but did not`, tag, attr, attrVal)
 		} else if !shouldSee && visibleCount > 0 {
 			return fmt.Errorf(`expected NOT to find [%s] with [%s] of [%s] but found it [%d] times`, tag, attr, attrVal, visibleCount)
+		}
+
+		return nil
+	}
+}
+
+func iShouldSeeALinkThatPointsTo(s *steputils.StepUtils) func(string) error {
+	return confirmSeeURLLink(s, true)
+}
+
+func iShouldNotSeeALinkThatPointsTo(s *steputils.StepUtils) func(string) error {
+	return confirmSeeURLLink(s, false)
+}
+
+func confirmSeeURLLink(s *steputils.StepUtils, shouldSee bool) func(string) error {
+	return func(pageURL string) error {
+		var (
+			matches      *agouti.MultiSelection
+			matchCount   int
+			visibleCount int
+			err          error
+			errMsg       = fmt.Sprintf("error encountered while confirming presence/absence of link pointing to [%s]", pageURL) + "%s"
+			envPath      *url.URL
+			fullURL      string
+		)
+
+		if envPath, err = url.Parse(s.Settings.GetEnvironmentBaseURL()); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		fullURL = path.Join(envPath.Path, pageURL)
+
+		// Find matches by pageURL and fullURL
+		matches = s.Page.All(`a[href='` + pageURL + `'],a[href='` + fullURL + `']`)
+		if matchCount, err = matches.Count(); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		for i := 0; i < matchCount; i++ {
+			if isVisible, err := matches.At(i).Visible(); err != nil {
+				return fmt.Errorf(errMsg, err)
+			} else if isVisible {
+				visibleCount++
+			}
+		}
+
+		if visibleCount < 1 && shouldSee {
+			return fmt.Errorf(errMsg, fmt.Sprintf("expected link pointing to [%s] but none found", pageURL))
+		}
+
+		if visibleCount > 0 && !shouldSee {
+			return fmt.Errorf(errMsg, fmt.Sprintf("expected NO links pointing to [%s], but %d found", pageURL, matchCount))
 		}
 
 		return nil
