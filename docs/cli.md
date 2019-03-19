@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CLI
-nav_order: 2
+nav_order: 10
 description: Documentation on CLI commands for kosher.
 ---
 

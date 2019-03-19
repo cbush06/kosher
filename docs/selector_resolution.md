@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Selector Resolution
-nav_order: 8
+nav_order: 41
 ---
 
 # Selector Resolution

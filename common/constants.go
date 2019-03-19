@@ -10,6 +10,9 @@ const (
 	// ResultsDir is the name given to the results directory where test results are written
 	ResultsDir = "results"
 
+	// MacrosDir is the name given to the macros directory where marcros are stored
+	MacrosDir = "macros"
+
 	// ReportFile is the name given to the HTML report generated
 	ReportFile = "report.html"
 

@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "I choose \"__\""
+title: "I choose the \"__\" radio"
 parent: Step Definitions
 ---
 
-# I choose "\_\_"
+# I choose the "\_\_" radio
 
-Set a checkbox to the <em>checked</em> state.
+Set a radio button to the <em>checked</em> state.
 {: .fs-6 .fw-300 }
 
 ## Pattern
 
 ```
-^(?:|I )choose "([^"]*)"$
+^(?:|I )choose (?:|the )"([^"]*)" radio$
 ```
 
 ## Parameters
@@ -24,6 +24,6 @@ Set a checkbox to the <em>checked</em> state.
 ## Examples
 
 ```gherkin
-When I choose "male"
-And I choose "18-25"
+When I choose the "male" radio
+And choose "18-25" radio
 ```
