@@ -9,6 +9,8 @@
 !**/libs/*.so
 *.dylib
 *.jar
+kosher
+linux-config
 
 # Test binary, build with `go test -c`
 *.test
