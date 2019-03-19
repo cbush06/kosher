@@ -3,7 +3,7 @@ layout: default
 title: Configuration
 description: Confifguring a kosher project.
 has_children: true
-nav_order: 3
+nav_order: 20
 ---
 
 # Configuration

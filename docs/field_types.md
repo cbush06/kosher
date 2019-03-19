@@ -2,7 +2,7 @@
 layout: default
 title: Field Types
 description: kosher Supported Field Types
-nav_order: 4
+nav_order: 30
 ---
 
 # Supported Field Types

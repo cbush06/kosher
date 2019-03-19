@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tags
-nav_order: 9
+nav_order: 42
 ---
 
 # Tags

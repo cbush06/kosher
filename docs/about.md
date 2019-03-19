@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About kosher
-nav_order: 10
+nav_order: 70
 ---
 
 # About kosher
