@@ -60,7 +60,7 @@ func iSwitchToTheWindow(s *steputils.StepUtils) func(string) error {
 				return iSwitchToWindowIndex(s, nth, 0)
 			}
 			if strings.EqualFold(nth, "last") {
-				return iClickIdx(s, nth, windowCount-1)
+				return iSwitchToWindowIndex(s, nth, windowCount-1)
 			}
 
 			re := regexp.MustCompile(`\d+`)
