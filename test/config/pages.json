@@ -10,5 +10,6 @@
     "basic-dropdown": "basic-select-dropdown-demo.html",
     "basic-checkbox": "basic-checkbox-demo.html",
     "js-popup": "javascript-alert-box-demo.html",
-    "input-form": "input-form-demo.html"
+    "input-form": "input-form-demo.html",
+    "popup-window": "window-popup-modal-demo.html"
 }
