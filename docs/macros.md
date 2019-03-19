@@ -4,7 +4,7 @@ title: Macros
 nav_order: 43
 ---
 
-# Tags
+# Macros
 {: .no_toc }
 
 Macros are reusable collections of steps and help solve the problem of duplication in kosher tests.
