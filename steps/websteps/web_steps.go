@@ -74,6 +74,8 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )should see the following(?:| errors| list):$`, iShouldSeeTheFollowing(utils))
 	suite.Step(`^(?:|I )should see (?:|the )"([^"]*)"(?: button| link)$`, iShouldSeeButtonLink(utils))
 	suite.Step(`^(?:|I )should not see (?:|the )"([^"]*)"(?: button| link)$`, iShouldNotSeeButtonLink(utils))
+	suite.Step(`^I should see a link that points to "([^"]*)"$`, iShouldSeeALinkThatPointsTo(utils))
+	suite.Step(`^I should not see a link that points to "([^"]*)"$`, iShouldNotSeeALinkThatPointsTo(utils))
 	suite.Step(`^"([^"]*)" should be disabled$`, shouldBeDisabled(utils))
 	suite.Step(`^"([^"]*)" should be enabled$`, shouldBeEnabled(utils))
 	suite.Step(`^the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)" should be disabled$`, theNthInstanceOfShouldBeDisabled(utils))

@@ -31,7 +31,9 @@ Feature: Verify Miscellaneous Elements of the Page
         Given I go to the "table-search" page
         When I click "Date pickers"
         Then I should see the "Bootstrap Date Picker" link
+        And I should see a link that points to "./bootstrap-date-picker-demo.html"
         And I should not see the "Table Pagination" link
+        And I should not see a link that points to "./table-pagination-demo.html"
         And I should see the "Filter" button
 
     Scenario: Confirm Table of Data is Visible on the Page
