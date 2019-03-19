@@ -31,6 +31,14 @@ func iFillInTheFollowing(s *steputils.StepUtils) func(*gherkin.DataTable) error 
 	}
 }
 
+func iFillInFieldWithMultiline(s *steputils.StepUtils) func(string, *gherkin.DocString) error {
+	fillInFieldFunc := iFillInFieldWith(s)
+
+	return func(field string, docString *gherkin.DocString) error {
+		return fillInFieldFunc(field, docString.Content)
+	}
+}
+
 func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 	return func(field string, value string) error {
 		var (

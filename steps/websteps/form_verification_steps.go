@@ -54,8 +54,24 @@ func iVerifyHasTodaysDate(s *steputils.StepUtils) func(string) error {
 	}
 }
 
+func shouldContainMultiline(s *steputils.StepUtils) func(string, *gherkin.DocString) error {
+	shouldContainFunc := shouldContain(s)
+
+	return func(field string, docString *gherkin.DocString) error {
+		return shouldContainFunc(field, docString.Content)
+	}
+}
+
 func shouldContain(s *steputils.StepUtils) func(string, string) error {
 	return confirmContents(s, true)
+}
+
+func shouldNotContainMultiline(s *steputils.StepUtils) func(string, *gherkin.DocString) error {
+	shouldNotContainFunc := shouldNotContain(s)
+
+	return func(field string, docString *gherkin.DocString) error {
+		return shouldNotContainFunc(field, docString.Content)
+	}
 }
 
 func shouldNotContain(s *steputils.StepUtils) func(string, string) error {

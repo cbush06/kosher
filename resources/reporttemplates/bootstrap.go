@@ -184,6 +184,14 @@ func GetBootstrapTemplate() string {
 															</div>
 															{{end}}
 
+															{{if .Docstring}}
+															<div class="row">
+																<div class="col-11">
+																	<pre class="mb-0 ml-4">{{.Docstring.Value}}</pre>
+																</div>
+															</div>
+															{{end}}
+
 															{{if (eq .Result.Status "failed")}}
 															<div class="row">
 																<div class="col alert alert-danger">
