@@ -26,7 +26,7 @@ kosher provides an extensive list of step definitions for controlling the browse
 | form                    | [When I uncheck "Send me letters"](i_uncheck.html)                                                           | checkbox                                    |
 | form                    | [When I select the following values from "Filters": Accepts Gherkin Table](i_select_following_from.html)     | select                                      |
 | form                    | [When I unselect the following values from "Filters": Accepts Gherkin Table](i_unselect_following_from.html) | select                                      |
-| form                    | [When I choose the "radio1"](i_choose.html)                                                                  | radio                                       |
+| form                    | [When I choose the "radio1" radio](i_choose.html)                                                            | radio                                       |
 | form                    | [When I press/click "Submit"](i_press.html)                                                                  | any                                         |
 | form                    | [When I press/click the 4th instance of "nextButton"](i_press_instance.html)                                 | any                                         |
 | form                    | [When I press/click the "Submit" button/link](i_press_button.html)                                           | button, hyperlink                           |
