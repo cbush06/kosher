@@ -13,6 +13,9 @@ const (
 	// MacrosDir is the name given to the macros directory where marcros are stored
 	MacrosDir = "macros"
 
+	// ResourcesDir is the name given to the resources directory where resource files are kept
+	ResourcesDir = "resources"
+
 	// ReportFile is the name given to the HTML report generated
 	ReportFile = "report.html"
 

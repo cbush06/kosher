@@ -52,19 +52,26 @@ func iShouldNotSeeThePopupText(s *steputils.StepUtils) func(string) error {
 func iSeeThePopupText(s *steputils.StepUtils, shouldSee bool) func(string) error {
 	return func(text string) error {
 		var (
-			actualText string
-			err        error
+			actualText       string
+			interpolatedText string
+			err              error
+			errMsg           = `error encountered verifying popup text: %s`
 		)
 
-		if actualText, err = s.Page.PopupText(); (err != nil || len(actualText) < 1) && shouldSee {
-			return fmt.Errorf("expected popup text [%s], but found none", text)
+		// replace variables
+		if interpolatedText, err = s.ReplaceVariables(text); err != nil {
+			return fmt.Errorf(errMsg, err)
 		}
 
-		doesMatch := strings.EqualFold(text, actualText)
+		if actualText, err = s.Page.PopupText(); (err != nil || len(actualText) < 1) && shouldSee {
+			return fmt.Errorf(errMsg, fmt.Sprintf("expected popup text [%s], but found none", interpolatedText))
+		}
+
+		doesMatch := strings.EqualFold(interpolatedText, actualText)
 		if !doesMatch && shouldSee {
-			return fmt.Errorf("expected popup text [%s], but found [%s]", text, actualText)
+			return fmt.Errorf(errMsg, fmt.Sprintf("expected popup text [%s], but found [%s]", interpolatedText, actualText))
 		} else if doesMatch && !shouldSee {
-			return fmt.Errorf("expected not to see popup text [%s], but did", text)
+			return fmt.Errorf(errMsg, fmt.Sprintf("expected not to see popup text [%s], but did", interpolatedText))
 		}
 		return nil
 	}

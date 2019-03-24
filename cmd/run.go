@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"path/filepath"
+
+	"github.com/cbush06/kosher/common"
 
 	"github.com/DATA-DOG/godog"
 	"github.com/sclevine/agouti"
@@ -45,6 +48,7 @@ var cmdRun = &runCommand{
 			// grab the path arg if specified -- this determines what feature(s) get executed
 			if len(arg) < 1 {
 				pathArg, _ = os.Getwd()
+				pathArg = path.Join(pathArg, common.FeaturesDir)
 			} else {
 				pathArg = filepath.Clean(arg[0])
 			}
@@ -139,7 +143,6 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 
 func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) godog.Options {
 	featuresPath, _ := filepath.Abs(pathArg)
-	// featuresPath := pathArg // TODO: remove this and use above line once GoDog fixes their windows issue
 
 	// Convert kosher format to GoDog format
 	var reportFormat string

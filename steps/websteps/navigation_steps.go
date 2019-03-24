@@ -97,8 +97,18 @@ func iDeclineThePopup(s *steputils.StepUtils) func() error {
 // I enter "Some Text" in the popup
 func iEnterInThePopup(s *steputils.StepUtils) func(string) error {
 	return func(text string) error {
-		if err := s.Page.EnterPopupText(text); err != nil {
-			return fmt.Errorf("error encountered while entering [%s] in the popup: %s", text, err)
+		var (
+			interpolatedText string
+			err              error
+			errMsg           = "error encountered while entering [%s] in the popup: %s"
+		)
+
+		if interpolatedText, err = s.ReplaceVariables(text); err != nil {
+			return fmt.Errorf(errMsg, text, err)
+		}
+
+		if err := s.Page.EnterPopupText(interpolatedText); err != nil {
+			return fmt.Errorf(errMsg, text, err)
 		}
 		return nil
 	}

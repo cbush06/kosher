@@ -53,22 +53,23 @@ func GetSimpleTemplate() string {
                 </thead>
                 <tbody>
                     <tr>
-                        <th>App Version:</th>
+                        <td><strong>App Version:</strong></td>
                         <td>{{.AppVersion}}</td>
-                        <th>Environment:</th>
+                        <td><strong>Environment:</strong></td>
                         <td>{{.Environment}}</td>
                     </tr>
                     <tr>
-						<th>Platform:</th>
+						<td>Platform:</td>
 						<td>{{.Platform}}</td>
-                        <th>Browser:</th>
+                        <td>Browser:</td>
                         <td>{{.Browser}}</td>
 					</tr>
 					<tr>
-						<th>OS:</th>
+						<td><strong>OS:</strong></td>
 						<td>{{.OS}}</td>
-						<th>Total Run Time:</th>
+						<td><strong>Total Run Time:</strong></td>
 						<td>{{.RunTime}}</td>
+					</tr>
                 </tbody>
             </table>
 		</div>
