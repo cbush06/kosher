@@ -66,7 +66,8 @@ File input fields are supported. Often, these may not be visible on the screen d
 <input type="file" name="file-uploader" />
 ```
 
-READ ME {: .label .label-red } When validating the value of a file field, you might be surprised to find the browser replaces the original file path with `C:\fakepath\<the original filename>`. This is a security feature of most browsers. If you would like to learn more, please visit [https://davidwalsh.name/fakepath](https://davidwalsh.name/fakepath).
+READ ME {: .label .label-red } 
+When validating the value of a file field, you might be surprised to find the browser replaces the original file path with `C:\fakepath\<the original filename>`. This is a security feature of most browsers. If you would like to learn more, please visit [https://davidwalsh.name/fakepath](https://davidwalsh.name/fakepath).
 
 ## Checkbox Fields
 
