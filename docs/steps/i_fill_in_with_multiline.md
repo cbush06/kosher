@@ -23,7 +23,7 @@ Fill in a form field (presumably a textarea) with a multiline value.
 
 ## Docstring
 
-The docstring following the step will be used to fill the field.
+The docstring following the step will be used to fill the field. The docstring may include [variables](../variables.html).
 
 ## Examples
 

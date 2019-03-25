@@ -17,9 +17,9 @@ Verifies that the presently shown [browser pop-up]({{site.baseurl}}/field_types.
 
 ## Parameters
 
-| Position | Description | Value Type | Restrictions |
-| :------: | ----------- | ---------- | ------------ |
-|    1     | text        | string     |              |
+| Position | Description | Value Type                            | Restrictions |
+| :------: | ----------- | ------------------------------------- | ------------ |
+|    1     | text        | string/[variables](../variables.html) |              |
 
 ## Examples
 

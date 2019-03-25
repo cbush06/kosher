@@ -76,6 +76,7 @@ func initProject(projectName string, fs *afero.OsFs, basepath string, force bool
 		configDir        = filepath.Join(basepath, common.ConfigDir)
 		resultsDir       = filepath.Join(basepath, common.ResultsDir)
 		macrosDir        = filepath.Join(basepath, common.MacrosDir)
+		resourcesDir     = filepath.Join(basepath, common.ResourcesDir)
 		environmentsJSON = filepath.Join(configDir, common.EnvironmentsFile)
 		pagesJSON        = filepath.Join(configDir, common.PagesFile)
 		selectorsJSON    = filepath.Join(configDir, common.SelectorsFile)
@@ -88,6 +89,7 @@ func initProject(projectName string, fs *afero.OsFs, basepath string, force bool
 		configDir,
 		resultsDir,
 		macrosDir,
+		resourcesDir,
 	}
 
 	projectFiles := []string{

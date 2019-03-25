@@ -17,9 +17,9 @@ Verifies that the page contains a link to the specified page. **Note** that kosh
 
 ## Parameters
 
-| Position | Description | Value Type | Restrictions                                                                                                                    |
-| :------: | ----------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
-|    1     | text        | string     | Resource URL that the link should point to. This needn't include the environment URL specified in the `environments.json` file. |
+| Position | Description | Value Type | Restrictions                                                                                                           |
+| :------: | ----------- | ---------- | ---------------------------------------------------------------------------------------------------------------------- |
+|    1     | text        | string     | URL that the link should point to. This needn't include the environment URL specified in the `environments.json` file. |
 
 ## Examples
 

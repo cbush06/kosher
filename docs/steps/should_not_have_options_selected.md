@@ -23,9 +23,9 @@ Verifies that a select list has **exactly** the specified options unselected.
 
 ## Data Table Columns
 
-| Column Position | Description | Value Type | Restrictions |
-| :-------------: | ----------- | ---------- | ------------ |
-|        1        | option text | string     |              |
+| Column Position | Description | Value Type                            | Restrictions |
+| :-------------: | ----------- | ------------------------------------- | ------------ |
+|        1        | option text | string/[variables](../variables.html) |              |
 
 ## Examples
 

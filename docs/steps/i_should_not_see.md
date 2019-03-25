@@ -17,9 +17,9 @@ Verifies that the page does not contain the specified text. **Note** that this s
 
 ## Parameters
 
-| Position | Description | Value Type | Restrictions |
-| :------: | ----------- | ---------- | ------------ |
-|    1     | text        | string     |              |
+| Position | Description                         | Value Type | Restrictions |
+| :------: | ----------------------------------- | ---------- | ------------ |
+|    1     | text/[variables](../variables.html) | string     |              |
 
 ## Examples
 

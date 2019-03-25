@@ -59,21 +59,28 @@ func iShouldSeeAllOfTheTexts(s *steputils.StepUtils) func(*gherkin.DataTable) er
 func confirmSee(s *steputils.StepUtils, shouldSee bool) func(string) error {
 	return func(text string) error {
 		var (
-			matchCount   int
-			visibleCount int
-			isShown      bool
-			width        int
-			height       int
-			err          error
+			matchCount       int
+			visibleCount     int
+			isShown          bool
+			width            int
+			height           int
+			interpolatedText string
+			err              error
+			errMsg           = `error encountered searching page for text: %s`
 		)
 
-		matches := s.Page.AllByXPath(fmt.Sprintf(`//*[text()[contains(., "%s")]]`, text))
+		// replace variables
+		if interpolatedText, err = s.ReplaceVariables(text); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		matches := s.Page.AllByXPath(fmt.Sprintf(`//*[text()[contains(., "%s")]]`, interpolatedText))
 		if matchCount, err = matches.Count(); err != nil {
-			return fmt.Errorf(`error encountered searching page for text: %s`, err)
+			return fmt.Errorf(errMsg, err)
 		}
 
 		if shouldSee && (matchCount < 1) {
-			return fmt.Errorf(`expected to find [%s] but did not`, text)
+			return fmt.Errorf(errMsg, fmt.Sprintf(`expected to find [%s] but did not`, text))
 		}
 
 		// determine how many of these elements are visible
