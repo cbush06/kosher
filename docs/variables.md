@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Macros 
+title: Variables 
 nav_order: 44
 ---
 
