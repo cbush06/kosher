@@ -23,7 +23,7 @@ Verifies that the specified field (presumably a textarea) does not contain the p
 
 ## Docstring
 
-The field's value will be compared to the docstring following the step.
+The field's value will be compared to the docstring following the step. The docstring may include [variables](../variables.html).
 
 ## Examples
 

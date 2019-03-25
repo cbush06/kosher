@@ -23,9 +23,9 @@ Select one or more values from a multi-select list.
 
 ## Data Table Columns
 
-| Column Position | Description | Value Type | Restrictions |
-| :-------------: | ----------- | ---------- | ------------ |
-|        1        | value       | string     |              |
+| Column Position | Description | Value Type                            | Restrictions |
+| :-------------: | ----------- | ------------------------------------- | ------------ |
+|        1        | value       | string/[variables](../variables.html) |              |
 
 ## Examples
 

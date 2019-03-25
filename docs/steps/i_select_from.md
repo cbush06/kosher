@@ -17,10 +17,10 @@ Select a single value from a single- or multi-select list.
 
 ## Parameters
 
-| Position | Description | Value Type                   | Restrictions                                                                           |
-| :------: | ----------- | ---------------------------- | -------------------------------------------------------------------------------------- |
-|    1     | field       | field id/name/label/selector | Must refer to a [select field]({{site.baseurl}}/field_types.html#select-fields).       |
-|    2     | value       | string                       | Must match the actual `value` attribute of the `<option></option>` you wish to select. |
+| Position | Description | Value Type                            | Restrictions                                                                           |
+| :------: | ----------- | ------------------------------------- | -------------------------------------------------------------------------------------- |
+|    1     | field       | field id/name/label/selector          | Must refer to a [select field]({{site.baseurl}}/field_types.html#select-fields).       |
+|    2     | value       | string/[variables](../variables.html) | Must match the actual `value` attribute of the `<option></option>` you wish to select. |
 
 ## Examples
 

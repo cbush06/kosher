@@ -145,10 +145,11 @@ func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
 	return func(value string, field string) error {
 		var (
-			matches   []*agouti.Selection
-			fieldType string
-			errMsg    = fmt.Sprintf("error encountered while selecting [%s] from [%s]: ", value, field) + "%s"
-			err       error
+			matches           []*agouti.Selection
+			fieldType         string
+			interpolatedValue string
+			errMsg            = fmt.Sprintf("error encountered while selecting [%s] from [%s]: ", value, field) + "%s"
+			err               error
 		)
 
 		// try to find the field(s) specified
@@ -166,8 +167,13 @@ func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
 			return fmt.Errorf(errMsg, "field is of type [%s] but must be type [select]", fieldType)
 		}
 
+		// replace variables in value
+		if interpolatedValue, err = s.ReplaceVariables(value); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
 		// select the value
-		if err = matches[0].Select(value); err != nil {
+		if err = matches[0].Select(interpolatedValue); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
@@ -233,17 +239,22 @@ func iUnselectTheFollowingValues(s *steputils.StepUtils) func(string, *gherkin.D
 func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, doSelect bool) func(string, *gherkin.DataTable) error {
 	return func(field string, values *gherkin.DataTable) error {
 		var (
-			matches      []*agouti.Selection
-			fieldType    string
-			errMsg       = fmt.Sprintf("error encountered while selecting/unselecting multiple values from [%s]: ", field) + "%s"
-			err          error
-			valuesLookup []string
-			isSelected   bool
+			matches           []*agouti.Selection
+			fieldType         string
+			errMsg            = fmt.Sprintf("error encountered while selecting/unselecting multiple values from [%s]: ", field) + "%s"
+			err               error
+			valuesLookup      []string
+			isSelected        bool
+			interpolatedValue string
 		)
 
 		// build a sorted array of values
 		for _, nextRow := range values.Rows {
-			valuesLookup = append(valuesLookup, strings.TrimSpace(nextRow.Cells[0].Value))
+			// replace variables
+			if interpolatedValue, err = s.ReplaceVariables(nextRow.Cells[0].Value); err != nil {
+				return fmt.Errorf(errMsg, err)
+			}
+			valuesLookup = append(valuesLookup, strings.TrimSpace(interpolatedValue))
 		}
 		sort.Strings(valuesLookup)
 

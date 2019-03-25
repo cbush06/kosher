@@ -23,7 +23,7 @@ Verifies that the specified field (presumably a textarea) contains the provided 
 
 ## Docstring
 
-The field's value will be compared to the docstring following the step.
+The field's value will be compared to the docstring following the step. The docstring may include [variables](../variables.html).
 
 ## Examples
 

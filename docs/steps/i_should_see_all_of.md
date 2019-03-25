@@ -21,9 +21,9 @@ None.
 
 ## Data Table Columns
 
-| Column Position | Description | Value Type | Restrictions |
-| :-------------: | ----------- | ---------- | ------------ |
-|        1        | text        | string     |              |
+| Column Position | Description                         | Value Type | Restrictions |
+| :-------------: | ----------------------------------- | ---------- | ------------ |
+|        1        | text/[variables](../variables.html) | string     |              |
 
 ## Examples
 

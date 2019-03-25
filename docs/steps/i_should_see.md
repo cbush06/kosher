@@ -17,9 +17,9 @@ Verifies that the page contains the specified text. **Note** that this step may 
 
 ## Parameters
 
-| Position | Description | Value Type | Restrictions |
-| :------: | ----------- | ---------- | ------------ |
-|    1     | text        | string     |              |
+| Position | Description                         | Value Type | Restrictions |
+| :------: | ----------------------------------- | ---------- | ------------ |
+|    1     | text/[variables](../variables.html) | string     |              |
 
 ## Examples
 
