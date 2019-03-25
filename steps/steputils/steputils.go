@@ -98,7 +98,6 @@ func (s *StepUtils) ResolveSelector(name string) ([]*agouti.Selection, error) {
 						results = append(results, agoutiSel.At(i))
 					}
 				}
-				return results, nil
 			}
 			break
 		case "xpath":
@@ -110,11 +109,14 @@ func (s *StepUtils) ResolveSelector(name string) ([]*agouti.Selection, error) {
 						results = append(results, agoutiSel.At(i))
 					}
 				}
-				return results, nil
 			}
 			break
 		default:
 			return nil, fmt.Errorf(`invalid selector type [%s] specified for selector [%s] (expected "css:" or "xpath:")`, selectorType, name)
+		}
+
+		if len(results) > 0 {
+			return results, nil
 		}
 	} else {
 		selector = strings.TrimSpace(name)
@@ -322,4 +324,54 @@ func (s *StepUtils) GetSelectOptions(htmlSelect *agouti.Selection) map[string]bo
 	}
 
 	return results
+}
+
+// ReplaceVariables interpolates variables found in step arguments
+func (s *StepUtils) ReplaceVariables(text string) (string, error) {
+	regEx := regexp.MustCompile(`\$\{(.+)\}`)
+	matches := regEx.FindAllStringSubmatch(text, -1)
+	interpolatedText := text
+
+	for _, nextMatch := range matches {
+		switch variable := strings.ToUpper(nextMatch[1]); variable {
+		case "BACKSPACE", "ENTER", "ESCAPE", "SPACE", "DELETE":
+			interpolatedText = strings.Replace(interpolatedText, nextMatch[0], s.getKeyCode(variable), -1)
+		case "RESOURCESDIR":
+			interpolatedText = strings.Replace(interpolatedText, nextMatch[0], s.getPath(variable), -1)
+		default:
+			return "", fmt.Errorf("unrecognized variable [%s]", matches[1])
+		}
+	}
+
+	return interpolatedText, nil
+}
+
+func (s *StepUtils) getPath(variable string) string {
+	var path string
+
+	switch variable {
+	case "RESOURCESDIR":
+		path, _ = s.Settings.FileSystem.WorkingDir.RealPath(common.ResourcesDir)
+	default:
+		return ""
+	}
+	return path
+}
+
+// Borrowed these unicodes from https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/Keys.java
+func (s *StepUtils) getKeyCode(variable string) string {
+	switch variable {
+	case "BACKSPACE":
+		return string(0xE003)
+	case "ENTER":
+		return string(0xE007)
+	case "ESCAPE":
+		return string(0xE00C)
+	case "SPACE":
+		return string(0xE00D)
+	case "DELETE":
+		return string(0xE017)
+	default:
+		return ""
+	}
 }

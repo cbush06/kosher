@@ -2,6 +2,7 @@ package websteps
 
 import (
 	"fmt"
+	"log"
 	"sort"
 	"strings"
 	"time"
@@ -81,10 +82,18 @@ func shouldNotContain(s *steputils.StepUtils) func(string, string) error {
 func confirmContents(s *steputils.StepUtils, shouldContain bool) func(string, string) error {
 	return func(field string, value string) error {
 		var (
-			matches []*agouti.Selection
-			errMsg  = fmt.Sprintf("error encountered while verifying contents of [%s]: ", field) + "%s"
-			err     error
+			matches           []*agouti.Selection
+			errMsg            = fmt.Sprintf("error encountered while verifying contents of [%s]: ", field) + "%s"
+			err               error
+			doesMatch         bool
+			fieldVal          string
+			interpolatedValue string
 		)
+
+		// replace variables
+		if interpolatedValue, err = s.ReplaceVariables(value); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
 
 		// try to find the field(s) specified
 		if matches, err = s.ResolveSelector(field); err != nil {
@@ -97,26 +106,42 @@ func confirmContents(s *steputils.StepUtils, shouldContain bool) func(string, st
 			return fmt.Errorf(errMsg, "no matching elements found")
 		}
 
+		// get reference to DOM element
+		fieldElms, _ := matches[0].Elements()
+
 		// get the value
 		if s.IsTextBased(field, matches[0]) {
-			fieldElms, _ := matches[0].Elements()
-			fieldVal, _ := fieldElms[0].GetAttribute("value")
-			doesMatch := value == fieldVal
-
-			if doesMatch {
-				if shouldContain {
-					return nil
-				}
-				return fmt.Errorf("expected [%s] to NOT contain [%s] but it contained [%s]", field, value, fieldVal)
+			fieldVal, _ = fieldElms[0].GetAttribute("value")
+			doesMatch = interpolatedValue == fieldVal
+		} else {
+			var fieldType string
+			if fieldType, err = s.GetFieldType(field, matches[0]); err != nil {
+				return fmt.Errorf("error encountered determinig field type: %s", err)
 			}
 
-			if !shouldContain {
+			switch fieldType {
+			case "file":
+				fieldVal, _ = fieldElms[0].GetAttribute("value")
+				doesMatch = interpolatedValue == fieldVal
+				log.Println(`WARNING! When validating file fields, browsers often replace the file path with 'C:\fakepath\' followed by the file name. This is a security precaution.`)
+			default:
+				return fmt.Errorf(errMsg, "field must be text-based or a file input")
+			}
+		}
+
+		// produce response
+		if doesMatch {
+			if shouldContain {
 				return nil
 			}
-
-			return fmt.Errorf("expected [%s] to contain [%s] but it contained [%s]", field, value, fieldVal)
+			return fmt.Errorf("expected [%s] to NOT contain [%s] but it contained [%s]", field, interpolatedValue, fieldVal)
 		}
-		return fmt.Errorf(errMsg, "field must be some form of textbox")
+
+		if !shouldContain {
+			return nil
+		}
+
+		return fmt.Errorf("expected [%s] to contain [%s] but it contained [%s]", field, interpolatedValue, fieldVal)
 	}
 }
 
@@ -135,10 +160,11 @@ func shouldNotHaveTheFollowingOptionsSelected(s *steputils.StepUtils) func(strin
 func confirmSelectOptions(s *steputils.StepUtils, only bool, selected bool) func(string, *gherkin.DataTable) error {
 	return func(field string, expectedOptions *gherkin.DataTable) error {
 		var (
-			matches    []*agouti.Selection
-			errMsg     = fmt.Sprintf("error encountered while verifying options for [%s]: ", field) + "%s"
-			noMatchMsg = "actual options differed from expected options"
-			err        error
+			matches           []*agouti.Selection
+			errMsg            = fmt.Sprintf("error encountered while verifying options for [%s]: ", field) + "%s"
+			noMatchMsg        = "actual options differed from expected options"
+			err               error
+			interpolatedValue string
 		)
 
 		// try to find the field(s) specified
@@ -165,7 +191,12 @@ func confirmSelectOptions(s *steputils.StepUtils, only bool, selected bool) func
 		// map expected values to a slice
 		var expected []string
 		for _, nextRow := range expectedOptions.Rows {
-			expected = append(expected, strings.TrimSpace(nextRow.Cells[0].Value))
+			// replace values
+			if interpolatedValue, err = s.ReplaceVariables(strings.TrimSpace(nextRow.Cells[0].Value)); err != nil {
+				return fmt.Errorf(errMsg, err)
+			}
+
+			expected = append(expected, interpolatedValue)
 		}
 		sort.Strings(expected)
 

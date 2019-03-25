@@ -25,6 +25,8 @@ This step's data table may have multiple columns. Ultimately, the data table wil
 one row at the time, one cell at the time. The page will be searched for the contents of each cell
 and this step will fail on the first cell contents that could not be found.
 
+Each cell may include [variables](../variables.html).
+
 ## Examples
 
 ```gherkin

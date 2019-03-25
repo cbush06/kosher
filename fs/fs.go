@@ -28,6 +28,9 @@ type Fs struct {
 
 	// Macros directory
 	MacrosDir *afero.BasePathFs
+
+	// Resources directory
+	ResourcesDir *afero.BasePathFs
 }
 
 // NewFs creates a new Fs with the OS file system as the Project directory
@@ -45,6 +48,7 @@ func newFs(base afero.Fs, projectDirPath string) (*Fs, error) {
 		featuresDir    *afero.BasePathFs
 		resultsDir     *afero.BasePathFs
 		macrosDir      *afero.BasePathFs
+		resourcesDir   *afero.BasePathFs
 		err            error
 	)
 
@@ -84,13 +88,20 @@ func newFs(base afero.Fs, projectDirPath string) (*Fs, error) {
 	}
 	macrosDir = afero.NewBasePathFs(projectDir, common.MacrosDir).(*afero.BasePathFs)
 
+	resourcesDirPath, _ := filepath.Abs(filepath.Join(projectDirPath, common.ResourcesDir))
+	if exists, _ := afero.DirExists(base, resourcesDirPath); !exists {
+		return nil, errors.New("Directory does not exist: " + resourcesDirPath)
+	}
+	resourcesDir = afero.NewBasePathFs(projectDir, common.ResourcesDir).(*afero.BasePathFs)
+
 	return &Fs{
-		WorkingDir:  workingDir,
-		ProjectDir:  projectDir,
-		ConfigDir:   configDir,
-		FeaturesDir: featuresDir,
-		ResultsDir:  resultsDir,
-		MacrosDir:   macrosDir,
+		WorkingDir:   workingDir,
+		ProjectDir:   projectDir,
+		ConfigDir:    configDir,
+		FeaturesDir:  featuresDir,
+		ResultsDir:   resultsDir,
+		MacrosDir:    macrosDir,
+		ResourcesDir: resourcesDir,
 	}, nil
 }
 

@@ -59,6 +59,7 @@ kosher provides an extensive list of step definitions for controlling the browse
 | browser                 | [When I decline the popup](i_decline_popup.html)                                                             | N/A                                         |
 | browser                 | [When I switch to iframe 2](i_switch_iframe_num.html)                                                        | iframe                                      |
 | browser                 | [When I switch to the root frame](i_switch_root_frame.html)                                                  | N/A                                         |
+| browser                 | [When I enter "something" in the popup](i_enter_in_the_popup.html)                                           | N/A                                         |
 | browser verification    | [Then I should see the popup text "Hello, World!"](i_should_see_popup_text.html)                             | N/A                                         |
 | browser verification    | [And I should not see the popup text "Hello, World!"](i_should_not_see_popup_text.html)                      | N/A                                         |
 | verification            | [And I should see "Great, you can click links!"](i_should_see.html)                                          | N/A                                         |

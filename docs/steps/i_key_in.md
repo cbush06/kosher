@@ -17,10 +17,10 @@ Simulate a user keying a value into a field.
 
 ## Parameters
 
-| Position | Description | Value Type                   | Restrictions                                                                             |
-| :------: | ----------- | ---------------------------- | ---------------------------------------------------------------------------------------- |
-|    1     | value       | string                       |                                                                                          |
-|    2     | field       | field id/name/label/selector | Must refer to a [text-based field]({{site.baseurl}}/field_types.html#text-based-fields). |
+| Position | Description | Value Type                            | Restrictions                                                                             |
+| :------: | ----------- | ------------------------------------- | ---------------------------------------------------------------------------------------- |
+|    1     | value       | string/[variables](../variables.html) |                                                                                          |
+|    2     | field       | field id/name/label/selector          | Must refer to a [text-based field]({{site.baseurl}}/field_types.html#text-based-fields). |
 
 ## Examples
 

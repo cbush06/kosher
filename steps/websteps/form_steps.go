@@ -42,12 +42,13 @@ func iFillInFieldWithMultiline(s *steputils.StepUtils) func(string, *gherkin.Doc
 func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 	return func(field string, value string) error {
 		var (
-			matches     []*agouti.Selection
-			matchCnt    int
-			fieldType   string
-			shouldCheck bool
-			errMsg      = "error encountered while filling in multiple fields: %s"
-			err         error
+			matches           []*agouti.Selection
+			matchCnt          int
+			fieldType         string
+			shouldCheck       bool
+			errMsg            = "error encountered while filling in multiple fields: %s"
+			err               error
+			interpolatedValue string
 		)
 
 		// try to find the field(s) specified
@@ -60,11 +61,16 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 			return fmt.Errorf(errMsg, err)
 		}
 
+		// replace variables in value
+		if interpolatedValue, err = s.ReplaceVariables(value); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
 		// based on the field type, we apply the actual value
 		if s.IsTextBased(field, matches[0]) {
 			matches[0].SendKeys(string(0xE009) + "a") // Send CTRL+A
 			matches[0].SendKeys(string(0xE003))
-			matches[0].SendKeys(value)
+			matches[0].SendKeys(interpolatedValue)
 		} else {
 			matchCnt = len(matches)
 			switch fieldType {
@@ -72,19 +78,23 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 				for i := 0; i < matchCnt; i++ {
 					nextRadioEls, _ := matches[i].Elements()
 					nextRadioValue, _ := nextRadioEls[0].GetAttribute("value")
-					if strings.EqualFold(nextRadioValue, strings.TrimSpace(value)) {
+					if strings.EqualFold(nextRadioValue, strings.TrimSpace(interpolatedValue)) {
 						matches[i].Click()
 						return nil
 					}
 				}
 			case "checkbox":
-				shouldCheck, err = strconv.ParseBool(strings.TrimSpace(value))
+				shouldCheck, err = strconv.ParseBool(strings.TrimSpace(interpolatedValue))
 				if shouldCheck && err == nil {
 					matches[0].Check()
 					return nil
 				}
 			case "select":
-				if err = matches[0].Select(value); err != nil {
+				if err = matches[0].Select(interpolatedValue); err != nil {
+					return fmt.Errorf(errMsg, err)
+				}
+			case "file":
+				if err = matches[0].UploadFile(interpolatedValue); err != nil {
 					return fmt.Errorf(errMsg, err)
 				}
 			default:
@@ -98,10 +108,11 @@ func iFillInFieldWith(s *steputils.StepUtils) func(string, string) error {
 func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 	return func(value string, field string) error {
 		var (
-			matches   []*agouti.Selection
-			fieldType string
-			err       error
-			errMsg    = fmt.Sprintf("error encountered while keying [%s] into [%s]: ", value, field) + "%s"
+			matches           []*agouti.Selection
+			fieldType         string
+			err               error
+			interpolatedValue string
+			errMsg            = fmt.Sprintf("error encountered while keying [%s] into [%s]: ", value, field) + "%s"
 		)
 
 		// try to find the field(s) specified
@@ -114,9 +125,13 @@ func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 			return fmt.Errorf(errMsg, err)
 		}
 
+		// replace variables in value
+		if interpolatedValue, err = s.ReplaceVariables(value); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
 		if s.IsTextBased(field, matches[0]) {
-			// fill it in
-			if err = matches[0].SendKeys(value); err != nil {
+			if err = matches[0].SendKeys(interpolatedValue); err != nil {
 				return fmt.Errorf(errMsg, err)
 			}
 		} else {
@@ -130,10 +145,11 @@ func iKeyIn(s *steputils.StepUtils) func(string, string) error {
 func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
 	return func(value string, field string) error {
 		var (
-			matches   []*agouti.Selection
-			fieldType string
-			errMsg    = fmt.Sprintf("error encountered while selecting [%s] from [%s]: ", value, field) + "%s"
-			err       error
+			matches           []*agouti.Selection
+			fieldType         string
+			interpolatedValue string
+			errMsg            = fmt.Sprintf("error encountered while selecting [%s] from [%s]: ", value, field) + "%s"
+			err               error
 		)
 
 		// try to find the field(s) specified
@@ -151,8 +167,13 @@ func iSelectFrom(s *steputils.StepUtils) func(string, string) error {
 			return fmt.Errorf(errMsg, "field is of type [%s] but must be type [select]", fieldType)
 		}
 
+		// replace variables in value
+		if interpolatedValue, err = s.ReplaceVariables(value); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
 		// select the value
-		if err = matches[0].Select(value); err != nil {
+		if err = matches[0].Select(interpolatedValue); err != nil {
 			return fmt.Errorf(errMsg, err)
 		}
 
@@ -218,17 +239,22 @@ func iUnselectTheFollowingValues(s *steputils.StepUtils) func(string, *gherkin.D
 func iSelectUnselectTheFollowingValues(s *steputils.StepUtils, doSelect bool) func(string, *gherkin.DataTable) error {
 	return func(field string, values *gherkin.DataTable) error {
 		var (
-			matches      []*agouti.Selection
-			fieldType    string
-			errMsg       = fmt.Sprintf("error encountered while selecting/unselecting multiple values from [%s]: ", field) + "%s"
-			err          error
-			valuesLookup []string
-			isSelected   bool
+			matches           []*agouti.Selection
+			fieldType         string
+			errMsg            = fmt.Sprintf("error encountered while selecting/unselecting multiple values from [%s]: ", field) + "%s"
+			err               error
+			valuesLookup      []string
+			isSelected        bool
+			interpolatedValue string
 		)
 
 		// build a sorted array of values
 		for _, nextRow := range values.Rows {
-			valuesLookup = append(valuesLookup, strings.TrimSpace(nextRow.Cells[0].Value))
+			// replace variables
+			if interpolatedValue, err = s.ReplaceVariables(nextRow.Cells[0].Value); err != nil {
+				return fmt.Errorf(errMsg, err)
+			}
+			valuesLookup = append(valuesLookup, strings.TrimSpace(interpolatedValue))
 		}
 		sort.Strings(valuesLookup)
 
@@ -448,7 +474,7 @@ func iPressTheKeyOn(s *steputils.StepUtils) func(string, string) error {
 	return func(key string, field string) error {
 		var parsedKeyCode string
 
-		if parsedKeyCode, err = parseKeyCodes(key); err != nil {
+		if parsedKeyCode, err = s.ReplaceVariables(key); err != nil {
 			return fmt.Errorf(errMsg, key, err)
 		}
 
@@ -470,34 +496,4 @@ func iPressTheKeyOn(s *steputils.StepUtils) func(string, string) error {
 
 		return nil
 	}
-}
-
-func parseKeyCodes(key string) (string, error) {
-	var unicodeHexValue uint16
-	regEx := regexp.MustCompile(`\$\{(.+)\}`)
-	matches := regEx.FindStringSubmatch(key)
-
-	if len(matches) == 0 {
-		return key, nil
-	} else if len(matches) != 2 {
-		return "", fmt.Errorf("invalid key code")
-	}
-
-	// Borrowed these unicodes from https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/Keys.java
-	switch strings.ToUpper(matches[1]) {
-	case "BACKSPACE":
-		unicodeHexValue = 0xE003
-	case "ENTER":
-		unicodeHexValue = 0xE007
-	case "ESCAPE":
-		unicodeHexValue = 0xE00C
-	case "SPACE":
-		unicodeHexValue = 0xE00D
-	case "DELETE":
-		unicodeHexValue = 0xE017
-	default:
-		return "", fmt.Errorf("unrecognized key code [%s]", matches[1])
-	}
-
-	return string(unicodeHexValue), nil
 }
