@@ -58,6 +58,19 @@ kosher supports interacting with all text-based HTML fields. Examples of those f
 <input type="text" />
 ```
 
+## File Fields
+
+File input fields are supported. Often, these may not be visible on the screen due to attractive styling performed by UI packages such as Boostrap. Nonetheless, kosher can still interact with the field.
+
+```html
+<input type="file" name="file-uploader" />
+```
+
+READ ME
+{: .label .label-red }
+
+When validating the value of a file field, you might be surprised to find the browser replaces the original file path with `C:\fakepath\<the original filename>`. This is a security feature of most browsers. If you would like to learn more, please visit [https://davidwalsh.name/fakepath](https://davidwalsh.name/fakepath).
+
 ## Checkbox Fields
 
 Some steps allow checking or un-checking checkbox fields. For the purposes of kosher, checkbox fields must actually be an HTML checkbox element:
