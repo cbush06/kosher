@@ -339,7 +339,7 @@ func (s *StepUtils) ReplaceVariables(text string) (string, error) {
 		case "RESOURCESDIR":
 			interpolatedText = strings.Replace(interpolatedText, nextMatch[0], s.getPath(variable), -1)
 		default:
-			return "", fmt.Errorf("unrecognized variable [%s]", matches[1])
+			return "", fmt.Errorf("unrecognized variable [%s]", nextMatch[1])
 		}
 	}
 
