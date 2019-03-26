@@ -93,3 +93,7 @@ func iSwitchToWindowIndex(s *steputils.StepUtils, nth string, idx int) error {
 
 	return s.Page.Session().SetWindow(windows[idx])
 }
+
+func iReloadThePage(s *steputils.StepUtils) error {
+	return s.Page.Refresh()
+}
