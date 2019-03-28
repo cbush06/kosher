@@ -1,5 +1,6 @@
 ![kosher logo](/docs/assets/images/kosher_logo.png)
 # kosher
-Selenium wrapper written in Golang that empowers non-developers to functionally test web applications using simple Gherkin scripts.
+## Automated Testing Without Coding
+Functionally test your web application through simple, readable Gherkin scripts. No programming required!
 
 For documentation, visit https://cbush06.github.io/kosher/.
