@@ -7,14 +7,20 @@ import (
 
 // ParseDate parses a given string to a `time.Time` using the `dateFormat` value specified in the settings file
 func ParseDate(date string, dateFormat string) time.Time {
+	var (
+		err    error
+		goDate time.Time
+	)
+
 	if len(dateFormat) < 1 {
 		return time.Time{}
 	}
-	if goDate, err := time.ParseInLocation(convertDateFormatToGoFormat(dateFormat), date, time.Local); err != nil {
+
+	if goDate, err = time.ParseInLocation(convertDateFormatToGoFormat(dateFormat), date, time.Local); err != nil {
 		return time.Time{}
-	} else {
-		return goDate
 	}
+
+	return goDate
 }
 
 // FormatDate converts a `time.Time` to a string using the `dateFormat` value specified in the settings file
