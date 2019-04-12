@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 
 	"github.com/cbush06/kosher/common"
+	"github.com/cbush06/kosher/suitecontext"
 
 	"github.com/DATA-DOG/godog"
 	"github.com/sclevine/agouti"
@@ -35,6 +36,7 @@ var (
 	tags        string
 	fileSys     *fs.Fs
 	settings    *config.Settings
+	suiteCtx    *suitecontext.SuiteContext
 )
 
 var cmdRun = &runCommand{
@@ -78,7 +80,7 @@ var cmdRun = &runCommand{
 				settings.Settings.Set("environment", environment)
 			}
 
-			client, err := clients.NewClient(settings, fileSys)
+			client, err := clients.NewClient(settings)
 			if err != nil {
 				log.Fatal(err)
 			} else {
@@ -99,9 +101,10 @@ var cmdRun = &runCommand{
 					return fmt.Errorf("error encountered resizing window at startup: %s", err)
 				}
 
-				reportBuilder := report.NewReport(settings, fileSys)
+				reportBuilder := report.NewReport(settings)
 				godog.RunWithOptions(settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
 					buildFeatureContext(settings, page, suite)
+					suiteCtx = suitecontext.CreateSuiteContext(suite)
 				}, buildGoDogOptions(settings, reportBuilder))
 
 				if err := reportBuilder.Process(); err != nil {

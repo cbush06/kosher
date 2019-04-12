@@ -4,7 +4,6 @@ import (
 	"log"
 
 	"github.com/cbush06/kosher/config"
-	"github.com/cbush06/kosher/fs"
 )
 
 // Report is a struct that receives data from GoDog via the `Write` method. Depending on the
@@ -17,22 +16,22 @@ type Report interface {
 
 // NewReport is a factory method that creates the appropriate `Report` object based on
 // the system's settings.
-func NewReport(s *config.Settings, f *fs.Fs) Report {
+func NewReport(s *config.Settings) Report {
 	reportFormat := s.Settings.GetString("reportFormat")
 
 	switch reportFormat {
 	case "html", "bootstrap", "simple":
-		return newHTMLReport(s, f)
+		return newHTMLReport(s)
 	case "pretty", "progress":
 		return newStdOutWriteThroughReport()
 	case "junit":
-		if report, err := newFileWriteThroughReport("results.xml", f); err != nil {
+		if report, err := newFileWriteThroughReport("results.xml", s.FileSystem); err != nil {
 			log.Fatalf("Error encountered while building JUnit report: %s\n", err)
 		} else {
 			return report
 		}
 	case "cucumber":
-		if report, err := newFileWriteThroughReport("results.json", f); err != nil {
+		if report, err := newFileWriteThroughReport("results.json", s.FileSystem); err != nil {
 			log.Fatalf("Error encountered while building Cucumber report: %s\n", err)
 		} else {
 			return report

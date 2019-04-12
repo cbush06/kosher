@@ -4,8 +4,6 @@ import (
 	"errors"
 	"log"
 
-	"github.com/cbush06/kosher/fs"
-
 	"github.com/cbush06/kosher/config"
 	"github.com/sclevine/agouti"
 )
@@ -38,7 +36,7 @@ func (c *Client) StopDriver() error {
 }
 
 // NewClient is a factory for creating new WebDrivers and associated utilities based on the provided configuration.
-func NewClient(sysSettings *config.Settings, fs *fs.Fs) (*Client, error) {
+func NewClient(sysSettings *config.Settings) (*Client, error) {
 	settings := sysSettings.Settings
 	driverSetting := settings.GetString("driver")
 
