@@ -22,7 +22,8 @@ func SendTo(system int, s *config.Settings) error {
 		fileExists  bool
 		jsonFile    afero.File
 		jsonResults []byte
-		err         error
+		// sendable    *Sendable
+		err error
 	)
 
 	// Ensure the results.json file exists
@@ -44,6 +45,11 @@ func SendTo(system int, s *config.Settings) error {
 
 	// Unmarshall the file into a CucumberReport
 	cukeReport.UnmarshallJSON(jsonResults)
+
+	// Call the appropriate integration
+	switch system {
+	case Jira:
+	}
 
 	return nil
 }

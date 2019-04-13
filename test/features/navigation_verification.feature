@@ -39,3 +39,24 @@ Feature: Verify Results of Navigation Actions
         And I wait 1 seconds
         Then I should see the popup "I am an alert box!"
         And I accept the popup
+
+    @Smoke @Regression
+    Scenario Outline: Verify Redirect
+        After clicking on a link, verify redirection to the appropriate page.
+
+        Given I click the "<link1_selector>" link
+        And I follow "<link2_selector>" h
+        Then I should be redirected to the "<page_name>" page
+
+        @FormsNavigation
+        Examples:
+        | link1_selector | link2_selector     | page_name      |
+        | Input Forms    | Simple Form Demo   | basicform      |
+        | Input Forms    | Checkbox Demo      | basic-checkbox |
+        | Input Forms    | Radio Buttons Demo | radio-button   |
+
+        @TablesNavigation
+        Examples:
+        | link1_selector | link2_selector      | page_name    |
+        | Table          | Table Data Search   | table-search |
+        | Table          | Table Sort & Search | table-sort   |

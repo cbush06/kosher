@@ -110,6 +110,8 @@ var cmdRun = &runCommand{
 				if err := reportBuilder.Process(); err != nil {
 					log.Printf("Failed to generate report: %s", err)
 				}
+
+				fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
 			}
 
 			return nil
