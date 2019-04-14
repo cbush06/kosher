@@ -6,6 +6,7 @@ import (
 
 	"github.com/cbush06/kosher/common"
 	"github.com/cbush06/kosher/config"
+	"github.com/cbush06/kosher/integrations/jira"
 	"github.com/cbush06/kosher/report"
 	"github.com/spf13/afero"
 )
@@ -22,8 +23,8 @@ func SendTo(system int, s *config.Settings) error {
 		fileExists  bool
 		jsonFile    afero.File
 		jsonResults []byte
-		// sendable    *Sendable
-		err error
+		sendable    Sendable
+		err         error
 	)
 
 	// Ensure the results.json file exists
@@ -49,7 +50,8 @@ func SendTo(system int, s *config.Settings) error {
 	// Call the appropriate integration
 	switch system {
 	case Jira:
+		sendable = &jira.Jira{}
 	}
 
-	return nil
+	return sendable.Send(s, &cukeReport)
 }
