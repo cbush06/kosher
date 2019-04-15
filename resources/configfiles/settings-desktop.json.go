@@ -14,13 +14,14 @@ func GetSettingsDesktopJSON(projectName string) string {
 	"deviceName": "PC name",
 	"quitOnFail": false,
 	"ignoreInvisible": true,
-	"jira": {
-		"host": "https://127.0.0.1",
-		"labels": "test,functional,kosher",
-		"issueType": "Bug",
-		"projectKey": "PROJ",
-		"summaryTemplate": "jira_summary.txt",
-		"descriptionTemplate": "jira_description.txt"
+	"integrations": {
+		"jira": {
+			"host": "https://127.0.0.1",
+			"labels": "test,functional,kosher",
+			"summaryTemplate": "jira_summary.txt",
+			"descriptionTemplate": "jira_description.txt",
+			"acceptanceCriteriaTemplate": "jira_acceptancecriteria.txt"
+		}
 	}
 }`
 }

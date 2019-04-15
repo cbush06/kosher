@@ -32,10 +32,14 @@ func GetSettingsJSON(projectName string) string {
             "height": 362
         }
 	},
-	"jira": {
-		"host": "https://127.0.0.1",
-		"summaryTemplate": "jira_summary.txt",
-		"descriptionTemplate": "jira_description.txt"
+	"integrations": {
+		"jira": {
+			"host": "https://127.0.0.1",
+			"labels": "test,functional,kosher",
+			"summaryTemplate": "jira_summary.txt",
+			"descriptionTemplate": "jira_description.txt",
+			"acceptanceCriteriaTemplate": "jira_acceptancecriteria.txt"
+		}
 	}
 }`
 }

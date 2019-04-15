@@ -11,6 +11,8 @@ import (
 	"syscall"
 	"text/template"
 
+	"github.com/trivago/tgo/tcontainer"
+
 	"github.com/DATA-DOG/godog/gherkin"
 
 	"golang.org/x/crypto/ssh/terminal"
@@ -24,22 +26,27 @@ import (
 
 // Jira represents a connection to a Jira server.
 type Jira struct {
-	base64Credentials string
-	settings          *config.Settings
-	cukeReport        *report.CucumberReport
-	hostPath          string
-	jiraAuth          *jira.BasicAuthTransport
-	jiraConn          *jira.Client
-	jiraProjs         *jira.ProjectList
-	jiraIssueType     *jira.IssueType
-	selectedProjIdx   int
-	summaryTemplate   *template.Template
+	base64Credentials          string
+	settings                   *config.Settings
+	cukeReport                 *report.CucumberReport
+	hostPath                   string
+	jiraLabels                 []string
+	jiraAuth                   *jira.BasicAuthTransport
+	jiraConn                   *jira.Client
+	jiraProjs                  *jira.ProjectList
+	jiraIssueType              *jira.IssueType
+	jiraProject                *jira.Project
+	jiraAffectsVersion         *jira.Version
+	summaryTemplate            *template.Template
+	descriptionTemplate        *template.Template
+	acceptanceCriteriaTemplate *template.Template
 }
 
 // IssueContext provides the data context used in the Summary and Description templates for Jira issues.
 type IssueContext struct {
-	Feature *report.CukeFeature
-	Element *report.CukeElement
+	Feature    *report.CukeFeature
+	Element    *report.CukeElement
+	FailedStep *report.CukeStep
 }
 
 // Send connects to the configured Jira server, retrieves the user's credentials
@@ -48,6 +55,13 @@ func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport
 	j.settings = settings
 	j.cukeReport = cukeReport
 	j.hostPath = settings.Settings.GetString("integrations.jira.host")
+
+	// load labels
+	if settings.Settings.IsSet("integrations.jira.labels") {
+		j.jiraLabels = strings.Split(settings.Settings.GetString("integrations.jira.labels"), ",")
+	} else {
+		j.jiraLabels = []string{}
+	}
 
 	if err := j.retrieveCredentials(); err != nil {
 		return fmt.Errorf("error encountered while retrieving Jira credentials: %s", err)
@@ -65,6 +79,10 @@ func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport
 		return fmt.Errorf("error encountered while listing Jira issue types: %s", err)
 	}
 
+	if err := j.getAffectsVersion(); err != nil {
+		return fmt.Errorf(`error encountered while getting "Affects Version": %s`, err)
+	}
+
 	if err := j.loadTemplates(); err != nil {
 		return fmt.Errorf("error encountered while loading Jira templates: %s", err)
 	}
@@ -78,9 +96,15 @@ func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport
 
 func (j *Jira) loadTemplates() error {
 	var err error
+
 	if j.summaryTemplate, err = GetSummaryTemplate(j.settings); err != nil {
 		return fmt.Errorf("error encountered loading Jira summary template: %s", err)
 	}
+
+	if j.descriptionTemplate, err = GetDescriptionTemplate(j.settings); err != nil {
+		return fmt.Errorf("error encountered loading Jira description template: %s", err)
+	}
+
 	return nil
 }
 
@@ -161,7 +185,7 @@ func (j *Jira) chooseProject() error {
 	consoleScanner := bufio.NewScanner(os.Stdin)
 
 	for projectIdx < 1 || projectIdx > len(*j.jiraProjs) {
-		fmt.Printf("\nSelect Project: ")
+		fmt.Print("\nSelect Project: ")
 		consoleScanner.Scan()
 
 		if projectIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || projectIdx < 1 || projectIdx > len(*j.jiraProjs) {
@@ -171,8 +195,9 @@ func (j *Jira) chooseProject() error {
 	projectIdx--
 
 	// Store selection
-	j.selectedProjIdx = projectIdx
-
+	if j.jiraProject, _, err = j.jiraConn.Project.Get(((*j.jiraProjs)[projectIdx]).ID); err != nil {
+		return fmt.Errorf("error encountered while retrieving full representation of project [%s]: %s", ((*j.jiraProjs)[projectIdx]).Key, err)
+	}
 	fmt.Print("\n")
 
 	return nil
@@ -180,18 +205,13 @@ func (j *Jira) chooseProject() error {
 
 func (j *Jira) chooseIssueType() error {
 	var (
-		selectedProj *jira.Project
 		issueTypeIdx = -1
 		err          error
 	)
 
-	if selectedProj, _, err = j.jiraConn.Project.Get(((*j.jiraProjs)[j.selectedProjIdx]).ID); err != nil {
-		return fmt.Errorf("error encountered while retrieving full representation of project [%s]: %s", ((*j.jiraProjs)[j.selectedProjIdx]).Key, err)
-	}
-
 	fmt.Println("\n             JIRA ISSUE TYPES")
 	fmt.Println("_____________________________________________")
-	for i, nextType := range selectedProj.IssueTypes {
+	for i, nextType := range j.jiraProject.IssueTypes {
 		fmt.Printf("[%d]\t%s\n", i+1, nextType.Name)
 	}
 	fmt.Println("_____________________________________________")
@@ -199,25 +219,57 @@ func (j *Jira) chooseIssueType() error {
 	// Get project selection
 	consoleScanner := bufio.NewScanner(os.Stdin)
 
-	for issueTypeIdx < 1 || issueTypeIdx > len(selectedProj.IssueTypes) {
+	for issueTypeIdx < 1 || issueTypeIdx > len(j.jiraProject.IssueTypes) {
 		fmt.Printf("\nSelect Issue Type: ")
 		consoleScanner.Scan()
 
-		if issueTypeIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || issueTypeIdx < 1 || issueTypeIdx > len(selectedProj.IssueTypes) {
+		if issueTypeIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || issueTypeIdx < 1 || issueTypeIdx > len(j.jiraProject.IssueTypes) {
 			fmt.Println("Invalid issue type selection, please enter a number from the list above")
 		}
 	}
 	issueTypeIdx--
 
 	// Store selection
-	j.jiraIssueType = &selectedProj.IssueTypes[issueTypeIdx]
+	j.jiraIssueType = &j.jiraProject.IssueTypes[issueTypeIdx]
 
 	fmt.Print("\n")
 
 	return nil
 }
 
+func (j *Jira) getAffectsVersion() error {
+	// Get project selection
+	consoleScanner := bufio.NewScanner(os.Stdin)
+
+	fmt.Print("Enter \"Affects Version\": ")
+	consoleScanner.Scan()
+	affectsVersion := consoleScanner.Text()
+
+	fmt.Print("\n")
+
+	// Try to get "Affects Version"
+	if len(affectsVersion) > 0 {
+		for _, v := range j.jiraProject.Versions {
+			if strings.EqualFold(affectsVersion, v.Name) {
+				j.jiraAffectsVersion = &v
+				break
+			}
+		}
+
+		if j.jiraAffectsVersion == nil {
+			return fmt.Errorf("Affects Version [%s] entered, but not found in list of available project versions", affectsVersion)
+		}
+	}
+
+	return nil
+}
+
 func (j *Jira) createIssues() error {
+	var (
+		issuesCreated int
+		issuesSkipped int
+	)
+
 	godogDialect := gherkin.GherkinDialectsBuildin().GetDialect(j.settings.Settings.GetString("cucumberDialect"))
 
 	scenarioKeywords := godogDialect.ScenarioKeywords()
@@ -233,8 +285,12 @@ func (j *Jira) createIssues() error {
 			for _, element := range feature.Elements {
 				if common.StringSliceContainsFold(scenarioKeywords, element.Type) || common.StringSliceContains(scenarioOutlineKeywords, element.Type) {
 					if element.StepsFailed > 0 {
-						if err := j.createIssue(&feature, &element); err != nil {
+						if created, err := j.createIssue(&feature, &element); err != nil {
 							fmt.Printf("error encountered creating issue: %s\n", err)
+						} else if created {
+							issuesCreated++
+						} else {
+							issuesSkipped++
 						}
 					}
 				}
@@ -242,10 +298,12 @@ func (j *Jira) createIssues() error {
 		}
 	}
 
+	fmt.Printf("Jira Issues Created: %d; Test Failures Skipped: %d\n", issuesCreated, issuesSkipped)
+
 	return nil
 }
 
-func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElement) error {
+func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElement) (bool, error) {
 	var (
 		doCreate     bool
 		createdIssue *jira.Issue
@@ -253,33 +311,46 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 	)
 
 	issueContext := &IssueContext{
-		Feature: feature,
-		Element: element,
+		Feature:    feature,
+		Element:    element,
+		FailedStep: getFailedStep(element),
 	}
 
 	var summaryBytes bytes.Buffer
 	if err = j.summaryTemplate.Execute(&summaryBytes, issueContext); err != nil {
-		return fmt.Errorf("error encountered applying summary template to scenario: %s", err)
+		return false, fmt.Errorf("error encountered applying summary template to scenario: %s", err)
 	}
-
 	summary := summaryBytes.String()
+
+	var descriptionBytes bytes.Buffer
+	if err = j.descriptionTemplate.Execute(&descriptionBytes, issueContext); err != nil {
+		return false, fmt.Errorf("error encountered applying description template to scenario: %s", err)
+	}
+	description := descriptionBytes.String()
+
 	doCreate = getYesOrNo(fmt.Sprintf("Create [%s] (Y/n): ", summary))
 	if doCreate {
-		description := "description........"
 		newIssue := &jira.Issue{
 			Fields: &jira.IssueFields{
 				Summary:     summary,
 				Description: description,
 				Project: jira.Project{
-					ID:  ((*j.jiraProjs)[j.selectedProjIdx]).ID,
-					Key: ((*j.jiraProjs)[j.selectedProjIdx]).Key,
+					ID:  j.jiraProject.ID,
+					Key: j.jiraProject.Key,
 				},
-				Type: *j.jiraIssueType,
+				Type:     *j.jiraIssueType,
+				Labels:   j.jiraLabels,
+				Unknowns: tcontainer.NewMarshalMap(),
 			},
 		}
 
+		// Add affectsVersion if possible
+		if j.jiraAffectsVersion != nil {
+			newIssue.Fields.Unknowns.Set("versions", []jira.Version{*j.jiraAffectsVersion})
+		}
+
 		if createdIssue, _, err = j.jiraConn.Issue.Create(newIssue); err != nil {
-			return fmt.Errorf("error encountered while creating new issue: %s", err)
+			return false, fmt.Errorf("error encountered while creating new issue: %s", err)
 		}
 
 		fmt.Printf("\tIssue [%s] created...\n", createdIssue.Key)
@@ -287,7 +358,7 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 
 	fmt.Print("\n")
 
-	return nil
+	return doCreate, nil
 }
 
 func getYesOrNo(query string) bool {
@@ -314,4 +385,18 @@ func getYesOrNo(query string) bool {
 	}
 
 	return strings.EqualFold(trimmedResponse, "Y")
+}
+
+func getFailedStep(element *report.CukeElement) *report.CukeStep {
+	if element.StepsFailed < 1 {
+		return nil
+	}
+
+	for _, step := range element.Steps {
+		if strings.EqualFold(step.Result.Status, "failed") {
+			return &step
+		}
+	}
+
+	return nil
 }

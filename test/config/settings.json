@@ -28,7 +28,8 @@
     },
     "integrations": {
         "jira": {
-            "host": "https://alm.cgifederal.com/projects"
+            "host": "https://alm.cgifederal.com/projects",
+            "labels": "MICAPS7,MIDTIER"
         }
     }
 }

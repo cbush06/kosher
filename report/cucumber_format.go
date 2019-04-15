@@ -9,7 +9,7 @@ import (
 	"github.com/cbush06/kosher/config"
 )
 
-var leadingWhitespace = regexp.MustCompile(`(?m)^(?:\s+)(.*)`)
+var leadingWhitespace = regexp.MustCompile(`(?m)^(?:\s*)(.*\S)(?:\s*)$`)
 
 // CukeComment is any single-line comment.
 type CukeComment struct {
@@ -68,6 +68,16 @@ type CukeStep struct {
 	DataTable  []*CukeDataTableRow `json:"rows,omitempty"`
 }
 
+// GetTrimmedKeyword removes leading and trailing whitespace from the Step's keyword.
+func (s *CukeStep) GetTrimmedKeyword() string {
+	return leadingWhitespace.ReplaceAllString(s.Keyword, "$1")
+}
+
+// GetTrimmedName removes leading and trailing whitespace from the Step's name.
+func (s *CukeStep) GetTrimmedName() string {
+	return leadingWhitespace.ReplaceAllString(s.Name, "$1")
+}
+
 // CukeDataTableRow represents a row in a DataTable owned by a step
 type CukeDataTableRow struct {
 	Cells []string `json:"cells"`
@@ -92,7 +102,12 @@ type CukeElement struct {
 	StepsSkipped int        `json:"-"`
 }
 
-// GetTrimmedDescription removes leading whitespace from the Scenario's description and returns the result.
+// GetTrimmedKeyword removes leading and trailing whitespace from the Scenario's keyword.
+func (e *CukeElement) GetTrimmedKeyword() string {
+	return leadingWhitespace.ReplaceAllString(e.Keyword, "$1")
+}
+
+// GetTrimmedDescription removes leading and trailing whitespace from the Scenario's description and returns the result.
 func (e *CukeElement) GetTrimmedDescription() string {
 	return leadingWhitespace.ReplaceAllString(e.Description, "$1")
 }
@@ -117,7 +132,7 @@ type CukeFeature struct {
 	StepsSkipped    int           `json:"-"`
 }
 
-// GetTrimmedDescription returns the features description after removing leading whitespace from each line.
+// GetTrimmedDescription returns the features description after removing leading and trailing whitespace from each line.
 func (f *CukeFeature) GetTrimmedDescription() string {
 	return leadingWhitespace.ReplaceAllString(f.Description, "$1")
 }
