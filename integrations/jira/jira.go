@@ -30,6 +30,7 @@ type Jira struct {
 	settings                   *config.Settings
 	cukeReport                 *report.CucumberReport
 	hostPath                   string
+	jiraPriorities             []jira.Priority
 	jiraLabels                 []string
 	jiraAuth                   *jira.BasicAuthTransport
 	jiraConn                   *jira.Client
@@ -152,6 +153,7 @@ func (j *Jira) connect() error {
 		return fmt.Errorf("error encountered while connecting to Jira: %s", err)
 	}
 
+	// Query for self record to confirm connection
 	if self, resp, err = j.jiraConn.User.GetSelf(); err != nil {
 		if resp.StatusCode == 401 || resp.StatusCode == 403 {
 			return fmt.Errorf("invalid username / password combination")
@@ -160,6 +162,11 @@ func (j *Jira) connect() error {
 	}
 
 	fmt.Printf("Successfully connected to jira as [%s]\n", self.DisplayName)
+
+	// Load available priorities
+	if j.jiraPriorities, _, err = j.jiraConn.Priority.GetList(); err != nil {
+		return fmt.Errorf("error encountered retrieving available Jira priorities: %s", err)
+	}
 
 	return nil
 }
@@ -341,6 +348,7 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 				Type:     *j.jiraIssueType,
 				Labels:   j.jiraLabels,
 				Unknowns: tcontainer.NewMarshalMap(),
+				Priority: j.choosePriority(),
 			},
 		}
 
@@ -359,6 +367,35 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 	fmt.Print("\n")
 
 	return doCreate, nil
+}
+
+func (j *Jira) choosePriority() *jira.Priority {
+	var (
+		priorityIdx = -1
+		err         error
+	)
+
+	fmt.Println("\tChoose priority...")
+
+	for i, p := range j.jiraPriorities {
+		fmt.Printf("\t\t[%d] %s\n", i+1, p.Name)
+	}
+
+	// Get project selection
+	consoleScanner := bufio.NewScanner(os.Stdin)
+
+	// Get priority selection
+	for priorityIdx < 1 || priorityIdx > len(j.jiraPriorities) {
+		fmt.Printf("\tEnter priority selection: ")
+		consoleScanner.Scan()
+
+		if priorityIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || priorityIdx < 1 || priorityIdx > len(j.jiraPriorities) {
+			fmt.Println("\t\tInvalid priority selection, please enter a number from the list above")
+		}
+	}
+	priorityIdx--
+
+	return &j.jiraPriorities[priorityIdx]
 }
 
 func getYesOrNo(query string) bool {
