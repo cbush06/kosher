@@ -45,15 +45,17 @@ Feature: Verify Results of Navigation Actions
         After clicking on a link, verify redirection to the appropriate page.
 
         Given I click the "<link1_selector>" link
-        And I follow "<link2_selector>" h
+        And I follow "<link2_selector>"
         Then I should be redirected to the "<page_name>" page
 
         @FormsNavigation
         Examples:
         | link1_selector | link2_selector     | page_name      |
-        | Input Forms    | Simple Form Demo   | basicform      |
+        # | Input Forms    | Simple Form Demo   | basicform      |
+        | Input Forms    | Simple Form Demo   | basic-checkbox      |
         | Input Forms    | Checkbox Demo      | basic-checkbox |
-        | Input Forms    | Radio Buttons Demo | radio-button   |
+        # | Input Forms    | Radio Buttons Demo | radio-button   |
+        | Input Forms    | Radio Buttons Demo | basicform   |
 
         @TablesNavigation
         Examples:

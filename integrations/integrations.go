@@ -34,12 +34,12 @@ func SendTo(system int, s *config.Settings) error {
 		return fmt.Errorf("no [%s] file found; you may need to run your kosher tests with [reportFormat] in [%s] set to cucumber, simple, or bootstrap", common.ResultsJSONFile, common.SettingsFile)
 	}
 
-	// Umarshall the results.json file
+	// Open the JSON results file
 	if jsonFile, err = s.FileSystem.ResultsDir.OpenFile(common.ResultsJSONFile, os.O_RDONLY, 0744); err != nil {
 		return fmt.Errorf("Error encountered while opening results file [%s]: %s", common.ResultsJSONFile, err)
 	}
 
-	// Ensure the whole file was read
+	// Read the file in and ensure it was read in full
 	if jsonResults, err = afero.ReadAll(jsonFile); err != nil {
 		return fmt.Errorf("Error reading results file [%s]: %s", common.ResultsJSONFile, err)
 	}

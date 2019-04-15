@@ -3,6 +3,7 @@ package configfiles
 // GetSettingsDesktopJSON returns the settings.json template file
 func GetSettingsDesktopJSON(projectName string) string {
 	return `{
+	"cucumberDialect": "en",
     "projectName": "` + projectName + `",
     "appVersion": "1.0.0",
     "platform": "desktop",

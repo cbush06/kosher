@@ -3,6 +3,7 @@ package configfiles
 // GetSettingsJSON returns the settings.json template file
 func GetSettingsJSON(projectName string) string {
 	return `{
+	"cucumberDialect": "en",
     "projectName": "` + projectName + `",
     "appVersion": "1.0.0",
     "platform": "web",
@@ -33,9 +34,6 @@ func GetSettingsJSON(projectName string) string {
 	},
 	"jira": {
 		"host": "https://127.0.0.1",
-		"labels": "test,functional,kosher",
-		"issueType": "Bug",
-		"projectKey": "PROJ",
 		"summaryTemplate": "jira_summary.txt",
 		"descriptionTemplate": "jira_description.txt"
 	}
