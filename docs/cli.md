@@ -71,6 +71,26 @@ $ kosher run [flags] [path]
 | -------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | path     | no       | Providing this argument restricts the selection of `*.feature` files executed to a specific subfolder or even a specific file. Standard Linux _glob_ patterns are accepted. |
 
+## send
+
+`send` is the parent command for all integration commands. It must be followed by an integration command.
+
+### jira
+
+`send jira` is the command to create Jira issues for failed kosher test scenarios. For more details, see [Jira Integration](../integrations/jira).
+
+#### Format
+
+```bash
+$ kosher send jira [flags]
+```
+
+#### Flags
+
+| Flag       | Description        |
+| ---------- | ------------------ |
+| -h, --help | help for send jira |
+
 ## version
 
 `version` prints the version of kosher running to the terminal.

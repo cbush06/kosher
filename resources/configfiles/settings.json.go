@@ -37,8 +37,7 @@ func GetSettingsJSON(projectName string) string {
 			"host": "https://127.0.0.1",
 			"labels": "test,functional,kosher",
 			"summaryTemplate": "jira_summary.txt",
-			"descriptionTemplate": "jira_description.txt",
-			"acceptanceCriteriaTemplate": "jira_acceptancecriteria.txt"
+			"descriptionTemplate": "jira_description.txt"
 		}
 	}
 }`
