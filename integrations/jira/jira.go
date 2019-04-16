@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"os/exec"
 	"sort"
 	"strconv"
 	"strings"
@@ -125,12 +126,18 @@ func (j *Jira) retrieveCredentials() error {
 	consoleScanner.Scan()
 	username = consoleScanner.Text()
 
-	// Get Password
+	// Get Password -- if standard terminal, use crypto/ssh to hide password -- fallback to bufio scanner
 	fmt.Print("Password: ")
-	if bytePwd, err = terminal.ReadPassword(int(syscall.Stdin)); err != nil {
-		return fmt.Errorf("error encountered retrieving Jira password: %s", err)
+	if terminal.IsTerminal(int(os.Stdin.Fd())) {
+		if bytePwd, err = terminal.ReadPassword(int(syscall.Stdin)); err != nil {
+			return fmt.Errorf("error encountered retrieving Jira password: %s", err)
+		}
+		password = string(bytePwd)
+	} else {
+		if password, err = readAndHide(); err != nil {
+			return err
+		}
 	}
-	password = string(bytePwd)
 
 	j.jiraAuth = &jira.BasicAuthTransport{
 		Username: username,
@@ -140,6 +147,44 @@ func (j *Jira) retrieveCredentials() error {
 	fmt.Print("\n")
 
 	return nil
+}
+
+func readAndHide() (string, error) {
+	var (
+		passwordChars []byte
+	)
+
+	// disable input buffering
+	cmd := exec.Command("stty", "-F", "/dev/tty", "cbreak", "min", "1")
+	cmd.Stdin = os.Stdin
+	if err := cmd.Run(); err != nil {
+		return "", fmt.Errorf("error encountered disabling terminal buffering: %s", err)
+	}
+
+	// do not display entered characters on the screen
+	cmd = exec.Command("stty", "-F", "/dev/tty", "-echo")
+	cmd.Stdin = os.Stdin
+	if err := cmd.Run(); err != nil {
+		return "", fmt.Errorf("error encountered disabling terminal echoing: %s", err)
+	}
+
+	for {
+		nextByte := make([]byte, 1)
+		os.Stdin.Read(nextByte)
+		if nextByte[0] == '\n' {
+			break
+		}
+		passwordChars = append(passwordChars, nextByte[0])
+	}
+
+	// reset terminal to default settings
+	cmd = exec.Command("stty", "sane")
+	cmd.Stdin = os.Stdin
+	if err := cmd.Run(); err != nil {
+		return "", fmt.Errorf("error encountered resetting termianl settings: %s", err)
+	}
+
+	return string(passwordChars), nil
 }
 
 func (j *Jira) connect() error {
