@@ -106,9 +106,9 @@ kosher provides the following Golang struct as the context for Jira summary and 
 
 ```golang
 type IssueContext struct {
-	Feature    *report.CukeFeature
-	Element    *report.CukeElement
-	FailedStep *report.CukeStep
+    Feature    *report.CukeFeature
+    Element    *report.CukeElement
+    FailedStep *report.CukeStep
 }
 ```
 
