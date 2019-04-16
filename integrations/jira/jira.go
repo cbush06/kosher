@@ -161,7 +161,7 @@ func (j *Jira) connect() error {
 		return fmt.Errorf("error encountered retrieving self: %s", err)
 	}
 
-	fmt.Printf("Successfully connected to jira as [%s]\n", self.DisplayName)
+	fmt.Printf("Successfully connected to Jira as [%s]\n", self.DisplayName)
 
 	// Load available priorities
 	if j.jiraPriorities, _, err = j.jiraConn.Priority.GetList(); err != nil {
