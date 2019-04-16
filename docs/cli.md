@@ -77,7 +77,7 @@ $ kosher run [flags] [path]
 
 ### jira
 
-`send jira` is the command to create Jira issues for failed kosher test scenarios. For more details, see [Jira Integration](../integrations/jira).
+`send jira` is the command to create Jira issues for failed kosher test scenarios. For more details, see [Jira Integration](integrations/jira).
 
 #### Format
 
