@@ -108,18 +108,22 @@
             </executable>
 
             <fileset dir="." includes="LICENSE,README" />
+
             <fileset dir="./libs" targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs">
                 <os family="linux" />
-                <executable type="bin" stage="never" failure="ask" keep="true">
-                    <fileset includes="chromedriver,phantomjs" />
-                </executable>
             </fileset>
+            <executable type="bin" stage="never" failure="ask" keep="true">
+                <os family="linux" />
+                <fileset targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs" />
+            </executable>
+
             <fileset dir="./libs" targetedir="${INSTALL_PATH}/libs" includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe">
                 <os family="windows" />
-                <executable type="bin" stage="never" failure="ask" keep="true">
-                    <fileset includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe" />
-                </executable>
             </fileset>
+            <executable type="bin" stage="never" failure="ask" keep="true">
+                <os family="windows" />
+                <fileset targetdir="${INSTALL_PATH}/libs" includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe" />
+            </executable>
         </pack>
     </packs>
 
