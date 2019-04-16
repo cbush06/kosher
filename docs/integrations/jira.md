@@ -191,7 +191,7 @@ h2. Steps / Expected Result:
 {{end}}{% endraw %}
 ```
 
-The template above results in this text for one of kosher's own tests:
+The template above results in this text for one of kosher's own tests (it will appear styled in Jira):
 
 ```
 Issue:
