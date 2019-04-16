@@ -25,5 +25,11 @@
             "width": 522,
             "height": 362
         }
+    },
+    "integrations": {
+        "jira": {
+            "host": "https://alm.cgifederal.com/projects",
+            "labels": "MICAPS7,MIDTIER"
+        }
     }
 }

@@ -16,8 +16,11 @@ const (
 	// ResourcesDir is the name given to the resources directory where resource files are kept
 	ResourcesDir = "resources"
 
-	// ReportFile is the name given to the HTML report generated
-	ReportFile = "report.html"
+	// ResultsHTMLFile is the name given to the HTML report generated
+	ResultsHTMLFile = "results.html"
+
+	// ResultsJSONFile is the name given to the Cucumber format JSON results generated
+	ResultsJSONFile = "results.json"
 
 	// EnvironmentsFile is the name given to the environments file in a Kosher project
 	EnvironmentsFile = "environments.json"

@@ -15,9 +15,16 @@ var rootCmd = cmdKosher.command
 // Init prepares the CLI interpreter and executes it
 func Init() {
 	cobra.OnInitialize(configureEnv)
+
+	// Register main commands
 	cmdVersion.registerWith(rootCmd)
 	cmdInit.registerWith(rootCmd)
 	cmdRun.registerWith(rootCmd)
+	cmdSend.registerWith(rootCmd)
+
+	// Register `send` commands
+	cmdJira.registerWith(cmdSend.command)
+
 	rootCmd.Execute()
 }
 

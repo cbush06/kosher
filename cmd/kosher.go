@@ -19,7 +19,7 @@ var cmdKosher = &kosherCommand{
 Kosher is a simple and powerful tool for powering behavior-driven
 development methodology by automating functional testing.
 		
-Complete documentation is available at https://`,
+Complete documentation is available at https://cbush06.github.io/kosher/.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cmd.Help()
 			return nil
