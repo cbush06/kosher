@@ -35,19 +35,19 @@ For more details on the `send jira` command, see the [CLI](../../cli.html#jira) 
 
 After executing the `kosher send jira` command, kosher will prompt you for your username and password. If successful, it will display your full name.
 
-```bash
+```
 $ kosher send jira
 Enter Jira credentials...
 Username: jdoe
 Password: 
-Successfully connected to jira as [Doe, John H]
+Successfully connected to Jira as [Doe, John H]
 ```
 
 ### Selecting a Project
 
-Once you have successfully authenticated, kosher will list all Jira project you can access and ask you to select one. Your new issues will be created in the project you choose.
+Once you have successfully authenticated, kosher will list all Jira projects you can access and ask you to select one. Your new issues will be created in the project you choose.
 
-```bash
+```
                 JIRA PROJECTS
 _____________________________________________
 [1]	Kosher
@@ -62,7 +62,7 @@ Select Project: 1
 
 After selecting a project, you will be prompted to choose the type of issue to create for failed kosher tests.
 
-```bash
+```
              JIRA ISSUE TYPES
 _____________________________________________
 [1]	Bug
@@ -89,7 +89,7 @@ Select Issue Type: 1
 
 Next, kosher prompts you for the "Affects Version." Normally, this is the version of the software project that the bug/issue was discovered in. kosher will either accept blank (nothing) or a valid, existing version that has been created in Jira.
 
-```bash
+```
 Enter "Affects Version": 1.4.0
 ```
 
@@ -101,7 +101,7 @@ If you choose to create an issue for a failure, kosher will prompt you to select
 
 If the issue is created successfully, kosher will print the ticket's new key for your reference. It will then repeat this process for the next failure.
 
-```bash
+```
 Create [Verify Results of Navigation Actions: Verify Redirect] (Y/n): y
 	Choose priority...
 		[1] Blocker
