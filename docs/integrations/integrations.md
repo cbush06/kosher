@@ -8,5 +8,5 @@ nav_order: 51
 
 # Configuration
 
-kosher has the ability to integrate with project management systems for the purpose of creating issue tickets based on test failures.
+kosher has the ability to integrate with project management systems for the purpose of creating issue tickets from test failures.
 {: .fs-6 .fw-300 }
