@@ -181,7 +181,7 @@ func readAndHide() (string, error) {
 	cmd = exec.Command("stty", "sane")
 	cmd.Stdin = os.Stdin
 	if err := cmd.Run(); err != nil {
-		return "", fmt.Errorf("error encountered resetting termianl settings: %s", err)
+		return "", fmt.Errorf("error encountered resetting terminal settings: %s", err)
 	}
 
 	return string(passwordChars), nil
