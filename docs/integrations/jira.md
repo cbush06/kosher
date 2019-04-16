@@ -37,7 +37,9 @@ The Jira integration requires, at a minimum, that the host be specified. Other o
 
 ### Format
 
-```bash
+**config/settings.json**
+
+```json
 {
     ...,
     "integrations": {
@@ -69,11 +71,13 @@ For more information on Golang's templates, see [text/template](https://golang.o
 ### Default Templates
 
 Default summary template:
+
 ```
 {{.Feature.Name}}: {{.Element.Name}}
 ```
 
 Default description template:
+
 ```
 h2. Issue:
 {{.FailedStep.Result.Error}}
