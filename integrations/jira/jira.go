@@ -127,7 +127,7 @@ func (j *Jira) retrieveCredentials() error {
 
 	// Get Password
 	fmt.Print("Password: ")
-	if bytePwd, err = terminal.ReadPassword(syscall.Stdin); err != nil {
+	if bytePwd, err = terminal.ReadPassword(int(syscall.Stdin)); err != nil {
 		return fmt.Errorf("error encountered retrieving Jira password: %s", err)
 	}
 	password = string(bytePwd)

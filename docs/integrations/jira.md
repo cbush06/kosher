@@ -73,16 +73,13 @@ For more information on Golang's templates, see [text/template](https://golang.o
 Default summary template:
 
 ```
-{% raw %}
-{{.Feature.Name}}: {{.Element.Name}}
-{% endraw %}
+{% raw %}{{.Feature.Name}}: {{.Element.Name}}{% endraw %}
 ```
 
 Default description template:
 
 ```
-{% raw %}
-h2. Issue:
+{% raw %}h2. Issue:
 {{.FailedStep.Result.Error}}
 
 h2. Feature Title:
@@ -100,8 +97,7 @@ h2. Failed Step / Actual Result:
 
 h2. Steps / Expected Result:
 {{range .Element.Steps}}# *{{.GetTrimmedKeyword}}* {{.Name}}
-{{end}}
-{% endraw %}
+{{end}}{% endraw %}
 ```
 
 ### Template Context
