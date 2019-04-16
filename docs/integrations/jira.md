@@ -80,7 +80,7 @@ Default description template:
 
 ```
 h2. Issue:
-{{.FailedStep.Result.Error}}
+\{\{.FailedStep.Result.Error\}\}
 
 h2. Feature Title:
 {{.Feature.Name}}
