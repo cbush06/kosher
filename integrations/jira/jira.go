@@ -3,6 +3,7 @@ package jira
 import (
 	"bufio"
 	"bytes"
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -58,13 +59,6 @@ func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport
 	j.cukeReport = cukeReport
 	j.hostPath = settings.Settings.GetString("integrations.jira.host")
 
-	// load labels
-	if settings.Settings.IsSet("integrations.jira.labels") {
-		j.jiraLabels = strings.Split(settings.Settings.GetString("integrations.jira.labels"), ",")
-	} else {
-		j.jiraLabels = []string{}
-	}
-
 	if err := j.retrieveCredentials(); err != nil {
 		return fmt.Errorf("error encountered while retrieving Jira credentials: %s", err)
 	}
@@ -83,6 +77,10 @@ func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport
 
 	if err := j.getAffectsVersion(); err != nil {
 		return fmt.Errorf(`error encountered while getting "Affects Version": %s`, err)
+	}
+
+	if err := j.getLabels(); err != nil {
+		return fmt.Errorf(`error encounterd while getting "Labels": %s`, err)
 	}
 
 	if err := j.loadTemplates(); err != nil {
@@ -226,31 +224,50 @@ func (j *Jira) chooseProject() error {
 		return fmt.Errorf("error encountered while listing available Jira projects: %s", err)
 	}
 
-	fmt.Println("\n                JIRA PROJECTS")
-	fmt.Println("_____________________________________________")
-	for i, nextProj := range *j.jiraProjs {
-		fmt.Printf("[%d]\t%s(%s)\n", i+1, nextProj.Name, nextProj.Key)
-	}
-	fmt.Println("_____________________________________________")
-
-	// Get project selection
-	consoleScanner := bufio.NewScanner(os.Stdin)
-
-	for projectIdx < 1 || projectIdx > len(*j.jiraProjs) {
-		fmt.Print("\nSelect Project: ")
-		consoleScanner.Scan()
-
-		if projectIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || projectIdx < 1 || projectIdx > len(*j.jiraProjs) {
-			fmt.Println("Invalid project selection, please enter a number from the list above")
+	if j.settings.Settings.GetBool("useDefaults") {
+		if !j.settings.Settings.IsSet("integrations.jira.defaults.projectKey") {
+			return errors.New("no setting found in settings.json file for default Jira project key")
 		}
+
+		projectKey := j.settings.Settings.GetString("integrations.jira.defaults.projectKey")
+		for i, nextProject := range *j.jiraProjs {
+			if strings.EqualFold(nextProject.Key, projectKey) {
+				projectIdx = i
+				break
+			}
+		}
+
+		if projectIdx < 0 {
+			return fmt.Errorf("default project specified, but no project found within Jira with project key [%s]", projectKey)
+		}
+	} else {
+		fmt.Println("\n                JIRA PROJECTS")
+		fmt.Println("_____________________________________________")
+		for i, nextProj := range *j.jiraProjs {
+			fmt.Printf("[%d]\t%s(%s)\n", i+1, nextProj.Name, nextProj.Key)
+		}
+		fmt.Println("_____________________________________________")
+
+		// Get project selection
+		consoleScanner := bufio.NewScanner(os.Stdin)
+
+		for projectIdx < 1 || projectIdx > len(*j.jiraProjs) {
+			fmt.Print("\nSelect Project: ")
+			consoleScanner.Scan()
+
+			if projectIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || projectIdx < 1 || projectIdx > len(*j.jiraProjs) {
+				fmt.Println("Invalid project selection, please enter a number from the list above")
+			}
+		}
+		projectIdx--
+
+		fmt.Print("\n")
 	}
-	projectIdx--
 
 	// Store selection
 	if j.jiraProject, _, err = j.jiraConn.Project.Get(((*j.jiraProjs)[projectIdx]).ID); err != nil {
 		return fmt.Errorf("error encountered while retrieving full representation of project [%s]: %s", ((*j.jiraProjs)[projectIdx]).Key, err)
 	}
-	fmt.Print("\n")
 
 	return nil
 }
@@ -261,43 +278,69 @@ func (j *Jira) chooseIssueType() error {
 		err          error
 	)
 
-	fmt.Println("\n             JIRA ISSUE TYPES")
-	fmt.Println("_____________________________________________")
-	for i, nextType := range j.jiraProject.IssueTypes {
-		fmt.Printf("[%d]\t%s\n", i+1, nextType.Name)
-	}
-	fmt.Println("_____________________________________________")
-
-	// Get project selection
-	consoleScanner := bufio.NewScanner(os.Stdin)
-
-	for issueTypeIdx < 1 || issueTypeIdx > len(j.jiraProject.IssueTypes) {
-		fmt.Printf("\nSelect Issue Type: ")
-		consoleScanner.Scan()
-
-		if issueTypeIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || issueTypeIdx < 1 || issueTypeIdx > len(j.jiraProject.IssueTypes) {
-			fmt.Println("Invalid issue type selection, please enter a number from the list above")
+	if j.settings.Settings.GetBool("useDefaults") {
+		if !j.settings.Settings.IsSet("integrations.jira.defaults.issueType") {
+			return errors.New("no setting found in settings.json file for default Jira issue type")
 		}
+
+		issueType := j.settings.Settings.GetString("integrations.jira.defaults.issueType")
+		for i, nextType := range j.jiraProject.IssueTypes {
+			if strings.EqualFold(nextType.Name, issueType) {
+				issueTypeIdx = i
+				break
+			}
+		}
+
+		if issueTypeIdx < 0 {
+			return fmt.Errorf("default issue type specified, but no type found within Jira with name [%s]", issueType)
+		}
+	} else {
+		fmt.Println("\n             JIRA ISSUE TYPES")
+		fmt.Println("_____________________________________________")
+		for i, nextType := range j.jiraProject.IssueTypes {
+			fmt.Printf("[%d]\t%s\n", i+1, nextType.Name)
+		}
+		fmt.Println("_____________________________________________")
+
+		// Get project selection
+		consoleScanner := bufio.NewScanner(os.Stdin)
+
+		for issueTypeIdx < 1 || issueTypeIdx > len(j.jiraProject.IssueTypes) {
+			fmt.Printf("\nSelect Issue Type: ")
+			consoleScanner.Scan()
+
+			if issueTypeIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || issueTypeIdx < 1 || issueTypeIdx > len(j.jiraProject.IssueTypes) {
+				fmt.Println("Invalid issue type selection, please enter a number from the list above")
+			}
+		}
+		issueTypeIdx--
+		fmt.Print("\n")
 	}
-	issueTypeIdx--
 
 	// Store selection
 	j.jiraIssueType = &j.jiraProject.IssueTypes[issueTypeIdx]
-
-	fmt.Print("\n")
 
 	return nil
 }
 
 func (j *Jira) getAffectsVersion() error {
-	// Get project selection
-	consoleScanner := bufio.NewScanner(os.Stdin)
+	var affectsVersion string
 
-	fmt.Print("Enter \"Affects Version\": ")
-	consoleScanner.Scan()
-	affectsVersion := consoleScanner.Text()
+	if j.settings.Settings.GetBool("useDefaults") {
+		if !j.settings.Settings.IsSet("integrations.jira.defaults.affectsVersion") {
+			return errors.New("no setting found in settings.json file for default Jira affects version")
+		}
 
-	fmt.Print("\n")
+		affectsVersion = j.settings.Settings.GetString("integrations.jira.defaults.affectsVersion")
+	} else {
+		consoleScanner := bufio.NewScanner(os.Stdin)
+
+		fmt.Print("Enter \"Affects Version\": ")
+		consoleScanner.Scan()
+		affectsVersion = consoleScanner.Text()
+
+		fmt.Print("\n")
+	}
 
 	// Try to get "Affects Version"
 	if len(affectsVersion) > 0 {
@@ -309,9 +352,33 @@ func (j *Jira) getAffectsVersion() error {
 		}
 
 		if j.jiraAffectsVersion == nil {
-			return fmt.Errorf("Affects Version [%s] entered, but not found in list of available project versions", affectsVersion)
+			return fmt.Errorf("Affects Version [%s] specified, but not found in list of available project versions", affectsVersion)
 		}
 	}
+
+	return nil
+}
+
+func (j *Jira) getLabels() error {
+	var labels string
+
+	if j.settings.Settings.GetBool("useDefaults") {
+		if !j.settings.Settings.IsSet("integrations.jira.defaults.labels") {
+			return errors.New("no setting found in settings.json file for default Jira labels")
+		}
+
+		labels = j.settings.Settings.GetString("integrations.jira.defaults.labels")
+	} else {
+		consoleScanner := bufio.NewScanner(os.Stdin)
+
+		fmt.Print("Enter \"Labels\": ")
+		consoleScanner.Scan()
+		labels = consoleScanner.Text()
+
+		fmt.Print("\n")
+	}
+
+	j.jiraLabels = strings.Split(labels, ",")
 
 	return nil
 }
@@ -359,6 +426,7 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 	var (
 		doCreate     bool
 		createdIssue *jira.Issue
+		priority     *jira.Priority
 		err          error
 	)
 
@@ -382,6 +450,10 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 
 	doCreate = getYesOrNo(fmt.Sprintf("Create [%s] (Y/n): ", summary))
 	if doCreate {
+		if priority, err = j.choosePriority(); err != nil {
+			return false, err
+		}
+
 		newIssue := &jira.Issue{
 			Fields: &jira.IssueFields{
 				Summary:     summary,
@@ -393,7 +465,7 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 				Type:     *j.jiraIssueType,
 				Labels:   j.jiraLabels,
 				Unknowns: tcontainer.NewMarshalMap(),
-				Priority: j.choosePriority(),
+				Priority: priority,
 			},
 		}
 
@@ -414,33 +486,52 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 	return doCreate, nil
 }
 
-func (j *Jira) choosePriority() *jira.Priority {
+func (j *Jira) choosePriority() (*jira.Priority, error) {
 	var (
 		priorityIdx = -1
 		err         error
 	)
 
-	fmt.Println("\tChoose priority...")
-
-	for i, p := range j.jiraPriorities {
-		fmt.Printf("\t\t[%d] %s\n", i+1, p.Name)
-	}
-
-	// Get project selection
-	consoleScanner := bufio.NewScanner(os.Stdin)
-
-	// Get priority selection
-	for priorityIdx < 1 || priorityIdx > len(j.jiraPriorities) {
-		fmt.Printf("\tEnter priority selection: ")
-		consoleScanner.Scan()
-
-		if priorityIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || priorityIdx < 1 || priorityIdx > len(j.jiraPriorities) {
-			fmt.Println("\t\tInvalid priority selection, please enter a number from the list above")
+	if j.settings.Settings.GetBool("useDefaults") {
+		if !j.settings.Settings.IsSet("integrations.jira.defaults.priority") {
+			return nil, errors.New("no setting found in settings.json file for default Jira priority")
 		}
-	}
-	priorityIdx--
 
-	return &j.jiraPriorities[priorityIdx]
+		priority := j.settings.Settings.GetString("integrations.jira.defaults.priority")
+
+		for i, nextPriority := range j.jiraPriorities {
+			if strings.EqualFold(nextPriority.Name, priority) {
+				priorityIdx = i
+				break
+			}
+		}
+
+		if priorityIdx < 0 {
+			return nil, fmt.Errorf("default priority provided, but not priority in Jira found to match [%s]", priority)
+		}
+	} else {
+		fmt.Println("\tChoose priority...")
+
+		for i, p := range j.jiraPriorities {
+			fmt.Printf("\t\t[%d] %s\n", i+1, p.Name)
+		}
+
+		// Get project selection
+		consoleScanner := bufio.NewScanner(os.Stdin)
+
+		// Get priority selection
+		for priorityIdx < 1 || priorityIdx > len(j.jiraPriorities) {
+			fmt.Printf("\tEnter priority selection: ")
+			consoleScanner.Scan()
+
+			if priorityIdx, err = strconv.Atoi(consoleScanner.Text()); err != nil || priorityIdx < 1 || priorityIdx > len(j.jiraPriorities) {
+				fmt.Println("\t\tInvalid priority selection, please enter a number from the list above")
+			}
+		}
+		priorityIdx--
+	}
+
+	return &j.jiraPriorities[priorityIdx], nil
 }
 
 func getYesOrNo(query string) bool {

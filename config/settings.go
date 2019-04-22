@@ -112,4 +112,16 @@ func modSettingsProvider(v *viper.Viper) {
 			"height": 362,
 		},
 	})
+	v.SetDefault("integrations", map[string]map[string]interface{}{
+		"jira": {
+			"host": "http://127.0.0.1",
+			"defaults": map[string]string{
+				"projectKey":     "PROJE",
+				"issueType":      "Bug",
+				"affectsVersion": "1.0.0",
+				"labels":         "test,functional,kosher",
+				"priority":       "Normal",
+			},
+		},
+	})
 }

@@ -29,7 +29,14 @@
     "integrations": {
         "jira": {
             "host": "https://alm.cgifederal.com/projects",
-            "labels": "MICAPS7,MIDTIER"
+	    "defaults": {
+            	"labels": "MICAPS7,MIDTIER",
+		"projectKey": "MICAN",
+		"issueType": "Bug",
+		"affectsVersion": "7.0.0.0.35",
+		"labels": "MICAPS7,kosher",
+		"priority": "Critical"
+	    }
         }
     }
 }
