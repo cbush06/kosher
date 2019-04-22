@@ -59,13 +59,6 @@ func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport
 	j.cukeReport = cukeReport
 	j.hostPath = settings.Settings.GetString("integrations.jira.host")
 
-	// load labels
-	if settings.Settings.IsSet("integrations.jira.defaults.labels") {
-		j.jiraLabels = strings.Split(settings.Settings.GetString("integrations.jira.defaults.labels"), ",")
-	} else {
-		j.jiraLabels = []string{}
-	}
-
 	if err := j.retrieveCredentials(); err != nil {
 		return fmt.Errorf("error encountered while retrieving Jira credentials: %s", err)
 	}
@@ -84,6 +77,10 @@ func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport
 
 	if err := j.getAffectsVersion(); err != nil {
 		return fmt.Errorf(`error encountered while getting "Affects Version": %s`, err)
+	}
+
+	if err := j.getLabels(); err != nil {
+		return fmt.Errorf(`error encounterd while getting "Labels": %s`, err)
 	}
 
 	if err := j.loadTemplates(); err != nil {
@@ -358,6 +355,30 @@ func (j *Jira) getAffectsVersion() error {
 			return fmt.Errorf("Affects Version [%s] specified, but not found in list of available project versions", affectsVersion)
 		}
 	}
+
+	return nil
+}
+
+func (j *Jira) getLabels() error {
+	var labels string
+
+	if j.settings.Settings.GetBool("useDefaults") {
+		if !j.settings.Settings.IsSet("integrations.jira.defaults.labels") {
+			return errors.New("no setting found in settings.json file for default Jira labels")
+		}
+
+		labels = j.settings.Settings.GetString("integrations.jira.defaults.labels")
+	} else {
+		consoleScanner := bufio.NewScanner(os.Stdin)
+
+		fmt.Print("Enter \"Labels\": ")
+		consoleScanner.Scan()
+		labels = consoleScanner.Text()
+
+		fmt.Print("\n")
+	}
+
+	j.jiraLabels = strings.Split(labels, ",")
 
 	return nil
 }
