@@ -16,10 +16,14 @@ func GetSettingsDesktopJSON(projectName string) string {
 	"ignoreInvisible": true,
 	"integrations": {
 		"jira": {
-			"host": "https://127.0.0.1",
-			"labels": "test,functional,kosher",
-			"summaryTemplate": "jira_summary.txt",
-			"descriptionTemplate": "jira_description.txt"
+			"host": "http://127.0.0.1",
+			"defaults": {
+				"projectKey": "PROJE",
+				"issueType": "Bug",
+				"affectsVersion": "1.0.0",
+				"labels": "test,functional,kosher",
+				"priority": "Normal"
+			}
 		}
 	}
 }`

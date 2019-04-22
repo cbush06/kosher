@@ -15,6 +15,8 @@ type jiraCommand struct {
 	command *cobra.Command
 }
 
+var useDefaults bool
+
 var cmdJira = &jiraCommand{
 	name: "jira",
 	command: &cobra.Command{
@@ -30,6 +32,7 @@ var cmdJira = &jiraCommand{
 
 			// build the settings file based on the working directory
 			settings = config.NewSettings(fileSys)
+			settings.Settings.BindPFlag("useDefaults", cmd.Flags().Lookup("default"))
 
 			if err := integrations.SendTo(integrations.Jira, settings); err != nil {
 				log.Fatalln(err)
@@ -41,5 +44,6 @@ var cmdJira = &jiraCommand{
 }
 
 func (s *jiraCommand) registerWith(cmd *cobra.Command) {
+	s.command.Flags().BoolVarP(&useDefaults, "default", "d", false, "If true, uses default values specified in settings.json file.")
 	cmd.AddCommand(s.command)
 }
