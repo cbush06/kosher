@@ -93,6 +93,14 @@ Next, kosher prompts you for the "Affects Version." Normally, this is the versio
 Enter "Affects Version": 1.4.0
 ```
 
+### Enter "Labels"
+
+After the Affects Version, kosher will prompt you to enter "Labels." This should be a comma-delimited list of labels you want added to each of the issues kosher creates in Jira.
+
+```
+Enter "Labels": FUNC_TESTING,UX_VALIDATION,UI_VALIDATION,KOSHER
+```
+
 ### Create Issue for Each Failure
 
 Following the "Affects Version," kosher will prompt you for each failed scenario. If you wish to create an issue for a failure, enter "y", "Y", "yes", or "Yes".
@@ -130,9 +138,15 @@ The Jira integration requires, at a minimum, that the host be specified. Other o
     "integrations": {
         "jira": {
             "host": "https://jira.myserver.com",
-            "labels": "bug,kosher,failure",
             "summaryTemplate": "jira_summary.txt",
-            "descriptionTemplate": "jira_description.txt"
+            "descriptionTemplate": "jira_description.txt",
+            "defaults": {
+				"projectKey": "PROJE",
+				"issueType": "Bug",
+				"affectsVersion": "1.0.0",
+				"labels": "test,functional,kosher",
+				"priority": "Normal"
+			}
         }
     }
 }
@@ -140,12 +154,24 @@ The Jira integration requires, at a minimum, that the host be specified. Other o
 
 ### Settings
 
-| Setting             | Description                                                                                                             |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| host                | URL of the Jira server to connect to.                                                                                   |
-| labels              | Comma-delimited list of labels to add to new issues.                                                                    |
-| summaryTemplate     | Name of file in the `/config` directory that contains a Golang template file to be used for creating issue summaries.    |
-| descriptionTemplate | Name of file in the `/config` directory that contains a Golang template file to be used for creating issue descriptions. |
+| Setting             | Description                                                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| host                | URL of the Jira server to connect to.                                                                                           |
+| summaryTemplate     | Name of file in the `/config` directory that contains a Golang template file to be used for creating issue summaries.           |
+| descriptionTemplate | Name of file in the `/config` directory that contains a Golang template file to be used for creating issue descriptions.        |
+| defaults            | Default values to use rather than prompting the user. These apply if the `--default` flag is used: `kosher send jira --default` |
+
+### Defaults
+
+Providing the `defaults` section allows you to avoid the many prompts given by kosher when sending your results to Jira. However, these are only used if you specify the `--default` flag, as in `kosher send jira --default`.
+
+| Setting        | Default Value if Not Specified | Description                                                                                                      |
+| -------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| projectKey     | PROJE                          | Jira project key of the project kosher should create issues in.                                                  |
+| issueType      | Bug                            | Issue Type to set for new issues created in Jira.                                                                |
+| affectsVersion | 1.0.0                          | Affects version to set for new issues created in Jira. *Set this to blank in the `settings.json` file for none.* |
+| labels         | test,functional,kosher         | Labels to add to new issues created in Jira. *Set this to blank in the `settings.json` file for none.*           |
+| priority       | Normal                         | Priority to set for new issues created in Jira.                                                                  |
 
 ## Templates
 
