@@ -75,15 +75,27 @@ $ kosher run [flags] [path]
 
 `send` is the parent command for all integration commands. It must be followed by an integration command.
 
+### Format
+
+```bash
+$ kosher send [flags]
+```
+
 ### Flags
 
 | Flag       | Description   |
 | ---------- | ------------- |
 | -h, --help | help for send |
 
-### jira
+## send jira
 
 `send jira` is the command to create Jira issues for failed kosher test scenarios. For more details, see [Jira Integration](integrations/jira).
+
+### Format
+
+```bash
+$ kosher send jira [flags]
+```
 
 ### Flags
 
@@ -91,18 +103,6 @@ $ kosher run [flags] [path]
 | ---------- | ----------------------------------------------------------- |
 | --default  | Use default parameters defined in the `settings.json` file. |
 | -h, --help | help for send jira                                          |
-
-#### Format
-
-```bash
-$ kosher send jira [flags]
-```
-
-#### Flags
-
-| Flag       | Description        |
-| ---------- | ------------------ |
-| -h, --help | help for send jira |
 
 ## version
 
