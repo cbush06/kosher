@@ -4,7 +4,7 @@ title: "the \"__\" element should not exist"
 parent: Step Definitions
 ---
 
-# the "\_\_" element should exist
+# the "\_\_" element should not exist
 
 Verifies that the page does not contain an element matched by the selector, ID, name, or label.
 {: .fs-6 .fw-300 }
