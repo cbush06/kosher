@@ -309,7 +309,7 @@ func confirmSeeURLLink(s *steputils.StepUtils, shouldSee bool) func(string) erro
 			matchCount   int
 			visibleCount int
 			err          error
-			errMsg       = fmt.Sprintf("error encountered while confirming presence/absence of link pointing to [%s]", pageURL) + "%s"
+			errMsg       = fmt.Sprintf("error encountered while confirming presence/absence of link pointing to [%s]: ", pageURL) + "%s"
 			envPath      *url.URL
 			fullURL      string
 		)
@@ -343,5 +343,85 @@ func confirmSeeURLLink(s *steputils.StepUtils, shouldSee bool) func(string) erro
 		}
 
 		return nil
+	}
+}
+
+func confirmElementExists(s *steputils.StepUtils) func(string) error {
+	return confirmElementExistsNotExists(s, true)
+}
+
+func confirmElementNotExists(s *steputils.StepUtils) func(string) error {
+	return confirmElementExistsNotExists(s, false)
+}
+
+func confirmElementExistsNotExists(s *steputils.StepUtils, shouldExist bool) func(string) error {
+	return func(field string) error {
+		var (
+			matches []*agouti.Selection
+			err     error
+			errMsg  = fmt.Sprintf("error encountered while confirming presence/absence of the element [%s]: ", field) + "%s"
+		)
+
+		// try to find the field(s) specified
+		if matches, err = s.ResolveSelector(field); err != nil {
+			if strings.Contains(err.Error(), "no matches found") && !shouldExist {
+				return nil
+			}
+			return fmt.Errorf(errMsg, err)
+		}
+
+		if shouldExist {
+			return nil
+		}
+
+		return fmt.Errorf(errMsg, fmt.Sprintf("expected field to NOT exist, but it was found %d times", len(matches)))
+	}
+}
+
+func elementShouldContain(s *steputils.StepUtils) func(string, string) error {
+	return elementShouldContainNotContain(s, true)
+}
+
+func elementShouldNotContain(s *steputils.StepUtils) func(string, string) error {
+	return elementShouldContainNotContain(s, false)
+}
+
+func elementShouldContainNotContain(s *steputils.StepUtils, shouldContain bool) func(string, string) error {
+	return func(field string, value string) error {
+		var (
+			matches           []*agouti.Selection
+			interpolatedValue string
+			textContents      string
+			err               error
+			errMsg            = fmt.Sprintf("error encountered while confirming contents of the element [%s]: ", field) + "%s"
+		)
+
+		// replace variables in value
+		if interpolatedValue, err = s.ReplaceVariables(value); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		// try to find the field(s) specified
+		if matches, err = s.ResolveSelector(field); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		// get contents
+		if textContents, err = matches[0].Text(); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		// compare contents
+		if strings.TrimSpace(interpolatedValue) == strings.TrimSpace(textContents) {
+			if shouldContain {
+				return nil
+			}
+			return fmt.Errorf("expected element [%s] to contain [%s], but it did not", field, interpolatedValue)
+		}
+
+		if !shouldContain {
+			return nil
+		}
+		return fmt.Errorf("expected element [%s] to NOT contain [%s], but it does", field, interpolatedValue)
 	}
 }

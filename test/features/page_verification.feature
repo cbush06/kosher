@@ -22,6 +22,10 @@ Feature: Verify Miscellaneous Elements of the Page
         Given I go to the "home" page
         Then I should see the "@{INVISIBLE}Bootstrap Date Picker" link
         And I should not see the "Bootstrap Date Picker" link
+        And the "GlyphiconHomeIcon" element should exist
+        And the "GlyphiconMailIcon" element should not exist
+        And the "HomeCenterMessage" element should contain "We have listed most of the components that are used by developers to build web applications."
+        And the "HomeCenterMessage" element should not contain "Hello, World."
 		
 
     Scenario: Confirm Buttons/Links are Visible on the Page

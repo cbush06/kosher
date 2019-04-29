@@ -17,6 +17,7 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )take a screenshot$`, iTakeAScreenshot(utils))
 	suite.Step(`^(?:|I )switch to the (first|last|[0-9]+(?:th|st|rd|nd)) window$`, iSwitchToTheWindow(utils))
 	suite.Step(`^(?:|I )reload the page$`, iReloadThePage(utils))
+	suite.Step(`^(?:|I )key "([^"]*)"(?:| in the active element)$`, sendKeysToActiveElement(utils))
 
 	// navigation steps
 	suite.Step(`^(?:|I )am on the "([^"]*)" page$`, iAmOnThePage(utils))
@@ -64,7 +65,7 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^the "([^"]*)" radio should not be selected$`, shouldNotBeSelected(utils))
 
 	// navigation verification steps
-	suite.Step(`^I should be redirected to the "([^"]*)" page$`, iShouldBeRedirectedTo(utils))
+	suite.Step(`^(?:|I )should be redirected to the "([^"]*)" page$`, iShouldBeRedirectedTo(utils))
 	suite.Step(`^(?:|I )should be on the "([^"]*)" page$`, iShouldBeOn(utils))
 	suite.Step(`^(?:|I )should see (?:|the )popup (?:|text )"([^"]*)"$`, iShouldSeeThePopupText(utils))
 	suite.Step(`^(?:|I )should not see (?:|the )popup (?:|text )"([^"]*)"$`, iShouldNotSeeThePopupText(utils))
@@ -76,12 +77,16 @@ func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.
 	suite.Step(`^(?:|I )should see the following(?:| errors| list):$`, iShouldSeeTheFollowing(utils))
 	suite.Step(`^(?:|I )should see (?:|the )"([^"]*)"(?: button| link)$`, iShouldSeeButtonLink(utils))
 	suite.Step(`^(?:|I )should not see (?:|the )"([^"]*)"(?: button| link)$`, iShouldNotSeeButtonLink(utils))
-	suite.Step(`^I should see a link that points to "([^"]*)"$`, iShouldSeeALinkThatPointsTo(utils))
-	suite.Step(`^I should not see a link that points to "([^"]*)"$`, iShouldNotSeeALinkThatPointsTo(utils))
+	suite.Step(`^(?:|I )should see a link that points to "([^"]*)"$`, iShouldSeeALinkThatPointsTo(utils))
+	suite.Step(`^(?:|I )should not see a link that points to "([^"]*)"$`, iShouldNotSeeALinkThatPointsTo(utils))
 	suite.Step(`^"([^"]*)" should be disabled$`, shouldBeDisabled(utils))
 	suite.Step(`^"([^"]*)" should be enabled$`, shouldBeEnabled(utils))
 	suite.Step(`^the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)" should be disabled$`, theNthInstanceOfShouldBeDisabled(utils))
 	suite.Step(`^the (first|last|[0-9]+(?:th|st|rd|nd)) instance of "([^"]*)" should be enabled$`, theNthInstanceOfShouldBeEnabled(utils))
 	suite.Step(`^(?:|I )should see (?:|a |an )"([^"]*)" with "([^"]*)" of "([^"]*)"$`, confirmSeeOfType(utils))
 	suite.Step(`^(?:|I )should not see (?:|a |an )"([^"]*)" with "([^"]*)" of "([^"]*)"$`, confirmNotSeeOfType(utils))
+	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should exist$`, confirmElementExists(utils))
+	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not exist$`, confirmElementNotExists(utils))
+	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should contain "([^"]*)"$`, elementShouldContain(utils))
+	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not contain "([^"]*)"$`, elementShouldNotContain(utils))
 }

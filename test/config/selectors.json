@@ -5,5 +5,8 @@
     "DatePickerTextbox": "css:div.input-group.date input[type='text']",
     "DatePickerToday": "css:div.datepicker.datepicker-dropdown > div.datepicker-days > table > tfoot > tr:nth-child(1) > th",
     "CheckboxSet": "css:.cb1-element",
-    "ColumnHeader": "css:th"
+    "ColumnHeader": "css:th",
+    "GlyphiconHomeIcon": "css:span.round-tabs > i.glyphicon.glyphicon-home",
+    "GlyphiconMailIcon": "css:span.round-tabs > i.glyphicon.glyphicon-envelope",
+    "HomeCenterMessage": "css:p.narrow.text-center"
 }

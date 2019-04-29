@@ -99,3 +99,29 @@ func iReloadThePage(s *steputils.StepUtils) func() error {
 		return s.Page.Refresh()
 	}
 }
+
+func sendKeysToActiveElement(s *steputils.StepUtils) func(string) error {
+	return func(value string) error {
+		var (
+			activeEl          *api.Element
+			interpolatedValue string
+			err               error
+			errMsg            = "error encountered while sending keys to active element: %s"
+		)
+
+		if activeEl, err = s.Page.Session().GetActiveElement(); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		// replace variables in value
+		if interpolatedValue, err = s.ReplaceVariables(value); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		if err = activeEl.Value(interpolatedValue); err != nil {
+			return fmt.Errorf(errMsg, err)
+		}
+
+		return nil
+	}
+}
