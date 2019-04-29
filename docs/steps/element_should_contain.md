@@ -25,6 +25,6 @@ Verifies that an element matched by the selector, ID, name, or label contains th
 ## Examples
 
 ```gherkin
-Given I am on the "register" page
-Then the "first_name" element should exist
+Given I am on the "home" page
+Then the "HomeCenterMessage" element should contain "We have listed most of the components that are used by developers to build web applications."
 ```

@@ -25,6 +25,6 @@ Verifies that an element matched by the selector, ID, name, or label does not co
 ## Examples
 
 ```gherkin
-Given I am on the "register" page
-Then the "first_name" element should exist
+Given I am on the "home" page
+Then the "HomeCenterMessage" element should not contain "Hello, World."
 ```

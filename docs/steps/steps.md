@@ -61,6 +61,7 @@ kosher provides an extensive list of step definitions for controlling the browse
 | browser                 | [When I switch to the root frame](i_switch_root_frame.html)                                                  | N/A                                         |
 | browser                 | [When I enter "something" in the popup](i_enter_in_the_popup.html)                                           | N/A                                         |
 | browser                 | [And I reload the page](i_reload_the_page.html)                                                              | N/A                                         |
+| browser                 | [And I key "Hello, World." in the active element](i_key_in_active_element.html)                              | N/A                                         |
 | browser verification    | [Then I should see the popup text "Hello, World!"](i_should_see_popup_text.html)                             | N/A                                         |
 | browser verification    | [And I should not see the popup text "Hello, World!"](i_should_not_see_popup_text.html)                      | N/A                                         |
 | verification            | [And I should see "Great, you can click links!"](i_should_see.html)                                          | N/A                                         |
@@ -75,3 +76,7 @@ kosher provides an extensive list of step definitions for controlling the browse
 | verification            | [Then "Submit" should be enabled](should_be_enabled.html)                                                    | text-based, radio, checkbox, select, button |
 | verification            | [Then the 5th instance of "Page1PaginationLinks" should be disabled](nth_instance_disabled.html)             | text-based, radio, checkbox, select, button |
 | verification            | [Then the 5th instance of "Page1PaginationLinks" should be enabled](nth_instance_enabled.html)               | text-based, radio, checkbox, select, button |
+| verification            | [Then the "HomeCenterMessage" element should contain "Welcome to our site!"](element_should_contain.html)    | N/A                                         |
+| verification            | [Then the "HomeCenterMessage" element should not contain "Hello, World."](element_should_not_contain.html)   | N/A                                         |
+| verification            | [Then the "GlyphiconHomeIcon" element should exist](should_exist.html)                                       | N/A                                         |
+| verification            | [Then the "GlyphiconMailIcon" element should not exist](should_not_exist.html)                               | N/A                                         |
