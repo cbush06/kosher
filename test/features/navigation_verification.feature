@@ -51,11 +51,9 @@ Feature: Verify Results of Navigation Actions
         @FormsNavigation
         Examples:
         | link1_selector | link2_selector     | page_name      |
-        # | Input Forms    | Simple Form Demo   | basicform      |
-        | Input Forms    | Simple Form Demo   | basic-checkbox      |
+        | Input Forms    | Simple Form Demo   | basicform      |
         | Input Forms    | Checkbox Demo      | basic-checkbox |
-        # | Input Forms    | Radio Buttons Demo | radio-button   |
-        | Input Forms    | Radio Buttons Demo | basicform   |
+        | Input Forms    | Radio Buttons Demo | radio-button   |
 
         @TablesNavigation
         Examples:
