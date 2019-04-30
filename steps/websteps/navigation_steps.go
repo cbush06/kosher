@@ -47,7 +47,7 @@ func iFollow(s *steputils.StepUtils) func(string) error {
 // I switch to frame 2
 func iSwitchToFrameN(s *steputils.StepUtils) func(int) error {
 	return func(frameNumber int) error {
-		if err := s.Page.First("frame:nth-of-type(" + string(frameNumber) + ")").SwitchToFrame(); err != nil {
+		if err := s.Page.First("frame:nth-of-type(" + string(frameNumber-1) + ")").SwitchToFrame(); err != nil {
 			return fmt.Errorf("error encountered while switching to FRAME(%d) in page: %s", frameNumber-1, err)
 		}
 		return nil
@@ -57,7 +57,7 @@ func iSwitchToFrameN(s *steputils.StepUtils) func(int) error {
 // I switch to iframe 2
 func iSwitchToIFrameN(s *steputils.StepUtils) func(int) error {
 	return func(frameNumber int) error {
-		if err := s.Page.All("iframe").At(frameNumber).SwitchToFrame(); err != nil {
+		if err := s.Page.All("iframe").At(frameNumber - 1).SwitchToFrame(); err != nil {
 			return fmt.Errorf("error encountered while switching to IFRAME(%d) in page: %s", frameNumber-1, err)
 		}
 		return nil
