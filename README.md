@@ -5,4 +5,5 @@ Functionally test your web application through simple, readable Gherkin scripts.
 # Integrates with Jira
 Kosher now allows you to submit your failed Gherkin scenarios as templated issues to a Jira server!
 
-For documentation, visit https://cbush06.github.io/kosher/.
+# Fully Documented
+For documentation and examples, visit https://cbush06.github.io/kosher/.
