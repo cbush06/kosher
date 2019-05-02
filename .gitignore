@@ -23,3 +23,4 @@ linux-config
 
 # Ignore results of tests
 **/test/results/*
+coverage.txt
