@@ -22,4 +22,4 @@ linux-config
 *.out
 
 # Ignore results of tests
-**/test/results/*
+**/demo/results/*
