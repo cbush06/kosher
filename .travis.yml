@@ -7,7 +7,7 @@ before_script:
   - go vet ./...
 
 before_install:
-  - sudo apt-get install go-dep
+  - go get -u github.com/tools/godep 
 
 install:
   - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
