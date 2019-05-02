@@ -16,14 +16,19 @@ var rootCmd = cmdKosher.command
 func Init() {
 	cobra.OnInitialize(configureEnv)
 
-	// Register main commands
+	// Register main commands and set flags of commands
 	cmdVersion.registerWith(rootCmd)
-	cmdInit.registerWith(rootCmd)
+
+	buildInitCommand().registerWith(rootCmd)
+
 	cmdRun.registerWith(rootCmd)
+	cmdRun.setFlags()
+
 	cmdSend.registerWith(rootCmd)
 
 	// Register `send` commands
 	cmdJira.registerWith(cmdSend.command)
+	cmdJira.setFlags()
 
 	rootCmd.Execute()
 }

@@ -44,6 +44,9 @@ var cmdJira = &jiraCommand{
 }
 
 func (s *jiraCommand) registerWith(cmd *cobra.Command) {
-	s.command.Flags().BoolVarP(&useDefaults, "default", "d", false, "If true, uses default values specified in settings.json file.")
 	cmd.AddCommand(s.command)
+}
+
+func (s *jiraCommand) setFlags() {
+	s.command.Flags().BoolVarP(&useDefaults, "default", "d", false, "If true, uses default values specified in settings.json file.")
 }

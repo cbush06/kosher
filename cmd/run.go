@@ -120,10 +120,13 @@ var cmdRun = &runCommand{
 }
 
 func (r *runCommand) registerWith(cmd *cobra.Command) {
+	cmd.AddCommand(r.command)
+}
+
+func (r *runCommand) setFlags() {
 	r.command.Flags().StringVarP(&environment, "environment", "e", "", "Set the environment.")
 	r.command.Flags().String("appVersion", "", "Sets the version of the application being tested for reporting purposes.")
 	r.command.Flags().StringVarP(&tags, "tags", "t", "", "Filter features, scenarios, scenario outlines, and examples by tags.")
-	cmd.AddCommand(r.command)
 }
 
 func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *godog.Suite) {
