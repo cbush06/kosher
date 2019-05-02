@@ -22,5 +22,5 @@ linux-config
 *.out
 
 # Ignore results of tests
-**/test/results/*
 coverage.txt
+**/demo/results/*
