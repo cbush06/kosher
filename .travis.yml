@@ -4,10 +4,12 @@ go:
   - 1.11.x
 
 before_script:
+  - go fmt ./...
   - go vet ./...
+  - go test
 
 before_install:
-  - sudo curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sudo sh 
+  - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh 
 
 install:
   - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
