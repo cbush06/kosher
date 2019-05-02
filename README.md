@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cbush06/kosher.svg?branch=master)](https://travis-ci.org/cbush06/kosher) [![codecov](https://codecov.io/gh/cbush06/kosher/branch/master/graph/badge.svg)](https://codecov.io/gh/cbush06/kosher)
+[![Build Status](https://travis-ci.org/cbush06/kosher.svg?branch=master)](https://travis-ci.org/cbush06/kosher) [![codecov](https://codecov.io/gh/cbush06/kosher/branch/master/graph/badge.svg)](https://codecov.io/gh/cbush06/kosher) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ![kosher logo](/docs/assets/images/kosher_logo.png)
