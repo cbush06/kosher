@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/cbush06/kosher.svg?branch=master)](https://travis-ci.org/cbush06/kosher)
+[![Build Status](https://travis-ci.org/cbush06/kosher.svg?branch=master)](https://travis-ci.org/cbush06/kosher) [![codecov](https://codecov.io/gh/cbush06/kosher/branch/master/graph/badge.svg)](https://codecov.io/gh/cbush06/kosher)
+
 
 ![kosher logo](/docs/assets/images/kosher_logo.png)
 # Automated Testing Without Coding
