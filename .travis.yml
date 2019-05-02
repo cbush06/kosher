@@ -6,7 +6,7 @@ go:
 before_script:
   - go fmt ./...
   - go vet ./...
-  - go test -race -coverprofile=c.out -covermode=atomic
+  - go test -race -coverprofile=coverage.txt -covermode=atomic
 
 before_install:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh 
