@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -8,10 +9,10 @@ import (
 	"path/filepath"
 
 	"github.com/cbush06/kosher/common"
+	"github.com/cbush06/kosher/interfaces"
 	"github.com/cbush06/kosher/suitecontext"
 
 	"github.com/DATA-DOG/godog"
-	"github.com/sclevine/agouti"
 
 	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/config"
@@ -25,121 +26,129 @@ import (
 )
 
 type runCommand struct {
-	name    string
-	command *cobra.Command
-}
-
-var (
-	err         error
+	name        string
+	command     *cobra.Command
 	environment string
 	pathArg     string
 	tags        string
-	fileSys     *fs.Fs
 	settings    *config.Settings
-	suiteCtx    *suitecontext.SuiteContext
-)
+	fileSystem  *fs.Fs
+}
 
-var cmdRun = &runCommand{
-	name: "run",
-	command: &cobra.Command{
+func buildRunCommand() *runCommand {
+	var err error
+
+	newCmd := &runCommand{
+		name: "run",
+	}
+
+	workingDir, _ := os.Getwd()
+	if newCmd.fileSystem, err = fs.NewFs(workingDir); err != nil {
+		log.Panicf("attempted to get file system but encountered error: %s", err)
+		return nil
+	}
+
+	newCmd.command = &cobra.Command{
 		Use:   "run [flags] [path]",
 		Short: "executes your tests",
 		Long:  `run executes your tests. Depending on the arguments provided, it may execute all tests, a specific test, or tests in one or more subdirectories.`,
 		Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, arg []string) error {
+			var (
+				err      error
+				suiteCtx *suitecontext.SuiteContext
+			)
+
 			// grab the path arg if specified -- this determines what feature(s) get executed
 			if len(arg) < 1 {
-				pathArg, _ = os.Getwd()
-				pathArg = path.Join(pathArg, common.FeaturesDir)
+				newCmd.pathArg, _ = os.Getwd()
+				newCmd.pathArg = path.Join(newCmd.pathArg, common.FeaturesDir)
 			} else {
-				pathArg = filepath.Clean(arg[0])
-			}
-
-			// determine where the executable was called from
-			workingDir, _ := os.Getwd()
-			if fileSys, err = fs.NewFs(workingDir); err != nil {
-				log.Fatal(err)
+				newCmd.pathArg = filepath.Clean(arg[0])
 			}
 
 			// build the settings file based on the working directory
-			settings = config.NewSettings(fileSys)
-			settings.Settings.BindPFlag("appVersion", cmd.Flags().Lookup("appVersion"))
+			newCmd.settings = config.NewSettings(newCmd.fileSystem)
+			newCmd.settings.Settings.BindPFlag("appVersion", cmd.Flags().Lookup("appVersion"))
 
 			// confirm an environment is selected
-			if len(environment) < 1 {
-				environment = settings.Settings.GetString("defaultEnvironment")
+			if len(newCmd.environment) < 1 {
+				newCmd.environment = newCmd.settings.Settings.GetString("defaultEnvironment")
 			}
-			if len(environment) < 1 {
-				log.Fatal(`No environment specified. Either set the environment with the [run] command's [-e|--environment] flag or set the "defaultEnvironment" in the settings file.`)
+			if len(newCmd.environment) < 1 {
+				return errors.New(`no environment specified; either set the environment with the [run] command's [-e|--environment] flag or set the "defaultEnvironment" in the settings file`)
 			}
 
 			// verify the environment exists in the environments file and, if so, set it as the environment for this run
-			if !settings.Environments.IsSet(environment) {
-				log.Fatalf(`No entry found for [%s] in the environments file.`, environment)
-			} else {
-				settings.Settings.Set("environment", environment)
+			if !newCmd.settings.Environments.IsSet(newCmd.environment) {
+				return fmt.Errorf(`no entry found for [%s] in the environments file`, newCmd.environment)
 			}
+			newCmd.settings.Settings.Set("environment", newCmd.environment)
 
-			client, err := clients.NewClient(settings)
+			// build the web driver client and fire it up
+			client, err := clients.NewClient(newCmd.settings)
 			if err != nil {
-				log.Fatal(err)
-			} else {
-				defer client.StopDriver()
-				client.StartDriver()
-
-				log.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
-
-				// Create new Window
-				page, err := client.WebDriver.NewPage()
-				if err != nil {
-					log.Fatalf("failed to open page: %s", err)
-				}
-
-				// Size the window
-				stepUtils := steputils.NewStepUtils(settings, page)
-				if err := page.Size(stepUtils.GetMaxWindowSize()); err != nil {
-					return fmt.Errorf("error encountered resizing window at startup: %s", err)
-				}
-
-				reportBuilder := report.NewReport(settings)
-				godog.RunWithOptions(settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
-					buildFeatureContext(settings, page, suite)
-					suiteCtx = suitecontext.CreateSuiteContext(suite)
-				}, buildGoDogOptions(settings, reportBuilder))
-
-				if err := reportBuilder.Process(); err != nil {
-					log.Printf("Failed to generate report: %s", err)
-				}
-
-				fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
+				return err
 			}
+
+			defer client.StopDriver()
+			if err = client.StartDriver(); err != nil {
+				return err
+			}
+
+			log.Printf("Web Driver server [%s] created. Serving at [%s].\n", client.DriverType, client.WebDriver.URL())
+
+			// Create new Window
+			var page interfaces.PageService
+			page, err = client.WebDriver.NewPage()
+			if err != nil {
+				return fmt.Errorf("failed to open page: %s", err)
+			}
+
+			// Size the window
+			stepUtils := steputils.NewStepUtils(newCmd.settings, page)
+			if err := page.Size(stepUtils.GetMaxWindowSize()); err != nil {
+				return fmt.Errorf("error encountered resizing window at startup: %s", err)
+			}
+
+			reportBuilder := report.NewReport(newCmd.settings)
+			godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
+				newCmd.buildFeatureContext(page, suite)
+				suiteCtx = suitecontext.CreateSuiteContext(suite)
+			}, newCmd.buildGoDogOptions(reportBuilder))
+
+			if err := reportBuilder.Process(); err != nil {
+				log.Printf("Failed to generate report: %s", err)
+			}
+
+			fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
 
 			return nil
 		},
-	},
+	}
+
+	newCmd.command.Flags().StringVarP(&newCmd.environment, "environment", "e", "", "Set the environment.")
+	newCmd.command.Flags().String("appVersion", "", "Sets the version of the application being tested for reporting purposes.")
+	newCmd.command.Flags().StringVarP(&newCmd.tags, "tags", "t", "", "Filter features, scenarios, scenario outlines, and examples by tags.")
+
+	return newCmd
 }
 
 func (r *runCommand) registerWith(cmd *cobra.Command) {
 	cmd.AddCommand(r.command)
 }
 
-func (r *runCommand) setFlags() {
-	r.command.Flags().StringVarP(&environment, "environment", "e", "", "Set the environment.")
-	r.command.Flags().String("appVersion", "", "Sets the version of the application being tested for reporting purposes.")
-	r.command.Flags().StringVarP(&tags, "tags", "t", "", "Filter features, scenarios, scenario outlines, and examples by tags.")
-}
-
-func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *godog.Suite) {
+func (r *runCommand) buildFeatureContext(page interfaces.PageService, suite *godog.Suite) {
 	// Load primary steps based on platform
-	switch settings.Settings.Get("platform") {
+	switch r.settings.Settings.Get("platform") {
 	case "desktop":
 		log.Fatal("desktop is not implemented")
 	case "web":
-		websteps.BuildGoDogSuite(settings, page, suite)
+		websteps.BuildGoDogSuite(r.settings, page, suite)
 	}
 
 	// Load macro steps
-	if macros, err := macros.BuildMacros(settings.FileSystem); err != nil {
+	if macros, err := macros.BuildMacros(r.settings.FileSystem); err != nil {
 		log.Fatalf("error encountered while parsing macros: %s", err)
 	} else {
 		for _, m := range macros {
@@ -149,24 +158,24 @@ func buildFeatureContext(settings *config.Settings, page *agouti.Page, suite *go
 	}
 }
 
-func buildGoDogOptions(settings *config.Settings, reportBuilder report.Report) godog.Options {
-	featuresPath, _ := filepath.Abs(pathArg)
+func (r *runCommand) buildGoDogOptions(reportBuilder report.Report) godog.Options {
+	featuresPath, _ := filepath.Abs(r.pathArg)
 
 	// Convert kosher format to GoDog format
 	var reportFormat string
-	switch settings.Settings.GetString("reportFormat") {
+	switch r.settings.Settings.GetString("reportFormat") {
 	case "html", "bootstrap", "simple":
 		reportFormat = "cucumber"
 	default:
-		reportFormat = settings.Settings.GetString("reportFormat")
+		reportFormat = r.settings.Settings.GetString("reportFormat")
 	}
 
 	return godog.Options{
 		Format:        reportFormat,
 		Paths:         []string{featuresPath},
-		Tags:          tags,
-		StopOnFailure: settings.Settings.GetBool("quitOnFail"),
-		Strict:        settings.Settings.GetBool("quitOnFail"),
+		Tags:          r.tags,
+		StopOnFailure: r.settings.Settings.GetBool("quitOnFail"),
+		Strict:        r.settings.Settings.GetBool("quitOnFail"),
 		Output:        reportBuilder,
 	}
 }

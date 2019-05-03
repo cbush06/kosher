@@ -3,12 +3,12 @@ package websteps
 import (
 	"github.com/DATA-DOG/godog"
 	"github.com/cbush06/kosher/config"
+	"github.com/cbush06/kosher/interfaces"
 	"github.com/cbush06/kosher/steps/steputils"
-	"github.com/sclevine/agouti"
 )
 
 // BuildGoDogSuite loads the provided godog suite with step definitions for the provided page
-func BuildGoDogSuite(settings *config.Settings, page *agouti.Page, suite *godog.Suite) {
+func BuildGoDogSuite(settings *config.Settings, page interfaces.PageService, suite *godog.Suite) {
 	utils := steputils.NewStepUtils(settings, page)
 
 	// browser steps

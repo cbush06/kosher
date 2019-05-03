@@ -9,7 +9,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/common"
+	"github.com/cbush06/kosher/interfaces"
 
 	"github.com/cbush06/kosher/config"
 	"github.com/sclevine/agouti"
@@ -23,14 +25,23 @@ var (
 // StepUtils is a set of utility functions tailored to a given Settings object and Agouti Page
 type StepUtils struct {
 	Settings *config.Settings
-	Page     *agouti.Page
+	Page     interfaces.PageService
+	Session  interfaces.SessionService
 }
 
 // NewStepUtils creates a new StepUtils struct
-func NewStepUtils(settings *config.Settings, page *agouti.Page) *StepUtils {
+func NewStepUtils(settings *config.Settings, page interfaces.PageService) *StepUtils {
+	var session interfaces.SessionService = page.Session()
+
+	// If we're using a nil driver for unit testing, sub in the MockSession
+	if settings.Settings.GetString("driver") == clients.Mock && session == nil {
+		session = &interfaces.MockSession{}
+	}
+
 	return &StepUtils{
 		Settings: settings,
 		Page:     page,
+		Session:  session,
 	}
 }
 

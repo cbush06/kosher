@@ -4,14 +4,39 @@ import (
 	"errors"
 	"log"
 
+	"github.com/cbush06/kosher/interfaces"
+
 	"github.com/cbush06/kosher/config"
 	"github.com/sclevine/agouti"
 )
 
+const (
+	// Chrome denotes the Chrome driver
+	Chrome = "chrome"
+
+	// Ie denotes the IE driver
+	Ie = "ie"
+
+	// Edge denotes the Edge driver
+	Edge = "edge"
+
+	// PhantomJS denotes the PhantomJS driver
+	PhantomJS = "phantomjs"
+
+	// Desktop denotes the desktop (Appium or WinAppDriver)
+	Desktop = "desktop"
+
+	// Mock denotes that a "mock" driver will be used for unit testing
+	Mock = "mock"
+)
+
+// MockDriver is the driver returned when unit testing
+var MockDriver *interfaces.MockDriver
+
 // Client encapsulates the web driver and associated utilities specified by the project's settings.
 type Client struct {
 	DriverType string
-	WebDriver  *agouti.WebDriver
+	WebDriver  interfaces.DriverService
 	IsStarted  bool
 }
 
@@ -41,34 +66,40 @@ func NewClient(sysSettings *config.Settings) (*Client, error) {
 	driverSetting := settings.GetString("driver")
 
 	switch driverSetting {
-	case "chrome":
+	case Chrome:
 		return &Client{
 			DriverType: driverSetting,
 			WebDriver:  agouti.ChromeDriver(),
 			IsStarted:  false,
 		}, nil
-	case "ie":
+	case Ie:
 		return &Client{
 			DriverType: driverSetting,
 			WebDriver:  agouti.NewWebDriver("http://{{.Address}}", []string{"IEDriverServer.exe", "/port={{.Port}} "}),
 			IsStarted:  false,
 		}, nil
-	case "edge":
+	case Edge:
 		return &Client{
 			DriverType: driverSetting,
 			WebDriver:  agouti.EdgeDriver(),
 			IsStarted:  false,
 		}, nil
-	case "phantomjs":
+	case PhantomJS:
 		return &Client{
 			DriverType: driverSetting,
 			WebDriver:  agouti.PhantomJS(),
 			IsStarted:  false,
 		}, nil
-	case "desktop":
+	case Desktop:
 		return &Client{
 			DriverType: driverSetting,
 			WebDriver:  nil,
+			IsStarted:  false,
+		}, nil
+	case Mock:
+		return &Client{
+			DriverType: driverSetting,
+			WebDriver:  MockDriver,
 			IsStarted:  false,
 		}, nil
 	default:

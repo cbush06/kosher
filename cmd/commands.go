@@ -17,18 +17,15 @@ func Init() {
 	cobra.OnInitialize(configureEnv)
 
 	// Register main commands and set flags of commands
-	cmdVersion.registerWith(rootCmd)
-
+	buildVersionCommand().registerWith(rootCmd)
 	buildInitCommand().registerWith(rootCmd)
+	buildRunCommand().registerWith(rootCmd)
 
-	cmdRun.registerWith(rootCmd)
-	cmdRun.setFlags()
-
+	cmdSend := buildSendCommand()
 	cmdSend.registerWith(rootCmd)
 
 	// Register `send` commands
-	cmdJira.registerWith(cmdSend.command)
-	cmdJira.setFlags()
+	buildJiraCommand().registerWith(cmdSend.command)
 
 	rootCmd.Execute()
 }
