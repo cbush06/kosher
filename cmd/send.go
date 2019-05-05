@@ -9,17 +9,19 @@ type sendCommand struct {
 	command *cobra.Command
 }
 
-var cmdSend = &sendCommand{
-	name: "send",
-	command: &cobra.Command{
-		Use:   "send",
-		Short: "sends results to a remote system",
-		Long:  `send transmits the results stored in a Kosher-generated Cucumber JSON file to a remote system.`,
-		RunE: func(cmd *cobra.Command, args []string) error {
-			cmd.Help()
-			return nil
+func buildSendCommand() *sendCommand {
+	return &sendCommand{
+		name: "send",
+		command: &cobra.Command{
+			Use:   "send",
+			Short: "sends results to a remote system",
+			Long:  `send transmits the results stored in a Kosher-generated Cucumber JSON file to a remote system.`,
+			RunE: func(cmd *cobra.Command, args []string) error {
+				cmd.Help()
+				return nil
+			},
 		},
-	},
+	}
 }
 
 func (s *sendCommand) registerWith(cmd *cobra.Command) {

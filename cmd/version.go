@@ -12,17 +12,19 @@ type versionCommand struct {
 	command *cobra.Command
 }
 
-var cmdVersion = &versionCommand{
-	name: "version",
-	command: &cobra.Command{
-		Use:   "version",
-		Short: "displays the version of Kosher running",
-		Long:  `version displays the version of Kosher running`,
-		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Println(common.CurrentVersion.Version())
-			return nil
+func buildVersionCommand() *versionCommand {
+	return &versionCommand{
+		name: "version",
+		command: &cobra.Command{
+			Use:   "version",
+			Short: "displays the version of Kosher running",
+			Long:  `version displays the version of Kosher running`,
+			RunE: func(cmd *cobra.Command, args []string) error {
+				fmt.Println(common.CurrentVersion.Version())
+				return nil
+			},
 		},
-	},
+	}
 }
 
 func (v *versionCommand) registerWith(cmd *cobra.Command) {

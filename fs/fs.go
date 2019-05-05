@@ -2,12 +2,16 @@ package fs
 
 import (
 	"errors"
+	"flag"
 	"os"
 	"path/filepath"
 
 	"github.com/cbush06/kosher/common"
 	"github.com/spf13/afero"
 )
+
+// MockFs is a mock, memory-based file system used during unit testing
+var MockFs afero.Fs
 
 // Fs abstracts away the file system from the actual OS, and allows the file system to be mocked for testing.
 type Fs struct {
@@ -35,7 +39,13 @@ type Fs struct {
 
 // NewFs creates a new Fs with the OS file system as the Project directory
 func NewFs(projectDirPath string) (*Fs, error) {
-	fs := afero.NewOsFs()
+	var fs afero.Fs
+
+	if flag.Lookup("test.v") == nil {
+		fs = afero.NewOsFs()
+	} else {
+		fs = MockFs
+	}
 	return newFs(fs, projectDirPath)
 }
 
@@ -55,12 +65,12 @@ func newFs(base afero.Fs, projectDirPath string) (*Fs, error) {
 	if workingDirPath, err = os.Getwd(); err != nil {
 		return nil, errors.New("Unable to determine working directory of executable")
 	}
-	if workingDir, err = getReadonlyBasepathFs(base, workingDirPath); err != nil {
+	if workingDir, err = getBasepathFs(base, workingDirPath); err != nil {
 		return nil, err
 	}
 
 	projectDirPath, err = filepath.Abs(projectDirPath)
-	if projectDir, err = getReadonlyBasepathFs(base, projectDirPath); err != nil {
+	if projectDir, err = getBasepathFs(base, projectDirPath); err != nil {
 		return nil, err
 	}
 
@@ -105,12 +115,12 @@ func newFs(base afero.Fs, projectDirPath string) (*Fs, error) {
 	}, nil
 }
 
-func getReadonlyBasepathFs(base afero.Fs, dirPath string) (*afero.BasePathFs, error) {
+func getBasepathFs(base afero.Fs, dirPath string) (*afero.BasePathFs, error) {
 	if dirPath != "" {
 		if exists, _ := afero.DirExists(base, dirPath); !exists {
 			return nil, errors.New("Directory does not exist: " + dirPath)
 		}
-		return afero.NewBasePathFs(afero.NewReadOnlyFs(base), dirPath).(*afero.BasePathFs), nil
+		return afero.NewBasePathFs(base, dirPath).(*afero.BasePathFs), nil
 	}
 	return nil, errors.New("No directory path provided")
 }

@@ -94,34 +94,18 @@ func modSettingsProvider(v *viper.Viper) {
 	v.SetDefault("screenFormat", "desktop")
 	v.SetDefault("quitOnFail", false)
 	v.SetDefault("ignoreInvisible", true)
-	v.SetDefault("screenFormats", map[string]map[string]int{
-		"desktop": map[string]int{
-			"width":  2000,
-			"height": 980,
-		},
-		"mobile": map[string]int{
-			"width":  362,
-			"height": 868,
-		},
-		"tablet": {
-			"width":  814,
-			"height": 868,
-		},
-		"landscape": {
-			"width":  522,
-			"height": 362,
-		},
-	})
-	v.SetDefault("integrations", map[string]map[string]interface{}{
-		"jira": {
-			"host": "http://127.0.0.1",
-			"defaults": map[string]string{
-				"projectKey":     "PROJE",
-				"issueType":      "Bug",
-				"affectsVersion": "1.0.0",
-				"labels":         "test,functional,kosher",
-				"priority":       "Normal",
-			},
-		},
-	})
+	v.SetDefault("screenFormats.desktop.width", 2000)
+	v.SetDefault("screenFormats.desktop.height", 980)
+	v.SetDefault("screenFormats.mobile.width", 362)
+	v.SetDefault("screenFormats.mobile.height", 868)
+	v.SetDefault("screenFormats.tablet.width", 814)
+	v.SetDefault("screenFormats.tablet.height", 868)
+	v.SetDefault("screenFormats.landscape.width", 522)
+	v.SetDefault("screenFormats.landscape.height", 362)
+	v.SetDefault("integrations.jira.host", "http://127.0.0.1")
+	v.SetDefault("integrations.jira.defaults.projectKey", "PROJE")
+	v.SetDefault("integrations.jira.defaults.issueType", "Bug")
+	v.SetDefault("integrations.jira.defaults.affectsVersion", "1.0.0")
+	v.SetDefault("integrations.jira.defaults.labels", "test,functional,kosher")
+	v.SetDefault("integrations.jira.defaults.priority", "Normal")
 }
