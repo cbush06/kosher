@@ -19,6 +19,68 @@ type SelectorService interface {
 	First(selector string) *agouti.Selection
 }
 
+// NewSelectorServiceFromAgoutiPage either wraps an agouti.Page (if one is provided) or a MockSelector (if nil is provided) in a SelectorService
+func NewSelectorServiceFromAgoutiPage(page *agouti.Page) SelectorService {
+	return &AgoutiSelector{
+		page: page,
+	}
+}
+
+// AgoutiSelector wraps an *agouti.Page to adapt its selectable methods
+type AgoutiSelector struct {
+	page *agouti.Page
+}
+
+// All is a mock method
+func (m *AgoutiSelector) All(selector string) *agouti.MultiSelection {
+	return m.page.All(selector)
+}
+
+// AllByXPath is a mock method
+func (m *AgoutiSelector) AllByXPath(selector string) *agouti.MultiSelection {
+	return m.page.AllByXPath(selector)
+}
+
+// AllByLabel is a mock method
+func (m *AgoutiSelector) AllByLabel(text string) *agouti.MultiSelection {
+	return m.page.AllByLabel(text)
+}
+
+// AllByButton is a mock method
+func (m *AgoutiSelector) AllByButton(text string) *agouti.MultiSelection {
+	return m.page.AllByButton(text)
+}
+
+// AllByName is a mock method
+func (m *AgoutiSelector) AllByName(name string) *agouti.MultiSelection {
+	return m.page.AllByName(name)
+}
+
+// AllByLink is a mock method
+func (m *AgoutiSelector) AllByLink(text string) *agouti.MultiSelection {
+	return m.page.AllByLink(text)
+}
+
+// AllByID is a mock method
+func (m *AgoutiSelector) AllByID(text string) *agouti.MultiSelection {
+	return m.page.AllByID(text)
+}
+
+// AllByClass is a mock method
+func (m *AgoutiSelector) AllByClass(text string) *agouti.MultiSelection {
+	return m.page.AllByClass(text)
+}
+
+// First is a mock method
+func (m *AgoutiSelector) First(selector string) *agouti.Selection {
+	return m.page.First(selector)
+}
+
+// FirstByLink is a mock method
+func (m *AgoutiSelector) FirstByLink(text string) *agouti.Selection {
+	return m.page.FirstByLink(text)
+}
+
 // MockSelectable is a mock of agouti.selectable
 type MockSelectable struct {
 	mock.Mock

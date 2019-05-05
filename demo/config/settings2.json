@@ -1,0 +1,42 @@
+{
+	"projectName": "kosher",
+	"appVersion": "1.0.0",
+	"platform": "web",
+	"driver": "chrome",
+	"reportFormat": "simple",
+	"dateFormat": "DD/MM/YYYY",
+    "defaultEnvironment": "test",
+    "screenFormat": "desktop",
+	"quitOnFail": false,
+    "screenFormats": {
+        "desktop": {
+            "width": 2000,
+            "height": 980
+         },
+        "mobile": {
+            "width": 362,
+            "height": 868
+        },
+        "tablet": {
+            "width": 814,
+            "height": 868
+        },
+        "landscape": {
+            "width": 522,
+            "height": 362
+        }
+    },
+    "integrations": {
+        "jira": {
+            "host": "https://alm.cgifederal.com/projects",
+	    "defaults": {
+            	"labels": "MICAPS7,MIDTIER",
+		"projectKey": "MICAN",
+		"issueType": "Bug",
+		"affectsVersion": "7.0.0.0.35",
+		"labels": "MICAPS7,kosher",
+		"priority": "Critical"
+	    }
+        }
+    }
+}

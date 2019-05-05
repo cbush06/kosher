@@ -91,6 +91,7 @@ func buildRunCommand() *runCommand {
 				return err
 			}
 
+			// Start the web driver and ensure it's shutdown later
 			defer client.StopDriver()
 			if err = client.StartDriver(); err != nil {
 				return err
@@ -111,17 +112,24 @@ func buildRunCommand() *runCommand {
 				return fmt.Errorf("error encountered resizing window at startup: %s", err)
 			}
 
+			// Prepare to record results for reporting
 			reportBuilder := report.NewReport(newCmd.settings)
-			godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
+
+			// Run the tests
+			godogExitCode := godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
 				newCmd.buildFeatureContext(page, suite)
 				suiteCtx = suitecontext.CreateSuiteContext(suite)
 			}, newCmd.buildGoDogOptions(reportBuilder))
 
-			if err := reportBuilder.Process(); err != nil {
-				log.Printf("Failed to generate report: %s", err)
+			// Only produce reports if GoDog ran successfully
+			if godogExitCode > 0 {
+				log.Printf("GoDog failing exit code reported: %d\n", godogExitCode)
+			} else {
+				if err := reportBuilder.Process(); err != nil {
+					log.Printf("Failed to generate report: %s", err)
+				}
+				fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
 			}
-
-			fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
 
 			return nil
 		},

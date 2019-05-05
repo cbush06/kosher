@@ -30,9 +30,6 @@ const (
 	Mock = "mock"
 )
 
-// MockDriver is the driver returned when unit testing
-var MockDriver *interfaces.MockDriver
-
 // Client encapsulates the web driver and associated utilities specified by the project's settings.
 type Client struct {
 	DriverType string
@@ -69,25 +66,25 @@ func NewClient(sysSettings *config.Settings) (*Client, error) {
 	case Chrome:
 		return &Client{
 			DriverType: driverSetting,
-			WebDriver:  agouti.ChromeDriver(),
+			WebDriver:  interfaces.NewDriverService(agouti.ChromeDriver()),
 			IsStarted:  false,
 		}, nil
 	case Ie:
 		return &Client{
 			DriverType: driverSetting,
-			WebDriver:  agouti.NewWebDriver("http://{{.Address}}", []string{"IEDriverServer.exe", "/port={{.Port}} "}),
+			WebDriver:  interfaces.NewDriverService(agouti.NewWebDriver("http://{{.Address}}", []string{"IEDriverServer.exe", "/port={{.Port}} "})),
 			IsStarted:  false,
 		}, nil
 	case Edge:
 		return &Client{
 			DriverType: driverSetting,
-			WebDriver:  agouti.EdgeDriver(),
+			WebDriver:  interfaces.NewDriverService(agouti.EdgeDriver()),
 			IsStarted:  false,
 		}, nil
 	case PhantomJS:
 		return &Client{
 			DriverType: driverSetting,
-			WebDriver:  agouti.PhantomJS(),
+			WebDriver:  interfaces.NewDriverService(agouti.PhantomJS()),
 			IsStarted:  false,
 		}, nil
 	case Desktop:
@@ -99,7 +96,7 @@ func NewClient(sysSettings *config.Settings) (*Client, error) {
 	case Mock:
 		return &Client{
 			DriverType: driverSetting,
-			WebDriver:  MockDriver,
+			WebDriver:  interfaces.NewDriverService(nil),
 			IsStarted:  false,
 		}, nil
 	default:

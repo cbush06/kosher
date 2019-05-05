@@ -1,7 +1,7 @@
 package interfaces
 
 import (
-	"github.com/sclevine/agouti/api"
+	"github.com/sclevine/agouti"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -11,7 +11,7 @@ type PageService interface {
 	Size(width, height int) error
 	Screenshot(filename string) error
 	WindowCount() (int, error)
-	Session() *api.Session
+	Session() SessionService
 	Refresh() error
 	RunScript(body string, arguments map[string]interface{}, result interface{}) error
 	Navigate(url string) error
@@ -21,6 +21,84 @@ type PageService interface {
 	EnterPopupText(text string) error
 	PopupText() (string, error)
 	URL() (string, error)
+}
+
+// NewPageServiceFromAgoutiPage either wraps an agouti.Page (if one is provided) or a MockPage (if nil is provided) in a PageService
+func NewPageServiceFromAgoutiPage(page *agouti.Page) PageService {
+	return &AgoutiPage{
+		page: page,
+	}
+}
+
+// AgoutiPage wraps an agouti.Page as an adapter
+type AgoutiPage struct {
+	AgoutiSelector
+	page *agouti.Page
+}
+
+// Size is a mock method
+func (m *AgoutiPage) Size(width, height int) error {
+	return m.page.Size(width, height)
+}
+
+// Screenshot is a mock method
+func (m *AgoutiPage) Screenshot(filename string) error {
+	return m.page.Screenshot(filename)
+}
+
+// WindowCount is a mock method
+func (m *AgoutiPage) WindowCount() (int, error) {
+	return m.page.WindowCount()
+}
+
+// Session is a mock method
+func (m *AgoutiPage) Session() SessionService {
+	return m.page.Session()
+}
+
+// Refresh is a mock method
+func (m *AgoutiPage) Refresh() error {
+	return m.page.Refresh()
+}
+
+// RunScript is a mock method
+func (m *AgoutiPage) RunScript(body string, arguments map[string]interface{}, result interface{}) error {
+	return m.page.RunScript(body, arguments, result)
+}
+
+// Navigate is a mock method
+func (m *AgoutiPage) Navigate(url string) error {
+	return m.page.Navigate(url)
+}
+
+// SwitchToRootFrame is a mock method
+func (m *AgoutiPage) SwitchToRootFrame() error {
+	return m.page.SwitchToRootFrame()
+}
+
+// ConfirmPopup is a mock method
+func (m *AgoutiPage) ConfirmPopup() error {
+	return m.page.ConfirmPopup()
+}
+
+// CancelPopup is a mock method
+func (m *AgoutiPage) CancelPopup() error {
+	return m.page.CancelPopup()
+}
+
+// EnterPopupText is a mock method
+func (m *AgoutiPage) EnterPopupText(text string) error {
+	return m.page.EnterPopupText(text)
+}
+
+// PopupText is a mock method
+func (m *AgoutiPage) PopupText() (string, error) {
+	return m.page.PopupText()
+}
+
+// URL is a mock method
+func (m *AgoutiPage) URL() (string, error) {
+	return m.page.URL()
 }
 
 // MockPage is a mock of agouti.Page
@@ -48,9 +126,9 @@ func (m *MockPage) WindowCount() (int, error) {
 }
 
 // Session is a mock method
-func (m *MockPage) Session() *api.Session {
+func (m *MockPage) Session() SessionService {
 	args := m.Called()
-	return args.Get(0).(*api.Session)
+	return args.Get(0).(SessionService)
 }
 
 // Refresh is a mock method

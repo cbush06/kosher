@@ -9,7 +9,6 @@ import (
 	"github.com/cbush06/kosher/fs"
 	"github.com/sclevine/agouti"
 
-	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/common"
 	"github.com/cbush06/kosher/interfaces"
 	"github.com/spf13/afero"
@@ -33,11 +32,10 @@ func TestRunCommandArgValidation(t *testing.T) {
 		// Prepare the MockPage for assertions
 		page := new(interfaces.MockPage)
 		page.On("Size", 2000, 980).Return(nil).Once()
-		page.On("Session").Return(new(interfaces.MockSession)).Twice()
+		page.On("Session").Return(new(interfaces.MockSession)).Once()
 
 		// Prepare the MockDriver for assertions
-		clients.MockDriver = new(interfaces.MockDriver)
-		driver := clients.MockDriver
+		driver := interfaces.UnitTestingMockDriver
 		driver.On("Start").Return(nil).Once()
 		driver.On("Stop").Return(nil).Once()
 		driver.On("NewPage", []agouti.Option(nil)).Return(page, nil).Once()
