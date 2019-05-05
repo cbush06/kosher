@@ -26,13 +26,14 @@ type PageService interface {
 // NewPageServiceFromAgoutiPage either wraps an agouti.Page (if one is provided) or a MockPage (if nil is provided) in a PageService
 func NewPageServiceFromAgoutiPage(page *agouti.Page) PageService {
 	return &AgoutiPage{
-		page: page,
+		SelectorService: NewSelectorServiceFromAgoutiPage(page),
+		page:            page,
 	}
 }
 
 // AgoutiPage wraps an agouti.Page as an adapter
 type AgoutiPage struct {
-	AgoutiSelector
+	SelectorService
 	page *agouti.Page
 }
 
