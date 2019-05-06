@@ -57,6 +57,7 @@ func buildRunCommand() *runCommand {
 			var (
 				err      error
 				suiteCtx *suitecontext.SuiteContext
+				client   *clients.Client
 			)
 
 			// grab the path arg if specified -- this determines what feature(s) get executed
@@ -86,8 +87,7 @@ func buildRunCommand() *runCommand {
 			newCmd.settings.Settings.Set("environment", newCmd.environment)
 
 			// build the web driver client and fire it up
-			client, err := clients.NewClient(newCmd.settings)
-			if err != nil {
+			if client, err = clients.NewClient(newCmd.settings); err != nil {
 				return err
 			}
 

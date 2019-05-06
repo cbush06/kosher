@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var rootCmd = cmdKosher.command
+var rootCmd = buildKosherCommand().command
 
 // Init prepares the CLI interpreter and executes it
 func Init() {

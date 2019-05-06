@@ -35,11 +35,19 @@ func NewSettings(fs *fs.Fs) *Settings {
 // GetEnvironmentBaseURL returns the base URL for the environment of the current run
 func (s *Settings) GetEnvironmentBaseURL() string {
 	if !s.Settings.IsSet("environment") {
-		log.Fatal("No setting found for [environment]")
+		log.Print("No setting found for [environment]\n")
+		return ""
 	}
+
 	environment := s.Settings.GetString("environment")
+	if len(environment) < 1 {
+		log.Print("Empty setting found for [environment]\n")
+		return ""
+	}
+
 	if !s.Environments.IsSet(environment) {
-		log.Fatalf("No entry found for [%s] in the environments file", environment)
+		log.Printf("No entry found for [%s] in the environments file\n", environment)
+		return ""
 	}
 	return s.Environments.GetString(environment)
 }
@@ -47,29 +55,39 @@ func (s *Settings) GetEnvironmentBaseURL() string {
 type providerModifier func(v *viper.Viper)
 
 func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) Provider {
-	provider := viper.New()
-	path, _ := fs.ConfigDir.RealPath(fileName)
+	var (
+		provider = viper.New()
+		path, _  = fs.ConfigDir.RealPath(fileName)
+		exists   bool
+		rawBytes []byte
+		file     afero.File
+		err      error
+	)
 
-	if _, err := fs.ConfigDir.Stat(fileName); err != nil {
-		log.Fatalf("Stat failed for [%s]: %s", path, err)
+	if _, err = fs.ConfigDir.Stat(fileName); err != nil {
+		log.Printf("Stat failed for [%s]: %s\n", path, err)
+		return nil
 	}
-	if exists, err := afero.Exists(fs.ConfigDir, fileName); !exists {
+	if exists, err = afero.Exists(fs.ConfigDir, fileName); !exists || err != nil {
 		if err != nil {
 			log.Println(err)
 		}
-		log.Fatal("Configuration file does not exist: " + path)
+		log.Println("Configuration file does not exist: " + path)
+		return nil
 	}
 
-	if file, err := fs.ConfigDir.OpenFile(fileName, os.O_RDONLY, 0744); err != nil {
-		log.Fatalf("Error encountered while opening config file at [%s]: %s", path, err)
-	} else {
-		if rawBytes, err := afero.ReadAll(file); err != nil {
-			log.Fatalf("Error reading config file [%s]: %s", path, err)
-		} else {
-			provider.SetConfigType("json")
-			provider.ReadConfig(bytes.NewBuffer(rawBytes))
-		}
+	if file, err = fs.ConfigDir.OpenFile(fileName, os.O_RDONLY, 0744); err != nil {
+		log.Printf("Error encountered while opening config file at [%s]: %s\n", path, err)
+		return nil
 	}
+
+	if rawBytes, err = afero.ReadAll(file); err != nil {
+		log.Printf("Error reading config file [%s]: %s\n", path, err)
+		return nil
+	}
+
+	provider.SetConfigType("json")
+	provider.ReadConfig(bytes.NewBuffer(rawBytes))
 
 	if modifyProvider != nil {
 		modifyProvider(provider)

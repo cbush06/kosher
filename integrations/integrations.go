@@ -1,12 +1,14 @@
 package integrations
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
 	"github.com/cbush06/kosher/common"
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/integrations/jira"
+	"github.com/cbush06/kosher/integrations/mocksendable"
 	"github.com/cbush06/kosher/report"
 	"github.com/spf13/afero"
 )
@@ -14,7 +16,13 @@ import (
 const (
 	// Jira specifies a Jira system to `SendTo` command
 	Jira = iota
+
+	// Mock specifies a mock Sendable
+	Mock
 )
+
+// MockSendable is a mock sendable for unit testing
+var MockSendable = new(mocksendable.MockSendable)
 
 // SendTo transmits the results stored in the `results.json` file to the specified `system`. The `system` parameter should be one of the constants specified in this file.
 func SendTo(system int, s *config.Settings) error {
@@ -47,10 +55,14 @@ func SendTo(system int, s *config.Settings) error {
 	// Unmarshall the file into a CucumberReport
 	cukeReport.UnmarshallJSON(jsonResults)
 
-	// Call the appropriate integration
-	switch system {
-	case Jira:
-		sendable = &jira.Jira{}
+	// Call the appropriate integration (use mock for unit testing)
+	if flag.Lookup("test.v") != nil {
+		sendable = MockSendable
+	} else {
+		switch system {
+		case Jira:
+			sendable = new(jira.Jira)
+		}
 	}
 
 	return sendable.Send(s, &cukeReport)
