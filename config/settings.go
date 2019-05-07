@@ -64,10 +64,6 @@ func buildProvider(fileName string, fs *fs.Fs, modifyProvider providerModifier) 
 		err      error
 	)
 
-	if _, err = fs.ConfigDir.Stat(fileName); err != nil {
-		log.Printf("Stat failed for [%s]: %s\n", path, err)
-		return nil
-	}
 	if exists, err = afero.Exists(fs.ConfigDir, fileName); !exists || err != nil {
 		if err != nil {
 			log.Println(err)
