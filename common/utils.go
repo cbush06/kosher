@@ -2,10 +2,13 @@ package common
 
 import (
 	"bytes"
+	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 
 	"github.com/spf13/afero"
 )
@@ -41,4 +44,33 @@ func BuildTestProject(fs afero.Fs) error {
 	afero.WriteReader(fs, filepath.Join(workingDir, ConfigDir, SelectorsFile), bytes.NewBufferString(`{}`))
 	afero.WriteReader(fs, filepath.Join(workingDir, ConfigDir, SettingsFile), bytes.NewBufferString(`{}`))
 	return nil
+}
+
+// CaptureStdout executes a task and returns any text it wrote to Stdout
+func CaptureStdout(task func()) string {
+	reader, writer, _ := os.Pipe()
+
+	stdout := os.Stdout
+	defer func() {
+		reader.Close()
+		os.Stdout = stdout
+		log.SetOutput(stdout)
+	}()
+	os.Stdout = writer
+	log.SetOutput(writer)
+
+	capture := make(chan string)
+
+	wait := new(sync.WaitGroup)
+	wait.Add(1)
+	go func() {
+		buf := bytes.NewBuffer([]byte{})
+		wait.Done()
+		io.Copy(buf, reader)
+		capture <- buf.String()
+	}()
+	wait.Wait()
+	task()
+	writer.Close()
+	return <-capture
 }

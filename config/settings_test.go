@@ -1,7 +1,13 @@
 package config
 
 import (
+	"bytes"
 	"testing"
+
+	"github.com/spf13/afero"
+
+	"github.com/cbush06/kosher/common"
+	"github.com/cbush06/kosher/fs"
 
 	"github.com/spf13/pflag"
 	"github.com/stretchr/testify/assert"
@@ -116,4 +122,71 @@ func TestGetEnvironmentBaseURL(t *testing.T) {
 		actual := settings.GetEnvironmentBaseURL()
 		assert.Equalf(t, "good to go", actual, "expected [good to go] response, but was [%s]", actual)
 	})
+}
+
+func TestBuildProvider(t *testing.T) {
+	t.Run("File-Not-Found", func(t *testing.T) {
+		errorMsg := "Configuration file does not exist"
+
+		fs.MockFs = afero.NewMemMapFs()
+		common.BuildTestProject(fs.MockFs)
+
+		fileSys, _ := fs.NewFs("")
+		fileSys.ConfigDir.Remove("settings.json")
+
+		var provider Provider
+		consoleOutput := common.CaptureStdout(func() {
+			provider = buildProvider("settings.json", fileSys, nil)
+		})
+		assert.Nil(t, provider, "expected provider to  be nil due to non-existent file, but was not")
+		assert.Containsf(t, consoleOutput, errorMsg, "expected log message containing [%s], but not found", errorMsg)
+	})
+
+	// TODO: Test failure to open file
+	// TODO: Test failure to read file
+
+	t.Run("Main-Path", func(t *testing.T) {
+		fs.MockFs = afero.NewMemMapFs()
+		common.BuildTestProject(fs.MockFs)
+		fileSys, _ := fs.NewFs("")
+
+		afero.WriteReader(fileSys.ConfigDir, "settings.json", bytes.NewBufferString(`{ "projectName": "test" }`))
+
+		var provider Provider
+		consoleOutput := common.CaptureStdout(func() {
+			provider = buildProvider("settings.json", fileSys, nil)
+		})
+		assert.NotNil(t, provider, "expected provider be successfully created")
+		assert.Emptyf(t, consoleOutput, "expected no console output but got [%s]", consoleOutput)
+		assert.Equal(t, "test", provider.GetString("projectName"), "expect property [projectName] to equal [test]")
+	})
+
+	t.Run("Settings-Provider-Modifier", func(t *testing.T) {
+		fs.MockFs = afero.NewMemMapFs()
+		common.BuildTestProject(fs.MockFs)
+		fileSys, _ := fs.NewFs("")
+
+		var provider Provider
+		consoleOutput := common.CaptureStdout(func() {
+			provider = buildProvider("settings.json", fileSys, modSettingsProvider)
+		})
+		assert.NotNil(t, provider, "expected provider be successfully created")
+		assert.Emptyf(t, consoleOutput, "expected no console output but got [%s]", consoleOutput)
+		assert.Equal(t, "kosher tested app", provider.GetString("projectName"), "expect property [projectName] to equal [kosher tested app]")
+	})
+
+	t.Run("Pages-Provider-Modifier", func(t *testing.T) {
+		fs.MockFs = afero.NewMemMapFs()
+		common.BuildTestProject(fs.MockFs)
+		fileSys, _ := fs.NewFs("")
+
+		var provider Provider
+		consoleOutput := common.CaptureStdout(func() {
+			provider = buildProvider("settings.json", fileSys, modSettingsProvider)
+		})
+		assert.NotNil(t, provider, "expected provider be successfully created")
+		assert.Emptyf(t, consoleOutput, "expected no console output but got [%s]", consoleOutput)
+		assert.Equal(t, "kosher tested app", provider.GetString("projectName"), "expect property [projectName] to equal [kosher tested app]")
+	})
+
 }
