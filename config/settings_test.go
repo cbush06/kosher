@@ -182,11 +182,11 @@ func TestBuildProvider(t *testing.T) {
 
 		var provider Provider
 		consoleOutput := common.CaptureStdout(func() {
-			provider = buildProvider("settings.json", fileSys, modSettingsProvider)
+			provider = buildProvider("pages.json", fileSys, modPagesProvider)
 		})
 		assert.NotNil(t, provider, "expected provider be successfully created")
 		assert.Emptyf(t, consoleOutput, "expected no console output but got [%s]", consoleOutput)
-		assert.Equal(t, "kosher tested app", provider.GetString("projectName"), "expect property [projectName] to equal [kosher tested app]")
+		assert.Equal(t, "/", provider.GetString("home"), "expect property [home] to equal [/]")
 	})
 
 }
