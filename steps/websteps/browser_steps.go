@@ -7,6 +7,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/DATA-DOG/godog/gherkin"
 	"github.com/cbush06/kosher/steps/steputils"
 	"github.com/sclevine/agouti/api"
 )
@@ -27,14 +28,18 @@ func iWaitSeconds() func(int) error {
 	}
 }
 
-func iTakeAScreenshot(s *steputils.StepUtils) func() error {
-	return func() error {
+func iTakeAScreenshot(s *steputils.StepUtils) func(*gherkin.Embeddings) error {
+	return func(e *gherkin.Embeddings) error {
 		now := time.Now()
+
 		fileName := "screenshot_" + now.Format("02Jan2006-150405.000.png")
 		filePath, _ := s.Settings.FileSystem.ResultsDir.RealPath(fileName)
+
 		if err := s.Page.Screenshot(filePath); err != nil {
 			return fmt.Errorf("error encountered while taking screenshot: %s", err)
 		}
+		e.AddEmbedding("image/png", fileName)
+
 		return nil
 	}
 }

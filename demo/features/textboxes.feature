@@ -13,6 +13,7 @@ Feature: Test Textbox Manipulation and Validation
         And I press "Show Message"
         Then I should see "Hello, World"
 
+    @docstring
     Scenario: Fill in Textarea
         Verify that filling a textarea with multiline text works.
 
