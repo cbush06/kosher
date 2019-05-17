@@ -3,6 +3,6 @@ package common
 // CurrentVersion is the current version of Kosher; the one, true version number in this code base.
 var CurrentVersion = &Version{
 	Major: 1,
-	Minor: 6,
-	Patch: 1,
+	Minor: 7,
+	Patch: 0,
 }
