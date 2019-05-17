@@ -25,6 +25,8 @@ The `settings.json` file allows the user to specify global settings for a kosher
     "screenFormat": "desktop",
     "quitOnFail": false,
     "ignoreInvisible": true,
+    "waitAfterScenario": 0,
+    "waitAfterStep": 0,
     "screenFormats": {
         "desktop": {
             "width": 2000,
@@ -162,6 +164,26 @@ Specifies if kosher should act as if elements that are invisible to the user do 
 | type           | boolean     |
 | required       | no          |
 | default        | true        |
+
+### waitAfterScenario
+
+Specifies a wait time to pause for following every scenario. **This is measured in milliseconds.**
+
+| Characteristic | Description |
+| -------------- | ----------- |
+| type           | int         |
+| required       | no          |
+| default        | 0           |
+
+### waitAfterStep
+
+Specifies a wait time to pause for following every step. **This is measured in milliseconds.**
+
+| Characteristic | Description |
+| -------------- | ----------- |
+| type           | int         |
+| required       | no          |
+| default        | 0           |
 
 ### screenFormats
 

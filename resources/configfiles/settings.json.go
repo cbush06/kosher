@@ -14,6 +14,8 @@ func GetSettingsJSON(projectName string) string {
     "screenFormat": "desktop",
 	"quitOnFail": false,
 	"ignoreInvisible": true,
+	"waitAfterScenario": 0,
+	"waitAfterStep": 0,
     "screenFormats": {
         "desktop": {
             "width": 2000,

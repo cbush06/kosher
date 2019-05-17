@@ -108,6 +108,8 @@ func modSettingsProvider(v *viper.Viper) {
 	v.SetDefault("screenFormat", "desktop")
 	v.SetDefault("quitOnFail", false)
 	v.SetDefault("ignoreInvisible", true)
+	v.SetDefault("waitAfterScenario", 0)
+	v.SetDefault("waitAfterStep", 0)
 	v.SetDefault("screenFormats.desktop.width", 2000)
 	v.SetDefault("screenFormats.desktop.height", 980)
 	v.SetDefault("screenFormats.mobile.width", 362)
