@@ -14,6 +14,8 @@ func GetSettingsDesktopJSON(projectName string) string {
 	"deviceName": "PC name",
 	"quitOnFail": false,
 	"ignoreInvisible": true,
+	"waitAfterScenario": 0,
+	"waitAfterStep": 0,
 	"integrations": {
 		"jira": {
 			"host": "http://127.0.0.1",

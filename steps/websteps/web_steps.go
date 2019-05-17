@@ -1,7 +1,10 @@
 package websteps
 
 import (
+	"time"
+
 	"github.com/DATA-DOG/godog"
+	"github.com/DATA-DOG/godog/gherkin"
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/interfaces"
 	"github.com/cbush06/kosher/steps/steputils"
@@ -89,4 +92,26 @@ func BuildGoDogSuite(settings *config.Settings, page interfaces.PageService, sui
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not exist$`, confirmElementNotExists(utils))
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should contain "([^"]*)"$`, elementShouldContain(utils))
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not contain "([^"]*)"$`, elementShouldNotContain(utils))
+
+	// Get the specified wait times
+	waitAfterScenario := utils.Settings.Settings.GetInt("waitAfterScenario")
+	waitAfterStep := utils.Settings.Settings.GetInt("waitAfterStep")
+
+	// If a "wait after scenario" is specified, add the pause
+	if waitAfterScenario > 0 {
+		suite.AfterScenario(func(s interface{}, err error) {
+			if err == nil {
+				time.Sleep(time.Duration(waitAfterScenario) * time.Millisecond)
+			}
+		})
+	}
+
+	// If a "wait after step" is specified, add the pause
+	if waitAfterStep > 0 {
+		suite.AfterStep(func(s *gherkin.Step, err error) {
+			if err == nil {
+				time.Sleep(time.Duration(waitAfterStep) * time.Millisecond)
+			}
+		})
+	}
 }
