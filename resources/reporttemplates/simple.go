@@ -151,6 +151,18 @@ func GetSimpleTemplate() string {
 									</tr>
 									{{end}}
 
+									{{if (eq .Result.Status "passed")}}
+										{{if gt (len .Embeddings) 0}}
+											{{range .Embeddings}}
+											<tr>
+												<td>
+													<img src="data:{{.MimeType}};base64, {{.Data}}" style="width: 100%;" />
+												</td>
+											</tr>
+											{{end}}
+										{{end}}
+									{{end}}
+
 									{{if (eq .Result.Status "failed")}}
 										<tr>
 											<td colspan="2" class="bg-danger">

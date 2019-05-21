@@ -1,11 +1,14 @@
 package websteps
 
 import (
+	"encoding/base64"
 	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/spf13/afero"
 
 	"github.com/DATA-DOG/godog/gherkin"
 	"github.com/cbush06/kosher/steps/steputils"
@@ -38,7 +41,9 @@ func iTakeAScreenshot(s *steputils.StepUtils) func(*gherkin.Embeddings) error {
 		if err := s.Page.Screenshot(filePath); err != nil {
 			return fmt.Errorf("error encountered while taking screenshot: %s", err)
 		}
-		e.AddEmbedding("image/png", fileName)
+
+		imageBytes, _ := afero.ReadFile(s.Settings.FileSystem.ResultsDir, fileName)
+		e.AddEmbedding("image/png", base64.StdEncoding.EncodeToString(imageBytes))
 
 		return nil
 	}
