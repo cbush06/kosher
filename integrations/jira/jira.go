@@ -3,8 +3,10 @@ package jira
 import (
 	"bufio"
 	"bytes"
+	"encoding/base64"
 	"errors"
 	"fmt"
+	"mime"
 	"os"
 	"os/exec"
 	"sort"
@@ -477,8 +479,35 @@ func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElem
 		if createdIssue, _, err = j.jiraConn.Issue.Create(newIssue); err != nil {
 			return false, fmt.Errorf("error encountered while creating new issue: %s", err)
 		}
-
 		fmt.Printf("\tIssue [%s] created...\n", createdIssue.Key)
+
+		// Upload any attachments
+		var successfulUploads int
+		var unsuccessfulUploads int
+		for _, step := range element.Steps {
+			if step.Embeddings != nil {
+				for idx, att := range step.Embeddings {
+					// Decode Base64-encoded data from the JSON Cucumber Report
+					attBytes, _ := base64.StdEncoding.DecodeString(att.Data)
+
+					// Determine file extension based on MIME type
+					if fileExts, err2 := mime.ExtensionsByType(att.MimeType); fileExts != nil && err2 == nil {
+						fileName := fmt.Sprintf("attachment_%d%s", idx, fileExts[0])
+						if _, _, err = j.jiraConn.Issue.PostAttachment(createdIssue.ID, bytes.NewReader(attBytes), fileName); err != nil {
+							fmt.Printf("\tAttached upload failed due to error: %s\n", err)
+							unsuccessfulUploads++
+						}
+						successfulUploads++
+					} else {
+						fmt.Printf("\tAttachment upload failed due to unknown MIME type [%s]...\n", att.MimeType)
+						unsuccessfulUploads++
+					}
+				}
+			}
+		}
+		if unsuccessfulUploads+successfulUploads > 0 {
+			fmt.Printf("\t%d Attachments Uploaded, %d Attachments Failed\n", successfulUploads, unsuccessfulUploads)
+		}
 	}
 
 	fmt.Print("\n")

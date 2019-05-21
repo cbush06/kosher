@@ -7,6 +7,7 @@ Feature: Test Browser Interaction Features
     Scenario: Test Screenshot
         Given I go to the "file-download" page
         And take a screenshot
+	And I should see "blahblahblah"
 
     Scenario: Test Switching Windows
         Given I go to the "popup-window" page

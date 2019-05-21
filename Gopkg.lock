@@ -14,12 +14,12 @@
   version = "v0.7.13"
 
 [[projects]]
-  digest = "1:84c2663ac5412a2eed8d0270c260b5b12cc8dfbc1dc7fc03ece0a7f60f169afd"
+  digest = "1:9028c7740fd61f5baddc1af8432f152764e3521a594cd7d4df85aa66e27277d1"
   name = "github.com/andygrunwald/go-jira"
   packages = ["."]
   pruneopts = ""
-  revision = "e2a9240a5cdecd666b9e2f7b5b20343022b4d467"
-  version = "1.6.0"
+  revision = "84a0f1e46f9f716ff0acfa73ba22b2bd8278b239"
+  version = "v1.9.0"
 
 [[projects]]
   digest = "1:0deddd908b6b4b768cfc272c16ee61e7088a60f7fe2f06c547bd3d8e1f8b8e77"
