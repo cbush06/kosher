@@ -3,8 +3,8 @@ package websteps
 import (
 	"time"
 
-	"github.com/DATA-DOG/godog"
-	"github.com/DATA-DOG/godog/gherkin"
+	"github.com/cbush06/godog"
+	"github.com/cbush06/godog/gherkin"
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/interfaces"
 	"github.com/cbush06/kosher/steps/steputils"

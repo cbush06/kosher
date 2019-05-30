@@ -10,7 +10,7 @@ import (
 
 	"github.com/spf13/afero"
 
-	"github.com/DATA-DOG/godog/gherkin"
+	"github.com/cbush06/godog/gherkin"
 	"github.com/cbush06/kosher/steps/steputils"
 	"github.com/sclevine/agouti/api"
 )

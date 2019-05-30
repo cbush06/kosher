@@ -17,7 +17,7 @@ import (
 
 	"github.com/trivago/tgo/tcontainer"
 
-	"github.com/DATA-DOG/godog/gherkin"
+	"github.com/cbush06/godog/gherkin"
 
 	"golang.org/x/crypto/ssh/terminal"
 

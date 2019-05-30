@@ -12,7 +12,7 @@ import (
 	"github.com/cbush06/kosher/interfaces"
 	"github.com/cbush06/kosher/suitecontext"
 
-	"github.com/DATA-DOG/godog"
+	"github.com/cbush06/godog"
 
 	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/config"
