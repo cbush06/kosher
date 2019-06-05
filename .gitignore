@@ -26,4 +26,4 @@ coverage.txt
 **/demo/results/*
 
 # Ignore vs code files
-**/.code-workspace
+**/*.code-workspace
