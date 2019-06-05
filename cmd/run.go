@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"errors"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -115,11 +116,15 @@ func buildRunCommand() *runCommand {
 			// Prepare to record results for reporting
 			reportBuilder := report.NewReport(newCmd.settings)
 
-			// Run the tests
-			godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
-				newCmd.buildFeatureContext(page, suite)
-				suiteCtx = suitecontext.CreateSuiteContext(suite)
-			}, newCmd.buildGoDogOptions(reportBuilder))
+			// Run godog if not unit testing (godog doesn't play nice with the virtual afero filesystem used during testing, so we skip godog)
+			if flag.Lookup("test.v") == nil {
+				godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
+					newCmd.buildFeatureContext(page, suite)
+					suiteCtx = suitecontext.CreateSuiteContext(suite)
+				}, newCmd.buildGoDogOptions(reportBuilder))
+			} else {
+				suiteCtx = &suitecontext.SuiteContext{}
+			}
 
 			if err := reportBuilder.Process(); err != nil {
 				log.Printf("Failed to generate report: %s", err)

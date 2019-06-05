@@ -24,3 +24,6 @@ linux-config
 # Ignore results of tests
 coverage.txt
 **/demo/results/*
+
+# Ignore vs code files
+**/.code-workspace
