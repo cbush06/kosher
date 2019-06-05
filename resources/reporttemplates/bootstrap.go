@@ -192,6 +192,16 @@ func GetBootstrapTemplate() string {
 															</div>
 															{{end}}
 
+															{{if (eq .Result.Status "passed")}}
+																{{if gt (len .Embeddings) 0}}
+																	{{range .Embeddings}}
+																	<div class="row">
+																		<img src="data:{{.MimeType}};base64, {{.Data}}" style="width: 100%;" />
+																	</div>
+																	{{end}}
+																{{end}}
+															{{end}}
+
 															{{if (eq .Result.Status "failed")}}
 															<div class="row">
 																<div class="col alert alert-danger">

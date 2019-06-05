@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/DATA-DOG/godog/gherkin"
+	"github.com/cbush06/godog/gherkin"
 	"github.com/cbush06/kosher/steps/steputils"
 	"github.com/sclevine/agouti"
 )

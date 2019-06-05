@@ -5,8 +5,8 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/DATA-DOG/godog"
-	"github.com/DATA-DOG/godog/gherkin"
+	"github.com/cbush06/godog"
+	"github.com/cbush06/godog/gherkin"
 	"github.com/cbush06/kosher/fs"
 	"github.com/spf13/afero"
 )

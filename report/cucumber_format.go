@@ -64,7 +64,7 @@ type CukeStep struct {
 	Docstring  *CukeDocstring      `json:"doc_string,omitempty"`
 	Match      CukeMatch           `json:"match"`
 	Result     CukeResult          `json:"result"`
-	Embeddings []CukeEmbedding     `json:"embeddings,omitempty"`
+	Embeddings []*CukeEmbedding    `json:"embeddings,omitempty"`
 	DataTable  []*CukeDataTableRow `json:"rows,omitempty"`
 }
 
@@ -201,6 +201,10 @@ func (r *CucumberReport) UnmarshallJSON(jsonResults []byte) error {
 
 				if step.DataTable == nil {
 					step.DataTable = make([]*CukeDataTableRow, 0)
+				}
+
+				if step.Embeddings == nil {
+					step.Embeddings = make([]*CukeEmbedding, 0)
 				}
 
 				switch step.Result.Status {

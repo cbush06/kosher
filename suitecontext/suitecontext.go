@@ -1,8 +1,8 @@
 package suitecontext
 
 import (
-	"github.com/DATA-DOG/godog"
-	"github.com/DATA-DOG/godog/gherkin"
+	"github.com/cbush06/godog"
+	"github.com/cbush06/godog/gherkin"
 )
 
 const (

@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"errors"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -12,7 +13,7 @@ import (
 	"github.com/cbush06/kosher/interfaces"
 	"github.com/cbush06/kosher/suitecontext"
 
-	"github.com/DATA-DOG/godog"
+	"github.com/cbush06/godog"
 
 	"github.com/cbush06/kosher/clients"
 	"github.com/cbush06/kosher/config"
@@ -115,21 +116,20 @@ func buildRunCommand() *runCommand {
 			// Prepare to record results for reporting
 			reportBuilder := report.NewReport(newCmd.settings)
 
-			// Run the tests
-			godogExitCode := godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
-				newCmd.buildFeatureContext(page, suite)
-				suiteCtx = suitecontext.CreateSuiteContext(suite)
-			}, newCmd.buildGoDogOptions(reportBuilder))
-
-			// Only produce reports if GoDog ran successfully
-			if godogExitCode > 0 {
-				log.Printf("GoDog failing exit code reported: %d\n", godogExitCode)
+			// Run godog if not unit testing (godog doesn't play nice with the virtual afero filesystem used during testing, so we skip godog)
+			if flag.Lookup("test.v") == nil {
+				godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
+					newCmd.buildFeatureContext(page, suite)
+					suiteCtx = suitecontext.CreateSuiteContext(suite)
+				}, newCmd.buildGoDogOptions(reportBuilder))
 			} else {
-				if err := reportBuilder.Process(); err != nil {
-					log.Printf("Failed to generate report: %s", err)
-				}
-				fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
+				suiteCtx = &suitecontext.SuiteContext{}
 			}
+
+			if err := reportBuilder.Process(); err != nil {
+				log.Printf("Failed to generate report: %s", err)
+			}
+			fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
 
 			return nil
 		},
