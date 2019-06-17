@@ -61,6 +61,7 @@ func buildRunCommand() *runCommand {
 				newCmd.pathArg = filepath.Clean(arg[0])
 			}
 
+			// Build out virtual file system
 			workingDir, _ := os.Getwd()
 			if newCmd.fileSystem, err = fs.NewFs(workingDir); err != nil {
 				log.Panicf("attempted to get file system but encountered error: %s", err)
