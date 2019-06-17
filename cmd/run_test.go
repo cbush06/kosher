@@ -17,17 +17,20 @@ import (
 )
 
 func TestRunCommandArgValidation(t *testing.T) {
+	var workingDir, _ = os.Getwd()
+
 	// If we're unit testing, construct a sample project in memory
 	fs.MockFs = afero.NewMemMapFs()
 	common.BuildTestProject(fs.MockFs)
 
 	t.Run("0-args-0-flags", func(t *testing.T) {
 		var cmdRun = buildRunCommand()
+		var testFs, _ = fs.NewFs(workingDir)
 		cmdRun.command.SetArgs([]string{})
 
 		// add dummy config files
-		afero.WriteReader(cmdRun.fileSystem.ConfigDir, common.SettingsFile, bytes.NewBufferString(`{"driver":"mock"}`))
-		afero.WriteReader(cmdRun.fileSystem.ConfigDir, common.EnvironmentsFile, bytes.NewBufferString(`{"test":"https://www.google.com"}`))
+		afero.WriteReader(testFs.ConfigDir, common.SettingsFile, bytes.NewBufferString(`{"driver":"mock"}`))
+		afero.WriteReader(testFs.ConfigDir, common.EnvironmentsFile, bytes.NewBufferString(`{"test":"https://www.google.com"}`))
 
 		// Prepare the MockPage for assertions
 		page := new(interfaces.MockPage)
@@ -55,11 +58,12 @@ func TestRunCommandArgValidation(t *testing.T) {
 
 	t.Run("0-args-Bad-Environment-Flag", func(t *testing.T) {
 		var cmdRun = buildRunCommand()
+		var testFs, _ = fs.NewFs(workingDir)
 		cmdRun.command.SetArgs([]string{"-e", "prod"})
 
 		// add dummy config files
-		afero.WriteReader(cmdRun.fileSystem.ConfigDir, common.SettingsFile, bytes.NewBufferString(`{"driver":"mock"}`))
-		afero.WriteReader(cmdRun.fileSystem.ConfigDir, common.EnvironmentsFile, bytes.NewBufferString(`{"test":"https://www.google.com"}`))
+		afero.WriteReader(testFs.ConfigDir, common.SettingsFile, bytes.NewBufferString(`{"driver":"mock"}`))
+		afero.WriteReader(testFs.ConfigDir, common.EnvironmentsFile, bytes.NewBufferString(`{"test":"https://www.google.com"}`))
 
 		// Prepare the MockDriver for assertions
 		interfaces.UnitTestingMockDriver = new(interfaces.MockDriver)
@@ -75,9 +79,10 @@ func TestRunCommandArgValidation(t *testing.T) {
 
 	t.Run("0-args-No-Environment", func(t *testing.T) {
 		var cmdRun = buildRunCommand()
+		var testFs, _ = fs.NewFs(workingDir)
 
 		// add dummy config files
-		afero.WriteReader(cmdRun.fileSystem.ConfigDir, common.SettingsFile, bytes.NewBufferString(`{"driver":"mock", "defaultEnvironment":""}`))
+		afero.WriteReader(testFs.ConfigDir, common.SettingsFile, bytes.NewBufferString(`{"driver":"mock", "defaultEnvironment":""}`))
 
 		// Prepare the MockDriver for assertions
 		interfaces.UnitTestingMockDriver = new(interfaces.MockDriver)

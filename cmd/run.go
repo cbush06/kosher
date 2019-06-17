@@ -37,16 +37,8 @@ type runCommand struct {
 }
 
 func buildRunCommand() *runCommand {
-	var err error
-
 	newCmd := &runCommand{
 		name: "run",
-	}
-
-	workingDir, _ := os.Getwd()
-	if newCmd.fileSystem, err = fs.NewFs(workingDir); err != nil {
-		log.Panicf("attempted to get file system but encountered error: %s", err)
-		return nil
 	}
 
 	newCmd.command = &cobra.Command{
@@ -67,6 +59,13 @@ func buildRunCommand() *runCommand {
 				newCmd.pathArg = path.Join(newCmd.pathArg, common.FeaturesDir)
 			} else {
 				newCmd.pathArg = filepath.Clean(arg[0])
+			}
+
+			// Build out virtual file system
+			workingDir, _ := os.Getwd()
+			if newCmd.fileSystem, err = fs.NewFs(workingDir); err != nil {
+				log.Panicf("attempted to get file system but encountered error: %s", err)
+				return nil
 			}
 
 			// build the settings file based on the working directory
