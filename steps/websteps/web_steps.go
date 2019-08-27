@@ -93,6 +93,20 @@ func BuildGoDogSuite(settings *config.Settings, page interfaces.PageService, sui
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should contain "([^"]*)"$`, elementShouldContain(utils))
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not contain "([^"]*)"$`, elementShouldNotContain(utils))
 
+	// Check for Ajax call in progress
+	// An AJAX app should provide a function that returns true if AJAX requests are pending/active:
+	// 			window.ajaxPending = function() {
+	//
+	// 			}
+	suite.BeforeStep(func(s *gherkin.Step) {
+		var ajaxPending bool
+		page.RunScript("return window.ajaxPending() == true;", nil, &ajaxPending)
+		for ajaxPending {
+			time.Sleep(time.Duration(5) * time.Millisecond)
+			page.RunScript("return window.ajaxPending() == true;", nil, &ajaxPending)
+		}
+	})
+
 	// Get the specified wait times
 	waitAfterScenario := utils.Settings.Settings.GetInt("waitAfterScenario")
 	waitAfterStep := utils.Settings.Settings.GetInt("waitAfterStep")
