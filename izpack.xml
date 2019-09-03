@@ -109,7 +109,7 @@
 
             <fileset dir="." includes="LICENSE,README" />
 
-            <fileset dir="./libs" targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs">
+            <fileset dir="./libs" targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs,axe.min.js">
                 <os family="linux" />
             </fileset>
             <executable type="bin" stage="never" failure="ask" keep="true">
@@ -117,7 +117,7 @@
                 <fileset targetdir="${INSTALL_PATH}/libs" includes="chromedriver,phantomjs" />
             </executable>
 
-            <fileset dir="./libs" targetedir="${INSTALL_PATH}/libs" includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe">
+            <fileset dir="./libs" targetedir="${INSTALL_PATH}/libs" includes="chromedriver.exe,phantomjs.exe,IEDriverServer.exe,axe.min.js">
                 <os family="windows" />
             </fileset>
             <executable type="bin" stage="never" failure="ask" keep="true">

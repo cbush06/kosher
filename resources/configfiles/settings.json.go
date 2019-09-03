@@ -16,6 +16,12 @@ func GetSettingsJSON(projectName string) string {
 	"ignoreInvisible": true,
 	"waitAfterScenario": 0,
 	"waitAfterStep": 0,
+	"accessibility": {
+		"ruleSets": [
+			"wcag21aa",
+			"section508"
+		]
+	},
     "screenFormats": {
         "desktop": {
             "width": 2000,

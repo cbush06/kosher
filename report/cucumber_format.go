@@ -9,6 +9,8 @@ import (
 	"github.com/cbush06/kosher/config"
 )
 
+const cukeErrMsg = "error encountered while generating cucumber report: %s"
+
 var leadingWhitespace = regexp.MustCompile(`(?m)^(?:\s*)(.*\S)(?:\s*)$`)
 
 // CukeComment is any single-line comment.
@@ -187,7 +189,7 @@ func NewCucumberReport(s *config.Settings) CucumberReport {
 // UnmarshallJSON unmarshalls JSON content into an array of CukeFeatures.
 func (r *CucumberReport) UnmarshallJSON(jsonResults []byte) error {
 	if err := json.Unmarshal(jsonResults, &r.Features); err != nil {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to parse JSON results of test execution: %s"), err)
+		return fmt.Errorf(fmt.Sprintf(cukeErrMsg, "failed to parse JSON results of test execution: %s"), err)
 	}
 
 	for f := 0; f < len(r.Features); f++ {

@@ -27,3 +27,6 @@ coverage.txt
 
 # Ignore vs code files
 **/*.code-workspace
+
+# Ignore node_modules
+**/node_modules/*
