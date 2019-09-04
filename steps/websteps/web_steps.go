@@ -94,7 +94,7 @@ func BuildGoDogSuite(settings *config.Settings, page interfaces.PageService, sui
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not contain "([^"]*)"$`, elementShouldNotContain(utils))
 
 	// accessiblity steps
-	suite.Step(`^(?:|I )test the page for accessibility`, iTestThePageForAccessibility(utils))
+	suite.Step(`^(?:|I )test (?:|the page )for accessibility$`, iTestThePageForAccessibility(utils))
 
 	// Get the specified wait times
 	waitAfterScenario := utils.Settings.Settings.GetInt("waitAfterScenario")

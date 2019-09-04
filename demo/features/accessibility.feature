@@ -4,5 +4,9 @@ Feature: Test Kosher's Accessibility Scanning
    to scan pages for Accessibility issues.
 
    Scenario: Scan a page.
-        Given I am on the "home" page
+        Given I am on the "bar-chart" page
+        And I test the page for accessibility
+    
+    Scenario: Scan another page
+        Given I am on the "pie-chart" page
         And I test the page for accessibility

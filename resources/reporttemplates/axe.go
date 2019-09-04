@@ -11,6 +11,19 @@ func GetAxeTemplate() string {
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+			.card-header .collapsed .fa {
+				transform: rotate(90deg);
+			}
+			
+			.card-header .fa {
+				transition: .3s transform ease-in-out;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="jumbotron jumbotron-fluid bg-secondary text-white pt-3 pb-3">
@@ -99,66 +112,71 @@ func GetAxeTemplate() string {
 				</div>
 			</div>
 	
-			{{range .AxeScans}}
+			{{range $index, $element := .AxeScans}}
+			{{with $element}}
 			{{if (or (gt (len .Violations) 0) (gt (len .Incomplete) 0))}}
 			<!-- PAGE SCAN RESULTS -->
 			<div class="row mb-3">
 				<div class="col">
 					<div class="card">
 						<div class="card-header">
-							<strong>{{.Title}}</strong><br/>
-							<small class="text-muted">{{.URL}}</small>
+							<a class="collapsed d-block" data-toggle="collapse" href="#scan-{{$index}}" role="button" aria-expanded="false" aria-controls="scan-{{$index}}">
+								<span class="pull-right" style="font-size: 32px;"><i class="fa fa-chevron-down"></i></span>
+								<strong>{{.Title}}</strong><br/>
+								<small class="text-muted">{{.URL}}</small>
+							</a>
 						</div>
-						<div class="card-body">
-							<div class="container-fluid">
-								<!-- VIOLATION RULES OF PAGE -->
-								{{range .Violations}}
-								<div class="row mb-3">
-									<div class="col">
-										<div class="card bg-light mb-3">
-											<div class="card-header">
-												<div class="container-fluid">
-													<div class="row">
-														<div class="col-sm-9">
-															<strong>{{.Help}}</strong><br/>
-															<small class="text-muted">{{.Description}}</small>
-														</div>
-														<div class="col-sm-3 text-right">
-															{{if (eq .Impact "minor")}}
-																<span class="badge badge-info">Minor</span>
-															{{else if (eq .Impact "moderate")}}
-																<span class="badge badge-primary">Moderate</span>
-															{{else if (eq .Impact "serious")}}
-																<span class="badge badge-warning text-white">Serious</span>
-															{{else if (eq .Impact "critical")}}
-																<span class="badge badge-danger">Critical</span>
-															{{end}}<br />
-															<a href="{{.HelpURL}}" target="_blank"><small><i class="fa fa-external-link"></i> Learn more</small></a>
+						<div class="collapse" id="scan-{{$index}}">
+							<div class="card-body">
+								<div class="container-fluid">
+									<!-- VIOLATION RULES OF PAGE -->
+									{{range .Violations}}
+									<div class="row mb-3">
+										<div class="col">
+											<div class="card bg-light mb-3">
+												<div class="card-header">
+													<div class="container-fluid">
+														<div class="row">
+															<div class="col-sm-9">
+																<strong>{{.Help}}</strong><br/>
+																<small class="text-muted">{{.Description}}</small>
+															</div>
+															<div class="col-sm-3 text-right">
+																{{if (eq .Impact "minor")}}
+																	<span class="badge badge-info">Minor</span>
+																{{else if (eq .Impact "moderate")}}
+																	<span class="badge badge-primary">Moderate</span>
+																{{else if (eq .Impact "serious")}}
+																	<span class="badge badge-warning text-white">Serious</span>
+																{{else if (eq .Impact "critical")}}
+																	<span class="badge badge-danger">Critical</span>
+																{{end}}<br />
+																<a href="{{.HelpURL}}" target="_blank"><small><i class="fa fa-external-link"></i> Learn more</small></a>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-											<div class="card-body">
-												<div class="card-columns">
-													{{range .Nodes}}
-													<div class="card">
-														<div class="card-body">
-															<p><strong>{{(last .Target)}}</strong></p>
-															<p class="bg-secondary"><code class="text-light">{{.HTML}}</code></p>
-															{{.GetPrettyFailureSummary}}
+												<div class="card-body">
+													<div class="card-columns">
+														{{range .Nodes}}
+														<div class="card">
+															<div class="card-body">
+																<p><strong>{{(last .Target)}}</strong></p>
+																<p class="bg-secondary p-2"><code class="text-light">{{.HTML}}</code></p>
+																{{.GetPrettyFailureSummary}}
+															</div>
 														</div>
+														{{end}}
 													</div>
-													{{end}}
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								{{end}}
-	
-								<!-- VIOLATION RULES NEEDING REVIEW OF PAGE -->
-								{{range .Incomplete}}
-								<div class="row mb-3">
+									{{end}}
+		
+									<!-- VIOLATION RULES NEEDING REVIEW OF PAGE -->
+									{{range .Incomplete}}
+									<div class="row mb-3">
 										<div class="col">
 											<div class="card bg-light mb-3">
 												<div class="card-header">
@@ -181,7 +199,7 @@ func GetAxeTemplate() string {
 														<div class="card">
 															<div class="card-body">
 																<p><strong>{{(last .Target)}}</strong></p>
-																<p class="bg-secondary"><code class="text-light">{{.HTML}}</code></p>
+																<p class="bg-secondary p-2"><code class="text-light">{{.HTML}}</code></p>
 																{{.GetPrettyFailureSummary}}
 															</div>
 														</div>
@@ -191,7 +209,8 @@ func GetAxeTemplate() string {
 											</div>
 										</div>
 									</div>
-								{{end}}
+									{{end}}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -199,13 +218,9 @@ func GetAxeTemplate() string {
 			</div>
 			{{end}}
 			{{end}}
+			{{end}}
 		</div>
 	
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 			var ctx = document.getElementById("resultsByOutcomePie");
 			new Chart(ctx, {
@@ -261,7 +276,18 @@ func GetAxeTemplate() string {
 						labels: {
 							generateLabels: labelFunc
 						}
-					}
+					},
+					scales: {
+						yAxes: [{
+							type: 'logarithmic',
+							ticks: {
+								precision: 0,
+								userCallback: function (value, index, values) {
+									return Number(value.toString());
+								}
+							}
+						}]
+					},
 				}
 			});
 

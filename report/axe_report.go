@@ -112,11 +112,14 @@ type AxeNodes struct {
 
 // GetPrettyFailureSummary returns a "prettified" version of the failure summary
 func (a *AxeNodes) GetPrettyFailureSummary() template.HTML {
-	fs := "<strong>" + a.FailureSummary
-	fs = strings.ReplaceAll(fs, ":\n  ", ":</strong><ul><li>")
-	fs = strings.ReplaceAll(fs, "\n  ", "</li><li>")
-	fs = strings.ReplaceAll(fs, "\n\n", "</li></ul><strong>")
-	fs = fs + "</li></ul>"
+	fs := strings.TrimSpace(a.FailureSummary)
+	if len(fs) > 0 {
+		fs = "<strong>" + a.FailureSummary
+		fs = strings.ReplaceAll(fs, ":\n  ", ":</strong><ul><li>")
+		fs = strings.ReplaceAll(fs, "\n  ", "</li><li>")
+		fs = strings.ReplaceAll(fs, "\n\n", "</li></ul><strong>")
+		fs = fs + "</li></ul>"
+	}
 	return template.HTML(fs)
 }
 
