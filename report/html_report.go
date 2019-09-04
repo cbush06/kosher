@@ -14,7 +14,7 @@ import (
 	"github.com/spf13/afero"
 )
 
-const errMsg = "Error encountered while generating HTML report: %s"
+const htmlErrMsg = "Error encountered while generating HTML report: %s"
 
 // HTMLReport holds the jsonResults of a test execution
 type HTMLReport struct {
@@ -61,7 +61,7 @@ func (r *HTMLReport) Process() error {
 	case "simple":
 		templ, _ = template.New("Simple").Parse(reporttemplates.GetSimpleTemplate())
 	default:
-		return fmt.Errorf(errMsg, "attempt made to generate HTML report with unrecognized template")
+		return fmt.Errorf(htmlErrMsg, "attempt made to generate HTML report with unrecognized template")
 	}
 
 	if err = r.UnmarshallJSON(r.jsonResults); err != nil {
@@ -71,27 +71,27 @@ func (r *HTMLReport) Process() error {
 	// write HTML report file
 	filePath, _ := r.settings.FileSystem.ResultsDir.RealPath(resultsHTMLFile)
 	if fileHandle, err = r.settings.FileSystem.ResultsDir.OpenFile(resultsHTMLFile, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0664); err != nil {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to open results file [%s]: %s"), filePath, err)
+		return fmt.Errorf(fmt.Sprintf(htmlErrMsg, "failed to open results file [%s]: %s"), filePath, err)
 	}
 	if err = templ.Execute(fileHandle, r); err != nil {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to generate report file [%s]: %s"), filePath, err)
+		return fmt.Errorf(fmt.Sprintf(htmlErrMsg, "failed to generate report file [%s]: %s"), filePath, err)
 	}
 	if err = fileHandle.Close(); err != nil {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to close report file [%s]: %s"), filePath, err)
+		return fmt.Errorf(fmt.Sprintf(htmlErrMsg, "failed to close report file [%s]: %s"), filePath, err)
 	}
 
 	// write JSON results file
 	filePath, _ = r.settings.FileSystem.ResultsDir.RealPath(resultsJSONFile)
 	if fileHandle, err = r.settings.FileSystem.ResultsDir.OpenFile(resultsJSONFile, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0664); err != nil {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to open results file [%s]: %s"), filePath, err)
+		return fmt.Errorf(fmt.Sprintf(htmlErrMsg, "failed to open results file [%s]: %s"), filePath, err)
 	}
 	if writeLen, err = fileHandle.Write(r.jsonResults); err != nil {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to write report file [%s]: %s"), filePath, err)
+		return fmt.Errorf(fmt.Sprintf(htmlErrMsg, "failed to write report file [%s]: %s"), filePath, err)
 	} else if writeLen < len(r.jsonResults) {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to write all bytes of report file [%s]"), filePath)
+		return fmt.Errorf(fmt.Sprintf(htmlErrMsg, "failed to write all bytes of report file [%s]"), filePath)
 	}
 	if err = fileHandle.Close(); err != nil {
-		return fmt.Errorf(fmt.Sprintf(errMsg, "failed to close report file [%s]: %s"), filePath, err)
+		return fmt.Errorf(fmt.Sprintf(htmlErrMsg, "failed to close report file [%s]: %s"), filePath, err)
 	}
 
 	return nil

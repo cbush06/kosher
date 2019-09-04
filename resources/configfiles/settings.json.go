@@ -6,7 +6,6 @@ func GetSettingsJSON(projectName string) string {
 	"cucumberDialect": "en",
     "projectName": "` + projectName + `",
     "appVersion": "1.0.0",
-    "platform": "web",
     "driver": "chrome",
     "reportFormat": "pretty",
     "dateFormat": "MM/DD/YYYY",
@@ -16,6 +15,13 @@ func GetSettingsJSON(projectName string) string {
 	"ignoreInvisible": true,
 	"waitAfterScenario": 0,
 	"waitAfterStep": 0,
+	"accessibility": {
+		"ruleSets": [
+			"wcag21aa",
+			"section508"
+		],
+		"impactThreshold": "serious"
+	},
     "screenFormats": {
         "desktop": {
             "width": 2000,

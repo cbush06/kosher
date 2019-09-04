@@ -108,9 +108,12 @@ func buildRunCommand() *runCommand {
 
 			// Size the window
 			stepUtils := steputils.NewStepUtils(newCmd.settings, page)
-			if err := page.Size(stepUtils.GetMaxWindowSize()); err != nil {
+			if err = page.Size(stepUtils.GetMaxWindowSize()); err != nil {
 				return fmt.Errorf("error encountered resizing window at startup: %s", err)
 			}
+
+			// Build new Axe report to store accessiblity scan results
+			report.NewAxeReport(newCmd.settings)
 
 			// Prepare to record results for reporting
 			reportBuilder := report.NewReport(newCmd.settings)
@@ -125,10 +128,15 @@ func buildRunCommand() *runCommand {
 				suiteCtx = &suitecontext.SuiteContext{}
 			}
 
-			if err := reportBuilder.Process(); err != nil {
+			if err = reportBuilder.Process(); err != nil {
 				log.Printf("Failed to generate report: %s", err)
 			}
 			fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
+
+			// Write Axe report
+			if err = report.Axe.Process(newCmd.settings); err != nil {
+				log.Printf("Failed to generate Axe HTML and/or JSON reports: %s", err)
+			}
 
 			return nil
 		},

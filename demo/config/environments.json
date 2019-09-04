@@ -1,4 +1,5 @@
 {
     "test": "https://www.seleniumeasy.com/test/",
-    "test2": "http://the-internet.herokuapp.com/"
+    "test2": "http://the-internet.herokuapp.com/",
+    "test3": "https://chartjs.org"
 }

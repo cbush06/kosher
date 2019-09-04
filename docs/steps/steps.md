@@ -16,6 +16,7 @@ kosher provides an extensive list of step definitions for controlling the browse
 
 | Category                | Example                                                                                                      | Element Type                                |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| accessibility           | [When I test the page for accessibility](i_test_for_accessibility.html)                                      | N/A                                         |
 | debugging               | [When I take a screenshot](i_take_a_screenshot.html)                                                         | N/A                                         |
 | debugging               | [When I wait 10 seconds](i_wait_seconds.html)                                                                | N/A                                         |
 | form                    | [When I fill in the following:](i_fill_in_the_following.html)                                                | text-based, radio, checkbox, select         |

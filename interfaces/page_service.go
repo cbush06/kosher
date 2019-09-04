@@ -20,6 +20,7 @@ type PageService interface {
 	CancelPopup() error
 	EnterPopupText(text string) error
 	PopupText() (string, error)
+	Title() (string, error)
 	URL() (string, error)
 }
 
@@ -95,6 +96,11 @@ func (m *AgoutiPage) EnterPopupText(text string) error {
 // PopupText is a mock method
 func (m *AgoutiPage) PopupText() (string, error) {
 	return m.page.PopupText()
+}
+
+// Title is a mock method
+func (m *AgoutiPage) Title() (string, error) {
+	return m.page.Title()
 }
 
 // URL is a mock method

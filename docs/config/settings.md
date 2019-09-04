@@ -17,7 +17,6 @@ The `settings.json` file allows the user to specify global settings for a kosher
 {
     "projectName": "kosher",
     "appVersion": "1.0.0",
-    "platform": "web",
     "driver": "chrome",
     "reportFormat": "pretty",
     "dateFormat": "MM/DD/YYYY",
@@ -27,6 +26,13 @@ The `settings.json` file allows the user to specify global settings for a kosher
     "ignoreInvisible": true,
     "waitAfterScenario": 0,
     "waitAfterStep": 0,
+    "accessibility": {
+		"ruleSets": [
+			"wcag21aa",
+			"section508"
+		],
+		"impactThreshold": "serious"
+	},
     "screenFormats": {
         "desktop": {
             "width": 2000,
@@ -44,7 +50,19 @@ The `settings.json` file allows the user to specify global settings for a kosher
             "width": 522,
             "height": 362
         }
-    }
+    },
+	"integrations": {
+		"jira": {
+			"host": "http://127.0.0.1",
+			"defaults": {
+				"projectKey": "PROJE",
+				"issueType": "Bug",
+				"affectsVersion": "1.0.0",
+				"labels": "test,functional,kosher",
+				"priority": "Normal"
+			}
+		}
+	}
 }
 ```
 
@@ -69,16 +87,6 @@ Sets the version of the project recorded in results files.
 | type           | string      |
 | required       | no          |
 | default        | 1.0.0       |
-
-### platform
-
-Specifies if steps are tailored for desktop or web use. Valid options are: `web`, `desktop`
-
-| Characteristic | Description |
-| -------------- | ----------- |
-| type           | string      |
-| required       | no          |
-| default        | web         |
 
 ### driver
 
@@ -184,6 +192,32 @@ Specifies a wait time to pause for following every step. **This is measured in m
 | type           | int         |
 | required       | no          |
 | default        | 0           |
+
+### accessibility
+
+Configures how the Axe accessiblity API will scan the page for issues.
+
+#### ruleSets
+
+The Axe tags to apply to the page. These are effectively sets of rules. You can find a list of available rule sets at [Axe API Documentation](https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#api-name-axegetrules).
+
+| Characteristic | Description                           |
+| -------------- | ------------------------------------- |
+| type           | string array                          |
+| required       | no                                    |
+| default        | [ "wcag2a", "wcag2aa", "section508" ] |
+
+#### impactThreshold
+
+Specifies the impact (i.e. severity) that an accessibility finding must be to fail the [I test the page for accessibility](../steps/i_test_for_accessibility.html) step. See the [Axe API Documentation](https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#results-object) for more details.
+
+| Characteristic    | Description                        |
+| ----------------- | ---------------------------------- |
+| type              | string                             |
+| required          | no                                 |
+| default           | critical                           |
+| available options | minor, moderate, serious, critical |
+
 
 ### screenFormats
 

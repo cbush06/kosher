@@ -5,7 +5,7 @@
 	"driver": "chrome",
 	"reportFormat": "bootstrap",
 	"dateFormat": "DD/MM/YYYY",
-    "defaultEnvironment": "test",
+    "defaultEnvironment": "test3",
     "screenFormat": "desktop",
     "quitOnFail": false,
     "waitAfterScenario": 5000,
