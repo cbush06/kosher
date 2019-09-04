@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configuration
-description: Confifguring a kosher project.
+description: Configuring a kosher project.
 has_children: true
 nav_order: 20
 ---

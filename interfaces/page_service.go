@@ -186,6 +186,12 @@ func (m *MockPage) PopupText() (string, error) {
 	return args.String(0), args.Error(1)
 }
 
+// Title is a mock method
+func (m *MockPage) Title() (string, error) {
+	args := m.Called()
+	return args.String(0), args.Error(1)
+}
+
 // URL is a mock method
 func (m *MockPage) URL() (string, error) {
 	args := m.Called()

@@ -10,7 +10,7 @@
   version = "v1.10.0"
 
 [[projects]]
-  digest = "1:5b78889ef6ed02fb334fb85fcb32b543dae19e169c0f3acc083e204e7b241b31"
+  digest = "1:e0b3a3ba2e257ffb29ae0ddbcd51951eb4f8b272aea4d6fcb27ec2d6ce0d82db"
   name = "github.com/cbush06/godog"
   packages = [
     ".",
@@ -18,8 +18,8 @@
     "gherkin",
   ]
   pruneopts = "UT"
-  revision = "631d15a0b231961bd5cb03758f3e3163551bb2ba"
-  version = "v0.7.13-forked"
+  revision = "5d1d25d8b02615eb66d09592d8c7cf5c15ed0350"
+  version = "v0.7.13.1-forked"
 
 [[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
@@ -155,12 +155,12 @@
   version = "v1.3.0"
 
 [[projects]]
-  digest = "1:22799aea8fe96dd5693abdd1eaa14b1b29e3eafbdc7733fa155b3cb556c8a7ae"
+  digest = "1:e096613fb7cf34743d49af87d197663cfccd61876e2219853005a57baedfa562"
   name = "github.com/spf13/cobra"
   packages = ["."]
   pruneopts = "UT"
-  revision = "67fc4837d267bc9bfd6e47f77783fcc3dffc68de"
-  version = "v0.0.4"
+  revision = "f2b07da1e2c38d5f12845a4f607e2e1018cbb1f5"
+  version = "v0.0.5"
 
 [[projects]]
   digest = "1:1b753ec16506f5864d26a28b43703c58831255059644351bbcb019b843950900"
@@ -195,15 +195,15 @@
   version = "v0.1.1"
 
 [[projects]]
-  digest = "1:0bcc464dabcfad5393daf87c3f8142911d0f6c52569b837e91a1c15e890265f3"
+  digest = "1:ad527ce5c6b2426790449db7663fe53f8bb647f9387295406794c8be001238da"
   name = "github.com/stretchr/testify"
   packages = [
     "assert",
     "mock",
   ]
   pruneopts = "UT"
-  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
-  version = "v1.3.0"
+  revision = "221dbe5ed46703ee255b1da0dec05086f5035f62"
+  version = "v1.4.0"
 
 [[projects]]
   digest = "1:5e59b9b6d0c389f8b691d5caa2211dea04ac95c5285c95b3b8e1187042df3f26"
@@ -222,18 +222,18 @@
   name = "golang.org/x/crypto"
   packages = ["ssh/terminal"]
   pruneopts = "UT"
-  revision = "20be4c3c3ed52bfccdb2d59a412ee1a936d175a7"
+  revision = "9756ffdc24725223350eb3266ffb92590d28f278"
 
 [[projects]]
   branch = "master"
-  digest = "1:ccaeb69b65923bc1ffb0e087967e67be2227e389e3a1c5cb1538c5151f0323d1"
+  digest = "1:34a9196becf546ed768bab8a85841f73ba175e525865f1f2fcee28dc23ab28d8"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "ad28b68e88f12448a1685d038ffea87bbbb34148"
+  revision = "08d80c9d36de4cf3f0843a021c300dd67a5e47dc"
 
 [[projects]]
   digest = "1:1093f2eb4b344996604f7d8b29a16c5b22ab9e1b25652140d3fede39f640d5cd"
