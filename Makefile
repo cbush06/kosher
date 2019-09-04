@@ -62,7 +62,7 @@ test: deps generate
 clean:
 	@echo "Cleaning Kosher artifacts"
 	@$(GOCLEAN)
-	@rm ../kosher-env/windows-config.exe
-	@rm ../kosher-env/linux-config
-	@rm kosher.jar
-	@rm libs/axe.min.js
+	@rm -f ../kosher-env/windows-config.exe
+	@rm -f ../kosher-env/linux-config
+	@rm -f kosher.jar
+	@rm -f libs/axe.min.js
