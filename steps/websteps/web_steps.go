@@ -1,7 +1,13 @@
 package websteps
 
 import (
+	"encoding/csv"
+	"fmt"
+	"reflect"
+	"regexp"
 	"time"
+
+	"github.com/spf13/afero"
 
 	"github.com/cbush06/godog"
 	"github.com/cbush06/godog/gherkin"
@@ -92,6 +98,84 @@ func BuildGoDogSuite(settings *config.Settings, page interfaces.PageService, sui
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not exist$`, confirmElementNotExists(utils))
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should contain "([^"]*)"$`, elementShouldContain(utils))
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not contain "([^"]*)"$`, elementShouldNotContain(utils))
+
+	// Check if Scenario Outline has @loadcsv tag
+	suite.BeforeScenario(func(s interface{}) {
+		if reflect.TypeOf(s) == reflect.TypeOf(&gherkin.ScenarioOutline{}) {
+			var err error
+			var fileName string
+			var csvRecords [][]string
+			var csvFileHandle afero.File
+			var loadCsvTagExists bool
+
+			// Test for @loadcsv tag
+			scenarioOutline := s.(*gherkin.ScenarioOutline)
+			flagRegex := regexp.MustCompile(`\@loadcsv\((.+)\)`)
+
+			for _, tag := range scenarioOutline.Tags {
+				matches := flagRegex.FindStringSubmatch(tag.Name)
+				// use regex to see if the tag matches @loadcsv(...)
+				if len(matches) > 1 {
+					loadCsvTagExists = true
+					fileName = matches[1]
+				}
+			}
+
+			// If @loadcsv not found, skip
+			if !loadCsvTagExists {
+				return
+			}
+
+			// If no Examples found, skip
+			if len(scenarioOutline.Examples) < 1 {
+				fmt.Printf("found @loadcsv on Scenario Outline [%s], but no Examples provided...\n", scenarioOutline.Name)
+				return
+			}
+
+			// Parse CSV file into slice
+			if csvFileHandle, err = settings.FileSystem.ResourcesDir.Open(fileName); err != nil {
+				fmt.Printf("error encountered while trying to read CSV file [%s]: %s\n", fileName, err)
+				return
+			}
+
+			csvReader := csv.NewReader(csvFileHandle)
+			if csvRecords, err = csvReader.ReadAll(); err != nil {
+				fmt.Printf("error encountered parsing CSV file [%s]: %s", fileName, err)
+				return
+			}
+
+			// Truncate Table Rows before we add the CSV data
+			scenarioOutline.Examples[0].TableBody = make([]*gherkin.TableRow, len(csvRecords)-1)
+
+			var csvHeaders = make(map[string]int)
+			for idx, row := range csvRecords {
+				// Initialize the header map
+				if idx == 0 {
+					for idx2, header := range row {
+						csvHeaders[header] = idx2
+					}
+				} else {
+					tableRow := &gherkin.TableRow{
+						Cells: []*gherkin.TableCell{},
+					}
+					for _, scenarioColumn := range scenarioOutline.Examples[0].TableHeader.Cells {
+						csvColumnIdx := csvHeaders[scenarioColumn.Value]
+						tableRow.Cells = append(tableRow.Cells, &gherkin.TableCell{
+							Value: row[csvColumnIdx],
+						})
+					}
+					scenarioOutline.Examples[0].TableBody[idx-1] = tableRow
+				}
+			}
+
+			for _, row := range scenarioOutline.Examples[0].TableBody {
+				for _, cell := range row.Cells {
+					fmt.Printf("%v ", cell.Value)
+				}
+				fmt.Println()
+			}
+		}
+	})
 
 	// Check for Ajax call in progress
 	// An AJAX app should provide a function that returns true if AJAX requests are pending/active:
