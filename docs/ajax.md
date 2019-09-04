@@ -3,7 +3,7 @@ layout: default
 title: AJAX Compatability
 description: Adding AJAX Compatability
 has_children: true
-nav_order: 30
+nav_order: 25
 ---
 
 # AJAX Compatability
