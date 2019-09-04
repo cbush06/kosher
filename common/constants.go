@@ -22,6 +22,12 @@ const (
 	// ResultsJSONFile is the name given to the Cucumber format JSON results generated
 	ResultsJSONFile = "results.json"
 
+	// AxeResultsHTMLFile is the name given to the HTML report generated for Axe scans
+	AxeResultsHTMLFile = "axe-results.html"
+
+	// AxeResultsJSONFile is the name given to the JSON file generated for Axe scans
+	AxeResultsJSONFile = "axe-results.json"
+
 	// EnvironmentsFile is the name given to the environments file in a Kosher project
 	EnvironmentsFile = "environments.json"
 

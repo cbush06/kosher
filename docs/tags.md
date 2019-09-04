@@ -86,21 +86,3 @@ and _Verify Redirect_ scenario outline to be ran.
 To run multiple scenarios from the feature file, you could add the `@Regression` tag like this: `kosher run -t @Smoke,@Regression`. This command
 
 Finally, you can also run specific example lists for scenario outlines by specifying tags: `kosher run -t @FormsNavigation`
-
-## @loadcsv Example
-
-This is a special tag for automatically populating an empty Scenario Outline (This funtionality will not work without using the appropriate tag precedence). First, you must place the .csv file name in the parenthesis of the @loadcsv() tag. Ensure the names of each column header are the same as the aformentioned .csv file being utilized. For example, if your .csv file has columns labeled First Name, Last Name, Email, Phone, but you only need to utilize Email and Phone, just provide those column names followed by a blank line and kosher will read the .csv and automatically insert the email and phone for each row in the .csv. Please refer to the example below for questions regarding format and utility. 
-
-```gherkin
-
-    @loadcsv(test.csv)
-    Scenario Outline: Verify Scenario Outline
-        Given I fill in "Email" 
-        And I click the "OK" button
-        And I fill in "Phone"
-        And I click the "OK" button
-
-        Examples:
-            | Email | Phone |
-            |       |       |
-```

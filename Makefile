@@ -1,0 +1,68 @@
+GOCMD=go
+GOBUILD=$(GOCMD) build
+GOCLEAN=$(GOCMD) clean
+GOTEST=$(GOCMD) test
+GOGENERATE=$(GOCMD) generate
+
+ENVCMD=env
+GO_LINUX_ENV=$(ENVCMD) GOOS=linux GOARCH=amd64
+GO_WIN_ENV=$(ENVCMD) GOOS=windows GOARCH=amd64
+
+NPMCMD=@npm
+NPMINSTALL=$(NPMCMD) install
+
+BINARY_WIN=kosher.exe
+BINARY_LIN=kosher
+
+DEPCMD=@dep
+DEPENSURE=$(DEPCMD) ensure
+
+all: clean test build install
+
+install: build
+	@java -jar kosher.jar
+
+deps:
+	@echo "Downloading [kosher] project dependencies..."
+	@$(DEPENSURE)
+	@$(NPMINSTALL)
+	@cp node_modules/axe-core/axe.min.js libs/
+	@echo "Confirming [kosher-env] project is cloned to ~/go/src/github.com/cbush06/kosher-env..."
+	@if ! [ -f ../kosher-env/Makefile ]; then \
+		echo "Missing [kosher-env] project! Please clone [https://github.com/cbush06/kosher-env] and try again...";\
+		exit 2;\
+	fi
+	@echo "Building [kosher-env] project..."
+	@cd ../kosher-env && make build
+	@cd ../kosher
+	@cp ../kosher-env/windows-config.exe . 
+	@cp ../kosher-env/linux-config .
+
+generate:
+	@echo "Generating Go source files with [go generate]..."
+	@$(GOGENERATE)
+
+build: deps generate
+	@echo "Building [kosher] project..."
+	@$(GO_LINUX_ENV) $(GOBUILD)
+	@$(GO_WIN_ENV) $(GOBUILD)
+
+buildall: build
+	@echo "Confirming [IzPack] project is extracted to ~/IzPack"
+	@if ! [ -f ~/IzPack/bin/compile ]; then \
+		echo "Missing [IzPack] installation. Please extract to [~/IzPack] and try again...";\
+		exit 2;\
+	fi
+	@echo "Building [kosher] installer..."
+	@~/IzPack/bin/compile ~/go/src/github.com/cbush06/kosher/izpack.xml -b ~/go/src/github.com/cbush06/kosher/ -o kosher.jar
+
+test: deps generate
+	@$(GOTEST) -v -race -coverpkg=github.com/cbush06/kosher/... -covermode=atomic -coverprofile=coverage.txt github.com/cbush06/kosher/...
+
+clean:
+	@echo "Cleaning Kosher artifacts"
+	@$(GOCLEAN)
+	@rm ../kosher-env/windows-config.exe
+	@rm ../kosher-env/linux-config
+	@rm kosher.jar
+	@rm libs/axe.min.js

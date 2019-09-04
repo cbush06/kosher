@@ -99,6 +99,9 @@ func BuildGoDogSuite(settings *config.Settings, page interfaces.PageService, sui
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should contain "([^"]*)"$`, elementShouldContain(utils))
 	suite.Step(`^(?:|the )"([^"]*)" (?:|element )should not contain "([^"]*)"$`, elementShouldNotContain(utils))
 
+	// accessibility steps
+	suite.Step(`^(?:|I )test (?:|the page )for accessibility$`, iTestThePageForAccessibility(utils))
+
 	// Check if Scenario Outline has @loadcsv tag
 	suite.BeforeScenario(func(s interface{}) {
 		if reflect.TypeOf(s) == reflect.TypeOf(&gherkin.ScenarioOutline{}) {

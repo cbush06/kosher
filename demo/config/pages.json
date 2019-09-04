@@ -13,5 +13,8 @@
     "input-form": "input-form-demo.html",
     "popup-window": "window-popup-modal-demo.html",
     
-    "file-upload": "upload"
+    "file-upload": "upload",
+
+    "bar-chart": "docs/latest/charts/bar.html",
+    "pie-chart": "docs/latest/charts/doughnut.html"
 }
