@@ -17,7 +17,7 @@ BINARY_LIN=kosher
 DEPCMD=@dep
 DEPENSURE=$(DEPCMD) ensure
 
-all: clean test build install
+all: clean test build buildall
 
 install: build
 	@java -jar kosher.jar
