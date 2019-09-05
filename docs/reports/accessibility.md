@@ -1,9 +1,9 @@
 ---
 layout: default
-title: bootstrap Report Format
-description: Description of the "bootstrap" report format.
+title: Accessibility Report
+description: Description of the accessibility report produced by the `I test the page for accessibility` step.
 parent: Reports
-nav_order: 1
+nav_order: 8 
 ---
 
 # Accessibility Report
