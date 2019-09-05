@@ -64,5 +64,7 @@ clean:
 	@$(GOCLEAN)
 	@rm -f ../kosher-env/windows-config.exe
 	@rm -f ../kosher-env/linux-config
+	@rm -f windows-config.exe
+	@rm -f linux-config
 	@rm -f kosher.jar
 	@rm -f libs/axe.min.js

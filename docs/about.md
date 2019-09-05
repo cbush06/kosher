@@ -15,3 +15,4 @@ kosher is a tool that merges several technologies together to automate and simpl
 * Command-line parser ([https://github.com/spf13/cobra](https://github.com/spf13/cobra)): enables powerful, maintainable, and user-friendly CLI control
 * Configuration-file parser ([https://github.com/spf13/viper](https://github.com/spf13/viper)): simplifies use of JSON-based configuration files
 * Universal Installer ([http://izpack.org/](http://izpack.org/)): allows a single installer to be developed for all platforms (or in kosher's case, Windows and Linux)
+* Accessibility Scanner ([https://github.com/dequelabs/axe-core](https://github.com/dequelabs/axe-core)): scans pages for accessibility violations and concerns

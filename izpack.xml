@@ -4,7 +4,7 @@
 
     <info>
         <appname>Kosher</appname>
-        <appversion>1.8.2</appversion>
+        <appversion>1.9.0</appversion>
         <appsubpath>kosher</appsubpath>
         <run-privileged/>
         <uninstaller write="yes" />
