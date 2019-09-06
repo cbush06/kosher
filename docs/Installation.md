@@ -11,25 +11,26 @@ nav_order: 43
 1. Download the installer from the latest published release of kosher: [https://github.com/cbush06/kosher/releases/latest](https://github.com/cbush06/kosher/releases/latest)
 2. Run the installer with *administrative privileges*. You can do one of the following:
    * Simply double-click the `kosher.jar` file (*this may work for some*)
-   * If double-clicking fails on a linux system, open a terminal and run
+   * If double-clicking fails on a linux system, open a terminal and run `sudo java -jar kosher.jar`
+   * If double-clicking fails on a Windows system, skip to the next section **Install using Windows Command**
 
 ### Install using Windows Command Line
 
-1. Navigate to the Windows Command Line and open as Administrator
+1. Navigate to the Windows Command Line shortcut, right-click, and Open as Administrator
 
     ![Command Line]({{site.baseurl}}/assets/images/navigatingtoCMD.png)
 
-2. When the terminal opens Chage Directory (cd) into the following file path: (*c:\users\yourUsername\downloads*) 
+2. When the terminal opens Chage Directory (cd) into the following file path: (*C:\Users\user\Downloads*) 
 
     a. ![Command Line]({{site.baseurl}}/assets/images/CD1.png)
     
     b. ![Command Line]({{site.baseurl}}/assets/images/CD2.png)
 
-3. Utilize the following command to begin the install: (*java -jar "kosher(version#).jar*)
+3. Execute the following command to begin the install: (*java -jar "kosher(version#).jar*)
 
     ![Command Line]({{site.baseurl}}/assets/images/javainstall.png)
 
-4. The following window should appear allowing the user to begin the Kosher install utilizing the install wizard.
+4. The kosher installation wizard should appear. Follow its prompts to complete installation.
 
     ![Command Line]({{site.baseurl}}/assets/images/installer.png)
 
