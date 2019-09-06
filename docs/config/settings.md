@@ -100,15 +100,17 @@ Specifies which webdriver is used to execute the tests. Valid options are `chrom
 
 ### reportFormat
 
-Specifies what format is used to report test results. Valid options are: `pretty`, `html`, `bootstrap`, `simple`, `pretty`, `progress`, `junit`, `cucumber`
+Specifies what format is used to report test results. Valid options are: `pretty`, `bootstrap`, `simple`, `progress`, `junit`, `cucumber-json`
 
 For descriptions of the reports, see [Reports](../reports/reports.html)
 
-| Characteristic | Description |
-| -------------- | ----------- |
-| type           | string      |
-| required       | no          |
-| default        | pretty      |
+| Characteristic | Description          |
+| -------------- | -------------------- |
+| type           | string, string array |
+| required       | no                   |
+| default        | pretty               |
+
+You can use multiple formats by setting the `reportFormat` to a JSON string array: `["pretty", "bootstrap"]`
 
 ### dateFormat
 
