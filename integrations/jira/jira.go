@@ -15,6 +15,8 @@ import (
 	"syscall"
 	"text/template"
 
+	"github.com/cbush06/kosher/formats"
+
 	"github.com/trivago/tgo/tcontainer"
 
 	"github.com/cbush06/godog/gherkin"
@@ -23,16 +25,15 @@ import (
 
 	"github.com/cbush06/kosher/common"
 	"github.com/cbush06/kosher/config"
-	"github.com/cbush06/kosher/report"
 
 	"github.com/andygrunwald/go-jira"
 )
 
 // Jira represents a connection to a Jira server.
 type Jira struct {
+	features                   []formats.CukeFeature
 	base64Credentials          string
 	settings                   *config.Settings
-	cukeReport                 *report.CucumberReport
 	hostPath                   string
 	jiraPriorities             []jira.Priority
 	jiraLabels                 []string
@@ -49,17 +50,17 @@ type Jira struct {
 
 // IssueContext provides the data context used in the Summary and Description templates for Jira issues.
 type IssueContext struct {
-	Feature    *report.CukeFeature
-	Element    *report.CukeElement
-	FailedStep *report.CukeStep
+	Feature    *formats.CukeFeature
+	Element    *formats.CukeElement
+	FailedStep *formats.CukeStep
 }
 
 // Send connects to the configured Jira server, retrieves the user's credentials
 // via CLI, and creates new issues for failed tests in the CucumberReport.
-func (j *Jira) Send(settings *config.Settings, cukeReport *report.CucumberReport) error {
+func (j *Jira) Send(settings *config.Settings, features []formats.CukeFeature) error {
 	j.settings = settings
-	j.cukeReport = cukeReport
 	j.hostPath = settings.Settings.GetString("integrations.jira.host")
+	j.features = features
 
 	if err := j.retrieveCredentials(); err != nil {
 		return fmt.Errorf("error encountered while retrieving Jira credentials: %s", err)
@@ -399,20 +400,16 @@ func (j *Jira) createIssues() error {
 	scenarioOutlineKeywords := godogDialect.ScenarioOutlineKeywords()
 	sort.Strings(scenarioOutlineKeywords)
 
-	if j.cukeReport.StepsFailed < 1 {
-		fmt.Println("No failed steps to send to Jira...")
-	} else {
-		for _, feature := range j.cukeReport.Features {
-			for _, element := range feature.Elements {
-				if common.StringSliceContainsFold(scenarioKeywords, element.Type) || common.StringSliceContains(scenarioOutlineKeywords, element.Type) {
-					if element.StepsFailed > 0 {
-						if created, err := j.createIssue(&feature, &element); err != nil {
-							fmt.Printf("error encountered creating issue: %s\n", err)
-						} else if created {
-							issuesCreated++
-						} else {
-							issuesSkipped++
-						}
+	for _, feature := range j.features {
+		for _, element := range feature.Elements {
+			if common.StringSliceContainsFold(scenarioKeywords, element.Type) || common.StringSliceContains(scenarioOutlineKeywords, element.Type) {
+				if element.StepsFailed > 0 {
+					if created, err := j.createIssue(&feature, &element); err != nil {
+						fmt.Printf("error encountered creating issue: %s\n", err)
+					} else if created {
+						issuesCreated++
+					} else {
+						issuesSkipped++
 					}
 				}
 			}
@@ -424,7 +421,7 @@ func (j *Jira) createIssues() error {
 	return nil
 }
 
-func (j *Jira) createIssue(feature *report.CukeFeature, element *report.CukeElement) (bool, error) {
+func (j *Jira) createIssue(feature *formats.CukeFeature, element *formats.CukeElement) (bool, error) {
 	var (
 		doCreate     bool
 		createdIssue *jira.Issue
@@ -589,7 +586,7 @@ func getYesOrNo(query string) bool {
 	return strings.EqualFold(trimmedResponse, "Y")
 }
 
-func getFailedStep(element *report.CukeElement) *report.CukeStep {
+func getFailedStep(element *formats.CukeElement) *formats.CukeStep {
 	if element.StepsFailed < 1 {
 		return nil
 	}

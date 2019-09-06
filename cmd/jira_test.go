@@ -16,7 +16,7 @@ import (
 func TestJiraCommandDefaultPath(t *testing.T) {
 	// If we're unit testing, construct a sample project in memory
 	fs.MockFs = afero.NewMemMapFs()
-	afero.WriteReader(fs.MockFs, filepath.Join(common.ResultsDir, common.ResultsJSONFile), bytes.NewBufferString("{}"))
+	afero.WriteReader(fs.MockFs, filepath.Join(common.ResultsDir, common.ResultsJSONFile), bytes.NewBufferString("[]"))
 	integrations.MockSendable.On("Send", mock.Anything, mock.Anything).Return(nil).Once()
 	common.BuildTestProject(fs.MockFs)
 

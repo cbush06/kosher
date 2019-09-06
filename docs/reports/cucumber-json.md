@@ -1,14 +1,14 @@
 ---
 layout: default
-title: cucumber Report Format
-description: Description of the "cucumber" report format.
+title: cucumber-json Report Format
+description: Description of the "cucumber-json" report format.
 parent: Reports
 nav_order: 2
 ---
 
-# cucumber Report Format
+# cucumber-json Report Format
 
-The `cucumber` report format generates a Cucumber-style JSON report named `results.json`.
+The `cucumber-json` report format generates a Cucumber-style JSON report named `cucumber.json`.
 {: .fs-6 .fw-300 }
 
 ## Format
@@ -48,7 +48,7 @@ Feature: Verify Results of Navigation Actions
         Then I should see the popup "I am an alert box!"
 ```
 
-The `cucumber` report format would output a `results.json` file similar to this:
+The `cucumber-json` report format would output a `cucumber.json` file similar to this:
 ```json
 [
     {

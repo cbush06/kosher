@@ -1,7 +1,6 @@
-package report
+package formats
 
 import (
-	"encoding/json"
 	"fmt"
 	"regexp"
 	"time"
@@ -98,10 +97,10 @@ type CukeElement struct {
 	Type         string     `json:"type"`
 	Tags         []CukeTag  `json:"tags,omitempty"`
 	Steps        []CukeStep `json:"steps,omitempty"`
-	StepsPassed  int        `json:"-"`
-	StepsFailed  int        `json:"-"`
-	StepsPending int        `json:"-"`
-	StepsSkipped int        `json:"-"`
+	StepsPassed  int        `json:"stepsPassed"`
+	StepsFailed  int        `json:"stepsFailed"`
+	StepsPending int        `json:"stepsPending"`
+	StepsSkipped int        `json:"stepsSkipped"`
 }
 
 // GetTrimmedKeyword removes leading and trailing whitespace from the Scenario's keyword.
@@ -125,13 +124,13 @@ type CukeFeature struct {
 	Comments        []CukeComment `json:"comments,omitempty"`
 	Tags            []CukeTag     `json:"tags,omitempty"`
 	Elements        []CukeElement `json:"elements,omitempty"`
-	ElementsPassed  int           `json:"-"`
-	ElementsFailed  int           `json:"-"`
-	ElementsPending int           `json:"-"`
-	StepsPassed     int           `json:"-"`
-	StepsFailed     int           `json:"-"`
-	StepsPending    int           `json:"-"`
-	StepsSkipped    int           `json:"-"`
+	ElementsPassed  int           `json:"elementsPassed"`
+	ElementsFailed  int           `json:"elementsFailed"`
+	ElementsPending int           `json:"elementsPending"`
+	StepsPassed     int           `json:"stepsPassed"`
+	StepsFailed     int           `json:"stepsFailed"`
+	StepsPending    int           `json:"stepsPending"`
+	StepsSkipped    int           `json:"stepsSkipped"`
 }
 
 // GetTrimmedDescription returns the features description after removing leading and trailing whitespace from each line.
@@ -184,74 +183,4 @@ func NewCucumberReport(s *config.Settings) CucumberReport {
 		TotalElements:   0,
 		TotalSteps:      0,
 	}
-}
-
-// UnmarshallJSON unmarshalls JSON content into an array of CukeFeatures.
-func (r *CucumberReport) UnmarshallJSON(jsonResults []byte) error {
-	if err := json.Unmarshal(jsonResults, &r.Features); err != nil {
-		return fmt.Errorf(fmt.Sprintf(cukeErrMsg, "failed to parse JSON results of test execution: %s"), err)
-	}
-
-	for f := 0; f < len(r.Features); f++ {
-		feature := &r.Features[f]
-
-		for e := 0; e < len(feature.Elements); e++ {
-			element := &feature.Elements[e]
-
-			for s := 0; s < len(element.Steps); s++ {
-				step := &element.Steps[s]
-
-				if step.DataTable == nil {
-					step.DataTable = make([]*CukeDataTableRow, 0)
-				}
-
-				if step.Embeddings == nil {
-					step.Embeddings = make([]*CukeEmbedding, 0)
-				}
-
-				switch step.Result.Status {
-				case "passed":
-					element.StepsPassed++
-				case "failed":
-					element.StepsFailed++
-				case "skipped":
-					element.StepsSkipped++
-				case "undefined":
-					element.StepsPending++
-				}
-
-				if step.Result.Duration != nil {
-					r.RunTime += time.Duration(*step.Result.Duration)
-				}
-
-				r.TotalSteps++
-			}
-
-			feature.StepsPassed += element.StepsPassed
-			feature.StepsFailed += element.StepsFailed
-			feature.StepsSkipped += element.StepsSkipped
-			feature.StepsPending += element.StepsPending
-
-			r.StepsPassed += element.StepsPassed
-			r.StepsFailed += element.StepsFailed
-			r.StepsSkipped += element.StepsSkipped
-			r.StepsPending += element.StepsPending
-
-			if element.StepsFailed > 0 {
-				feature.ElementsFailed++
-			} else if element.StepsPending > 0 {
-				feature.ElementsPending++
-			} else {
-				feature.ElementsPassed++
-			}
-
-			r.TotalElements++
-		}
-
-		r.ElementsPassed += feature.ElementsPassed
-		r.ElementsFailed += feature.ElementsFailed
-		r.ElementsPending += feature.ElementsPending
-	}
-
-	return nil
 }

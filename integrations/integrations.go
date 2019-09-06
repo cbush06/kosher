@@ -1,15 +1,16 @@
 package integrations
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
 
 	"github.com/cbush06/kosher/common"
 	"github.com/cbush06/kosher/config"
+	"github.com/cbush06/kosher/formats"
 	"github.com/cbush06/kosher/integrations/jira"
 	"github.com/cbush06/kosher/integrations/mocksendable"
-	"github.com/cbush06/kosher/report"
 	"github.com/spf13/afero"
 )
 
@@ -27,7 +28,7 @@ var MockSendable = new(mocksendable.MockSendable)
 // SendTo transmits the results stored in the `results.json` file to the specified `system`. The `system` parameter should be one of the constants specified in this file.
 func SendTo(system int, s *config.Settings) error {
 	var (
-		cukeReport  = report.NewCucumberReport(s)
+		features    []formats.CukeFeature
 		fileExists  bool
 		jsonFile    afero.File
 		jsonResults []byte
@@ -53,7 +54,9 @@ func SendTo(system int, s *config.Settings) error {
 	}
 
 	// Unmarshall the file into a CucumberReport
-	cukeReport.UnmarshallJSON(jsonResults)
+	if err = json.Unmarshal(jsonResults, &features); err != nil {
+		return fmt.Errorf("Error reading unmarshalling file [%s]: %s", common.ResultsJSONFile, err)
+	}
 
 	// Call the appropriate integration (use mock for unit testing)
 	if flag.Lookup("test.v") != nil {
@@ -65,5 +68,5 @@ func SendTo(system int, s *config.Settings) error {
 		}
 	}
 
-	return sendable.Send(s, &cukeReport)
+	return sendable.Send(s, features)
 }

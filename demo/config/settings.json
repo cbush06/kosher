@@ -3,12 +3,12 @@
 	"appVersion": "1.0.0",
 	"platform": "web",
 	"driver": "chrome",
-	"reportFormat": "bootstrap",
+	"reportFormat": ["pretty", "bootstrap", "simple", "cucumber-json"],
 	"dateFormat": "DD/MM/YYYY",
-    "defaultEnvironment": "test3",
+    "defaultEnvironment": "test",
     "screenFormat": "desktop",
     "quitOnFail": false,
-    "waitAfterScenario": 5000,
+    "waitAfterScenario": 500,
     "waitAfterStep": 0,
     "screenFormats": {
         "desktop": {
@@ -31,14 +31,13 @@
     "integrations": {
         "jira": {
             "host": "https://alm.cgifederal.com/projects",
-	    "defaults": {
-            	"labels": "MICAPS7,MIDTIER",
-		"projectKey": "MICAN",
-		"issueType": "Bug",
-		"affectsVersion": "7.0.0.0.35",
-		"labels": "MICAPS7,kosher",
-		"priority": "Critical"
-	    }
+	        "defaults": {
+                "labels": "MICAPS7,MIDTIER",
+                "projectKey": "MICAN",
+                "issueType": "Bug",
+                "affectsVersion": "7.0.0.0.35",
+                "priority": "Critical"
+            }
         }
     }
 }

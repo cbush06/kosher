@@ -4,9 +4,10 @@ import (
 	"log"
 	"os"
 
+	"github.com/cbush06/kosher/integrations"
+
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/fs"
-	"github.com/cbush06/kosher/integrations"
 	"github.com/spf13/cobra"
 )
 

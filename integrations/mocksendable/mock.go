@@ -2,7 +2,7 @@ package mocksendable
 
 import (
 	"github.com/cbush06/kosher/config"
-	"github.com/cbush06/kosher/report"
+	"github.com/cbush06/kosher/formats"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -12,7 +12,7 @@ type MockSendable struct {
 }
 
 // Send mocks the Sendable interface's SendTo method
-func (m *MockSendable) Send(settings *config.Settings, cukeReport *report.CucumberReport) error {
+func (m *MockSendable) Send(settings *config.Settings, features []formats.CukeFeature) error {
 	args := m.Called()
 	return args.Error(0)
 }

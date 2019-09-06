@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 
 	"github.com/cbush06/kosher/common"
+	"github.com/cbush06/kosher/formats"
 	"github.com/cbush06/kosher/interfaces"
 	"github.com/cbush06/kosher/suitecontext"
 
@@ -115,22 +116,16 @@ func buildRunCommand() *runCommand {
 			// Build new Axe report to store accessiblity scan results
 			report.NewAxeReport(newCmd.settings)
 
-			// Prepare to record results for reporting
-			reportBuilder := report.NewReport(newCmd.settings)
-
 			// Run godog if not unit testing (godog doesn't play nice with the virtual afero filesystem used during testing, so we skip godog)
 			if flag.Lookup("test.v") == nil {
 				godog.RunWithOptions(newCmd.settings.Settings.GetString("projectName"), func(suite *godog.Suite) {
 					newCmd.buildFeatureContext(page, suite)
 					suiteCtx = suitecontext.CreateSuiteContext(suite)
-				}, newCmd.buildGoDogOptions(reportBuilder))
+				}, newCmd.buildGoDogOptions())
 			} else {
 				suiteCtx = &suitecontext.SuiteContext{}
 			}
 
-			if err = reportBuilder.Process(); err != nil {
-				log.Printf("Failed to generate report: %s", err)
-			}
 			fmt.Printf("\nPassed: %d; Failed: %d; Pending: %d; Skipped: %d\n", suiteCtx.StepsPassed, suiteCtx.StepsFailed, suiteCtx.StepsUndefined, suiteCtx.StepsSkipped)
 
 			// Write Axe report
@@ -173,24 +168,36 @@ func (r *runCommand) buildFeatureContext(page interfaces.PageService, suite *god
 	}
 }
 
-func (r *runCommand) buildGoDogOptions(reportBuilder report.Report) godog.Options {
-	featuresPath, _ := filepath.Abs(r.pathArg)
+func (r *runCommand) registerFormats() {
+	// Register custom formatters
+	godog.Format("bootstrap", "Build an HTML report using Boostrap.", formats.NewBootstrapFormatterFunc(r.settings))
+	godog.Format("simple", "Build an HTML report using Simple Bootstrap template.", formats.NewSimpleFormatterFunc(r.settings))
+	godog.Format("cucumber-json", "Build a JSON file.", formats.NewCucumberFormatterFunc(r.settings))
 
-	// Convert kosher format to GoDog format
-	var reportFormat string
-	switch r.settings.Settings.GetString("reportFormat") {
-	case "html", "bootstrap", "simple":
-		reportFormat = "cucumber"
-	default:
-		reportFormat = r.settings.Settings.GetString("reportFormat")
+	// Ensure format setting is array of strings
+	var selectedFormats []string
+	format := r.settings.Settings.Get("reportFormat")
+	switch format.(type) {
+	case string:
+		selectedFormats = []string{r.settings.Settings.GetString("reportFormat")}
+	case []interface{}:
+		selectedFormats = r.settings.Settings.GetStringSlice("reportFormat")
 	}
 
+	// Register the composite formatter
+	godog.Format("composite", "Multiple formatters", formats.NewCompositeFormatterFunc(selectedFormats))
+}
+
+func (r *runCommand) buildGoDogOptions() godog.Options {
+	featuresPath, _ := filepath.Abs(r.pathArg)
+
+	r.registerFormats()
+
 	return godog.Options{
-		Format:        reportFormat,
+		Format:        "composite",
 		Paths:         []string{featuresPath},
 		Tags:          r.tags,
 		StopOnFailure: r.settings.Settings.GetBool("quitOnFail"),
 		Strict:        r.settings.Settings.GetBool("quitOnFail"),
-		Output:        reportBuilder,
 	}
 }
