@@ -97,10 +97,10 @@ type CukeElement struct {
 	Type         string     `json:"type"`
 	Tags         []CukeTag  `json:"tags,omitempty"`
 	Steps        []CukeStep `json:"steps,omitempty"`
-	StepsPassed  int        `json:"-"`
-	StepsFailed  int        `json:"-"`
-	StepsPending int        `json:"-"`
-	StepsSkipped int        `json:"-"`
+	StepsPassed  int        `json:"stepsPassed"`
+	StepsFailed  int        `json:"stepsFailed"`
+	StepsPending int        `json:"stepsPending"`
+	StepsSkipped int        `json:"stepsSkipped"`
 }
 
 // GetTrimmedKeyword removes leading and trailing whitespace from the Scenario's keyword.
@@ -124,13 +124,13 @@ type CukeFeature struct {
 	Comments        []CukeComment `json:"comments,omitempty"`
 	Tags            []CukeTag     `json:"tags,omitempty"`
 	Elements        []CukeElement `json:"elements,omitempty"`
-	ElementsPassed  int           `json:"-"`
-	ElementsFailed  int           `json:"-"`
-	ElementsPending int           `json:"-"`
-	StepsPassed     int           `json:"-"`
-	StepsFailed     int           `json:"-"`
-	StepsPending    int           `json:"-"`
-	StepsSkipped    int           `json:"-"`
+	ElementsPassed  int           `json:"elementsPassed"`
+	ElementsFailed  int           `json:"elementsFailed"`
+	ElementsPending int           `json:"elementsPending"`
+	StepsPassed     int           `json:"stepsPassed"`
+	StepsFailed     int           `json:"stepsFailed"`
+	StepsPending    int           `json:"stepsPending"`
+	StepsSkipped    int           `json:"stepsSkipped"`
 }
 
 // GetTrimmedDescription returns the features description after removing leading and trailing whitespace from each line.

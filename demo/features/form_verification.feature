@@ -11,7 +11,7 @@ Feature: Verify Characteristics and Values of a Form
 
         Given I go to the "file-download" page
         Then the first instance of "Generate File" should be disabled
-        And "Generate File" should be disabled
+        And "Generate File" should be enabled
 
     Scenario: Verify Enabled Fields
         Verify that fields are enabled as expected.
