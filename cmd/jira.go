@@ -6,7 +6,6 @@ import (
 
 	"github.com/cbush06/kosher/config"
 	"github.com/cbush06/kosher/fs"
-	"github.com/cbush06/kosher/integrations"
 	"github.com/spf13/cobra"
 )
 
@@ -41,9 +40,9 @@ func buildJiraCommand() *jiraCommand {
 			settings := config.NewSettings(fileSystem)
 			settings.Settings.BindPFlag("useDefaults", cmd.Flags().Lookup("default"))
 
-			if err := integrations.SendTo(integrations.Jira, settings); err != nil {
-				log.Fatalln(err)
-			}
+			// if err := integrations.SendTo(integrations.Jira, settings); err != nil {
+			// 	log.Fatalln(err)
+			// }
 
 			return nil
 		},

@@ -16,11 +16,14 @@ const (
 	// ResourcesDir is the name given to the resources directory where resource files are kept
 	ResourcesDir = "resources"
 
-	// ResultsHTMLFile is the name given to the HTML report generated
-	ResultsHTMLFile = "results.html"
+	// ResultsBootstrapFile is the name given to the HTML report generated
+	ResultsBootstrapFile = "results-bootstrap.html"
+
+	// ResultsSimpleFile is the name given to the HTML report generated
+	ResultsSimpleFile = "results-simple.html"
 
 	// ResultsJSONFile is the name given to the Cucumber format JSON results generated
-	ResultsJSONFile = "results.json"
+	ResultsJSONFile = "cucumber.json"
 
 	// AxeResultsHTMLFile is the name given to the HTML report generated for Axe scans
 	AxeResultsHTMLFile = "axe-results.html"
