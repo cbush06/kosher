@@ -198,6 +198,6 @@ func (r *runCommand) buildGoDogOptions() godog.Options {
 		Paths:         []string{featuresPath},
 		Tags:          r.tags,
 		StopOnFailure: r.settings.Settings.GetBool("quitOnFail"),
-		Strict:        r.settings.Settings.GetBool("quitOnFail")
+		Strict:        r.settings.Settings.GetBool("quitOnFail"),
 	}
 }
