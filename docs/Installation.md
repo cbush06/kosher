@@ -17,21 +17,21 @@ nav_order: 43
 
 1. Navigate to the Windows Command Line and open as Administrator
 
-    ![Command Line]({{site.baseurl}}/assets/images/navigatingtoCMD.png)
+    ![Command Line Navigation]({{site.baseurl}}/assets/images/navigatingtoCMD.png)
 
 2. When the terminal opens Chage Directory (cd) into the following file path: (*c:\users\yourUsername\downloads*) 
 
-    a. ![Command Line]({{site.baseurl}}/assets/images/CD1.png)
+    a. ![Command Line: Change Directory Step 1]({{site.baseurl}}/assets/images/ChangeDirectory_1.png)
     
-    b. ![Command Line]({{site.baseurl}}/assets/images/CD2.png)
+    b. ![Command Line: Change Directory Step 2]({{site.baseurl}}/assets/images/ChangeDirectory_2.png)
 
 3. Utilize the following command to begin the install: (*java -jar "kosher(version#).jar*)
 
-    ![Command Line]({{site.baseurl}}/assets/images/javainstall.png)
+    ![Command Line: Java Install from Downloads]({{site.baseurl}}/assets/images/javainstall.png)
 
 4. The following window should appear allowing the user to begin the Kosher install utilizing the install wizard.
 
-    ![Command Line]({{site.baseurl}}/assets/images/installer.png)
+    ![Command Line: Kosher Installation Wizard]({{site.baseurl}}/assets/images/KosherInstallWizard.png)
 
 > The installer will suggest several tools to aid in writing Gherkin scripts and running kosher tests. At a minimum, we recommend Chrome, Git (and Git Bash, if you're using Windows), and Visual Studio Code.
 3. The installer should automatically add kosher to the PATH. To verify the installation, open a new terminal and key in the command below. Your output should look similar.
