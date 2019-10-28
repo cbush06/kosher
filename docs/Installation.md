@@ -19,7 +19,7 @@ nav_order: 43
 
     ![Command Line Navigation]({{site.baseurl}}/assets/images/navigatingtoCMD.png)
 
-2. When the terminal opens Chage Directory (cd) into the following file path: (*c:\users\yourUsername\downloads*) 
+2. When the terminal opens Change Directory (cd) into the following file path: (*c:\users\yourUsername\downloads*) 
 
     a. ![Command Line: Change Directory Step 1]({{site.baseurl}}/assets/images/ChangeDirectory_1.png)
     
