@@ -49,14 +49,25 @@ Babe,Ruth,bruth@gmail.com,Miami,FL,5556667777
 
 ### Sample `Scenario Outline` Populated by CSV Data File
 ```gherkin
-@loadcsv(test.csv)
-Scenario Outline: Verify Scenario Outline
-    Given I fill in "email_field" with "<Email>"
-    And I click the "OK" button
-    And I fill in "phone_field" with "<Phone>"
-    And I click the "OK" button
+    @loadcsv(test.csv)
+    Scenario Outline: Verify Scenario Outline
+        Given I fill in "<Email>" 
+        And I click the "OK" button
+        And I fill in "<Phone>"
+        And I click the "OK" button
 
-    Examples:
-        | Email | Phone |
-        |       |       |
+        Examples:
+            | Email | Phone |
+            |       |       |
+
+    @loadcsv(LogwayApprovalsTest.csv)
+    Scenario Outline: Verify requested user has completed Self-Registration
+        Given I fill in "frmManageUsers:tblUsers:txtFilterLastName" with "<Last Name>"
+        And I fill in "frmManageUsers:tblUsers:txtFilterFirstName" with "<First Name>"
+        And I wait 2 seconds
+        And I should see "<UserEmailAddress>"
+
+        Examples:
+            | Last Name | First Name | UserEmailAddress |
+            |           |            |                  |
 ```
