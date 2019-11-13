@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch kosher",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/main.go",
+            "cwd": "C:/Users/clint/koshertest",
+            "args": [ "run", "features/csvtest.feature" ]
+        },
+        {
             "name": "Run Demo",
             "type": "go",
             "request": "launch",

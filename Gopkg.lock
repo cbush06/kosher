@@ -10,7 +10,7 @@
   version = "v1.10.0"
 
 [[projects]]
-  digest = "1:e0b3a3ba2e257ffb29ae0ddbcd51951eb4f8b272aea4d6fcb27ec2d6ce0d82db"
+  digest = "1:0938aeb85fb7fba2fc202ea4e5ce3e37a77a18c74152ff53491e21488eb8e214"
   name = "github.com/cbush06/godog"
   packages = [
     ".",
@@ -18,8 +18,8 @@
     "gherkin",
   ]
   pruneopts = "UT"
-  revision = "5d1d25d8b02615eb66d09592d8c7cf5c15ed0350"
-  version = "v0.7.13.1-forked"
+  revision = "247993d2271e64ab2e871af6ae1ae4179ffce930"
+  version = "v0.7.13.3-forked"
 
 [[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"

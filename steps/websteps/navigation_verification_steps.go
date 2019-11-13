@@ -2,6 +2,7 @@ package websteps
 
 import (
 	"fmt"
+	"net/url"
 	"regexp"
 	"strings"
 
@@ -30,9 +31,10 @@ func iShouldBeOn(s *steputils.StepUtils) func(string) error {
 		trailingForwardSlashRegex := regexp.MustCompile("/$")
 		currentURL = trailingForwardSlashRegex.ReplaceAllString(currentURL, "")
 
+		expectedUnescapedURL, _ := url.PathUnescape(expectedURL)
 		// assert their equality
-		if expectedURL != currentURL {
-			return fmt.Errorf("expected URL to be [%s] but was [%s]", expectedURL, currentURL)
+		if expectedUnescapedURL != currentURL {
+			return fmt.Errorf("expected URL to be [%s] but was [%s]", expectedUnescapedURL, currentURL)
 		}
 		return nil
 	}

@@ -31,7 +31,7 @@
 
 [[constraint]]
   name = "github.com/cbush06/godog"
-  version = "v0.7.13.1-forked"
+  version = "v0.7.13.3-forked"
 
 [[constraint]]
   name = "github.com/sclevine/agouti"

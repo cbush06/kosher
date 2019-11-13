@@ -339,6 +339,9 @@ func (b *CucumberFormatter) Summary() {
 	// Catch stats on the last scenario
 	b.determineElementStatus()
 
+	// Record total duration time
+	b.RunTime = time.Now().Sub(b.startTime)
+
 	if b.out != nil {
 		if jsonOutput, err = json.Marshal(b.Features); err != nil {
 			log.Printf(fmt.Sprintf(htmlErrMsg, "failed to marshal results to JSON: %s"), err)
