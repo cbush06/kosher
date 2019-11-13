@@ -51,9 +51,9 @@ Babe,Ruth,bruth@gmail.com,Miami,FL,5556667777
 ```gherkin
 @loadcsv(test.csv)
 Scenario Outline: Verify Scenario Outline
-    Given I fill in "Email" 
+    Given I fill in "email_field" with "<Email>"
     And I click the "OK" button
-    And I fill in "Phone"
+    And I fill in "phone_field" with "<Phone>"
     And I click the "OK" button
 
     Examples:

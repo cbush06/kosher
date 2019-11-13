@@ -158,32 +158,42 @@ func BuildGoDogSuite(settings *config.Settings, page interfaces.PageService, sui
 						csvHeaders[header] = idx2
 					}
 				} else {
+					tableRowLine := scenarioOutline.Examples[0].TableHeader.Location.Line + 1 + idx
 					tableRow := &gherkin.TableRow{
 						Cells: []*gherkin.TableCell{},
+						Node: gherkin.Node{
+							Type: "TableRow",
+							Location: &gherkin.Location{
+								Column: 0,
+								Line:   tableRowLine,
+							},
+						},
 					}
 					for _, scenarioColumn := range scenarioOutline.Examples[0].TableHeader.Cells {
 						csvColumnIdx := csvHeaders[scenarioColumn.Value]
 						tableRow.Cells = append(tableRow.Cells, &gherkin.TableCell{
 							Value: row[csvColumnIdx],
+							Node: gherkin.Node{
+								Type: "TableCell",
+								Location: &gherkin.Location{
+									Column: 0,
+									Line:   tableRowLine,
+								},
+							},
 						})
 					}
 					scenarioOutline.Examples[0].TableBody[idx-1] = tableRow
 				}
-			}
-
-			for _, row := range scenarioOutline.Examples[0].TableBody {
-				for _, cell := range row.Cells {
-					fmt.Printf("%v ", cell.Value)
-				}
-				fmt.Println()
 			}
 		}
 	})
 
 	// Check for Ajax call in progress
 	// An AJAX app should provide a function that returns true if AJAX requests are pending/active:
-	// 			window.ajaxPending = function() {
 	//
+	// 			window.ajaxPending = function() {
+	//				// some code here will return true if AJAX requests are pending
+	//              // otherwise, it returns false
 	// 			}
 	suite.BeforeStep(func(s *gherkin.Step) {
 		var ajaxPending bool
